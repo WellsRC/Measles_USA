@@ -1,0 +1,399 @@
+GEOID,county,state,type,count
+,North,Alabama,imported,1
+,North,Alabama,local,0
+02020,Anchorage,Alaska,imported,1
+02020,Anchorage,Alaska,local,1
+02122,Kenai Peninsula,Alaska,imported,1
+02122,Kenai Peninsula,Alaska,local,0
+04015,Mohave,Arizona,imported,0
+04015,Mohave,Arizona,local,48
+04017,Navajo,Arizona,imported,4
+04017,Navajo,Arizona,local,0
+05007,Benton,Arkansas,imported,0
+05007,Benton,Arkansas,local,1
+05045,Faulkner,Arkansas,imported,1
+05045,Faulkner,Arkansas,local,5
+05125,Saline,Arkansas,imported,1
+05125,Saline,Arkansas,local,0
+06019,Fresno,California,imported,1
+06019,Fresno,California,local,1
+06037,Los Angeles,California,imported,5
+06037,Los Angeles,California,local,0
+06059,Orange,California,imported,1
+06059,Orange,California,local,0
+06061,Placer,California,imported,1
+06061,Placer,California,local,0
+06065,Riverside,California,imported,1
+06065,Riverside,California,local,0
+06067,Sacramento,California,imported,1
+06067,Sacramento,California,local,0
+06073,San Diego,California,imported,1
+06073,San Diego,California,local,0
+06081,San Mateo,California,imported,1
+06081,San Mateo,California,local,0
+06085,Santa Clara,California,imported,1
+06085,Santa Clara,California,local,0
+06107,Tulare,California,imported,0
+06107,Tulare,California,local,2
+06109,Tuolumne,California,imported,2
+06109,Tuolumne,California,local,0
+,Unknown County,California,imported,0
+,Unknown County,California,local,1
+06113,Yolo,California,imported,0
+06113,Yolo,California,local,1
+08001,Adams,Colorado,imported,1
+08001,Adams,Colorado,local,3
+08005,Arapahoe,Colorado,imported,4
+08005,Arapahoe,Colorado,local,1
+08007,Archuleta,Colorado,imported,0
+08007,Archuleta,Colorado,local,1
+08013,Boulder,Colorado,imported,1
+08013,Boulder,Colorado,local,0
+08031,Denver,Colorado,imported,3
+08031,Denver,Colorado,local,1
+08041,El Paso,Colorado,imported,4
+08041,El Paso,Colorado,local,0
+08077,Mesa,Colorado,imported,0
+08077,Mesa,Colorado,local,7
+08101,Pueblo,Colorado,imported,1
+08101,Pueblo,Colorado,local,0
+11001,District of Columbia,District of Columbia,imported,1
+11001,District of Columbia,District of Columbia,local,0
+12011,Broward,Florida,imported,0
+12011,Broward,Florida,local,2
+12031,Duval,Florida,imported,0
+12031,Duval,Florida,local,1
+12073,Leon,Florida,imported,1
+12073,Leon,Florida,local,1
+12086,Miami-Dade,Florida,imported,0
+12086,Miami-Dade,Florida,local,1
+13121,Fulton,Georgia,imported,2
+13121,Fulton,Georgia,local,8
+15003,Honolulu,Hawaii,imported,2
+15003,Honolulu,Hawaii,local,0
+16017,Bonner,Idaho,imported,0
+16017,Bonner,Idaho,local,1
+16019,Bonneville,Idaho,imported,2
+16019,Bonneville,Idaho,local,4
+16031,Cassia,Idaho,imported,1
+16031,Cassia,Idaho,local,0
+16055,Kootenai,Idaho,imported,0
+16055,Kootenai,Idaho,local,1
+17031,Cook,Illinois,imported,2
+17031,Cook,Illinois,local,5
+17199,Williamson,Illinois,imported,0
+17199,Williamson,Illinois,local,4
+18003,Allen,Indiana,imported,0
+18003,Allen,Indiana,local,8
+18133,Putnam,Indiana,imported,0
+18133,Putnam,Indiana,local,1
+,Central,Iowa,imported,0
+,Central,Iowa,local,1
+,Eastern,Iowa,imported,1
+,Eastern,Iowa,local,5
+,Western,Iowa,imported,0
+,Western,Iowa,local,1
+20069,Gray,Kansas,imported,0
+20069,Gray,Kansas,local,29
+20081,Haskell,Kansas,imported,0
+20081,Haskell,Kansas,local,21
+20097,Kiowa,Kansas,imported,0
+20097,Kiowa,Kansas,local,6
+20145,Pawnee,Kansas,imported,0
+20145,Pawnee,Kansas,local,7
+20189,Stevens,Kansas,imported,0
+20189,Stevens,Kansas,local,10
+,Unknown County,Kansas,imported,0
+,Unknown County,Kansas,local,17
+21067,Fayette,Kentucky,imported,0
+21067,Fayette,Kentucky,local,6
+21073,Franklin,Kentucky,imported,1
+21073,Franklin,Kentucky,local,0
+21111,Jefferson,Kentucky,imported,1
+21111,Jefferson,Kentucky,local,1
+21219,Todd,Kentucky,imported,0
+21219,Todd,Kentucky,local,1
+,Unknown County,Kentucky,imported,1
+,Unknown County,Kentucky,local,0
+21239,Woodford,Kentucky,imported,0
+21239,Woodford,Kentucky,local,3
+22071,Orleans,Louisiana,imported,1
+22071,Orleans,Louisiana,local,1
+24027,Howard,Maryland,imported,1
+24027,Howard,Maryland,local,0
+24033,Prince George's,Maryland,imported,2
+24033,Prince George's,Maryland,local,0
+26005,Allegan,Michigan,imported,0
+26005,Allegan,Michigan,local,1
+26055,Grand Traverse,Michigan,imported,0
+26055,Grand Traverse,Michigan,local,4
+26065,Ingham,Michigan,imported,1
+26065,Ingham,Michigan,local,0
+26081,Kent,Michigan,imported,2
+26081,Kent,Michigan,local,2
+26099,Macomb,Michigan,imported,1
+26099,Macomb,Michigan,local,1
+26103,Marquette,Michigan,imported,0
+26103,Marquette,Michigan,local,2
+26117,Montcalm,Michigan,imported,1
+26117,Montcalm,Michigan,local,3
+26121,Muskegon,Michigan,imported,0
+26121,Muskegon,Michigan,local,1
+26125,Oakland,Michigan,imported,1
+26125,Oakland,Michigan,local,0
+26133,Osceola,Michigan,imported,0
+26133,Osceola,Michigan,local,7
+27037,Dakota,Minnesota,imported,0
+27037,Dakota,Minnesota,local,1
+27053,Hennepin,Minnesota,imported,2
+27053,Hennepin,Minnesota,local,0
+,Unknown County,Minnesota,imported,0
+,Unknown County,Minnesota,local,4
+27163,Washington,Minnesota,imported,1
+27163,Washington,Minnesota,local,0
+29039,Cedar,Missouri,imported,0
+29039,Cedar,Missouri,local,5
+29143,New Madrid,Missouri,imported,0
+29143,New Madrid,Missouri,local,1
+29213,Taney,Missouri,imported,1
+29213,Taney,Missouri,local,0
+30013,Cascade,Montana,imported,0
+30013,Cascade,Montana,local,1
+30029,Flathead,Montana,imported,2
+30029,Flathead,Montana,local,0
+30031,Gallatin,Montana,imported,5
+30031,Gallatin,Montana,local,14
+30041,Hill,Montana,imported,0
+30041,Hill,Montana,local,4
+30049,Lewis and Clark,Montana,imported,0
+30049,Lewis and Clark,Montana,local,2
+30111,Yellowstone,Montana,imported,0
+30111,Yellowstone,Montana,local,4
+31161,Sheridan,Nebraska,imported,1
+31161,Sheridan,Nebraska,local,0
+34003,Bergen,New Jersey,imported,1
+34003,Bergen,New Jersey,local,3
+34017,Hudson,New Jersey,imported,0
+34017,Hudson,New Jersey,local,2
+34029,Ocean,New Jersey,imported,0
+34029,Ocean,New Jersey,local,1
+34031,Passaic,New Jersey,imported,1
+34031,Passaic,New Jersey,local,0
+,Unknown County,New Jersey,imported,2
+,Unknown County,New Jersey,local,0
+35005,Chaves,New Mexico,imported,0
+35005,Chaves,New Mexico,local,1
+35009,Curry,New Mexico,imported,0
+35009,Curry,New Mexico,local,1
+,Dona Ana,New Mexico,imported,0
+,Dona Ana,New Mexico,local,2
+35015,Eddy,New Mexico,imported,0
+35015,Eddy,New Mexico,local,3
+35025,Lea,New Mexico,imported,0
+35025,Lea,New Mexico,local,67
+35029,Luna,New Mexico,imported,0
+35029,Luna,New Mexico,local,14
+35045,San Juan,New Mexico,imported,0
+35045,San Juan,New Mexico,local,1
+35043,Sandoval,New Mexico,imported,0
+35043,Sandoval,New Mexico,local,6
+35049,Santa Fe,New Mexico,imported,1
+35049,Santa Fe,New Mexico,local,4
+,New York City,New York,imported,0
+,New York City,New York,local,16
+36069,Ontario,New York,imported,0
+36069,Ontario,New York,local,1
+36071,Orange,New York,imported,3
+36071,Orange,New York,local,1
+36079,Putnam,New York,imported,0
+36079,Putnam,New York,local,1
+36087,Rockland,New York,imported,1
+36087,Rockland,New York,local,0
+36103,Suffolk,New York,imported,0
+36103,Suffolk,New York,local,1
+37081,Guilford,North Carolina,imported,1
+37081,Guilford,North Carolina,local,0
+38013,Burke,North Dakota,imported,1
+38013,Burke,North Dakota,local,0
+38017,Cass,North Dakota,imported,2
+38017,Cass,North Dakota,local,5
+38035,Grand Forks,North Dakota,imported,2
+38035,Grand Forks,North Dakota,local,8
+38105,Williams,North Dakota,imported,1
+38105,Williams,North Dakota,local,17
+39003,Allen,Ohio,imported,1
+39003,Allen,Ohio,local,0
+39007,Ashtabula,Ohio,imported,3
+39007,Ashtabula,Ohio,local,13
+39035,Cuyahoga,Ohio,imported,1
+39035,Cuyahoga,Ohio,local,0
+39039,Defiance,Ohio,imported,1
+39039,Defiance,Ohio,local,0
+39049,Franklin,Ohio,imported,0
+39049,Franklin,Ohio,local,1
+39075,Holmes,Ohio,imported,0
+39075,Holmes,Ohio,local,1
+39083,Knox,Ohio,imported,0
+39083,Knox,Ohio,local,14
+39119,Muskingum,Ohio,imported,0
+39119,Muskingum,Ohio,local,3
+,Unknown County,Oklahoma,imported,0
+,Unknown County,Oklahoma,local,17
+41051,Multnomah,Oregon,imported,1
+41051,Multnomah,Oregon,local,0
+42017,Bucks,Pennsylvania,imported,1
+42017,Bucks,Pennsylvania,local,0
+42049,Erie,Pennsylvania,imported,2
+42049,Erie,Pennsylvania,local,6
+42071,Lancaster,Pennsylvania,imported,0
+42071,Lancaster,Pennsylvania,local,1
+42091,Montgomery,Pennsylvania,imported,1
+42091,Montgomery,Pennsylvania,local,0
+42101,Philadelphia,Pennsylvania,imported,2
+42101,Philadelphia,Pennsylvania,local,0
+44007,Providence,Rhode Island,imported,1
+44007,Providence,Rhode Island,local,0
+,Upstate,South Carolina,imported,2
+,Upstate,South Carolina,local,2
+46083,Lincoln,South Dakota,imported,7
+46083,Lincoln,South Dakota,local,1
+46093,Meade,South Dakota,imported,1
+46093,Meade,South Dakota,local,1
+46103,Pennington,South Dakota,imported,1
+46103,Pennington,South Dakota,local,1
+,Mid-Cumberland Region,Tennessee,imported,0
+,Mid-Cumberland Region,Tennessee,local,3
+,Upper Cumberland Region,Tennessee,imported,0
+,Upper Cumberland Region,Tennessee,local,4
+48003,Andrews,Texas,imported,0
+48003,Andrews,Texas,local,3
+48013,Atascosa,Texas,imported,0
+48013,Atascosa,Texas,local,1
+48017,Bailey,Texas,imported,0
+48017,Bailey,Texas,local,2
+48027,Bell,Texas,imported,0
+48027,Bell,Texas,local,1
+48029,Bexar,Texas,imported,0
+48029,Bexar,Texas,local,2
+48033,Borden,Texas,imported,0
+48033,Borden,Texas,local,1
+48039,Brazoria,Texas,imported,0
+48039,Brazoria,Texas,local,1
+48043,Brewster,Texas,imported,0
+48043,Brewster,Texas,local,1
+48049,Brown,Texas,imported,0
+48049,Brown,Texas,local,1
+48065,Carson,Texas,imported,0
+48065,Carson,Texas,local,1
+48079,Cochran,Texas,imported,0
+48079,Cochran,Texas,local,14
+48085,Collin,Texas,imported,0
+48085,Collin,Texas,local,4
+48111,Dallam,Texas,imported,0
+48111,Dallam,Texas,local,7
+48113,Dallas,Texas,imported,0
+48113,Dallas,Texas,local,1
+48115,Dawson,Texas,imported,0
+48115,Dawson,Texas,local,26
+48121,Denton,Texas,imported,0
+48121,Denton,Texas,local,2
+48133,Eastland,Texas,imported,0
+48133,Eastland,Texas,local,2
+48135,Ector,Texas,imported,0
+48135,Ector,Texas,local,12
+48141,El Paso,Texas,imported,0
+48141,El Paso,Texas,local,61
+48143,Erath,Texas,imported,0
+48143,Erath,Texas,local,1
+48147,Fannin,Texas,imported,0
+48147,Fannin,Texas,local,4
+48157,Fort Bend,Texas,imported,0
+48157,Fort Bend,Texas,local,1
+48165,Gaines,Texas,imported,0
+48165,Gaines,Texas,local,414
+48169,Garza,Texas,imported,0
+48169,Garza,Texas,local,2
+48189,Hale,Texas,imported,0
+48189,Hale,Texas,local,5
+48197,Hardeman,Texas,imported,0
+48197,Hardeman,Texas,local,1
+48201,Harris,Texas,imported,0
+48201,Harris,Texas,local,5
+48203,Harrison,Texas,imported,0
+48203,Harrison,Texas,local,1
+48209,Hays,Texas,imported,0
+48209,Hays,Texas,local,1
+48219,Hockley,Texas,imported,0
+48219,Hockley,Texas,local,7
+48277,Lamar,Texas,imported,0
+48277,Lamar,Texas,local,28
+48279,Lamb,Texas,imported,0
+48279,Lamb,Texas,local,1
+48303,Lubbock,Texas,imported,0
+48303,Lubbock,Texas,local,52
+48305,Lynn,Texas,imported,0
+48305,Lynn,Texas,local,2
+48317,Martin,Texas,imported,0
+48317,Martin,Texas,local,3
+48309,McLennan,Texas,imported,0
+48309,McLennan,Texas,local,9
+48329,Midland,Texas,imported,0
+48329,Midland,Texas,local,7
+48369,Parmer,Texas,imported,0
+48369,Parmer,Texas,local,5
+48375,Potter,Texas,imported,0
+48375,Potter,Texas,local,1
+48379,Rains,Texas,imported,1
+48379,Rains,Texas,local,0
+48381,Randall,Texas,imported,0
+48381,Randall,Texas,local,3
+48389,Reeves,Texas,imported,0
+48389,Reeves,Texas,local,2
+48397,Rockwall,Texas,imported,0
+48397,Rockwall,Texas,local,2
+48415,Scurry,Texas,imported,0
+48415,Scurry,Texas,local,1
+48417,Shackelford,Texas,imported,0
+48417,Shackelford,Texas,local,1
+48439,Tarrant,Texas,imported,0
+48439,Tarrant,Texas,local,4
+48445,Terry,Texas,imported,0
+48445,Terry,Texas,local,60
+48453,Travis,Texas,imported,0
+48453,Travis,Texas,local,2
+48459,Upshur,Texas,imported,0
+48459,Upshur,Texas,local,5
+48491,Williamson,Texas,imported,0
+48491,Williamson,Texas,local,8
+48501,Yoakum,Texas,imported,0
+48501,Yoakum,Texas,local,20
+,Bear River,Utah,imported,0
+,Bear River,Utah,local,4
+,Southeast Health District,Utah,imported,0
+,Southeast Health District,Utah,local,3
+,Southwest Health District,Utah,imported,0
+,Southwest Health District,Utah,local,30
+49049,Utah,Utah,imported,0
+49049,Utah,Utah,local,7
+50015,Lamoille,Vermont,imported,1
+50015,Lamoille,Vermont,local,0
+,Eastern Region,Virginia,imported,0
+,Eastern Region,Virginia,local,1
+,Northwest Region,Virginia,imported,2
+,Northwest Region,Virginia,local,1
+53033,King,Washington,imported,5
+53033,King,Washington,local,1
+53061,Snohomish,Washington,imported,2
+53061,Snohomish,Washington,local,0
+53063,Spokane,Washington,imported,1
+53063,Spokane,Washington,local,0
+53073,Whatcom,Washington,imported,2
+53073,Whatcom,Washington,local,0
+55083,Oconto,Wisconsin,imported,9
+55083,Oconto,Wisconsin,local,27
+56007,Carbon,Wyoming,imported,1
+56007,Carbon,Wyoming,local,6
+56025,Natrona,Wyoming,imported,0
+56025,Natrona,Wyoming,local,1
+56027,Niobrara,Wyoming,imported,0
+56027,Niobrara,Wyoming,local,1

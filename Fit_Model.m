@@ -57,19 +57,20 @@ bin_model=dec2bin([0:2^7-1]',7)=='1';
             
         County_Data_model=County_Data;
         County_Data_model.X=County_Data_model.X(:,Model_Var(model_num,:));
-        County_Data_model.X2=County_Data_model.X.^2;
+        County_Data_model.X2=County_Data_model.X;
         if(Model_Var(model_num,end))
             County_Data_model.X2=County_Data_model.X2(:,3:end-9);
         else
             County_Data_model.X2=County_Data_model.X2(:,3:end);
         end
         XT=[];
-        for ii=3:size(County_Data_model.X2,2)
+        for ii=1:size(County_Data_model.X2,2)
             for jj=(ii+1):size(County_Data_model.X2,2)
-                XT=[XT County_Data_model.X(:,ii).*County_Data_model.X(:,jj)];
+                XT=[XT County_Data_model.X2(:,ii).*County_Data_model.X2(:,jj)];
             end
         end
     
+        County_Data_model.X2=County_Data_model.X2.^2;
         County_Data_model.XI=XT;   
         
         num_par=size(County_Data_model.X,2)+size(County_Data_model.X2,2)+size(County_Data_model.XI,2);
@@ -111,12 +112,14 @@ bin_model=dec2bin([0:2^7-1]',7)=='1';
         par_0=[par_0; par_samp];
     
     
-        lb=-5000.*ones(1,num_par+7); % 3 interept and 2 hyper paramters
-        lb(end-3:end-2)=-1;
-        lb(end-1:end)=1;
-        ub=5000.*ones(1,num_par+7);  % 3 interept and 2 hyper paramters
+        lb=-5*10^4.*ones(1,num_par+7); % 3 interept and 4 hyper paramters
+        lb(end-3:end-2)=-2;
+        lb(end-1:end)=0;
+        lb(1:5)=-50;
+        ub=5*10^4.*ones(1,num_par+7);  % 3 interept and 4 hyper paramters
         ub(end-3:end-2)=4;
         ub(end-1:end)=4;
+        ub(1:5)=50;
         
         opts_ga=optimoptions("ga","PlotFcn",[],'UseParallel',false,"MaxGenerations",100,"FunctionTolerance",10^(-9),'CrossoverFcn','crossoverheuristic','MigrationInterval',25,'SelectionFcn',{@selectiontournament,8},'PopulationSize',250,'InitialPopulationMatrix',par_0);
         [par_est]=ga(@(x)Objective_Function_Coverage(x,County_Data_model,State_Data,filter_county_train,filter_state_train),length(lb),[],[],[],[],lb,ub,[],[],opts_ga);

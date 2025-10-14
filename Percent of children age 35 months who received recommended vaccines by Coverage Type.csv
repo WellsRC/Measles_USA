@@ -56,51 +56,51 @@
 5,Arkansas,Other,2018,2018-2019,Percent,0.70071,0.114293285
 6,California,Other,2018,2018-2019,Percent,0.74896,0.185407713
 8,Colorado,Other,2018,2018-2019,Percent,0.68479,0.178911343
-9,Connecticut,Other,2018,2018-2019,Percent,N/A,N/A
-10,Delaware,Other,2018,2018-2019,Percent,N/A,N/A
-11,Dist. of Columbia,Other,2018,2018-2019,Percent,N/A,N/A
+9,Connecticut,Other,2018,2018-2019,Percent,0.849935668,Approximated by regression using  private uptake
+10,Delaware,Other,2018,2018-2019,Percent,0.805893331,Approximated by regression using  private uptake
+11,Dist. of Columbia,Other,2018,2018-2019,Percent,0.745400702,Approximated by regression using  private uptake
 12,Florida,Other,2018,2018-2019,Percent,0.77445,0.162024856
 13,Georgia,Other,2018,2018-2019,Percent,0.66611,0.144938141
 15,Hawaii,Other,2018,2018-2019,Percent,0.76007,0.121881373
-16,Idaho,Other,2018,2018-2019,Percent,N/A,N/A
-17,Illinois,Other,2018,2018-2019,Percent,N/A,N/A
-18,Indiana,Other,2018,2018-2019,Percent,N/A,N/A
-19,Iowa,Other,2018,2018-2019,Percent,N/A,N/A
+16,Idaho,Other,2018,2018-2019,Percent,0.443165021,Approximated by regression using  private uptake
+17,Illinois,Other,2018,2018-2019,Percent,0.726779895,Approximated by regression using  private uptake
+18,Indiana,Other,2018,2018-2019,Percent,0.711927222,Approximated by regression using  private uptake
+19,Iowa,Other,2018,2018-2019,Percent,0.860819173,Approximated by regression using  private uptake
 20,Kansas,Other,2018,2018-2019,Percent,0.66649,0.121765174
-21,Kentucky,Other,2018,2018-2019,Percent,N/A,N/A
-22,Louisiana,Other,2018,2018-2019,Percent,N/A,N/A
-23,Maine,Other,2018,2018-2019,Percent,N/A,N/A
+21,Kentucky,Other,2018,2018-2019,Percent,0.71553352,Approximated by regression using  private uptake
+22,Louisiana,Other,2018,2018-2019,Percent,0.721155519,Approximated by regression using  private uptake
+23,Maine,Other,2018,2018-2019,Percent,0.771847745,Approximated by regression using  private uptake
 24,Maryland,Other,2018,2018-2019,Percent,0.82502,0.105690718
-25,Massachusetts,Other,2018,2018-2019,Percent,N/A,N/A
-26,Michigan,Other,2018,2018-2019,Percent,N/A,N/A
-27,Minnesota,Other,2018,2018-2019,Percent,N/A,N/A
-28,Mississippi,Other,2018,2018-2019,Percent,N/A,N/A
-29,Missouri,Other,2018,2018-2019,Percent,N/A,N/A
-30,Montana,Other,2018,2018-2019,Percent,N/A,N/A
-31,Nebraska,Other,2018,2018-2019,Percent,N/A,N/A
-32,Nevada,Other,2018,2018-2019,Percent,N/A,N/A
-33,New Hampshire,Other,2018,2018-2019,Percent,N/A,N/A
-34,New Jersey,Other,2018,2018-2019,Percent,N/A,N/A
-35,New Mexico,Other,2018,2018-2019,Percent,N/A,N/A
+25,Massachusetts,Other,2018,2018-2019,Percent,0.812811836,Approximated by regression using  private uptake
+26,Michigan,Other,2018,2018-2019,Percent,0.712660425,Approximated by regression using  private uptake
+27,Minnesota,Other,2018,2018-2019,Percent,0.666385776,Approximated by regression using  private uptake
+28,Mississippi,Other,2018,2018-2019,Percent,0.640412583,Approximated by regression using  private uptake
+29,Missouri,Other,2018,2018-2019,Percent,0.664128351,Approximated by regression using  private uptake
+30,Montana,Other,2018,2018-2019,Percent,0.448527643,Approximated by regression using  private uptake
+31,Nebraska,Other,2018,2018-2019,Percent,0.762043276,Approximated by regression using  private uptake
+32,Nevada,Other,2018,2018-2019,Percent,0.469253991,Approximated by regression using  private uptake
+33,New Hampshire,Other,2018,2018-2019,Percent,0.792401987,Approximated by regression using  private uptake
+34,New Jersey,Other,2018,2018-2019,Percent,0.635399106,Approximated by regression using  private uptake
+35,New Mexico,Other,2018,2018-2019,Percent,0.531457082,Approximated by regression using  private uptake
 36,New York,Other,2018,2018-2019,Percent,0.59954,0.118514448
 37,North Carolina,Other,2018,2018-2019,Percent,0.68535,0.145700857
-38,North Dakota,Other,2018,2018-2019,Percent,N/A,N/A
-39,Ohio,Other,2018,2018-2019,Percent,N/A,N/A
+38,North Dakota,Other,2018,2018-2019,Percent,0.81135588,Approximated by regression using  private uptake
+39,Ohio,Other,2018,2018-2019,Percent,0.687300719,Approximated by regression using  private uptake
 40,Oklahoma,Other,2018,2018-2019,Percent,0.82101,0.125096619
-41,Oregon,Other,2018,2018-2019,Percent,N/A,N/A
+41,Oregon,Other,2018,2018-2019,Percent,0.396265311,Approximated by regression using  private uptake
 42,Pennsylvania,Other,2018,2018-2019,Percent,0.71524,0.177411586
-44,Rhode Island,Other,2018,2018-2019,Percent,N/A,N/A
-45,South Carolina,Other,2018,2018-2019,Percent,N/A,N/A
-46,South Dakota,Other,2018,2018-2019,Percent,N/A,N/A
-47,Tennessee,Other,2018,2018-2019,Percent,N/A,N/A
+44,Rhode Island,Other,2018,2018-2019,Percent,0.738574429,Approximated by regression using  private uptake
+45,South Carolina,Other,2018,2018-2019,Percent,0.67457993,Approximated by regression using  private uptake
+46,South Dakota,Other,2018,2018-2019,Percent,0.741190978,Approximated by regression using  private uptake
+47,Tennessee,Other,2018,2018-2019,Percent,0.687377608,Approximated by regression using  private uptake
 48,Texas,Other,2018,2018-2019,Percent,0.70813,7.77E-02
-49,Utah,Other,2018,2018-2019,Percent,N/A,N/A
-50,Vermont,Other,2018,2018-2019,Percent,N/A,N/A
+49,Utah,Other,2018,2018-2019,Percent,0.608516262,Approximated by regression using  private uptake
+50,Vermont,Other,2018,2018-2019,Percent,0.74576266,Approximated by regression using  private uptake
 51,Virginia,Other,2018,2018-2019,Percent,0.71251,0.142553315
 53,Washington,Other,2018,2018-2019,Percent,0.79416,0.129128993
 54,West Virginia,Other,2018,2018-2019,Percent,0.75233,0.135759339
-55,Wisconsin,Other,2018,2018-2019,Percent,N/A,N/A
-56,Wyoming,Other,2018,2018-2019,Percent,N/A,N/A
+55,Wisconsin,Other,2018,2018-2019,Percent,0.814745633,Approximated by regression using  private uptake
+56,Wyoming,Other,2018,2018-2019,Percent,0.510417972,Approximated by regression using  private uptake
 1,Alabama,Private,2018,2018-2019,Percent,0.83258,6.59E-02
 2,Alaska,Private,2018,2018-2019,Percent,0.70564,8.02E-02
 4,Arizona,Private,2018,2018-2019,Percent,0.75539,6.21E-02
@@ -152,57 +152,57 @@
 54,West Virginia,Private,2018,2018-2019,Percent,0.7921,6.24E-02
 55,Wisconsin,Private,2018,2018-2019,Percent,0.85262,4.70E-02
 56,Wyoming,Private,2018,2018-2019,Percent,0.73192,5.70E-02
-1,Alabama,Uninsured,2018,2018-2019,Percent,N/A,N/A
-2,Alaska,Uninsured,2018,2018-2019,Percent,N/A,N/A
-4,Arizona,Uninsured,2018,2018-2019,Percent,N/A,N/A
-5,Arkansas,Uninsured,2018,2018-2019,Percent,N/A,N/A
-6,California,Uninsured,2018,2018-2019,Percent,N/A,N/A
-8,Colorado,Uninsured,2018,2018-2019,Percent,N/A,N/A
-9,Connecticut,Uninsured,2018,2018-2019,Percent,N/A,N/A
-10,Delaware,Uninsured,2018,2018-2019,Percent,N/A,N/A
-11,Dist. of Columbia,Uninsured,2018,2018-2019,Percent,N/A,N/A
-12,Florida,Uninsured,2018,2018-2019,Percent,N/A,N/A
-13,Georgia,Uninsured,2018,2018-2019,Percent,N/A,N/A
-15,Hawaii,Uninsured,2018,2018-2019,Percent,N/A,N/A
-16,Idaho,Uninsured,2018,2018-2019,Percent,N/A,N/A
-17,Illinois,Uninsured,2018,2018-2019,Percent,N/A,N/A
-18,Indiana,Uninsured,2018,2018-2019,Percent,N/A,N/A
-19,Iowa,Uninsured,2018,2018-2019,Percent,N/A,N/A
-20,Kansas,Uninsured,2018,2018-2019,Percent,N/A,N/A
-21,Kentucky,Uninsured,2018,2018-2019,Percent,N/A,N/A
-22,Louisiana,Uninsured,2018,2018-2019,Percent,N/A,N/A
-23,Maine,Uninsured,2018,2018-2019,Percent,N/A,N/A
-24,Maryland,Uninsured,2018,2018-2019,Percent,N/A,N/A
-25,Massachusetts,Uninsured,2018,2018-2019,Percent,N/A,N/A
-26,Michigan,Uninsured,2018,2018-2019,Percent,N/A,N/A
-27,Minnesota,Uninsured,2018,2018-2019,Percent,N/A,N/A
-28,Mississippi,Uninsured,2018,2018-2019,Percent,N/A,N/A
-29,Missouri,Uninsured,2018,2018-2019,Percent,N/A,N/A
-30,Montana,Uninsured,2018,2018-2019,Percent,N/A,N/A
-31,Nebraska,Uninsured,2018,2018-2019,Percent,N/A,N/A
-32,Nevada,Uninsured,2018,2018-2019,Percent,N/A,N/A
-33,New Hampshire,Uninsured,2018,2018-2019,Percent,N/A,N/A
-34,New Jersey,Uninsured,2018,2018-2019,Percent,N/A,N/A
-35,New Mexico,Uninsured,2018,2018-2019,Percent,N/A,N/A
-36,New York,Uninsured,2018,2018-2019,Percent,N/A,N/A
-37,North Carolina,Uninsured,2018,2018-2019,Percent,N/A,N/A
-38,North Dakota,Uninsured,2018,2018-2019,Percent,N/A,N/A
-39,Ohio,Uninsured,2018,2018-2019,Percent,N/A,N/A
-40,Oklahoma,Uninsured,2018,2018-2019,Percent,N/A,N/A
-41,Oregon,Uninsured,2018,2018-2019,Percent,N/A,N/A
-42,Pennsylvania,Uninsured,2018,2018-2019,Percent,N/A,N/A
-44,Rhode Island,Uninsured,2018,2018-2019,Percent,N/A,N/A
-45,South Carolina,Uninsured,2018,2018-2019,Percent,N/A,N/A
-46,South Dakota,Uninsured,2018,2018-2019,Percent,N/A,N/A
-47,Tennessee,Uninsured,2018,2018-2019,Percent,N/A,N/A
+1,Alabama,Uninsured,2018,2018-2019,Percent,0.530103686,Approximated by average ratio with private over the years (no significant regression model)
+2,Alaska,Uninsured,2018,2018-2019,Percent,0.449280988,Approximated by average ratio with private over the years (no significant regression model)
+4,Arizona,Uninsured,2018,2018-2019,Percent,0.480956813,Approximated by average ratio with private over the years (no significant regression model)
+5,Arkansas,Uninsured,2018,2018-2019,Percent,0.495651849,Approximated by average ratio with private over the years (no significant regression model)
+6,California,Uninsured,2018,2018-2019,Percent,0.483872899,Approximated by average ratio with private over the years (no significant regression model)
+8,Colorado,Uninsured,2018,2018-2019,Percent,0.516567444,Approximated by average ratio with private over the years (no significant regression model)
+9,Connecticut,Uninsured,2018,2018-2019,Percent,0.556367561,Approximated by average ratio with private over the years (no significant regression model)
+10,Delaware,Uninsured,2018,2018-2019,Percent,0.539787893,Approximated by average ratio with private over the years (no significant regression model)
+11,Dist. of Columbia,Uninsured,2018,2018-2019,Percent,0.52113895,Approximated by average ratio with private over the years (no significant regression model)
+12,Florida,Uninsured,2018,2018-2019,Percent,0.490965737,Approximated by average ratio with private over the years (no significant regression model)
+13,Georgia,Uninsured,2018,2018-2019,Percent,0.528168118,Approximated by average ratio with private over the years (no significant regression model)
+15,Hawaii,Uninsured,2018,2018-2019,Percent,0.505024073,Approximated by average ratio with private over the years (no significant regression model)
+16,Idaho,Uninsured,2018,2018-2019,Percent,0.451598576,Approximated by average ratio with private over the years (no significant regression model)
+17,Illinois,Uninsured,2018,2018-2019,Percent,0.516019882,Approximated by average ratio with private over the years (no significant regression model)
+18,Indiana,Uninsured,2018,2018-2019,Percent,0.512091443,Approximated by average ratio with private over the years (no significant regression model)
+19,Iowa,Uninsured,2018,2018-2019,Percent,0.561066407,Approximated by average ratio with private over the years (no significant regression model)
+20,Kansas,Uninsured,2018,2018-2019,Percent,0.522272276,Approximated by average ratio with private over the years (no significant regression model)
+21,Kentucky,Uninsured,2018,2018-2019,Percent,0.513033759,Approximated by average ratio with private over the years (no significant regression model)
+22,Louisiana,Uninsured,2018,2018-2019,Percent,0.51451727,Approximated by average ratio with private over the years (no significant regression model)
+23,Maine,Uninsured,2018,2018-2019,Percent,0.528855754,Approximated by average ratio with private over the years (no significant regression model)
+24,Maryland,Uninsured,2018,2018-2019,Percent,0.519120611,Approximated by average ratio with private over the years (no significant regression model)
+25,Massachusetts,Uninsured,2018,2018-2019,Percent,0.542181885,Approximated by average ratio with private over the years (no significant regression model)
+26,Michigan,Uninsured,2018,2018-2019,Percent,0.512282453,Approximated by average ratio with private over the years (no significant regression model)
+27,Minnesota,Uninsured,2018,2018-2019,Percent,0.500726348,Approximated by average ratio with private over the years (no significant regression model)
+28,Mississippi,Uninsured,2018,2018-2019,Percent,0.494601294,Approximated by average ratio with private over the years (no significant regression model)
+29,Missouri,Uninsured,2018,2018-2019,Percent,0.500185153,Approximated by average ratio with private over the years (no significant regression model)
+30,Montana,Uninsured,2018,2018-2019,Percent,0.45275737,Approximated by average ratio with private over the years (no significant regression model)
+31,Nebraska,Uninsured,2018,2018-2019,Percent,0.525926934,Approximated by average ratio with private over the years (no significant regression model)
+32,Nevada,Uninsured,2018,2018-2019,Percent,0.45721427,Approximated by average ratio with private over the years (no significant regression model)
+33,New Hampshire,Uninsured,2018,2018-2019,Percent,0.535299158,Approximated by average ratio with private over the years (no significant regression model)
+34,New Jersey,Uninsured,2018,2018-2019,Percent,0.4934425,Approximated by average ratio with private over the years (no significant regression model)
+35,New Mexico,Uninsured,2018,2018-2019,Percent,0.470514933,Approximated by average ratio with private over the years (no significant regression model)
+36,New York,Uninsured,2018,2018-2019,Percent,0.479727982,Approximated by average ratio with private over the years (no significant regression model)
+37,North Carolina,Uninsured,2018,2018-2019,Percent,0.553846229,Approximated by average ratio with private over the years (no significant regression model)
+38,North Dakota,Uninsured,2018,2018-2019,Percent,0.541672525,Approximated by average ratio with private over the years (no significant regression model)
+39,Ohio,Uninsured,2018,2018-2019,Percent,0.505832682,Approximated by average ratio with private over the years (no significant regression model)
+40,Oklahoma,Uninsured,2018,2018-2019,Percent,0.453470474,Approximated by average ratio with private over the years (no significant regression model)
+41,Oregon,Uninsured,2018,2018-2019,Percent,0.441309504,Approximated by average ratio with private over the years (no significant regression model)
+42,Pennsylvania,Uninsured,2018,2018-2019,Percent,0.561346555,Approximated by average ratio with private over the years (no significant regression model)
+44,Rhode Island,Uninsured,2018,2018-2019,Percent,0.519235217,Approximated by average ratio with private over the years (no significant regression model)
+45,South Carolina,Uninsured,2018,2018-2019,Percent,0.502706485,Approximated by average ratio with private over the years (no significant regression model)
+46,South Dakota,Uninsured,2018,2018-2019,Percent,0.519961055,Approximated by average ratio with private over the years (no significant regression model)
+47,Tennessee,Uninsured,2018,2018-2019,Percent,0.505851783,Approximated by average ratio with private over the years (no significant regression model)
 48,Texas,Uninsured,2018,2018-2019,Percent,0.464,0.111695379
-49,Utah,Uninsured,2018,2018-2019,Percent,N/A,N/A
-50,Vermont,Uninsured,2018,2018-2019,Percent,N/A,N/A
-51,Virginia,Uninsured,2018,2018-2019,Percent,N/A,N/A
-53,Washington,Uninsured,2018,2018-2019,Percent,N/A,N/A
-54,West Virginia,Uninsured,2018,2018-2019,Percent,N/A,N/A
-55,Wisconsin,Uninsured,2018,2018-2019,Percent,N/A,N/A
-56,Wyoming,Uninsured,2018,2018-2019,Percent,N/A,N/A
+49,Utah,Uninsured,2018,2018-2019,Percent,0.487336547,Approximated by average ratio with private over the years (no significant regression model)
+50,Vermont,Uninsured,2018,2018-2019,Percent,0.521240822,Approximated by average ratio with private over the years (no significant regression model)
+51,Virginia,Uninsured,2018,2018-2019,Percent,0.555667191,Approximated by average ratio with private over the years (no significant regression model)
+53,Washington,Uninsured,2018,2018-2019,Percent,0.505902719,Approximated by average ratio with private over the years (no significant regression model)
+54,West Virginia,Uninsured,2018,2018-2019,Percent,0.50433007,Approximated by average ratio with private over the years (no significant regression model)
+55,Wisconsin,Uninsured,2018,2018-2019,Percent,0.542863154,Approximated by average ratio with private over the years (no significant regression model)
+56,Wyoming,Uninsured,2018,2018-2019,Percent,0.466013464,Approximated by average ratio with private over the years (no significant regression model)
 1,Alabama,Medicaid,2019,2019-2020,Percent,0.69784,7.76E-02
 2,Alaska,Medicaid,2019,2019-2020,Percent,0.54868,7.30E-02
 4,Arizona,Medicaid,2019,2019-2020,Percent,0.6674,8.10E-02
@@ -260,51 +260,51 @@
 5,Arkansas,Other,2019,2019-2020,Percent,0.69888,0.105094612
 6,California,Other,2019,2019-2020,Percent,0.80692,0.135336727
 8,Colorado,Other,2019,2019-2020,Percent,0.58564,0.20221293
-9,Connecticut,Other,2019,2019-2020,Percent,N/A,N/A
-10,Delaware,Other,2019,2019-2020,Percent,N/A,N/A
-11,Dist. of Columbia,Other,2019,2019-2020,Percent,N/A,N/A
+9,Connecticut,Other,2019,2019-2020,Percent,0.8405308,Approximated by regression using  private uptake
+10,Delaware,Other,2019,2019-2020,Percent,0.806023888,Approximated by regression using  private uptake
+11,Dist. of Columbia,Other,2019,2019-2020,Percent,0.625172647,Approximated by regression using  private uptake
 12,Florida,Other,2019,2019-2020,Percent,0.88431,0.110857151
 13,Georgia,Other,2019,2019-2020,Percent,0.62828,0.174617827
 15,Hawaii,Other,2019,2019-2020,Percent,0.78857,0.110514842
-16,Idaho,Other,2019,2019-2020,Percent,N/A,N/A
-17,Illinois,Other,2019,2019-2020,Percent,N/A,N/A
-18,Indiana,Other,2019,2019-2020,Percent,N/A,N/A
-19,Iowa,Other,2019,2019-2020,Percent,N/A,N/A
+16,Idaho,Other,2019,2019-2020,Percent,0.634348576,Approximated by regression using  private uptake
+17,Illinois,Other,2019,2019-2020,Percent,0.70908172,Approximated by regression using  private uptake
+18,Indiana,Other,2019,2019-2020,Percent,0.602648326,Approximated by regression using  private uptake
+19,Iowa,Other,2019,2019-2020,Percent,0.854011404,Approximated by regression using  private uptake
 20,Kansas,Other,2019,2019-2020,Percent,0.68708,0.104473747
-21,Kentucky,Other,2019,2019-2020,Percent,N/A,N/A
-22,Louisiana,Other,2019,2019-2020,Percent,N/A,N/A
-23,Maine,Other,2019,2019-2020,Percent,N/A,N/A
+21,Kentucky,Other,2019,2019-2020,Percent,0.761783669,Approximated by regression using  private uptake
+22,Louisiana,Other,2019,2019-2020,Percent,0.501325902,Approximated by regression using  private uptake
+23,Maine,Other,2019,2019-2020,Percent,0.805033726,Approximated by regression using  private uptake
 24,Maryland,Other,2019,2019-2020,Percent,0.67544,0.141890988
-25,Massachusetts,Other,2019,2019-2020,Percent,N/A,N/A
-26,Michigan,Other,2019,2019-2020,Percent,N/A,N/A
-27,Minnesota,Other,2019,2019-2020,Percent,N/A,N/A
-28,Mississippi,Other,2019,2019-2020,Percent,N/A,N/A
-29,Missouri,Other,2019,2019-2020,Percent,N/A,N/A
-30,Montana,Other,2019,2019-2020,Percent,N/A,N/A
-31,Nebraska,Other,2019,2019-2020,Percent,N/A,N/A
-32,Nevada,Other,2019,2019-2020,Percent,N/A,N/A
-33,New Hampshire,Other,2019,2019-2020,Percent,N/A,N/A
-34,New Jersey,Other,2019,2019-2020,Percent,N/A,N/A
-35,New Mexico,Other,2019,2019-2020,Percent,N/A,N/A
+25,Massachusetts,Other,2019,2019-2020,Percent,0.847038053,Approximated by regression using  private uptake
+26,Michigan,Other,2019,2019-2020,Percent,0.745355433,Approximated by regression using  private uptake
+27,Minnesota,Other,2019,2019-2020,Percent,0.820770329,Approximated by regression using  private uptake
+28,Mississippi,Other,2019,2019-2020,Percent,0.693469687,Approximated by regression using  private uptake
+29,Missouri,Other,2019,2019-2020,Percent,0.792323502,Approximated by regression using  private uptake
+30,Montana,Other,2019,2019-2020,Percent,0.62228977,Approximated by regression using  private uptake
+31,Nebraska,Other,2019,2019-2020,Percent,0.743290112,Approximated by regression using  private uptake
+32,Nevada,Other,2019,2019-2020,Percent,0.637854501,Approximated by regression using  private uptake
+33,New Hampshire,Other,2019,2019-2020,Percent,0.815051447,Approximated by regression using  private uptake
+34,New Jersey,Other,2019,2019-2020,Percent,0.697812678,Approximated by regression using  private uptake
+35,New Mexico,Other,2019,2019-2020,Percent,0.647657711,Approximated by regression using  private uptake
 36,New York,Other,2019,2019-2020,Percent,0.62139,0.105783284
 37,North Carolina,Other,2019,2019-2020,Percent,0.7692,0.129856065
-38,North Dakota,Other,2019,2019-2020,Percent,N/A,N/A
-39,Ohio,Other,2019,2019-2020,Percent,N/A,N/A
-40,Oklahoma,Other,2019,2019-2020,Percent,N/A,N/A
-41,Oregon,Other,2019,2019-2020,Percent,N/A,N/A
+38,North Dakota,Other,2019,2019-2020,Percent,0.727631601,Approximated by regression using  private uptake
+39,Ohio,Other,2019,2019-2020,Percent,0.711633629,Approximated by regression using  private uptake
+40,Oklahoma,Other,2019,2019-2020,Percent,0.45363622,Approximated by regression using  private uptake
+41,Oregon,Other,2019,2019-2020,Percent,0.574907714,Approximated by regression using  private uptake
 42,Pennsylvania,Other,2019,2019-2020,Percent,0.73518,0.123690859
-44,Rhode Island,Other,2019,2019-2020,Percent,N/A,N/A
-45,South Carolina,Other,2019,2019-2020,Percent,N/A,N/A
+44,Rhode Island,Other,2019,2019-2020,Percent,0.810807661,Approximated by regression using  private uptake
+45,South Carolina,Other,2019,2019-2020,Percent,0.765357607,Approximated by regression using  private uptake
 46,South Dakota,Other,2019,2019-2020,Percent,0.70944,0.161389053
 47,Tennessee,Other,2019,2019-2020,Percent,0.64817,0.164819688
 48,Texas,Other,2019,2019-2020,Percent,0.66763,0.101107761
-49,Utah,Other,2019,2019-2020,Percent,N/A,N/A
-50,Vermont,Other,2019,2019-2020,Percent,N/A,N/A
+49,Utah,Other,2019,2019-2020,Percent,0.688938765,Approximated by regression using  private uptake
+50,Vermont,Other,2019,2019-2020,Percent,0.829358267,Approximated by regression using  private uptake
 51,Virginia,Other,2019,2019-2020,Percent,0.68243,0.150828734
 53,Washington,Other,2019,2019-2020,Percent,0.78445,0.12339174
-54,West Virginia,Other,2019,2019-2020,Percent,N/A,N/A
-55,Wisconsin,Other,2019,2019-2020,Percent,N/A,N/A
-56,Wyoming,Other,2019,2019-2020,Percent,N/A,N/A
+54,West Virginia,Other,2019,2019-2020,Percent,0.786995168,Approximated by regression using  private uptake
+55,Wisconsin,Other,2019,2019-2020,Percent,0.67891073,Approximated by regression using  private uptake
+56,Wyoming,Other,2019,2019-2020,Percent,0.527802732,Approximated by regression using  private uptake
 1,Alabama,Private,2019,2019-2020,Percent,0.81349,7.23E-02
 2,Alaska,Private,2019,2019-2020,Percent,0.73053,7.83E-02
 4,Arizona,Private,2019,2019-2020,Percent,0.77051,5.89E-02
@@ -356,57 +356,57 @@
 54,West Virginia,Private,2019,2019-2020,Percent,0.83801,5.83E-02
 55,Wisconsin,Private,2019,2019-2020,Percent,0.79121,5.95E-02
 56,Wyoming,Private,2019,2019-2020,Percent,0.73776,5.61E-02
-1,Alabama,Uninsured,2019,2019-2020,Percent,N/A,N/A
-2,Alaska,Uninsured,2019,2019-2020,Percent,N/A,N/A
-4,Arizona,Uninsured,2019,2019-2020,Percent,N/A,N/A
-5,Arkansas,Uninsured,2019,2019-2020,Percent,N/A,N/A
-6,California,Uninsured,2019,2019-2020,Percent,N/A,N/A
-8,Colorado,Uninsured,2019,2019-2020,Percent,N/A,N/A
-9,Connecticut,Uninsured,2019,2019-2020,Percent,N/A,N/A
-10,Delaware,Uninsured,2019,2019-2020,Percent,N/A,N/A
-11,Dist. of Columbia,Uninsured,2019,2019-2020,Percent,N/A,N/A
-12,Florida,Uninsured,2019,2019-2020,Percent,N/A,N/A
-13,Georgia,Uninsured,2019,2019-2020,Percent,N/A,N/A
-15,Hawaii,Uninsured,2019,2019-2020,Percent,N/A,N/A
-16,Idaho,Uninsured,2019,2019-2020,Percent,N/A,N/A
-17,Illinois,Uninsured,2019,2019-2020,Percent,N/A,N/A
-18,Indiana,Uninsured,2019,2019-2020,Percent,N/A,N/A
-19,Iowa,Uninsured,2019,2019-2020,Percent,N/A,N/A
-20,Kansas,Uninsured,2019,2019-2020,Percent,N/A,N/A
-21,Kentucky,Uninsured,2019,2019-2020,Percent,N/A,N/A
-22,Louisiana,Uninsured,2019,2019-2020,Percent,N/A,N/A
-23,Maine,Uninsured,2019,2019-2020,Percent,N/A,N/A
-24,Maryland,Uninsured,2019,2019-2020,Percent,N/A,N/A
-25,Massachusetts,Uninsured,2019,2019-2020,Percent,N/A,N/A
-26,Michigan,Uninsured,2019,2019-2020,Percent,N/A,N/A
-27,Minnesota,Uninsured,2019,2019-2020,Percent,N/A,N/A
-28,Mississippi,Uninsured,2019,2019-2020,Percent,N/A,N/A
-29,Missouri,Uninsured,2019,2019-2020,Percent,N/A,N/A
-30,Montana,Uninsured,2019,2019-2020,Percent,N/A,N/A
-31,Nebraska,Uninsured,2019,2019-2020,Percent,N/A,N/A
-32,Nevada,Uninsured,2019,2019-2020,Percent,N/A,N/A
-33,New Hampshire,Uninsured,2019,2019-2020,Percent,N/A,N/A
-34,New Jersey,Uninsured,2019,2019-2020,Percent,N/A,N/A
-35,New Mexico,Uninsured,2019,2019-2020,Percent,N/A,N/A
-36,New York,Uninsured,2019,2019-2020,Percent,N/A,N/A
-37,North Carolina,Uninsured,2019,2019-2020,Percent,N/A,N/A
-38,North Dakota,Uninsured,2019,2019-2020,Percent,N/A,N/A
-39,Ohio,Uninsured,2019,2019-2020,Percent,N/A,N/A
-40,Oklahoma,Uninsured,2019,2019-2020,Percent,N/A,N/A
-41,Oregon,Uninsured,2019,2019-2020,Percent,N/A,N/A
-42,Pennsylvania,Uninsured,2019,2019-2020,Percent,N/A,N/A
-44,Rhode Island,Uninsured,2019,2019-2020,Percent,N/A,N/A
-45,South Carolina,Uninsured,2019,2019-2020,Percent,N/A,N/A
-46,South Dakota,Uninsured,2019,2019-2020,Percent,N/A,N/A
-47,Tennessee,Uninsured,2019,2019-2020,Percent,N/A,N/A
+1,Alabama,Uninsured,2019,2019-2020,Percent,0.517949083,Approximated by average ratio with private over the years (no significant regression model)
+2,Alaska,Uninsured,2019,2019-2020,Percent,0.465128451,Approximated by average ratio with private over the years (no significant regression model)
+4,Arizona,Uninsured,2019,2019-2020,Percent,0.490583717,Approximated by average ratio with private over the years (no significant regression model)
+5,Arkansas,Uninsured,2019,2019-2020,Percent,0.496301283,Approximated by average ratio with private over the years (no significant regression model)
+6,California,Uninsured,2019,2019-2020,Percent,0.480511123,Approximated by average ratio with private over the years (no significant regression model)
+8,Colorado,Uninsured,2019,2019-2020,Percent,0.519629971,Approximated by average ratio with private over the years (no significant regression model)
+9,Connecticut,Uninsured,2019,2019-2020,Percent,0.55252826,Approximated by average ratio with private over the years (no significant regression model)
+10,Delaware,Uninsured,2019,2019-2020,Percent,0.539832462,Approximated by average ratio with private over the years (no significant regression model)
+11,Dist. of Columbia,Uninsured,2019,2019-2020,Percent,0.491099444,Approximated by average ratio with private over the years (no significant regression model)
+12,Florida,Uninsured,2019,2019-2020,Percent,0.489017435,Approximated by average ratio with private over the years (no significant regression model)
+13,Georgia,Uninsured,2019,2019-2020,Percent,0.513734129,Approximated by average ratio with private over the years (no significant regression model)
+15,Hawaii,Uninsured,2019,2019-2020,Percent,0.507309826,Approximated by average ratio with private over the years (no significant regression model)
+16,Idaho,Uninsured,2019,2019-2020,Percent,0.493200554,Approximated by average ratio with private over the years (no significant regression model)
+17,Illinois,Uninsured,2019,2019-2020,Percent,0.511352871,Approximated by average ratio with private over the years (no significant regression model)
+18,Indiana,Uninsured,2019,2019-2020,Percent,0.486024945,Approximated by average ratio with private over the years (no significant regression model)
+19,Iowa,Uninsured,2019,2019-2020,Percent,0.558093018,Approximated by average ratio with private over the years (no significant regression model)
+20,Kansas,Uninsured,2019,2019-2020,Percent,0.537915995,Approximated by average ratio with private over the years (no significant regression model)
+21,Kentucky,Uninsured,2019,2019-2020,Percent,0.52585053,Approximated by average ratio with private over the years (no significant regression model)
+22,Louisiana,Uninsured,2019,2019-2020,Percent,0.464071529,Approximated by average ratio with private over the years (no significant regression model)
+23,Maine,Uninsured,2019,2019-2020,Percent,0.539495011,Approximated by average ratio with private over the years (no significant regression model)
+24,Maryland,Uninsured,2019,2019-2020,Percent,0.544028315,Approximated by average ratio with private over the years (no significant regression model)
+25,Massachusetts,Uninsured,2019,2019-2020,Percent,0.555164198,Approximated by average ratio with private over the years (no significant regression model)
+26,Michigan,Uninsured,2019,2019-2020,Percent,0.521126216,Approximated by average ratio with private over the years (no significant regression model)
+27,Minnesota,Uninsured,2019,2019-2020,Percent,0.545021567,Approximated by average ratio with private over the years (no significant regression model)
+28,Mississippi,Uninsured,2019,2019-2020,Percent,0.507373496,Approximated by average ratio with private over the years (no significant regression model)
+29,Missouri,Uninsured,2019,2019-2020,Percent,0.53527369,Approximated by average ratio with private over the years (no significant regression model)
+30,Montana,Uninsured,2019,2019-2020,Percent,0.490443643,Approximated by average ratio with private over the years (no significant regression model)
+31,Nebraska,Uninsured,2019,2019-2020,Percent,0.520546819,Approximated by average ratio with private over the years (no significant regression model)
+32,Nevada,Uninsured,2019,2019-2020,Percent,0.494009163,Approximated by average ratio with private over the years (no significant regression model)
+33,New Hampshire,Uninsured,2019,2019-2020,Percent,0.542971393,Approximated by average ratio with private over the years (no significant regression model)
+34,New Jersey,Uninsured,2019,2019-2020,Percent,0.50846862,Approximated by average ratio with private over the years (no significant regression model)
+35,New Mexico,Uninsured,2019,2019-2020,Percent,0.496288549,Approximated by average ratio with private over the years (no significant regression model)
+36,New York,Uninsured,2019,2019-2020,Percent,0.52508649,Approximated by average ratio with private over the years (no significant regression model)
+37,North Carolina,Uninsured,2019,2019-2020,Percent,0.521571906,Approximated by average ratio with private over the years (no significant regression model)
+38,North Dakota,Uninsured,2019,2019-2020,Percent,0.516249094,Approximated by average ratio with private over the years (no significant regression model)
+39,Ohio,Uninsured,2019,2019-2020,Percent,0.512015039,Approximated by average ratio with private over the years (no significant regression model)
+40,Oklahoma,Uninsured,2019,2019-2020,Percent,0.453858861,Approximated by average ratio with private over the years (no significant regression model)
+41,Oregon,Uninsured,2019,2019-2020,Percent,0.479906258,Approximated by average ratio with private over the years (no significant regression model)
+42,Pennsylvania,Uninsured,2019,2019-2020,Percent,0.559449189,Approximated by average ratio with private over the years (no significant regression model)
+44,Rhode Island,Uninsured,2019,2019-2020,Percent,0.541481515,Approximated by average ratio with private over the years (no significant regression model)
+45,South Carolina,Uninsured,2019,2019-2020,Percent,0.526907452,Approximated by average ratio with private over the years (no significant regression model)
+46,South Dakota,Uninsured,2019,2019-2020,Percent,0.510397821,Approximated by average ratio with private over the years (no significant regression model)
+47,Tennessee,Uninsured,2019,2019-2020,Percent,0.509410936,Approximated by average ratio with private over the years (no significant regression model)
 48,Texas,Uninsured,2019,2019-2020,Percent,0.42898,0.126837149
-49,Utah,Uninsured,2019,2019-2020,Percent,N/A,N/A
-50,Vermont,Uninsured,2019,2019-2020,Percent,N/A,N/A
-51,Virginia,Uninsured,2019,2019-2020,Percent,N/A,N/A
-53,Washington,Uninsured,2019,2019-2020,Percent,N/A,N/A
-54,West Virginia,Uninsured,2019,2019-2020,Percent,N/A,N/A
-55,Wisconsin,Uninsured,2019,2019-2020,Percent,N/A,N/A
-56,Wyoming,Uninsured,2019,2019-2020,Percent,N/A,N/A
+49,Utah,Uninsured,2019,2019-2020,Percent,0.50624017,Approximated by average ratio with private over the years (no significant regression model)
+50,Vermont,Uninsured,2019,2019-2020,Percent,0.5481987,Approximated by average ratio with private over the years (no significant regression model)
+51,Virginia,Uninsured,2019,2019-2020,Percent,0.535948592,Approximated by average ratio with private over the years (no significant regression model)
+53,Washington,Uninsured,2019,2019-2020,Percent,0.510436023,Approximated by average ratio with private over the years (no significant regression model)
+54,West Virginia,Uninsured,2019,2019-2020,Percent,0.533560967,Approximated by average ratio with private over the years (no significant regression model)
+55,Wisconsin,Uninsured,2019,2019-2020,Percent,0.503763407,Approximated by average ratio with private over the years (no significant regression model)
+56,Wyoming,Uninsured,2019,2019-2020,Percent,0.469731792,Approximated by average ratio with private over the years (no significant regression model)
 1,Alabama,Medicaid,2020,2020-2021,Percent,0.70918,7.55E-02
 2,Alaska,Medicaid,2020,2020-2021,Percent,0.53082,7.09E-02
 4,Arizona,Medicaid,2020,2020-2021,Percent,0.61654,8.64E-02
@@ -458,57 +458,57 @@
 54,West Virginia,Medicaid,2020,2020-2021,Percent,0.60617,7.37E-02
 55,Wisconsin,Medicaid,2020,2020-2021,Percent,0.64334,9.99E-02
 56,Wyoming,Medicaid,2020,2020-2021,Percent,0.73115,8.73E-02
-1,Alabama,Other,2020,2020-2021,Percent,N/A,N/A
+1,Alabama,Other,2020,2020-2021,Percent,0.801812958,Approximated by regression using  private uptake
 2,Alaska,Other,2020,2020-2021,Percent,0.74724,0.102095097
 4,Arizona,Other,2020,2020-2021,Percent,0.75365,0.17177023
 5,Arkansas,Other,2020,2020-2021,Percent,0.68412,0.109161705
 6,California,Other,2020,2020-2021,Percent,0.73364,0.146179274
 8,Colorado,Other,2020,2020-2021,Percent,0.69045,0.183510765
 9,Connecticut,Other,2020,2020-2021,Percent,0.81733,9.48E-02
-10,Delaware,Other,2020,2020-2021,Percent,N/A,N/A
-11,Dist. of Columbia,Other,2020,2020-2021,Percent,N/A,N/A
-12,Florida,Other,2020,2020-2021,Percent,N/A,N/A
+10,Delaware,Other,2020,2020-2021,Percent,0.785953734,Approximated by regression using  private uptake
+11,Dist. of Columbia,Other,2020,2020-2021,Percent,0.566287871,Approximated by regression using  private uptake
+12,Florida,Other,2020,2020-2021,Percent,0.721826519,Approximated by regression using  private uptake
 13,Georgia,Other,2020,2020-2021,Percent,0.4201,0.179828629
 15,Hawaii,Other,2020,2020-2021,Percent,0.73362,0.136343181
 16,Idaho,Other,2020,2020-2021,Percent,0.79389,0.167012289
-17,Illinois,Other,2020,2020-2021,Percent,N/A,N/A
-18,Indiana,Other,2020,2020-2021,Percent,N/A,N/A
-19,Iowa,Other,2020,2020-2021,Percent,N/A,N/A
+17,Illinois,Other,2020,2020-2021,Percent,0.750526503,Approximated by regression using  private uptake
+18,Indiana,Other,2020,2020-2021,Percent,0.571523346,Approximated by regression using  private uptake
+19,Iowa,Other,2020,2020-2021,Percent,0.889268401,Approximated by regression using  private uptake
 20,Kansas,Other,2020,2020-2021,Percent,0.77702,9.54E-02
-21,Kentucky,Other,2020,2020-2021,Percent,N/A,N/A
-22,Louisiana,Other,2020,2020-2021,Percent,N/A,N/A
-23,Maine,Other,2020,2020-2021,Percent,N/A,N/A
+21,Kentucky,Other,2020,2020-2021,Percent,0.809468561,Approximated by regression using  private uptake
+22,Louisiana,Other,2020,2020-2021,Percent,0.596377582,Approximated by regression using  private uptake
+23,Maine,Other,2020,2020-2021,Percent,0.812466831,Approximated by regression using  private uptake
 24,Maryland,Other,2020,2020-2021,Percent,0.72499,0.126004532
-25,Massachusetts,Other,2020,2020-2021,Percent,N/A,N/A
-26,Michigan,Other,2020,2020-2021,Percent,N/A,N/A
-27,Minnesota,Other,2020,2020-2021,Percent,N/A,N/A
-28,Mississippi,Other,2020,2020-2021,Percent,N/A,N/A
-29,Missouri,Other,2020,2020-2021,Percent,N/A,N/A
-30,Montana,Other,2020,2020-2021,Percent,N/A,N/A
-31,Nebraska,Other,2020,2020-2021,Percent,N/A,N/A
+25,Massachusetts,Other,2020,2020-2021,Percent,0.880614003,Approximated by regression using  private uptake
+26,Michigan,Other,2020,2020-2021,Percent,0.713538797,Approximated by regression using  private uptake
+27,Minnesota,Other,2020,2020-2021,Percent,0.53955535,Approximated by regression using  private uptake
+28,Mississippi,Other,2020,2020-2021,Percent,0.70114688,Approximated by regression using  private uptake
+29,Missouri,Other,2020,2020-2021,Percent,0.80290985,Approximated by regression using  private uptake
+30,Montana,Other,2020,2020-2021,Percent,0.618554415,Approximated by regression using  private uptake
+31,Nebraska,Other,2020,2020-2021,Percent,0.695822262,Approximated by regression using  private uptake
 32,Nevada,Other,2020,2020-2021,Percent,0.61684,0.15767853
-33,New Hampshire,Other,2020,2020-2021,Percent,N/A,N/A
-34,New Jersey,Other,2020,2020-2021,Percent,N/A,N/A
-35,New Mexico,Other,2020,2020-2021,Percent,N/A,N/A
+33,New Hampshire,Other,2020,2020-2021,Percent,0.787933281,Approximated by regression using  private uptake
+34,New Jersey,Other,2020,2020-2021,Percent,0.618160394,Approximated by regression using  private uptake
+35,New Mexico,Other,2020,2020-2021,Percent,0.750660458,Approximated by regression using  private uptake
 36,New York,Other,2020,2020-2021,Percent,0.7162,9.55E-02
-37,North Carolina,Other,2020,2020-2021,Percent,N/A,N/A
-38,North Dakota,Other,2020,2020-2021,Percent,N/A,N/A
-39,Ohio,Other,2020,2020-2021,Percent,N/A,N/A
-40,Oklahoma,Other,2020,2020-2021,Percent,N/A,N/A
-41,Oregon,Other,2020,2020-2021,Percent,N/A,N/A
+37,North Carolina,Other,2020,2020-2021,Percent,0.73679747,Approximated by regression using  private uptake
+38,North Dakota,Other,2020,2020-2021,Percent,0.753107775,Approximated by regression using  private uptake
+39,Ohio,Other,2020,2020-2021,Percent,0.755031911,Approximated by regression using  private uptake
+40,Oklahoma,Other,2020,2020-2021,Percent,0.602134161,Approximated by regression using  private uptake
+41,Oregon,Other,2020,2020-2021,Percent,0.814421404,Approximated by regression using  private uptake
 42,Pennsylvania,Other,2020,2020-2021,Percent,0.73184,0.124756083
-44,Rhode Island,Other,2020,2020-2021,Percent,N/A,N/A
-45,South Carolina,Other,2020,2020-2021,Percent,N/A,N/A
-46,South Dakota,Other,2020,2020-2021,Percent,N/A,N/A
+44,Rhode Island,Other,2020,2020-2021,Percent,0.711902763,Approximated by regression using  private uptake
+45,South Carolina,Other,2020,2020-2021,Percent,0.670403582,Approximated by regression using  private uptake
+46,South Dakota,Other,2020,2020-2021,Percent,0.555420191,Approximated by regression using  private uptake
 47,Tennessee,Other,2020,2020-2021,Percent,0.67749,0.159876883
 48,Texas,Other,2020,2020-2021,Percent,0.66847,0.11070659
-49,Utah,Other,2020,2020-2021,Percent,N/A,N/A
-50,Vermont,Other,2020,2020-2021,Percent,N/A,N/A
+49,Utah,Other,2020,2020-2021,Percent,0.70900791,Approximated by regression using  private uptake
+50,Vermont,Other,2020,2020-2021,Percent,0.835823876,Approximated by regression using  private uptake
 51,Virginia,Other,2020,2020-2021,Percent,0.55254,0.164704025
 53,Washington,Other,2020,2020-2021,Percent,0.81557,0.101841003
-54,West Virginia,Other,2020,2020-2021,Percent,N/A,N/A
-55,Wisconsin,Other,2020,2020-2021,Percent,N/A,N/A
-56,Wyoming,Other,2020,2020-2021,Percent,N/A,N/A
+54,West Virginia,Other,2020,2020-2021,Percent,0.673295795,Approximated by regression using  private uptake
+55,Wisconsin,Other,2020,2020-2021,Percent,0.653054292,Approximated by regression using  private uptake
+56,Wyoming,Other,2020,2020-2021,Percent,0.586840441,Approximated by regression using  private uptake
 1,Alabama,Private,2020,2020-2021,Percent,0.84562,5.66E-02
 2,Alaska,Private,2020,2020-2021,Percent,0.74545,6.78E-02
 4,Arizona,Private,2020,2020-2021,Percent,0.74737,7.03E-02
@@ -560,57 +560,57 @@
 54,West Virginia,Private,2020,2020-2021,Percent,0.78906,6.60E-02
 55,Wisconsin,Private,2020,2020-2021,Percent,0.78146,6.33E-02
 56,Wyoming,Private,2020,2020-2021,Percent,0.75785,6.36E-02
-1,Alabama,Uninsured,2020,2020-2021,Percent,N/A,N/A
-2,Alaska,Uninsured,2020,2020-2021,Percent,N/A,N/A
-4,Arizona,Uninsured,2020,2020-2021,Percent,N/A,N/A
-5,Arkansas,Uninsured,2020,2020-2021,Percent,N/A,N/A
-6,California,Uninsured,2020,2020-2021,Percent,N/A,N/A
-8,Colorado,Uninsured,2020,2020-2021,Percent,N/A,N/A
-9,Connecticut,Uninsured,2020,2020-2021,Percent,N/A,N/A
-10,Delaware,Uninsured,2020,2020-2021,Percent,N/A,N/A
-11,Dist. of Columbia,Uninsured,2020,2020-2021,Percent,N/A,N/A
-12,Florida,Uninsured,2020,2020-2021,Percent,N/A,N/A
-13,Georgia,Uninsured,2020,2020-2021,Percent,N/A,N/A
-15,Hawaii,Uninsured,2020,2020-2021,Percent,N/A,N/A
-16,Idaho,Uninsured,2020,2020-2021,Percent,N/A,N/A
-17,Illinois,Uninsured,2020,2020-2021,Percent,N/A,N/A
-18,Indiana,Uninsured,2020,2020-2021,Percent,N/A,N/A
-19,Iowa,Uninsured,2020,2020-2021,Percent,N/A,N/A
-20,Kansas,Uninsured,2020,2020-2021,Percent,N/A,N/A
-21,Kentucky,Uninsured,2020,2020-2021,Percent,N/A,N/A
-22,Louisiana,Uninsured,2020,2020-2021,Percent,N/A,N/A
-23,Maine,Uninsured,2020,2020-2021,Percent,N/A,N/A
-24,Maryland,Uninsured,2020,2020-2021,Percent,N/A,N/A
-25,Massachusetts,Uninsured,2020,2020-2021,Percent,N/A,N/A
-26,Michigan,Uninsured,2020,2020-2021,Percent,N/A,N/A
-27,Minnesota,Uninsured,2020,2020-2021,Percent,N/A,N/A
-28,Mississippi,Uninsured,2020,2020-2021,Percent,N/A,N/A
-29,Missouri,Uninsured,2020,2020-2021,Percent,N/A,N/A
-30,Montana,Uninsured,2020,2020-2021,Percent,N/A,N/A
-31,Nebraska,Uninsured,2020,2020-2021,Percent,N/A,N/A
-32,Nevada,Uninsured,2020,2020-2021,Percent,N/A,N/A
-33,New Hampshire,Uninsured,2020,2020-2021,Percent,N/A,N/A
-34,New Jersey,Uninsured,2020,2020-2021,Percent,N/A,N/A
-35,New Mexico,Uninsured,2020,2020-2021,Percent,N/A,N/A
-36,New York,Uninsured,2020,2020-2021,Percent,N/A,N/A
-37,North Carolina,Uninsured,2020,2020-2021,Percent,N/A,N/A
-38,North Dakota,Uninsured,2020,2020-2021,Percent,N/A,N/A
-39,Ohio,Uninsured,2020,2020-2021,Percent,N/A,N/A
-40,Oklahoma,Uninsured,2020,2020-2021,Percent,N/A,N/A
-41,Oregon,Uninsured,2020,2020-2021,Percent,N/A,N/A
-42,Pennsylvania,Uninsured,2020,2020-2021,Percent,N/A,N/A
-44,Rhode Island,Uninsured,2020,2020-2021,Percent,N/A,N/A
-45,South Carolina,Uninsured,2020,2020-2021,Percent,N/A,N/A
-46,South Dakota,Uninsured,2020,2020-2021,Percent,N/A,N/A
-47,Tennessee,Uninsured,2020,2020-2021,Percent,N/A,N/A
+1,Alabama,Uninsured,2020,2020-2021,Percent,0.538406254,Approximated by average ratio with private over the years (no significant regression model)
+2,Alaska,Uninsured,2020,2020-2021,Percent,0.474628015,Approximated by average ratio with private over the years (no significant regression model)
+4,Arizona,Uninsured,2020,2020-2021,Percent,0.475850479,Approximated by average ratio with private over the years (no significant regression model)
+5,Arkansas,Uninsured,2020,2020-2021,Percent,0.49178708,Approximated by average ratio with private over the years (no significant regression model)
+6,California,Uninsured,2020,2020-2021,Percent,0.489036536,Approximated by average ratio with private over the years (no significant regression model)
+8,Colorado,Uninsured,2020,2020-2021,Percent,0.524863645,Approximated by average ratio with private over the years (no significant regression model)
+9,Connecticut,Uninsured,2020,2020-2021,Percent,0.561715841,Approximated by average ratio with private over the years (no significant regression model)
+10,Delaware,Uninsured,2020,2020-2021,Percent,0.533229883,Approximated by average ratio with private over the years (no significant regression model)
+11,Dist. of Columbia,Uninsured,2020,2020-2021,Percent,0.478027993,Approximated by average ratio with private over the years (no significant regression model)
+12,Florida,Uninsured,2020,2020-2021,Percent,0.514695546,Approximated by average ratio with private over the years (no significant regression model)
+13,Georgia,Uninsured,2020,2020-2021,Percent,0.506883237,Approximated by average ratio with private over the years (no significant regression model)
+15,Hawaii,Uninsured,2020,2020-2021,Percent,0.504209097,Approximated by average ratio with private over the years (no significant regression model)
+16,Idaho,Uninsured,2020,2020-2021,Percent,0.505909086,Approximated by average ratio with private over the years (no significant regression model)
+17,Illinois,Uninsured,2020,2020-2021,Percent,0.522590626,Approximated by average ratio with private over the years (no significant regression model)
+18,Indiana,Uninsured,2020,2020-2021,Percent,0.479167686,Approximated by average ratio with private over the years (no significant regression model)
+19,Iowa,Uninsured,2020,2020-2021,Percent,0.575010137,Approximated by average ratio with private over the years (no significant regression model)
+20,Kansas,Uninsured,2020,2020-2021,Percent,0.481186025,Approximated by average ratio with private over the years (no significant regression model)
+21,Kentucky,Uninsured,2020,2020-2021,Percent,0.541016724,Approximated by average ratio with private over the years (no significant regression model)
+22,Louisiana,Uninsured,2020,2020-2021,Percent,0.484630572,Approximated by average ratio with private over the years (no significant regression model)
+23,Maine,Uninsured,2020,2020-2021,Percent,0.542060912,Approximated by average ratio with private over the years (no significant regression model)
+24,Maryland,Uninsured,2020,2020-2021,Percent,0.559283647,Approximated by average ratio with private over the years (no significant regression model)
+25,Massachusetts,Uninsured,2020,2020-2021,Percent,0.570470466,Approximated by average ratio with private over the years (no significant regression model)
+26,Michigan,Uninsured,2020,2020-2021,Percent,0.512511665,Approximated by average ratio with private over the years (no significant regression model)
+27,Minnesota,Uninsured,2020,2020-2021,Percent,0.472253124,Approximated by average ratio with private over the years (no significant regression model)
+28,Mississippi,Uninsured,2020,2020-2021,Percent,0.509315431,Approximated by average ratio with private over the years (no significant regression model)
+29,Missouri,Uninsured,2020,2020-2021,Percent,0.53877554,Approximated by average ratio with private over the years (no significant regression model)
+30,Montana,Uninsured,2020,2020-2021,Percent,0.489596832,Approximated by average ratio with private over the years (no significant regression model)
+31,Nebraska,Uninsured,2020,2020-2021,Percent,0.507965627,Approximated by average ratio with private over the years (no significant regression model)
+32,Nevada,Uninsured,2020,2020-2021,Percent,0.525805961,Approximated by average ratio with private over the years (no significant regression model)
+33,New Hampshire,Uninsured,2020,2020-2021,Percent,0.533860216,Approximated by average ratio with private over the years (no significant regression model)
+34,New Jersey,Uninsured,2020,2020-2021,Percent,0.489507694,Approximated by average ratio with private over the years (no significant regression model)
+35,New Mexico,Uninsured,2020,2020-2021,Percent,0.522628828,Approximated by average ratio with private over the years (no significant regression model)
+36,New York,Uninsured,2020,2020-2021,Percent,0.498555201,Approximated by average ratio with private over the years (no significant regression model)
+37,North Carolina,Uninsured,2020,2020-2021,Percent,0.518744958,Approximated by average ratio with private over the years (no significant regression model)
+38,North Dakota,Uninsured,2020,2020-2021,Percent,0.523329198,Approximated by average ratio with private over the years (no significant regression model)
+39,Ohio,Uninsured,2020,2020-2021,Percent,0.523883127,Approximated by average ratio with private over the years (no significant regression model)
+40,Oklahoma,Uninsured,2020,2020-2021,Percent,0.485910339,Approximated by average ratio with private over the years (no significant regression model)
+41,Oregon,Uninsured,2020,2020-2021,Percent,0.542748548,Approximated by average ratio with private over the years (no significant regression model)
+42,Pennsylvania,Uninsured,2020,2020-2021,Percent,0.536852706,Approximated by average ratio with private over the years (no significant regression model)
+44,Rhode Island,Uninsured,2020,2020-2021,Percent,0.512085076,Approximated by average ratio with private over the years (no significant regression model)
+45,South Carolina,Uninsured,2020,2020-2021,Percent,0.501694132,Approximated by average ratio with private over the years (no significant regression model)
+46,South Dakota,Uninsured,2020,2020-2021,Percent,0.475672203,Approximated by average ratio with private over the years (no significant regression model)
+47,Tennessee,Uninsured,2020,2020-2021,Percent,0.489405822,Approximated by average ratio with private over the years (no significant regression model)
 48,Texas,Uninsured,2020,2020-2021,Percent,0.44352,0.154547736
-49,Utah,Uninsured,2020,2020-2021,Percent,N/A,N/A
-50,Vermont,Uninsured,2020,2020-2021,Percent,N/A,N/A
-51,Virginia,Uninsured,2020,2020-2021,Percent,N/A,N/A
-53,Washington,Uninsured,2020,2020-2021,Percent,N/A,N/A
-54,West Virginia,Uninsured,2020,2020-2021,Percent,N/A,N/A
-55,Wisconsin,Uninsured,2020,2020-2021,Percent,N/A,N/A
-56,Wyoming,Uninsured,2020,2020-2021,Percent,N/A,N/A
+49,Utah,Uninsured,2020,2020-2021,Percent,0.51133377,Approximated by average ratio with private over the years (no significant regression model)
+50,Vermont,Uninsured,2020,2020-2021,Percent,0.550675463,Approximated by average ratio with private over the years (no significant regression model)
+51,Virginia,Uninsured,2020,2020-2021,Percent,0.517662568,Approximated by average ratio with private over the years (no significant regression model)
+53,Washington,Uninsured,2020,2020-2021,Percent,0.520419479,Approximated by average ratio with private over the years (no significant regression model)
+54,West Virginia,Uninsured,2020,2020-2021,Percent,0.502394502,Approximated by average ratio with private over the years (no significant regression model)
+55,Wisconsin,Uninsured,2020,2020-2021,Percent,0.497555582,Approximated by average ratio with private over the years (no significant regression model)
+56,Wyoming,Uninsured,2020,2020-2021,Percent,0.482523095,Approximated by average ratio with private over the years (no significant regression model)
 1,Alabama,Medicaid,2021,2021-2022,Percent,0.63014,0.079268724
 2,Alaska,Medicaid,2021,2021-2022,Percent,0.53573,0.081928112
 4,Arizona,Medicaid,2021,2021-2022,Percent,0.60412,0.081328586
@@ -662,57 +662,57 @@
 54,West Virginia,Medicaid,2021,2021-2022,Percent,0.57652,0.069979265
 55,Wisconsin,Medicaid,2021,2021-2022,Percent,0.66477,0.086620003
 56,Wyoming,Medicaid,2021,2021-2022,Percent,0.68361,0.09172003
-1,Alabama,Other,2021,2021-2022,Percent,N/A,N/A
+1,Alabama,Other,2021,2021-2022,Percent,0.736843723,Approximated by regression using  private uptake
 2,Alaska,Other,2021,2021-2022,Percent,0.70725,0.099988923
-4,Arizona,Other,2021,2021-2022,Percent,N/A,N/A
+4,Arizona,Other,2021,2021-2022,Percent,0.577645093,Approximated by regression using  private uptake
 5,Arkansas,Other,2021,2021-2022,Percent,0.65263,0.140747562
 6,California,Other,2021,2021-2022,Percent,0.73024,0.149636194
 8,Colorado,Other,2021,2021-2022,Percent,0.69538,0.160966903
 9,Connecticut,Other,2021,2021-2022,Percent,0.76658,0.114680506
-10,Delaware,Other,2021,2021-2022,Percent,N/A,N/A
-11,Dist. of Columbia,Other,2021,2021-2022,Percent,N/A,N/A
-12,Florida,Other,2021,2021-2022,Percent,N/A,N/A
+10,Delaware,Other,2021,2021-2022,Percent,0.744176591,Approximated by regression using  private uptake
+11,Dist. of Columbia,Other,2021,2021-2022,Percent,0.642880574,Approximated by regression using  private uptake
+12,Florida,Other,2021,2021-2022,Percent,0.713051011,Approximated by regression using  private uptake
 13,Georgia,Other,2021,2021-2022,Percent,0.42125,0.194571555
 15,Hawaii,Other,2021,2021-2022,Percent,0.67518,0.142950326
-16,Idaho,Other,2021,2021-2022,Percent,N/A,N/A
-17,Illinois,Other,2021,2021-2022,Percent,N/A,N/A
-18,Indiana,Other,2021,2021-2022,Percent,N/A,N/A
-19,Iowa,Other,2021,2021-2022,Percent,N/A,N/A
+16,Idaho,Other,2021,2021-2022,Percent,0.630578355,Approximated by regression using  private uptake
+17,Illinois,Other,2021,2021-2022,Percent,0.70022144,Approximated by regression using  private uptake
+18,Indiana,Other,2021,2021-2022,Percent,0.810734473,Approximated by regression using  private uptake
+19,Iowa,Other,2021,2021-2022,Percent,0.837437607,Approximated by regression using  private uptake
 20,Kansas,Other,2021,2021-2022,Percent,0.80978,0.080224693
-21,Kentucky,Other,2021,2021-2022,Percent,N/A,N/A
-22,Louisiana,Other,2021,2021-2022,Percent,N/A,N/A
-23,Maine,Other,2021,2021-2022,Percent,N/A,N/A
+21,Kentucky,Other,2021,2021-2022,Percent,0.65561684,Approximated by regression using  private uptake
+22,Louisiana,Other,2021,2021-2022,Percent,0.776228018,Approximated by regression using  private uptake
+23,Maine,Other,2021,2021-2022,Percent,0.800159015,Approximated by regression using  private uptake
 24,Maryland,Other,2021,2021-2022,Percent,0.78317,0.134826273
-25,Massachusetts,Other,2021,2021-2022,Percent,N/A,N/A
-26,Michigan,Other,2021,2021-2022,Percent,N/A,N/A
-27,Minnesota,Other,2021,2021-2022,Percent,N/A,N/A
-28,Mississippi,Other,2021,2021-2022,Percent,N/A,N/A
-29,Missouri,Other,2021,2021-2022,Percent,N/A,N/A
-30,Montana,Other,2021,2021-2022,Percent,N/A,N/A
-31,Nebraska,Other,2021,2021-2022,Percent,N/A,N/A
+25,Massachusetts,Other,2021,2021-2022,Percent,0.904775231,Approximated by regression using  private uptake
+26,Michigan,Other,2021,2021-2022,Percent,0.788808774,Approximated by regression using  private uptake
+27,Minnesota,Other,2021,2021-2022,Percent,0.570383978,Approximated by regression using  private uptake
+28,Mississippi,Other,2021,2021-2022,Percent,0.673846458,Approximated by regression using  private uptake
+29,Missouri,Other,2021,2021-2022,Percent,0.694128419,Approximated by regression using  private uptake
+30,Montana,Other,2021,2021-2022,Percent,0.440929526,Approximated by regression using  private uptake
+31,Nebraska,Other,2021,2021-2022,Percent,0.404195033,Approximated by regression using  private uptake
 32,Nevada,Other,2021,2021-2022,Percent,0.69282,0.169962674
-33,New Hampshire,Other,2021,2021-2022,Percent,N/A,N/A
-34,New Jersey,Other,2021,2021-2022,Percent,N/A,N/A
-35,New Mexico,Other,2021,2021-2022,Percent,N/A,N/A
+33,New Hampshire,Other,2021,2021-2022,Percent,0.809413375,Approximated by regression using  private uptake
+34,New Jersey,Other,2021,2021-2022,Percent,0.570179396,Approximated by regression using  private uptake
+35,New Mexico,Other,2021,2021-2022,Percent,0.719353314,Approximated by regression using  private uptake
 36,New York,Other,2021,2021-2022,Percent,0.71988,0.112690933
 37,North Carolina,Other,2021,2021-2022,Percent,0.80981,0.186116427
-38,North Dakota,Other,2021,2021-2022,Percent,N/A,N/A
-39,Ohio,Other,2021,2021-2022,Percent,N/A,N/A
+38,North Dakota,Other,2021,2021-2022,Percent,0.812684786,Approximated by regression using  private uptake
+39,Ohio,Other,2021,2021-2022,Percent,0.643072213,Approximated by regression using  private uptake
 40,Oklahoma,Other,2021,2021-2022,Percent,0.642,0.178219989
 41,Oregon,Other,2021,2021-2022,Percent,0.65629,0.168047085
 42,Pennsylvania,Other,2021,2021-2022,Percent,0.62187,0.17876783
-44,Rhode Island,Other,2021,2021-2022,Percent,N/A,N/A
-45,South Carolina,Other,2021,2021-2022,Percent,N/A,N/A
-46,South Dakota,Other,2021,2021-2022,Percent,N/A,N/A
-47,Tennessee,Other,2021,2021-2022,Percent,N/A,N/A
+44,Rhode Island,Other,2021,2021-2022,Percent,0.744199294,Approximated by regression using  private uptake
+45,South Carolina,Other,2021,2021-2022,Percent,0.634652808,Approximated by regression using  private uptake
+46,South Dakota,Other,2021,2021-2022,Percent,0.474217144,Approximated by regression using  private uptake
+47,Tennessee,Other,2021,2021-2022,Percent,0.540621789,Approximated by regression using  private uptake
 48,Texas,Other,2021,2021-2022,Percent,0.60654,0.146018058
-49,Utah,Other,2021,2021-2022,Percent,N/A,N/A
-50,Vermont,Other,2021,2021-2022,Percent,N/A,N/A
+49,Utah,Other,2021,2021-2022,Percent,0.694836935,Approximated by regression using  private uptake
+50,Vermont,Other,2021,2021-2022,Percent,0.810111498,Approximated by regression using  private uptake
 51,Virginia,Other,2021,2021-2022,Percent,0.687,0.143872932
 53,Washington,Other,2021,2021-2022,Percent,0.78255,0.140440613
-54,West Virginia,Other,2021,2021-2022,Percent,N/A,N/A
-55,Wisconsin,Other,2021,2021-2022,Percent,N/A,N/A
-56,Wyoming,Other,2021,2021-2022,Percent,N/A,N/A
+54,West Virginia,Other,2021,2021-2022,Percent,0.336775189,Approximated by regression using  private uptake
+55,Wisconsin,Other,2021,2021-2022,Percent,0.70344085,Approximated by regression using  private uptake
+56,Wyoming,Other,2021,2021-2022,Percent,0.655670692,Approximated by regression using  private uptake
 1,Alabama,Private,2021,2021-2022,Percent,0.81476,0.062736422
 2,Alaska,Private,2021,2021-2022,Percent,0.72633,0.078426421
 4,Arizona,Private,2021,2021-2022,Percent,0.75468,0.07320752
@@ -764,57 +764,57 @@
 54,West Virginia,Private,2021,2021-2022,Percent,0.6716,0.077065513
 55,Wisconsin,Private,2021,2021-2022,Percent,0.80085,0.055930663
 56,Wyoming,Private,2021,2021-2022,Percent,0.78243,0.064442612
-1,Alabama,Uninsured,2021,2021-2022,Percent,N/A,N/A
-2,Alaska,Uninsured,2021,2021-2022,Percent,N/A,N/A
-4,Arizona,Uninsured,2021,2021-2022,Percent,N/A,N/A
-5,Arkansas,Uninsured,2021,2021-2022,Percent,N/A,N/A
-6,California,Uninsured,2021,2021-2022,Percent,N/A,N/A
-8,Colorado,Uninsured,2021,2021-2022,Percent,N/A,N/A
-9,Connecticut,Uninsured,2021,2021-2022,Percent,N/A,N/A
-10,Delaware,Uninsured,2021,2021-2022,Percent,N/A,N/A
-11,Dist. of Columbia,Uninsured,2021,2021-2022,Percent,N/A,N/A
-12,Florida,Uninsured,2021,2021-2022,Percent,N/A,N/A
-13,Georgia,Uninsured,2021,2021-2022,Percent,N/A,N/A
-15,Hawaii,Uninsured,2021,2021-2022,Percent,N/A,N/A
-16,Idaho,Uninsured,2021,2021-2022,Percent,N/A,N/A
-17,Illinois,Uninsured,2021,2021-2022,Percent,N/A,N/A
-18,Indiana,Uninsured,2021,2021-2022,Percent,N/A,N/A
-19,Iowa,Uninsured,2021,2021-2022,Percent,N/A,N/A
-20,Kansas,Uninsured,2021,2021-2022,Percent,N/A,N/A
-21,Kentucky,Uninsured,2021,2021-2022,Percent,N/A,N/A
-22,Louisiana,Uninsured,2021,2021-2022,Percent,N/A,N/A
-23,Maine,Uninsured,2021,2021-2022,Percent,N/A,N/A
-24,Maryland,Uninsured,2021,2021-2022,Percent,N/A,N/A
-25,Massachusetts,Uninsured,2021,2021-2022,Percent,N/A,N/A
-26,Michigan,Uninsured,2021,2021-2022,Percent,N/A,N/A
-27,Minnesota,Uninsured,2021,2021-2022,Percent,N/A,N/A
-28,Mississippi,Uninsured,2021,2021-2022,Percent,N/A,N/A
-29,Missouri,Uninsured,2021,2021-2022,Percent,N/A,N/A
-30,Montana,Uninsured,2021,2021-2022,Percent,N/A,N/A
-31,Nebraska,Uninsured,2021,2021-2022,Percent,N/A,N/A
-32,Nevada,Uninsured,2021,2021-2022,Percent,N/A,N/A
-33,New Hampshire,Uninsured,2021,2021-2022,Percent,N/A,N/A
-34,New Jersey,Uninsured,2021,2021-2022,Percent,N/A,N/A
-35,New Mexico,Uninsured,2021,2021-2022,Percent,N/A,N/A
-36,New York,Uninsured,2021,2021-2022,Percent,N/A,N/A
-37,North Carolina,Uninsured,2021,2021-2022,Percent,N/A,N/A
-38,North Dakota,Uninsured,2021,2021-2022,Percent,N/A,N/A
-39,Ohio,Uninsured,2021,2021-2022,Percent,N/A,N/A
-40,Oklahoma,Uninsured,2021,2021-2022,Percent,N/A,N/A
-41,Oregon,Uninsured,2021,2021-2022,Percent,N/A,N/A
-42,Pennsylvania,Uninsured,2021,2021-2022,Percent,N/A,N/A
-44,Rhode Island,Uninsured,2021,2021-2022,Percent,N/A,N/A
-45,South Carolina,Uninsured,2021,2021-2022,Percent,N/A,N/A
-46,South Dakota,Uninsured,2021,2021-2022,Percent,N/A,N/A
-47,Tennessee,Uninsured,2021,2021-2022,Percent,N/A,N/A
+1,Alabama,Uninsured,2021,2021-2022,Percent,0.518757692,Approximated by average ratio with private over the years (no significant regression model)
+2,Alaska,Uninsured,2021,2021-2022,Percent,0.462454311,Approximated by average ratio with private over the years (no significant regression model)
+4,Arizona,Uninsured,2021,2021-2022,Percent,0.480504756,Approximated by average ratio with private over the years (no significant regression model)
+5,Arkansas,Uninsured,2021,2021-2022,Percent,0.519903752,Approximated by average ratio with private over the years (no significant regression model)
+6,California,Uninsured,2021,2021-2022,Percent,0.498224117,Approximated by average ratio with private over the years (no significant regression model)
+8,Colorado,Uninsured,2021,2021-2022,Percent,0.540793879,Approximated by average ratio with private over the years (no significant regression model)
+9,Connecticut,Uninsured,2021,2021-2022,Percent,0.561652171,Approximated by average ratio with private over the years (no significant regression model)
+10,Delaware,Uninsured,2021,2021-2022,Percent,0.520795132,Approximated by average ratio with private over the years (no significant regression model)
+11,Dist. of Columbia,Uninsured,2021,2021-2022,Percent,0.495174324,Approximated by average ratio with private over the years (no significant regression model)
+12,Florida,Uninsured,2021,2021-2022,Percent,0.512384325,Approximated by average ratio with private over the years (no significant regression model)
+13,Georgia,Uninsured,2021,2021-2022,Percent,0.510900814,Approximated by average ratio with private over the years (no significant regression model)
+15,Hawaii,Uninsured,2021,2021-2022,Percent,0.519388025,Approximated by average ratio with private over the years (no significant regression model)
+16,Idaho,Uninsured,2021,2021-2022,Percent,0.492334642,Approximated by average ratio with private over the years (no significant regression model)
+17,Illinois,Uninsured,2021,2021-2022,Percent,0.509079852,Approximated by average ratio with private over the years (no significant regression model)
+18,Indiana,Uninsured,2021,2021-2022,Percent,0.541456047,Approximated by average ratio with private over the years (no significant regression model)
+19,Iowa,Uninsured,2021,2021-2022,Percent,0.551305796,Approximated by average ratio with private over the years (no significant regression model)
+20,Kansas,Uninsured,2021,2021-2022,Percent,0.441876167,Approximated by average ratio with private over the years (no significant regression model)
+21,Kentucky,Uninsured,2021,2021-2022,Percent,0.498160447,Approximated by average ratio with private over the years (no significant regression model)
+22,Louisiana,Uninsured,2021,2021-2022,Percent,0.530192824,Approximated by average ratio with private over the years (no significant regression model)
+23,Maine,Uninsured,2021,2021-2022,Percent,0.537852325,Approximated by average ratio with private over the years (no significant regression model)
+24,Maryland,Uninsured,2021,2021-2022,Percent,0.544932429,Approximated by average ratio with private over the years (no significant regression model)
+25,Massachusetts,Uninsured,2021,2021-2022,Percent,0.583987607,Approximated by average ratio with private over the years (no significant regression model)
+26,Michigan,Uninsured,2021,2021-2022,Percent,0.534140364,Approximated by average ratio with private over the years (no significant regression model)
+27,Minnesota,Uninsured,2021,2021-2022,Percent,0.478919373,Approximated by average ratio with private over the years (no significant regression model)
+28,Mississippi,Uninsured,2021,2021-2022,Percent,0.502528209,Approximated by average ratio with private over the years (no significant regression model)
+29,Missouri,Uninsured,2021,2021-2022,Percent,0.507539038,Approximated by average ratio with private over the years (no significant regression model)
+30,Montana,Uninsured,2021,2021-2022,Percent,0.451114684,Approximated by average ratio with private over the years (no significant regression model)
+31,Nebraska,Uninsured,2021,2021-2022,Percent,0.443073163,Approximated by average ratio with private over the years (no significant regression model)
+32,Nevada,Uninsured,2021,2021-2022,Percent,0.52578686,Approximated by average ratio with private over the years (no significant regression model)
+33,New Hampshire,Uninsured,2021,2021-2022,Percent,0.540997623,Approximated by average ratio with private over the years (no significant regression model)
+34,New Jersey,Uninsured,2021,2021-2022,Percent,0.478874804,Approximated by average ratio with private over the years (no significant regression model)
+35,New Mexico,Uninsured,2021,2021-2022,Percent,0.514039745,Approximated by average ratio with private over the years (no significant regression model)
+36,New York,Uninsured,2021,2021-2022,Percent,0.482714105,Approximated by average ratio with private over the years (no significant regression model)
+37,North Carolina,Uninsured,2021,2021-2022,Percent,0.525882365,Approximated by average ratio with private over the years (no significant regression model)
+38,North Dakota,Uninsured,2021,2021-2022,Percent,0.542137316,Approximated by average ratio with private over the years (no significant regression model)
+39,Ohio,Uninsured,2021,2021-2022,Percent,0.495218893,Approximated by average ratio with private over the years (no significant regression model)
+40,Oklahoma,Uninsured,2021,2021-2022,Percent,0.499191901,Approximated by average ratio with private over the years (no significant regression model)
+41,Oregon,Uninsured,2021,2021-2022,Percent,0.519177914,Approximated by average ratio with private over the years (no significant regression model)
+42,Pennsylvania,Uninsured,2021,2021-2022,Percent,0.511633019,Approximated by average ratio with private over the years (no significant regression model)
+44,Rhode Island,Uninsured,2021,2021-2022,Percent,0.520801499,Approximated by average ratio with private over the years (no significant regression model)
+45,South Carolina,Uninsured,2021,2021-2022,Percent,0.493270591,Approximated by average ratio with private over the years (no significant regression model)
+46,South Dakota,Uninsured,2021,2021-2022,Percent,0.458277559,Approximated by average ratio with private over the years (no significant regression model)
+47,Tennessee,Uninsured,2021,2021-2022,Percent,0.472482336,Approximated by average ratio with private over the years (no significant regression model)
 48,Texas,Uninsured,2021,2021-2022,Percent,0.61515,0.197060645
-49,Utah,Uninsured,2021,2021-2022,Percent,N/A,N/A
-50,Vermont,Uninsured,2021,2021-2022,Percent,N/A,N/A
-51,Virginia,Uninsured,2021,2021-2022,Percent,N/A,N/A
-53,Washington,Uninsured,2021,2021-2022,Percent,N/A,N/A
-54,West Virginia,Uninsured,2021,2021-2022,Percent,N/A,N/A
-55,Wisconsin,Uninsured,2021,2021-2022,Percent,N/A,N/A
-56,Wyoming,Uninsured,2021,2021-2022,Percent,N/A,N/A
+49,Utah,Uninsured,2021,2021-2022,Percent,0.507717314,Approximated by average ratio with private over the years (no significant regression model)
+50,Vermont,Uninsured,2021,2021-2022,Percent,0.541239569,Approximated by average ratio with private over the years (no significant regression model)
+51,Virginia,Uninsured,2021,2021-2022,Percent,0.518604884,Approximated by average ratio with private over the years (no significant regression model)
+53,Washington,Uninsured,2021,2021-2022,Percent,0.53240854,Approximated by average ratio with private over the years (no significant regression model)
+54,West Virginia,Uninsured,2021,2021-2022,Percent,0.42760772,Approximated by average ratio with private over the years (no significant regression model)
+55,Wisconsin,Uninsured,2021,2021-2022,Percent,0.509901195,Approximated by average ratio with private over the years (no significant regression model)
+56,Wyoming,Uninsured,2021,2021-2022,Percent,0.498173181,Approximated by average ratio with private over the years (no significant regression model)
 1,Alabama,Medicaid,2022,2022-2023,Percent,0.60254,0.083529845
 2,Alaska,Medicaid,2022,2022-2023,Percent,0.62643,0.088040546
 4,Arizona,Medicaid,2022,2022-2023,Percent,0.65647,0.073387653
@@ -866,56 +866,56 @@
 54,West Virginia,Medicaid,2022,2022-2023,Percent,0.647,0.067742109
 55,Wisconsin,Medicaid,2022,2022-2023,Percent,0.66,0.079696037
 56,Wyoming,Medicaid,2022,2022-2023,Percent,0.635,0.088836938
-1,Alabama,Other,2022,2022-2023,Percent,N/A,N/A
+1,Alabama,Other,2022,2022-2023,Percent,0.512116562,Approximated by regression using  private uptake
 2,Alaska,Other,2022,2022-2023,Percent,0.58992,0.100073345
-4,Arizona,Other,2022,2022-2023,Percent,N/A,N/A
+4,Arizona,Other,2022,2022-2023,Percent,0.673243326,Approximated by regression using  private uptake
 5,Arkansas,Other,2022,2022-2023,Percent,0.69735,0.167723984
 6,California,Other,2022,2022-2023,Percent,0.62404,0.206385046
 8,Colorado,Other,2022,2022-2023,Percent,0.61748,0.158065736
 9,Connecticut,Other,2022,2022-2023,Percent,0.7804,0.118959561
-10,Delaware,Other,2022,2022-2023,Percent,N/A,N/A
-11,Dist. of Columbia,Other,2022,2022-2023,Percent,N/A,N/A
-12,Florida,Other,2022,2022-2023,Percent,N/A,N/A
+10,Delaware,Other,2022,2022-2023,Percent,0.658358164,Approximated by regression using  private uptake
+11,Dist. of Columbia,Other,2022,2022-2023,Percent,0.573566458,Approximated by regression using  private uptake
+12,Florida,Other,2022,2022-2023,Percent,0.56889291,Approximated by regression using  private uptake
 13,Georgia,Other,2022,2022-2023,Percent,0.56514,0.170778215
 15,Hawaii,Other,2022,2022-2023,Percent,0.61962,0.121171907
-16,Idaho,Other,2022,2022-2023,Percent,N/A,N/A
+16,Idaho,Other,2022,2022-2023,Percent,0.524502333,Approximated by regression using  private uptake
 17,Illinois,Other,2022,2022-2023,Percent,0.70255,0.145375207
-18,Indiana,Other,2022,2022-2023,Percent,N/A,N/A
-19,Iowa,Other,2022,2022-2023,Percent,N/A,N/A
+18,Indiana,Other,2022,2022-2023,Percent,0.844235948,Approximated by regression using  private uptake
+19,Iowa,Other,2022,2022-2023,Percent,0.718316852,Approximated by regression using  private uptake
 20,Kansas,Other,2022,2022-2023,Percent,0.71253,0.089417391
-21,Kentucky,Other,2022,2022-2023,Percent,N/A,N/A
+21,Kentucky,Other,2022,2022-2023,Percent,0.334063568,Approximated by regression using  private uptake
 22,Louisiana,Other,2022,2022-2023,Percent,0.80629,0.149932921
-23,Maine,Other,2022,2022-2023,Percent,N/A,N/A
+23,Maine,Other,2022,2022-2023,Percent,0.778436733,Approximated by regression using  private uptake
 24,Maryland,Other,2022,2022-2023,Percent,0.70976,0.15190503
-25,Massachusetts,Other,2022,2022-2023,Percent,N/A,N/A
-26,Michigan,Other,2022,2022-2023,Percent,N/A,N/A
-27,Minnesota,Other,2022,2022-2023,Percent,N/A,N/A
-28,Mississippi,Other,2022,2022-2023,Percent,N/A,N/A
-29,Missouri,Other,2022,2022-2023,Percent,N/A,N/A
-30,Montana,Other,2022,2022-2023,Percent,N/A,N/A
-31,Nebraska,Other,2022,2022-2023,Percent,N/A,N/A
-32,Nevada,Other,2022,2022-2023,Percent,N/A,N/A
-33,New Hampshire,Other,2022,2022-2023,Percent,N/A,N/A
-34,New Jersey,Other,2022,2022-2023,Percent,N/A,N/A
-35,New Mexico,Other,2022,2022-2023,Percent,N/A,N/A
+25,Massachusetts,Other,2022,2022-2023,Percent,0.922987339,Approximated by regression using  private uptake
+26,Michigan,Other,2022,2022-2023,Percent,0.762648269,Approximated by regression using  private uptake
+27,Minnesota,Other,2022,2022-2023,Percent,0.636751834,Approximated by regression using  private uptake
+28,Mississippi,Other,2022,2022-2023,Percent,0.640055477,Approximated by regression using  private uptake
+29,Missouri,Other,2022,2022-2023,Percent,0.656800656,Approximated by regression using  private uptake
+30,Montana,Other,2022,2022-2023,Percent,0.419823934,Approximated by regression using  private uptake
+31,Nebraska,Other,2022,2022-2023,Percent,0.252048939,Approximated by regression using  private uptake
+32,Nevada,Other,2022,2022-2023,Percent,0.656585561,Approximated by regression using  private uptake
+33,New Hampshire,Other,2022,2022-2023,Percent,0.855329766,Approximated by regression using  private uptake
+34,New Jersey,Other,2022,2022-2023,Percent,0.551116636,Approximated by regression using  private uptake
+35,New Mexico,Other,2022,2022-2023,Percent,0.662263642,Approximated by regression using  private uptake
 36,New York,Other,2022,2022-2023,Percent,0.78255,0.105069183
 37,North Carolina,Other,2022,2022-2023,Percent,0.83274,0.099306226
-38,North Dakota,Other,2022,2022-2023,Percent,N/A,N/A
-39,Ohio,Other,2022,2022-2023,Percent,N/A,N/A
+38,North Dakota,Other,2022,2022-2023,Percent,0.823542863,Approximated by regression using  private uptake
+39,Ohio,Other,2022,2022-2023,Percent,0.610191203,Approximated by regression using  private uptake
 40,Oklahoma,Other,2022,2022-2023,Percent,0.67289,0.159873724
 41,Oregon,Other,2022,2022-2023,Percent,0.64201,0.12110053
 42,Pennsylvania,Other,2022,2022-2023,Percent,0.58855,0.178347051
-44,Rhode Island,Other,2022,2022-2023,Percent,N/A,N/A
-45,South Carolina,Other,2022,2022-2023,Percent,N/A,N/A
-46,South Dakota,Other,2022,2022-2023,Percent,N/A,N/A
+44,Rhode Island,Other,2022,2022-2023,Percent,0.847084403,Approximated by regression using  private uptake
+45,South Carolina,Other,2022,2022-2023,Percent,0.720315373,Approximated by regression using  private uptake
+46,South Dakota,Other,2022,2022-2023,Percent,0.685323732,Approximated by regression using  private uptake
 47,Tennessee,Other,2022,2022-2023,Percent,0.47561,0.19906646
 48,Texas,Other,2022,2022-2023,Percent,0.59744,0.182163149
-49,Utah,Other,2022,2022-2023,Percent,N/A,N/A
-50,Vermont,Other,2022,2022-2023,Percent,N/A,N/A
+49,Utah,Other,2022,2022-2023,Percent,0.679534352,Approximated by regression using  private uptake
+50,Vermont,Other,2022,2022-2023,Percent,0.818920813,Approximated by regression using  private uptake
 51,Virginia,Other,2022,2022-2023,Percent,0.73561,0.102330141
 53,Washington,Other,2022,2022-2023,Percent,0.72267,0.155031145
-54,West Virginia,Other,2022,2022-2023,Percent,N/A,N/A
-55,Wisconsin,Other,2022,2022-2023,Percent,N/A,N/A
+54,West Virginia,Other,2022,2022-2023,Percent,0.546332511,Approximated by regression using  private uptake
+55,Wisconsin,Other,2022,2022-2023,Percent,0.673295795,Approximated by regression using  private uptake
 56,Wyoming,Other,2022,2022-2023,Percent,0.6891,0.170875162
 1,Alabama,Private,2022,2022-2023,Percent,0.73249,0.074190922
 2,Alaska,Private,2022,2022-2023,Percent,0.67933,0.080806799
@@ -968,57 +968,57 @@
 54,West Virginia,Private,2022,2022-2023,Percent,0.74401,0.070408531
 55,Wisconsin,Private,2022,2022-2023,Percent,0.78906,0.052120615
 56,Wyoming,Private,2022,2022-2023,Percent,0.7703,0.064135708
-1,Alabama,Uninsured,2022,2022-2023,Percent,N/A,N/A
-2,Alaska,Uninsured,2022,2022-2023,Percent,N/A,N/A
-4,Arizona,Uninsured,2022,2022-2023,Percent,N/A,N/A
-5,Arkansas,Uninsured,2022,2022-2023,Percent,N/A,N/A
-6,California,Uninsured,2022,2022-2023,Percent,N/A,N/A
-8,Colorado,Uninsured,2022,2022-2023,Percent,N/A,N/A
-9,Connecticut,Uninsured,2022,2022-2023,Percent,N/A,N/A
-10,Delaware,Uninsured,2022,2022-2023,Percent,N/A,N/A
-11,Dist. of Columbia,Uninsured,2022,2022-2023,Percent,N/A,N/A
-12,Florida,Uninsured,2022,2022-2023,Percent,N/A,N/A
-13,Georgia,Uninsured,2022,2022-2023,Percent,N/A,N/A
-15,Hawaii,Uninsured,2022,2022-2023,Percent,N/A,N/A
-16,Idaho,Uninsured,2022,2022-2023,Percent,N/A,N/A
-17,Illinois,Uninsured,2022,2022-2023,Percent,N/A,N/A
-18,Indiana,Uninsured,2022,2022-2023,Percent,N/A,N/A
-19,Iowa,Uninsured,2022,2022-2023,Percent,N/A,N/A
-20,Kansas,Uninsured,2022,2022-2023,Percent,N/A,N/A
-21,Kentucky,Uninsured,2022,2022-2023,Percent,N/A,N/A
-22,Louisiana,Uninsured,2022,2022-2023,Percent,N/A,N/A
-23,Maine,Uninsured,2022,2022-2023,Percent,N/A,N/A
-24,Maryland,Uninsured,2022,2022-2023,Percent,N/A,N/A
-25,Massachusetts,Uninsured,2022,2022-2023,Percent,N/A,N/A
-26,Michigan,Uninsured,2022,2022-2023,Percent,N/A,N/A
-27,Minnesota,Uninsured,2022,2022-2023,Percent,N/A,N/A
-28,Mississippi,Uninsured,2022,2022-2023,Percent,N/A,N/A
-29,Missouri,Uninsured,2022,2022-2023,Percent,N/A,N/A
-30,Montana,Uninsured,2022,2022-2023,Percent,N/A,N/A
-31,Nebraska,Uninsured,2022,2022-2023,Percent,N/A,N/A
-32,Nevada,Uninsured,2022,2022-2023,Percent,N/A,N/A
-33,New Hampshire,Uninsured,2022,2022-2023,Percent,N/A,N/A
-34,New Jersey,Uninsured,2022,2022-2023,Percent,N/A,N/A
-35,New Mexico,Uninsured,2022,2022-2023,Percent,N/A,N/A
-36,New York,Uninsured,2022,2022-2023,Percent,N/A,N/A
-37,North Carolina,Uninsured,2022,2022-2023,Percent,N/A,N/A
-38,North Dakota,Uninsured,2022,2022-2023,Percent,N/A,N/A
-39,Ohio,Uninsured,2022,2022-2023,Percent,N/A,N/A
-40,Oklahoma,Uninsured,2022,2022-2023,Percent,N/A,N/A
-41,Oregon,Uninsured,2022,2022-2023,Percent,N/A,N/A
-42,Pennsylvania,Uninsured,2022,2022-2023,Percent,N/A,N/A
-44,Rhode Island,Uninsured,2022,2022-2023,Percent,N/A,N/A
-45,South Carolina,Uninsured,2022,2022-2023,Percent,N/A,N/A
-46,South Dakota,Uninsured,2022,2022-2023,Percent,N/A,N/A
-47,Tennessee,Uninsured,2022,2022-2023,Percent,N/A,N/A
+1,Alabama,Uninsured,2022,2022-2023,Percent,0.466376383,Approximated by average ratio with private over the years (no significant regression model)
+2,Alaska,Uninsured,2022,2022-2023,Percent,0.432529411,Approximated by average ratio with private over the years (no significant regression model)
+4,Arizona,Uninsured,2022,2022-2023,Percent,0.502381768,Approximated by average ratio with private over the years (no significant regression model)
+5,Arkansas,Uninsured,2022,2022-2023,Percent,0.512594436,Approximated by average ratio with private over the years (no significant regression model)
+6,California,Uninsured,2022,2022-2023,Percent,0.497078057,Approximated by average ratio with private over the years (no significant regression model)
+8,Colorado,Uninsured,2022,2022-2023,Percent,0.511945002,Approximated by average ratio with private over the years (no significant regression model)
+9,Connecticut,Uninsured,2022,2022-2023,Percent,0.523590245,Approximated by average ratio with private over the years (no significant regression model)
+10,Delaware,Uninsured,2022,2022-2023,Percent,0.498809881,Approximated by average ratio with private over the years (no significant regression model)
+11,Dist. of Columbia,Uninsured,2022,2022-2023,Percent,0.479613376,Approximated by average ratio with private over the years (no significant regression model)
+12,Florida,Uninsured,2022,2022-2023,Percent,0.478594656,Approximated by average ratio with private over the years (no significant regression model)
+13,Georgia,Uninsured,2022,2022-2023,Percent,0.504820329,Approximated by average ratio with private over the years (no significant regression model)
+15,Hawaii,Uninsured,2022,2022-2023,Percent,0.512785446,Approximated by average ratio with private over the years (no significant regression model)
+16,Idaho,Uninsured,2022,2022-2023,Percent,0.469025055,Approximated by average ratio with private over the years (no significant regression model)
+17,Illinois,Uninsured,2022,2022-2023,Percent,0.499879537,Approximated by average ratio with private over the years (no significant regression model)
+18,Indiana,Uninsured,2022,2022-2023,Percent,0.554018138,Approximated by average ratio with private over the years (no significant regression model)
+19,Iowa,Uninsured,2022,2022-2023,Percent,0.513765964,Approximated by average ratio with private over the years (no significant regression model)
+20,Kansas,Uninsured,2022,2022-2023,Percent,0.468490227,Approximated by average ratio with private over the years (no significant regression model)
+21,Kentucky,Uninsured,2022,2022-2023,Percent,0.426958286,Approximated by average ratio with private over the years (no significant regression model)
+22,Louisiana,Uninsured,2022,2022-2023,Percent,0.488501708,Approximated by average ratio with private over the years (no significant regression model)
+23,Maine,Uninsured,2022,2022-2023,Percent,0.530874093,Approximated by average ratio with private over the years (no significant regression model)
+24,Maryland,Uninsured,2022,2022-2023,Percent,0.535776683,Approximated by average ratio with private over the years (no significant regression model)
+25,Massachusetts,Uninsured,2022,2022-2023,Percent,0.596384156,Approximated by average ratio with private over the years (no significant regression model)
+26,Michigan,Uninsured,2022,2022-2023,Percent,0.52610521,Approximated by average ratio with private over the years (no significant regression model)
+27,Minnesota,Uninsured,2022,2022-2023,Percent,0.493754483,Approximated by average ratio with private over the years (no significant regression model)
+28,Mississippi,Uninsured,2022,2022-2023,Percent,0.494518523,Approximated by average ratio with private over the years (no significant regression model)
+29,Missouri,Uninsured,2022,2022-2023,Percent,0.498440595,Approximated by average ratio with private over the years (no significant regression model)
+30,Montana,Uninsured,2022,2022-2023,Percent,0.44651771,Approximated by average ratio with private over the years (no significant regression model)
+31,Nebraska,Uninsured,2022,2022-2023,Percent,0.405717974,Approximated by average ratio with private over the years (no significant regression model)
+32,Nevada,Uninsured,2022,2022-2023,Percent,0.498389659,Approximated by average ratio with private over the years (no significant regression model)
+33,New Hampshire,Uninsured,2022,2022-2023,Percent,0.558659681,Approximated by average ratio with private over the years (no significant regression model)
+34,New Jersey,Uninsured,2022,2022-2023,Percent,0.474742621,Approximated by average ratio with private over the years (no significant regression model)
+35,New Mexico,Uninsured,2022,2022-2023,Percent,0.499739463,Approximated by average ratio with private over the years (no significant regression model)
+36,New York,Uninsured,2022,2022-2023,Percent,0.499599389,Approximated by average ratio with private over the years (no significant regression model)
+37,North Carolina,Uninsured,2022,2022-2023,Percent,0.518923234,Approximated by average ratio with private over the years (no significant regression model)
+38,North Dakota,Uninsured,2022,2022-2023,Percent,0.54603392,Approximated by average ratio with private over the years (no significant regression model)
+39,Ohio,Uninsured,2022,2022-2023,Percent,0.4877122,Approximated by average ratio with private over the years (no significant regression model)
+40,Oklahoma,Uninsured,2022,2022-2023,Percent,0.500560806,Approximated by average ratio with private over the years (no significant regression model)
+41,Oregon,Uninsured,2022,2022-2023,Percent,0.484261286,Approximated by average ratio with private over the years (no significant regression model)
+42,Pennsylvania,Uninsured,2022,2022-2023,Percent,0.503075771,Approximated by average ratio with private over the years (no significant regression model)
+44,Rhode Island,Uninsured,2022,2022-2023,Percent,0.555183299,Approximated by average ratio with private over the years (no significant regression model)
+45,South Carolina,Uninsured,2022,2022-2023,Percent,0.514294425,Approximated by average ratio with private over the years (no significant regression model)
+46,South Dakota,Uninsured,2022,2022-2023,Percent,0.505342423,Approximated by average ratio with private over the years (no significant regression model)
+47,Tennessee,Uninsured,2022,2022-2023,Percent,0.456087311,Approximated by average ratio with private over the years (no significant regression model)
 48,Texas,Uninsured,2022,2022-2023,Percent,0.59724,0.221351653
-49,Utah,Uninsured,2022,2022-2023,Percent,N/A,N/A
-50,Vermont,Uninsured,2022,2022-2023,Percent,N/A,N/A
-51,Virginia,Uninsured,2022,2022-2023,Percent,N/A,N/A
-53,Washington,Uninsured,2022,2022-2023,Percent,N/A,N/A
-54,West Virginia,Uninsured,2022,2022-2023,Percent,N/A,N/A
-55,Wisconsin,Uninsured,2022,2022-2023,Percent,N/A,N/A
-56,Wyoming,Uninsured,2022,2022-2023,Percent,N/A,N/A
+49,Utah,Uninsured,2022,2022-2023,Percent,0.503916215,Approximated by average ratio with private over the years (no significant regression model)
+50,Vermont,Uninsured,2022,2022-2023,Percent,0.544353032,Approximated by average ratio with private over the years (no significant regression model)
+51,Virginia,Uninsured,2022,2022-2023,Percent,0.504769393,Approximated by average ratio with private over the years (no significant regression model)
+53,Washington,Uninsured,2022,2022-2023,Percent,0.528123549,Approximated by average ratio with private over the years (no significant regression model)
+54,West Virginia,Uninsured,2022,2022-2023,Percent,0.473711167,Approximated by average ratio with private over the years (no significant regression model)
+55,Wisconsin,Uninsured,2022,2022-2023,Percent,0.502394502,Approximated by average ratio with private over the years (no significant regression model)
+56,Wyoming,Uninsured,2022,2022-2023,Percent,0.49045001,Approximated by average ratio with private over the years (no significant regression model)
 1,Alabama,Medicaid,2023,Assumed,Percent,0.674,N/A
 1,Alabama,Other,2023,Assumed,Percent,0.693,N/A
 1,Alabama,Private,2023,Assumed,Percent,0.817,N/A

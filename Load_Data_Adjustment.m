@@ -12,6 +12,7 @@ year_data_A_15_19=year_data-2;
         RUCC(temp_RUCC==ss)=1;
     end
     
+
     Spatial_Identifier=[T.Spatial_Identifier];
     if(strcmp(Age_Group,'Age_0_to_4'))
         Weight=[T.Population_0_to_4.*T.Total_Population];
@@ -75,6 +76,9 @@ County_Data.Uninsured=Uninsured(t_not_nan);
 County_Data.Private=Private(t_not_nan);
 County_Data.Public=Public(t_not_nan);
 
+    County_Data.Population=T(t_not_nan,18:35);
+    County_Data.Total_Population=T.Total_Population(t_not_nan);
+
 County_Data.State_FIP=State_FIP(t_not_nan);
 County_Data.Weight=Weight(t_not_nan);
 if(strcmp(Age_Group,'Age_5_to_9'))
@@ -112,6 +116,8 @@ if(strcmp(Age_Group,'Age_0_to_4'))
     
     Vaccine_Uptake=T.Vaccine_Uptake;
 
+    State=T.State;
+
 elseif(strcmp(Age_Group,'Age_5_to_9'))
     T=readtable([pwd '/State_Vaccination_Data.xlsx'],'Sheet',Vaccine);
    
@@ -126,7 +132,7 @@ elseif(strcmp(Age_Group,'Age_5_to_9'))
     Year=[year_data.*ones(height(T),1)];
     
     V=table2array(T(:,4+(year_data-2017)));
-
+    State=T.State;
     Vaccine_Uptake=V;
 elseif(strcmp(Age_Group,'Age_10_to_14'))
     T=readtable([pwd '/Teen_State_Vaccination_Data.xlsx'],'Sheet',Vaccine);
@@ -142,7 +148,7 @@ elseif(strcmp(Age_Group,'Age_10_to_14'))
     Year=[year_data.*ones(height(T),1)];
     
     V=table2array(T(:,4+(year_data-2016)));
-
+    State=T.State;
     Vaccine_Uptake=V;
 
 elseif(strcmp(Age_Group,'Age_15_to_19'))
@@ -159,7 +165,7 @@ elseif(strcmp(Age_Group,'Age_15_to_19'))
     Year=[year_data.*ones(height(T),1)];
     
     V=table2array(T(:,4+(year_data_A_15_19-2016)));
-
+    State=T.State;
     Vaccine_Uptake=V;
 elseif(strcmp(Age_Group,'Age_20_to_24'))
     T=readtable([pwd '/Teen_State_Vaccination_Data.xlsx'],'Sheet',Vaccine);
@@ -175,11 +181,11 @@ elseif(strcmp(Age_Group,'Age_20_to_24'))
     Year=[year_data.*ones(height(T),1)];
     
     V=table2array(T(:,4)); % Takes year 2016
-
+    State=T.State;
     Vaccine_Uptake=V;
 end
 
 
-State_Data=table(Year,State_FIP,Spatial_Identifier,Vaccine_Uptake);
+State_Data=table(Year,State,State_FIP,Spatial_Identifier,Vaccine_Uptake);
 State_Data=State_Data(~isnan(Vaccine_Uptake),:);
 end

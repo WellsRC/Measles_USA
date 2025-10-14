@@ -1,0 +1,24 @@
+clear;
+
+Weekly_Cases=readtable("Measles_2025.xlsx");
+tx=strcmp(Weekly_Cases.Label,'Measles, Indigenous');
+Weekly_Cases=Weekly_Cases(tx,:);
+Unique_State=unique(Weekly_Cases.State);
+
+weights_epi_Week=zeros(length(Unique_State),1);
+par_state=NaN.*zeros(length(Unique_State),5);
+opts=optimoptions('ga','UseParallel',true,'MaxGenerations',5.*10^2,'FunctionTolerance',10^(-6));
+optsfmc=optimoptions('fmincon','UseParallel',true,'FunctionTolerance',10^(-8),'MaxFunctionEvaluations',5.*10^3);
+for jj=1:length(weights_epi_Week)
+    tf=strcmp(Weekly_Cases.State,Unique_State{jj});
+    C=(Weekly_Cases.CumulativeYTDCurrentMMWRYear(tf));
+    I=[C(1); diff(C)];
+    I(I<0)=0;
+    if(sum(I)>0)
+        [par_state(jj,:),fval_0]=ga(@(x) -sum(log(nbinpdf(I',x(5).*ones(size(1:38)),x(5)./(x(5)+x(3).*gampdf([1:38]-x(4),x(1),x(2)))))),5,[],[],[],[],[0 0 0 0 0],[],[],[],opts);
+        [par_state(jj,:),fval]=fmincon(@(x) -sum(log(nbinpdf(I',x(5).*ones(size(1:38)),x(5)./(x(5)+x(3).*gampdf([1:38]-x(4),x(1),x(2)))))),par_state(jj,:),[],[],[],[],[0 0 0 0 0],[],[],optsfmc);
+        weights_epi_Week(jj)=gamcdf(38-par_state(jj,4),par_state(jj,1),par_state(jj,2));
+    end
+end
+
+save('Meales_Epi_Weight_2025.mat','weights_epi_Week','Unique_State',"par_state");
