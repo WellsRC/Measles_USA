@@ -36,8 +36,10 @@ for aa=1:length(Age_Class)
             County_Data.Population=temp_county.Population;
             County_Data.Total_Population=temp_county.Total_Population;
             Immunity=epsv1.*temp_county.Vaccine_Uptake;
+            Vaccine_Uptake=temp_county.Vaccine_Uptake;
         else
             Immunity=[Immunity epsv2.*temp_county.Vaccine_Uptake];
+            Vaccine_Uptake=[Vaccine_Uptake temp_county.Vaccine_Uptake];
         end
     else
         temp_immunity=zeros(length(County_Data.County),1);
@@ -50,8 +52,11 @@ for aa=1:length(Age_Class)
     end
 end
 
+Vaccine_Uptake=array2table(Vaccine_Uptake);
+Vaccine_Uptake.Properties.VariableNames=V_Age_Class;
 Immunity=array2table(Immunity);
 Immunity.Properties.VariableNames=Age_Class;
+County_Data.Vaccine_Uptake=Vaccine_Uptake;
 County_Data.Immunity=Immunity;
 County_Data.Total_Immunity=sum(table2array(County_Data.Population).*table2array(County_Data.Immunity),2);
 
@@ -83,7 +88,8 @@ parfor ii=1:length(Final_Size_Est)
     % (https://pmc.ncbi.nlm.nih.gov/articles/PMC7088810/pdf/11538_2010_Article_9623.pdf)
     A_0=beta_j(b_indx(ii)).*repmat(Pop,18,1).*M./repmat(Pop,18,1);
     A_0(repmat(Pop,18,1)==0)=0;
-    R0(ii)=max(eig(A_0));
+    R_0(ii)=max(eig(A_0));
+    
     A_eff=beta_j(b_indx(ii)).*repmat(S_Pop,18,1).*M./repmat(Pop,18,1);
     A_eff(repmat(Pop,18,1)==0)=0;
     R_eff(ii)=max(eig(A_eff));

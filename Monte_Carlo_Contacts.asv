@@ -1,0 +1,19 @@
+function Total_Contacts=Monte_Carlo_Contacts(Cases)
+Total_Contacts=0.*Cases;
+Total_Contacts=Total_Contacts(:);
+old_size=size(Cases);
+Cases=Cases(:);
+load('County_Contacts_Age.mat');
+Contacts=repmat(County_Contacts.Contacts,1,1,size(Cases,3));
+clear County_Contacts;
+Contacts=Contacts(:);
+
+find_nz=find(Cases>0);
+Cases=Cases(find_nz);
+Contacts=Contacts(find_nz);
+
+for ii=1:length(find_nz)
+    Total_Contacts(find_nz(ii))=sum(sum(poissrnd(Contacts(ii),Cases(ii),8)));
+end
+Total_Contacts=reshape(Total_Contacts,old_size);
+end

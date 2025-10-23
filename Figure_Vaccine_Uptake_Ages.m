@@ -1,5 +1,4 @@
 function Figure_Vaccine_Uptake_Ages()
-clear;
 close all;
 Vaccine='MMR';
 L_F=zeros(2^7,4);

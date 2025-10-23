@@ -1,4 +1,4 @@
-function [County_Data,State_Data] = Load_Data(Vaccine)
+function [County_Data,State_Data,NE_Data] = Load_Data(Vaccine)
 
 Year=[];
 Vaccine_Uptake=[];
@@ -13,6 +13,11 @@ Spatial_Identifier=[];
 Uninsured=[];
 Private=[];
 Public=[];
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%555
+% State Data
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%555
 
 % Var_Names={'Age','Race','Income','Gini_Index','Education','Poverty_Income_Ratio','Rural_Urban_Code'};
 for yy=2017:2023
@@ -74,7 +79,9 @@ County_Data.Age_5_to_9=Age_5_to_9(t_not_nan);
 County_Data.Vaccine_Uptake=Vaccine_Uptake(t_not_nan);
 County_Data.X=table2array(X);
 
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%555
+% State Data
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%555
 
 
 Spatial_Stratification=cell(4,1);
@@ -140,4 +147,29 @@ end
 
 State_Data=table(Year,State_FIP,Spatial_Identifier,a_Beta_Parameters_Vaccine_Uptake,b_Beta_Parameters_Vaccine_Uptake,OR_Uninsured_Private,OR_Public_Private);
 State_Data=State_Data(~isnan(b_Beta_Parameters_Vaccine_Uptake),:);
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%55
+% NE Data
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%55
+NE_Vac=readtable('Nebraska MMR Vaccination.csv');
+NE_Data.Vaccine_Uptake=NE_Vac.VaccinationRate(:);
+NE_Data.Year=NE_Vac.Year;
+NE_Data.Spatial_Identifier=3.*ones(height(NE_Vac),1);
+GEOID_Counties=cell(height(NE_Vac),1);
+NE_Data.Health_District=NE_Vac.LocalHealthDistrict;
+CW=readtable('Nebraska Crosswalk.csv');
+for hh=1:length(GEOID_Counties)
+    tf=strcmp(CW.HealthDistrictName,NE_Vac.LocalHealthDistrict{hh});
+    list_county=CW.County(tf);
+    temp_geo=cell(1,length(list_county));
+    for kk=1:length(list_county)
+        tf=strcmp(County_Data.County,list_county{kk});
+        temp_geo{kk}=unique(County_Data.GEOID(tf));
+    end
+    GEOID_Counties{hh}=temp_geo;
+end
+
+NE_Data.GEOID_Counties=GEOID_Counties;
+
 end

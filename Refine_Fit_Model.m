@@ -95,17 +95,18 @@ bin_model=dec2bin([0:2^7-1]',7)=='1';
             par_temp=zeros(1,571);
             dx=filter_paramters(model_num,:)-filter_paramters(kk,:);
             if(min(dx)>=0)
-                par_temp([true true true filter_paramters(kk,:) true true true true])=model_par{kk};
+                par_temp([true true true filter_paramters(kk,:) true true true true true])=model_par{kk};
                 par_0=[par_0; par_temp];
             end
         end
-        par_0=par_0(:,[true true true filter_paramters(model_num,:) true true true true]);
-        lb=-5*10^4.*ones(1,num_par+7); % 3 interept and 4 hyper paramters
-        lb(end-3:end-2)=-2;
+        par_0=par_0(:,[true true true filter_paramters(model_num,:) true true true true true]);
+        
+        lb=-5*10^4.*ones(1,num_par+8); % 3 intercept and 5 hyper paramters
+        lb(end-4:end-2)=-2;
         lb(end-1:end)=0;
         lb(1:5)=-50;
-        ub=5*10^4.*ones(1,num_par+7);  % 3 interept and 4 hyper paramters
-        ub(end-3:end-2)=4;
+        ub=5*10^4.*ones(1,num_par+8);  % 3 intercept and 5 hyper paramters
+        ub(end-4:end-2)=4;
         ub(end-1:end)=4;
         ub(1:5)=50;
         

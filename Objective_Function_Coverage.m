@@ -1,4 +1,4 @@
-function J = Objective_Function_Coverage(x,County_Data_model,State_Data,filter_county,filter_state)
+function J = Objective_Function_Coverage(x,County_Data_model,State_Data,NE_Data,filter_county,filter_state,filter_NE)
 
 [beta_x,beta_insurance,hyp_par,hyp_par_gam_a] = Parameters(x);
 [Estimated_Vaccination_Coverage] = Vaccination_Coverage([County_Data_model.X County_Data_model.XI County_Data_model.X2],beta_x,beta_insurance,County_Data_model);
@@ -18,7 +18,15 @@ for yy=1:length(u_year)
     v_state_Uninsured(tf) = Estimated_State_Vaccine_Uptake(Estimated_Vaccination_Coverage.Uninsured(year_County),County_Data_model.Uninsured(year_County).*County_Data_model.Age_5_to_9(year_County),County_Data_model.State_FIP(year_County),State_Data.State_FIP(tf));
     v_state_Public(tf) = Estimated_State_Vaccine_Uptake(Estimated_Vaccination_Coverage.Public(year_County),County_Data_model.Public(year_County).*County_Data_model.Age_5_to_9(year_County),County_Data_model.State_FIP(year_County),State_Data.State_FIP(tf));
     v_state_Private(tf) = Estimated_State_Vaccine_Uptake(Estimated_Vaccination_Coverage.Private(year_County),County_Data_model.Private(year_County).*County_Data_model.Age_5_to_9(year_County),County_Data_model.State_FIP(year_County),State_Data.State_FIP(tf));
+end
 
+v_NE_Health_District = zeros(height(NE_Data),1);
+u_year=unique(NE_Data.Year);
+
+for yy=1:length(u_year)
+    tf=NE_Data.Year==u_year(yy);
+    year_NE_County=County_Data_model.Year==u_year(yy) & strcmp(County_Data_model.State,'Nebraska');
+    v_NE_Health_District(tf) = Estimated_NE_Health_District_Vaccine_Uptake(v_county(year_NE_County),County_Data_model.Age_5_to_9(year_NE_County),County_Data_model.GEOID(year_NE_County),NE_Data.GEOID_Counties(tf));
 end
 
 % Compute the county-level coverage for all time and space
@@ -64,10 +72,14 @@ L_state_odd_medicare_private=log(gampdf(State_Data.OR_Public_Private,hyp_par_gam
 L_state_odd_medicare_private(isnan(L_state_odd_medicare_private))=0;
 L_state_odd_medicare_private=L_state_odd_medicare_private(filter_state);
 
-
+z=log(v_NE_Health_District(:)./(1-v_NE_Health_District(:)));
+z_data=NE_Data.Vaccine_Uptake;
+z_data=log(z_data./(1-z_data));
+L_NE_Health=log(normpdf(z_data(:),z(:),hyp_par(3)));
+L_NE_Health=L_NE_Health(filter_NE);
 
 L_state=L_state(filter_state);
 
-J=-sum(L_county(:)) -sum(L_state(:)) -sum(L_state_odd_medicare_private(:)) -sum(L_state_odd_uninsured_private(:));
+J=-sum(L_county(:)) -sum(L_state(:)) -sum(L_state_odd_medicare_private(:)) -sum(L_state_odd_uninsured_private(:)) -sum(L_NE_Health);
 end
 
