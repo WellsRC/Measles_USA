@@ -1,4 +1,4 @@
-function [Outbreak_County,Unvaccinated_Cases_County,Vaccinated_Cases_County,Total_Contacts,Unvaccinated_Contacts]=Monte_Carlo_Incidence(F_NB,National_Reduction,Age_Reduction,NS,Scenario_Plot)
+function [Outbreak_County,Unvaccinated_Cases_County,Vaccinated_Cases_County,Total_Contacts,Unvaccinated_Contacts]=Monte_Carlo_Incidence(F_NB,National_Reduction,Age_Reduction,NS,Scenario_Plot,Age_0_to_6)
 Vaccine='MMR';
 load([Vaccine '_Immunity.mat'],'County_Data')
 load('Baseline_Estimate_Measles_Incidence.mat',"k_nbin","lambda_0","lambda_i","lambda_j","lambda_d",'k_mealses');
@@ -25,8 +25,11 @@ Population_i=Population_i(:,indx_G);
 FN_Age_Class={'Age_0_to_4','_Age_5_to_9','_Age_10_to_14','_Age_15_to_19','_Age_20_to_24'};
 FN_Age_Class=FN_Age_Class(Age_Reduction);
 
-
-load(['National_Reduction=' num2str(100*National_Reduction) '_' FN_Age_Class{:} '.mat'],'County_Data_Vaccine_Reduction','Proportion_Size_Age_Unvaccinated','Proportion_Size_Age_Vaccinated');
+if(~Age_0_to_6)
+    load(['National_Reduction=' num2str(100*National_Reduction) '_' FN_Age_Class{:} '.mat'],'County_Data_Vaccine_Reduction','Proportion_Size_Age_Unvaccinated','Proportion_Size_Age_Vaccinated');
+else
+    load(['National_Reduction=' num2str(100*National_Reduction) '_Ages_0_to_6.mat'],'County_Data_Vaccine_Reduction','Proportion_Size_Age_Unvaccinated','Proportion_Size_Age_Vaccinated');
+end
 Reff_Seed=County_Data_Vaccine_Reduction.R_eff_Seed;
 Reff=County_Data_Vaccine_Reduction.R_eff;
 Case_Count=County_Data_Vaccine_Reduction.Final_Size_Est;

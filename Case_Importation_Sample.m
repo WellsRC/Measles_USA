@@ -13,8 +13,16 @@ if(strcmp('Baseline',Type))
         end
     end
 else
+    rng(23102025)
     Importation_Cases_County=zeros(length(County_Data.County),NS);
     State_Importaton=readtable('NNDSS_Weekly_Data_Meales_Importation_2023_to_2025.csv');
+    if(strcmp('Sample_2023',Type))
+        State_Importaton=State_Importaton(State_Importaton.CurrentMMWRYear==2023,:);
+    elseif(strcmp('Sample_2024',Type))
+        State_Importaton=State_Importaton(State_Importaton.CurrentMMWRYear==2024,:);
+    elseif(strcmp('Sample_2025',Type))
+        State_Importaton=State_Importaton(State_Importaton.CurrentMMWRYear==2025,:);
+    end
     U_State=unique(State_Importaton.ReportingArea);
     for ss=1:length(U_State)    
         f_import=strcmp(State_Importaton.ReportingArea,U_State{ss});

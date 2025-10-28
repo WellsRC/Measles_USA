@@ -1,88 +1,96 @@
-function Figure_Incidence(Scenario_Plot)
+function Figure_Incidence(Scenario_Plot,Age_0_to_6)
     close all;
     
-    load('Turncated_Negative_Binomial_Parameter.mat');
-    F_NB = scatteredInterpolant(kv(:),avg_fs(:),log(pv(:)./(1-pv(:))));
-    
-    Age_Reduction=[true(1,4) false(1,1)];
-    NS=2.5.*10^3;
-    National_Reduction=0;
-    [p_H_Unvaccinated,p_H_Vaccinated]=Hospitalization_Probability();
-    [Cost_per_Contact,Cost_per_Vaccine_dose_Private,Cost_per_Vaccine_dose_VFC,Cost_per_Hospitalization,Cost_per_Non_Hospitalization]=Measles_Outbreak_Cost();
-    
-    [Outbreak_Cases_County,Unvaccinated_Cases_County_Baseline,Vaccinated_Cases_County_Baseline,Total_Contacts_Baseline,Unvaccinated_Contacts_Baseline]=Monte_Carlo_Incidence(F_NB,National_Reduction,Age_Reduction,NS,Scenario_Plot);
-    
-    Unvaccinated_Cases_County_Baseline=squeeze(sum(Unvaccinated_Cases_County_Baseline,1));
-    Vaccinated_Cases_County_Baseline=squeeze(sum(Vaccinated_Cases_County_Baseline,1));
-    
-    Hospitalizations_Baseline=p_H_Unvaccinated*Unvaccinated_Cases_County_Baseline+p_H_Vaccinated*Vaccinated_Cases_County_Baseline;
-    
-    Total_Contacts_Baseline=squeeze(sum(Total_Contacts_Baseline,[1 2]));
-    Cost_Vac_Age=[Cost_per_Vaccine_dose_VFC.*ones(1,4) Cost_per_Vaccine_dose_Private.*ones(1,14)];
-    Cost_Vaccination_Contacts=Cost_Vac_Age*squeeze(sum(Unvaccinated_Contacts_Baseline,1));
-    Cost_Case_Medical=Cost_per_Hospitalization.*Hospitalizations_Baseline+Cost_per_Non_Hospitalization.*(sum(Outbreak_Cases_County,1)-Hospitalizations_Baseline);
-    Cost_Baseline=Cost_per_Contact.*Total_Contacts_Baseline+Cost_Vaccination_Contacts(:)+Cost_Case_Medical(:);
-    
-    
-    temp_c=sum(Outbreak_Cases_County,1);
-    pd=fitdist(temp_c(:),'Kernel','Support','positive');
-    % temp_c(temp_c==0)=1-mean(temp_c==0);
-    % log_temp=lognfit(temp_c);
-    % log_cases_baseline=fmincon(@(x)logn_fit_zero(x,sum(Outbreak_Cases_County,1)),log_temp);
-    
-    temp_c=Hospitalizations_Baseline;
-    temp_c(temp_c==0)=1-mean(temp_c==0);
-    log_temp=lognfit(temp_c);
-    log_hospital_baseline=fmincon(@(x)logn_fit_zero(x,Hospitalizations_Baseline),log_temp);
-    
-    temp_c=Cost_Baseline;
-    temp_c(temp_c==0)=1-mean(temp_c==0);
-    log_temp=lognfit(temp_c);
-    log_cost_baseline=fmincon(@(x)logn_fit_zero(x,Cost_Baseline),log_temp);
-    
-    
-    Cost_per_Case=Cost_Baseline./(sum(Outbreak_Cases_County,1)');
-    temp_c=Cost_per_Case;
-    temp_c(temp_c==0)=1-mean(temp_c==0);
-    log_temp=lognfit(temp_c);
-    log_cost_per_case_baseline=fmincon(@(x)logn_fit_zero(x,Cost_per_Case),log_temp);
+    if(strcmp(Scenario_Plot,'Baseline'))
+        Xlabel_Add_TXT={'(Fitting)'};
+    elseif(strcmp(Scenario_Plot,'Sample'))
+        Xlabel_Add_TXT={'(Generalized)'};
+    else
+        Xlabel_Add_TXT={'(' num2str(Scenario_Plot(end-3:end)) ')'};
+    end
 
     
+    if(~Age_0_to_6)
+        Age_Reduction=[true(1,1) false(1,4)];
+    else
+        Age_Reduction=[true(1,2) false(1,3)];
+    end
+    NS=2.5.*10^3;
+    Colors={'#fecc5c';
+'#fd8d3c';
+'#e31a1c';};
+    CC=hex2rgb(Colors);
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % Baseline Calculations
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    National_Reduction=0;
+    [pd_baseline_cases,pd_baseline_hospital,pd_baseline_cost,pd_baseline_cost_per_case]=National_Outcome_Distribution(National_Reduction,Age_Reduction,NS,Scenario_Plot,Age_0_to_6);
+    
+    National_Reduction=0.01;
+    [pd_reduction_1_cases,pd_reduction_1_hospital,pd_reduction_1_cost,pd_reduction_1_cost_per_case]=National_Outcome_Distribution(National_Reduction,Age_Reduction,NS,Scenario_Plot,Age_0_to_6);
+
+    National_Reduction=0.025;
+    [pd_reduction_2_5_cases,pd_reduction_2_5_hospital,pd_reduction_2_5_cost,pd_reduction_2_5_cost_per_case]=National_Outcome_Distribution(National_Reduction,Age_Reduction,NS,Scenario_Plot,Age_0_to_6);
+
+    National_Reduction=0.05;
+    [pd_reduction_5_cases,pd_reduction_5_hospital,pd_reduction_5_cost,pd_reduction_5_cost_per_case]=National_Outcome_Distribution(National_Reduction,Age_Reduction,NS,Scenario_Plot,Age_0_to_6);
+
     figure('units','normalized','outerposition',[0.05 0.05 0.9 0.9]);
     
-    subplot("Position",[0.075 0.585 0.4 0.375])
-    cases=linspace(0,5000,10^4);
-    plot(cases,pdf(pd,cases),'k');%,log_cases_baseline(1),log_cases_baseline(2)),'k');%,cases,lognpdf(cases,log_cases_5(1),log_cases_5(2)),'b',cases,lognpdf(cases,log_cases_10(1),log_cases_10(2)),'r','LineWidth',2);
-    set(gca,'LineWidth',2,'Tickdir','out','XTick',[0:500:5000],'Fontsize',16)
-    xlabel('Annual measles cases','FontSize',18)
+    subplot("Position",[0.075 0.605 0.4 0.35])
+
+    [cases,dx,min_x,max_x]=Bounds_for_Figure_Incidence(pd_baseline_cases,pd_reduction_1_cases,pd_reduction_2_5_cases,pd_reduction_5_cases);   
+
+    plot(cases,pdf(pd_baseline_cases,cases),'k','LineWidth',2); hold on;
+    plot(cases,pdf(pd_reduction_1_cases,cases),'color',CC(1,:),'LineWidth',2);
+    plot(cases,pdf(pd_reduction_2_5_cases,cases),'color',CC(2,:),'LineWidth',2);
+    plot(cases,pdf(pd_reduction_5_cases,cases),'color',CC(3,:),'LineWidth',2);
+    set(gca,'LineWidth',2,'Tickdir','out','XTick',[min_x:dx:max_x],'Fontsize',16)
+    xlabel(['Annual measles cases ' Xlabel_Add_TXT{:} ],'FontSize',18)
     ylabel('Probability density','FontSize',18)
-    %legend({'Baseline','5% reduction','10% reduction'},'FontSize',16);
+    legend({'Baseline','1% reduction','2.5% reduction','5% reduction'},'FontSize',16);
     box off;
-    subplot("Position",[0.575 0.585 0.4 0.375])
-    hospital=linspace(0,1750,10^4);
-    plot(hospital,lognpdf(hospital,log_hospital_baseline(1),log_hospital_baseline(2)),'k');%,hospital,lognpdf(hospital,log_hospital_5(1),log_hospital_5(2)),'b',hospital,lognpdf(hospital,log_hospital_10(1),log_hospital_10(2)),'r','LineWidth',2);
-    set(gca,'LineWidth',2,'Tickdir','out','XTick',[0:250:1750],'Fontsize',16)
-    xlabel('Annual measles hospitalizations','FontSize',18)
-    ylabel('Probability density','FontSize',18)
-    %legend({'Baseline','5% reduction','10% reduction'},'FontSize',16);
-    box off;
+    xlim([min_x,max_x])
+
+    subplot("Position",[0.575 0.605 0.4 0.35])
+    [hospital,dx,min_x,max_x]=Bounds_for_Figure_Incidence(pd_baseline_hospital,pd_reduction_1_hospital,pd_reduction_2_5_hospital,pd_reduction_5_hospital);
     
-    subplot("Position",[0.075 0.105 0.4 0.375])
-    cost=10.^7.*linspace(0,10,10^4);
-    plot(cost,lognpdf(cost,log_cost_baseline(1),log_cost_baseline(2)),'k');%,cost,lognpdf(cost,log_cost_5(1),log_cost_5(2)),'b',cost,lognpdf(cost,log_cost_10(1),log_cost_10(2)),'r','LineWidth',2);
-    set(gca,'LineWidth',2,'Tickdir','out','XTick',10.^7.*[0:1:10],'Fontsize',16)
-    xlabel('Total costs','FontSize',18)
+    plot(hospital,pdf(pd_baseline_hospital,hospital),'k','LineWidth',2); hold on;
+    plot(hospital,pdf(pd_reduction_1_hospital,hospital),'color',CC(1,:),'LineWidth',2);
+    plot(hospital,pdf(pd_reduction_2_5_hospital,hospital),'color',CC(2,:),'LineWidth',2);
+    plot(hospital,pdf(pd_reduction_5_hospital,hospital),'color',CC(3,:),'LineWidth',2);
+    set(gca,'LineWidth',2,'Tickdir','out','XTick',[min_x:dx:max_x],'Fontsize',16)
+    xlabel(['Annual measles hospitalizations ' Xlabel_Add_TXT{:} ],'FontSize',18)
     ylabel('Probability density','FontSize',18)
-    %legend({'Baseline','5% reduction','10% reduction'},'FontSize',16);
+    legend({'Baseline','1% reduction','2.5% reduction','5% reduction'},'FontSize',16);
     box off;
-    subplot("Position",[0.575 0.105 0.4 0.375])
-    cost_per_case=10.^4.*linspace(2.3,3,10^4);
-    plot(cost_per_case,lognpdf(cost_per_case,log_cost_per_case_baseline(1),log_cost_per_case_baseline(2)),'k');%,cost_per_case,lognpdf(cost_per_case,log_cost_per_case_5(1),log_cost_per_case_5(2)),'b',cost_per_case,lognpdf(cost_per_case,log_cost_per_case_10(1),log_cost_per_case_10(2)),'r','LineWidth',2);
-    set(gca,'LineWidth',2,'Tickdir','out','XTick',10.^4.*[2.3:0.1:3],'Fontsize',16)
-    xlabel('Cost per case','FontSize',18)
+    xlim([min_x,max_x])
+
+    subplot("Position",[0.075 0.105 0.4 0.35])
+    [cost,dx,min_x,max_x]=Bounds_for_Figure_Incidence(pd_baseline_cost,pd_reduction_1_cost,pd_reduction_2_5_cost,pd_reduction_5_cost);
+    plot(cost,pdf(pd_baseline_cost,cost),'k','LineWidth',2); hold on;
+    plot(cost,pdf(pd_reduction_1_cost,cost),'color',CC(1,:),'LineWidth',2);
+    plot(cost,pdf(pd_reduction_2_5_cost,cost),'color',CC(2,:),'LineWidth',2);
+    plot(cost,pdf(pd_reduction_5_cost,cost),'color',CC(3,:),'LineWidth',2);
+    set(gca,'LineWidth',2,'Tickdir','out','XTick',[min_x:dx:max_x],'Fontsize',16)
+    xlabel(['Total costs ' Xlabel_Add_TXT{:} ],'FontSize',18)
     ylabel('Probability density','FontSize',18)
-    %legend({'Baseline','5% reduction','10% reduction'},'FontSize',16);
+    legend({'Baseline','1% reduction','2.5% reduction','5% reduction'},'FontSize',16);
     box off;
+    xlim([min_x,max_x])
+
+    subplot("Position",[0.575 0.105 0.4 0.35])
+    [cost_per_case,dx,min_x,max_x]=Bounds_for_Figure_Incidence(pd_baseline_cost_per_case,pd_reduction_1_cost_per_case,pd_reduction_2_5_cost_per_case,pd_reduction_5_cost_per_case);
+    plot(cost_per_case,pdf(pd_baseline_cost_per_case,cost_per_case),'k','LineWidth',2); hold on;
+    plot(cost_per_case,pdf(pd_reduction_1_cost_per_case,cost_per_case),'color',CC(1,:),'LineWidth',2);
+    plot(cost_per_case,pdf(pd_reduction_2_5_cost_per_case,cost_per_case),'color',CC(2,:),'LineWidth',2);
+    plot(cost_per_case,pdf(pd_reduction_5_cost_per_case,cost_per_case),'color',CC(3,:),'LineWidth',2);
+    set(gca,'LineWidth',2,'Tickdir','out','XTick',[min_x:dx:max_x],'Fontsize',16)
+    xlabel(['Cost per case ' Xlabel_Add_TXT{:} ],'FontSize',18)
+    ylabel('Probability density','FontSize',18)
+    legend({'Baseline','1% reduction','2.5% reduction','5% reduction'},'FontSize',16);
+    box off;
+    xlim([min_x,max_x])
 end
 
 
@@ -281,7 +289,7 @@ end
 % % 
 % % ax1.Position=[-0.15,-0.15,1.2,1.2];
 % % 
-% % print(gcf,['Preliminary_County_Incidence_Reduction_10.png'],'-dpng','-r300');
+% % print(gcf,['Preliminary_County_Incidence_reduction_2_5.png'],'-dpng','-r300');
 % % 
 % % 
 % % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
@@ -449,7 +457,7 @@ end
 % % 
 % % ax1.Position=[-0.15,-0.15,1.2,1.2];
 % % 
-% % print(gcf,['Preliminary_County_Risk_Reduction_10.png'],'-dpng','-r300');
+% % print(gcf,['Preliminary_County_Risk_reduction_2_5.png'],'-dpng','-r300');
 % % 
 % % 
 % % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5

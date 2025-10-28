@@ -1,4 +1,219 @@
 GEOID,county,state,type,case_count,ID_Unknown,unkown_case_count
+02020,Anchorage,Alaska,imported,1,NaN,NaN
+02020,Anchorage,Alaska,local,1,NaN,NaN
+02122,Kenai Peninsula,Alaska,imported,1,NaN,NaN
+04015,Mohave,Arizona,local,80,NaN,NaN
+04017,Navajo,Arizona,imported,4,NaN,NaN
+05007,Benton,Arkansas,local,1,NaN,NaN
+05045,Faulkner,Arkansas,imported,1,NaN,NaN
+05045,Faulkner,Arkansas,local,5,NaN,NaN
+05125,Saline,Arkansas,imported,1,NaN,NaN
+06019,Fresno,California,imported,1,NaN,NaN
+06019,Fresno,California,local,1,NaN,NaN
+06037,Los Angeles,California,imported,5,NaN,NaN
+06059,Orange,California,imported,2,NaN,NaN
+06061,Placer,California,imported,1,NaN,NaN
+06065,Riverside,California,imported,1,NaN,NaN
+06067,Sacramento,California,imported,1,NaN,NaN
+06073,San Diego,California,imported,1,NaN,NaN
+06081,San Mateo,California,imported,1,NaN,NaN
+06085,Santa Clara,California,imported,1,NaN,NaN
+06107,Tulare,California,local,2,NaN,NaN
+06109,Tuolumne,California,imported,2,NaN,NaN
+06113,Yolo,California,local,1,NaN,NaN
+08001,Adams,Colorado,imported,1,NaN,NaN
+08001,Adams,Colorado,local,3,NaN,NaN
+08005,Arapahoe,Colorado,imported,4,NaN,NaN
+08005,Arapahoe,Colorado,local,1,NaN,NaN
+08007,Archuleta,Colorado,local,1,NaN,NaN
+08013,Boulder,Colorado,imported,1,NaN,NaN
+08031,Denver,Colorado,imported,3,NaN,NaN
+08031,Denver,Colorado,local,1,NaN,NaN
+08041,El Paso,Colorado,imported,4,NaN,NaN
+08077,Mesa,Colorado,local,11,NaN,NaN
+08101,Pueblo,Colorado,imported,1,NaN,NaN
+11001,District of Columbia,District of Columbia,imported,1,NaN,NaN
+12011,Broward,Florida,local,2,NaN,NaN
+12031,Duval,Florida,local,1,NaN,NaN
+12073,Leon,Florida,imported,1,NaN,NaN
+12073,Leon,Florida,local,1,NaN,NaN
+12086,Miami-Dade,Florida,local,1,NaN,NaN
+13121,Fulton,Georgia,imported,2,NaN,NaN
+13121,Fulton,Georgia,local,8,NaN,NaN
+15003,Honolulu,Hawaii,imported,2,NaN,NaN
+16017,Bonner,Idaho,local,1,NaN,NaN
+16019,Bonneville,Idaho,imported,2,NaN,NaN
+16019,Bonneville,Idaho,local,4,NaN,NaN
+16031,Cassia,Idaho,imported,1,NaN,NaN
+16055,Kootenai,Idaho,local,1,NaN,NaN
+17031,Cook,Illinois,imported,2,NaN,NaN
+17031,Cook,Illinois,local,6,NaN,NaN
+17199,Williamson,Illinois,local,4,NaN,NaN
+18003,Allen,Indiana,local,8,NaN,NaN
+18089,Lake,Indiana,local,1,NaN,NaN
+18133,Putnam,Indiana,local,1,NaN,NaN
+20069,Gray,Kansas,local,29,NaN,NaN
+20081,Haskell,Kansas,local,21,NaN,NaN
+20097,Kiowa,Kansas,local,6,NaN,NaN
+20145,Pawnee,Kansas,local,7,NaN,NaN
+20189,Stevens,Kansas,local,10,NaN,NaN
+21067,Fayette,Kentucky,local,6,NaN,NaN
+21073,Franklin,Kentucky,imported,1,NaN,NaN
+21111,Jefferson,Kentucky,imported,1,NaN,NaN
+21111,Jefferson,Kentucky,local,1,NaN,NaN
+21219,Todd,Kentucky,local,1,NaN,NaN
+21239,Woodford,Kentucky,local,3,NaN,NaN
+22071,Orleans,Louisiana,imported,1,NaN,NaN
+22071,Orleans,Louisiana,local,1,NaN,NaN
+24027,Howard,Maryland,imported,1,NaN,NaN
+24033,Prince Georges,Maryland,imported,2,NaN,NaN
+26005,Allegan,Michigan,local,1,NaN,NaN
+26055,Grand Traverse,Michigan,local,4,NaN,NaN
+26065,Ingham,Michigan,imported,1,NaN,NaN
+26081,Kent,Michigan,imported,2,NaN,NaN
+26081,Kent,Michigan,local,2,NaN,NaN
+26099,Macomb,Michigan,imported,1,NaN,NaN
+26099,Macomb,Michigan,local,1,NaN,NaN
+26103,Marquette,Michigan,local,2,NaN,NaN
+26117,Montcalm,Michigan,imported,1,NaN,NaN
+26117,Montcalm,Michigan,local,3,NaN,NaN
+26121,Muskegon,Michigan,local,3,NaN,NaN
+26125,Oakland,Michigan,imported,1,NaN,NaN
+26133,Osceola,Michigan,local,7,NaN,NaN
+27037,Dakota,Minnesota,local,1,NaN,NaN
+27109,Olmsted,Minnesota,imported,1,NaN,NaN
+27053,Hennepin,Minnesota,imported,2,NaN,NaN
+27163,Washington,Minnesota,imported,1,NaN,NaN
+29039,Cedar,Missouri,local,5,NaN,NaN
+29143,New Madrid,Missouri,local,1,NaN,NaN
+29213,Taney,Missouri,imported,1,NaN,NaN
+30013,Cascade,Montana,local,1,NaN,NaN
+30029,Flathead,Montana,imported,2,NaN,NaN
+30031,Gallatin,Montana,imported,5,NaN,NaN
+30031,Gallatin,Montana,local,14,NaN,NaN
+30041,Hill,Montana,local,4,NaN,NaN
+30049,Lewis and Clark,Montana,local,2,NaN,NaN
+30111,Yellowstone,Montana,local,4,NaN,NaN
+31161,Sheridan,Nebraska,imported,1,NaN,NaN
+34003,Bergen,New Jersey,imported,1,NaN,NaN
+34003,Bergen,New Jersey,local,3,NaN,NaN
+34017,Hudson,New Jersey,local,2,NaN,NaN
+34029,Ocean,New Jersey,local,1,NaN,NaN
+34031,Passaic,New Jersey,imported,1,NaN,NaN
+35005,Chaves,New Mexico,local,1,NaN,NaN
+35009,Curry,New Mexico,local,1,NaN,NaN
+35013,Dona Ana,New Mexico,local,2,NaN,NaN
+35015,Eddy,New Mexico,local,3,NaN,NaN
+35025,Lea,New Mexico,local,67,NaN,NaN
+35029,Luna,New Mexico,local,14,NaN,NaN
+35045,San Juan,New Mexico,local,1,NaN,NaN
+35043,Sandoval,New Mexico,local,6,NaN,NaN
+35049,Santa Fe,New Mexico,imported,1,NaN,NaN
+35049,Santa Fe,New Mexico,local,4,NaN,NaN
+36069,Ontario,New York,local,1,NaN,NaN
+36071,Orange,New York,imported,3,NaN,NaN
+36071,Orange,New York,local,1,NaN,NaN
+36079,Putnam,New York,local,1,NaN,NaN
+36087,Rockland,New York,imported,1,NaN,NaN
+36103,Suffolk,New York,local,1,NaN,NaN
+37081,Guilford,North Carolina,imported,1,NaN,NaN
+38013,Burke,North Dakota,imported,1,NaN,NaN
+38017,Cass,North Dakota,imported,2,NaN,NaN
+38017,Cass,North Dakota,local,5,NaN,NaN
+38035,Grand Forks,North Dakota,imported,2,NaN,NaN
+38035,Grand Forks,North Dakota,local,8,NaN,NaN
+38105,Williams,North Dakota,imported,1,NaN,NaN
+38105,Williams,North Dakota,local,17,NaN,NaN
+39003,Allen,Ohio,imported,1,NaN,NaN
+39007,Ashtabula,Ohio,imported,3,NaN,NaN
+39007,Ashtabula,Ohio,local,13,NaN,NaN
+39035,Cuyahoga,Ohio,imported,1,NaN,NaN
+39039,Defiance,Ohio,imported,1,NaN,NaN
+39049,Franklin,Ohio,local,6,NaN,NaN
+39075,Holmes,Ohio,local,1,NaN,NaN
+39083,Knox,Ohio,local,14,NaN,NaN
+39119,Muskingum,Ohio,local,3,NaN,NaN
+41051,Multnomah,Oregon,imported,1,NaN,NaN
+42017,Bucks,Pennsylvania,imported,1,NaN,NaN
+42049,Erie,Pennsylvania,imported,2,NaN,NaN
+42049,Erie,Pennsylvania,local,6,NaN,NaN
+42071,Lancaster,Pennsylvania,local,1,NaN,NaN
+42091,Montgomery,Pennsylvania,imported,1,NaN,NaN
+42101,Philadelphia,Pennsylvania,imported,2,NaN,NaN
+44007,Providence,Rhode Island,imported,1,NaN,NaN
+45045,Greenville,South Carolina,local,1,NaN,NaN
+45083,Spartanburg,South Carolina,imported,5,NaN,NaN
+45083,Spartanburg,South Carolina,local,16,NaN,NaN
+46083,Lincoln,South Dakota,imported,7,NaN,NaN
+46083,Lincoln,South Dakota,local,1,NaN,NaN
+46093,Meade,South Dakota,imported,1,NaN,NaN
+46093,Meade,South Dakota,local,1,NaN,NaN
+46103,Pennington,South Dakota,imported,1,NaN,NaN
+46103,Pennington,South Dakota,local,1,NaN,NaN
+48003,Andrews,Texas,local,3,NaN,NaN
+48013,Atascosa,Texas,local,1,NaN,NaN
+48017,Bailey,Texas,local,2,NaN,NaN
+48027,Bell,Texas,local,1,NaN,NaN
+48029,Bexar,Texas,local,2,NaN,NaN
+48033,Borden,Texas,local,1,NaN,NaN
+48039,Brazoria,Texas,local,1,NaN,NaN
+48043,Brewster,Texas,local,1,NaN,NaN
+48049,Brown,Texas,local,1,NaN,NaN
+48065,Carson,Texas,local,1,NaN,NaN
+48079,Cochran,Texas,local,14,NaN,NaN
+48085,Collin,Texas,local,4,NaN,NaN
+48111,Dallam,Texas,local,7,NaN,NaN
+48113,Dallas,Texas,local,1,NaN,NaN
+48115,Dawson,Texas,local,26,NaN,NaN
+48121,Denton,Texas,local,2,NaN,NaN
+48133,Eastland,Texas,local,2,NaN,NaN
+48135,Ector,Texas,local,12,NaN,NaN
+48141,El Paso,Texas,local,61,NaN,NaN
+48143,Erath,Texas,local,1,NaN,NaN
+48147,Fannin,Texas,local,4,NaN,NaN
+48157,Fort Bend,Texas,local,1,NaN,NaN
+48165,Gaines,Texas,local,414,NaN,NaN
+48169,Garza,Texas,local,2,NaN,NaN
+48189,Hale,Texas,local,5,NaN,NaN
+48197,Hardeman,Texas,local,1,NaN,NaN
+48201,Harris,Texas,local,5,NaN,NaN
+48203,Harrison,Texas,local,1,NaN,NaN
+48209,Hays,Texas,local,1,NaN,NaN
+48219,Hockley,Texas,local,7,NaN,NaN
+48277,Lamar,Texas,local,28,NaN,NaN
+48279,Lamb,Texas,local,1,NaN,NaN
+48303,Lubbock,Texas,local,52,NaN,NaN
+48305,Lynn,Texas,local,2,NaN,NaN
+48317,Martin,Texas,local,3,NaN,NaN
+48309,McLennan,Texas,local,9,NaN,NaN
+48329,Midland,Texas,local,7,NaN,NaN
+48369,Parmer,Texas,local,5,NaN,NaN
+48375,Potter,Texas,local,1,NaN,NaN
+48379,Rains,Texas,imported,1,NaN,NaN
+48381,Randall,Texas,local,3,NaN,NaN
+48389,Reeves,Texas,local,2,NaN,NaN
+48397,Rockwall,Texas,local,2,NaN,NaN
+48415,Scurry,Texas,local,1,NaN,NaN
+48417,Shackelford,Texas,local,1,NaN,NaN
+48439,Tarrant,Texas,local,4,NaN,NaN
+48445,Terry,Texas,local,60,NaN,NaN
+48453,Travis,Texas,local,2,NaN,NaN
+48459,Upshur,Texas,local,5,NaN,NaN
+48491,Williamson,Texas,local,8,NaN,NaN
+48501,Yoakum,Texas,local,20,NaN,NaN
+49049,Utah,Utah,local,7,NaN,NaN
+50015,Lamoille,Vermont,imported,1,NaN,NaN
+53033,King,Washington,imported,5,NaN,NaN
+53033,King,Washington,local,1,NaN,NaN
+53061,Snohomish,Washington,imported,2,NaN,NaN
+53063,Spokane,Washington,imported,1,NaN,NaN
+53073,Whatcom,Washington,imported,2,NaN,NaN
+55083,Oconto,Wisconsin,imported,9,NaN,NaN
+55083,Oconto,Wisconsin,local,27,NaN,NaN
+56007,Carbon,Wyoming,imported,1,NaN,NaN
+56007,Carbon,Wyoming,local,6,NaN,NaN
+56025,Natrona,Wyoming,local,1,NaN,NaN
+56027,Niobrara,Wyoming,local,1,NaN,NaN
 01019,Cherokee,Alabama,imported,NaN,1,1
 01033,Colbert,Alabama,imported,NaN,1,1
 01043,Cullman,Alabama,imported,NaN,1,1
@@ -12,429 +227,64 @@ GEOID,county,state,type,case_count,ID_Unknown,unkown_case_count
 01095,Marshall,Alabama,imported,NaN,1,1
 01103,Morgan,Alabama,imported,NaN,1,1
 01133,Winston,Alabama,imported,NaN,1,1
-02020,Anchorage,Alaska,imported,1,NaN,NaN
-02020,Anchorage,Alaska,local,1,NaN,NaN
-02122,Kenai Peninsula,Alaska,imported,1,NaN,NaN
-02122,Kenai Peninsula,Alaska,local,0,NaN,NaN
-04015,Mohave,Arizona,imported,0,NaN,NaN
-04015,Mohave,Arizona,local,48,NaN,NaN
-04017,Navajo,Arizona,imported,4,NaN,NaN
-04017,Navajo,Arizona,local,0,NaN,NaN
-05007,Benton,Arkansas,imported,0,NaN,NaN
-05007,Benton,Arkansas,local,1,NaN,NaN
-05045,Faulkner,Arkansas,imported,1,NaN,NaN
-05045,Faulkner,Arkansas,local,5,NaN,NaN
-05125,Saline,Arkansas,imported,1,NaN,NaN
-05125,Saline,Arkansas,local,0,NaN,NaN
-06019,Fresno,California,imported,1,NaN,NaN
-06019,Fresno,California,local,1,NaN,NaN
-06037,Los Angeles,California,imported,5,NaN,NaN
-06037,Los Angeles,California,local,0,NaN,NaN
-06059,Orange,California,imported,1,NaN,NaN
-06059,Orange,California,local,0,NaN,NaN
-06061,Placer,California,imported,1,NaN,NaN
-06061,Placer,California,local,0,NaN,NaN
-06065,Riverside,California,imported,1,NaN,NaN
-06065,Riverside,California,local,0,NaN,NaN
-06067,Sacramento,California,imported,1,NaN,NaN
-06067,Sacramento,California,local,0,NaN,NaN
-06073,San Diego,California,imported,1,NaN,NaN
-06073,San Diego,California,local,0,NaN,NaN
-06081,San Mateo,California,imported,1,NaN,NaN
-06081,San Mateo,California,local,0,NaN,NaN
-06085,Santa Clara,California,imported,1,NaN,NaN
-06085,Santa Clara,California,local,0,NaN,NaN
-06107,Tulare,California,imported,0,NaN,NaN
-06107,Tulare,California,local,2,NaN,NaN
-06109,Tuolumne,California,imported,2,NaN,NaN
-06109,Tuolumne,California,local,0,NaN,NaN
-06113,Yolo,California,imported,0,NaN,NaN
-06113,Yolo,California,local,1,NaN,NaN
-08001,Adams,Colorado,imported,1,NaN,NaN
-08001,Adams,Colorado,local,3,NaN,NaN
-08005,Arapahoe,Colorado,imported,4,NaN,NaN
-08005,Arapahoe,Colorado,local,1,NaN,NaN
-08007,Archuleta,Colorado,imported,0,NaN,NaN
-08007,Archuleta,Colorado,local,1,NaN,NaN
-08013,Boulder,Colorado,imported,1,NaN,NaN
-08013,Boulder,Colorado,local,0,NaN,NaN
-08031,Denver,Colorado,imported,3,NaN,NaN
-08031,Denver,Colorado,local,1,NaN,NaN
-08041,El Paso,Colorado,imported,4,NaN,NaN
-08041,El Paso,Colorado,local,0,NaN,NaN
-08077,Mesa,Colorado,imported,0,NaN,NaN
-08077,Mesa,Colorado,local,7,NaN,NaN
-08101,Pueblo,Colorado,imported,1,NaN,NaN
-08101,Pueblo,Colorado,local,0,NaN,NaN
-11001,District of Columbia,District of Columbia,imported,1,NaN,NaN
-11001,District of Columbia,District of Columbia,local,0,NaN,NaN
-12011,Broward,Florida,imported,0,NaN,NaN
-12011,Broward,Florida,local,2,NaN,NaN
-12031,Duval,Florida,imported,0,NaN,NaN
-12031,Duval,Florida,local,1,NaN,NaN
-12073,Leon,Florida,imported,1,NaN,NaN
-12073,Leon,Florida,local,1,NaN,NaN
-12086,Miami-Dade,Florida,imported,0,NaN,NaN
-12086,Miami-Dade,Florida,local,1,NaN,NaN
-13121,Fulton,Georgia,imported,2,NaN,NaN
-13121,Fulton,Georgia,local,8,NaN,NaN
-15003,Honolulu,Hawaii,imported,2,NaN,NaN
-15003,Honolulu,Hawaii,local,0,NaN,NaN
-16017,Bonner,Idaho,imported,0,NaN,NaN
-16017,Bonner,Idaho,local,1,NaN,NaN
-16019,Bonneville,Idaho,imported,2,NaN,NaN
-16019,Bonneville,Idaho,local,4,NaN,NaN
-16031,Cassia,Idaho,imported,1,NaN,NaN
-16031,Cassia,Idaho,local,0,NaN,NaN
-16055,Kootenai,Idaho,imported,0,NaN,NaN
-16055,Kootenai,Idaho,local,1,NaN,NaN
-17031,Cook,Illinois,imported,2,NaN,NaN
-17031,Cook,Illinois,local,5,NaN,NaN
-17199,Williamson,Illinois,imported,0,NaN,NaN
-17199,Williamson,Illinois,local,4,NaN,NaN
-18003,Allen,Indiana,imported,0,NaN,NaN
-18003,Allen,Indiana,local,8,NaN,NaN
-18133,Putnam,Indiana,imported,0,NaN,NaN
-18133,Putnam,Indiana,local,1,NaN,NaN
-,Central,Iowa,imported,0,NaN,NaN
-20069,Gray,Kansas,imported,0,NaN,NaN
-20069,Gray,Kansas,local,29,NaN,NaN
-20081,Haskell,Kansas,imported,0,NaN,NaN
-20081,Haskell,Kansas,local,21,NaN,NaN
-20097,Kiowa,Kansas,imported,0,NaN,NaN
-20097,Kiowa,Kansas,local,6,NaN,NaN
-20145,Pawnee,Kansas,imported,0,NaN,NaN
-20145,Pawnee,Kansas,local,7,NaN,NaN
-20189,Stevens,Kansas,imported,0,NaN,NaN
-20189,Stevens,Kansas,local,10,NaN,NaN
-,Unknown County,Kansas,imported,0,NaN,NaN
-,Unknown County,Kansas,local,17,NaN,NaN
-21067,Fayette,Kentucky,imported,0,NaN,NaN
-21067,Fayette,Kentucky,local,6,NaN,NaN
-21073,Franklin,Kentucky,imported,1,NaN,NaN
-21073,Franklin,Kentucky,local,0,NaN,NaN
-21111,Jefferson,Kentucky,imported,1,NaN,NaN
-21111,Jefferson,Kentucky,local,1,NaN,NaN
-21219,Todd,Kentucky,imported,0,NaN,NaN
-21219,Todd,Kentucky,local,1,NaN,NaN
-21239,Woodford,Kentucky,imported,0,NaN,NaN
-21239,Woodford,Kentucky,local,3,NaN,NaN
-22071,Orleans,Louisiana,imported,1,NaN,NaN
-22071,Orleans,Louisiana,local,1,NaN,NaN
-24027,Howard,Maryland,imported,1,NaN,NaN
-24027,Howard,Maryland,local,0,NaN,NaN
-24033,Prince George's,Maryland,imported,2,NaN,NaN
-24033,Prince George's,Maryland,local,0,NaN,NaN
-26005,Allegan,Michigan,imported,0,NaN,NaN
-26005,Allegan,Michigan,local,1,NaN,NaN
-26055,Grand Traverse,Michigan,imported,0,NaN,NaN
-26055,Grand Traverse,Michigan,local,4,NaN,NaN
-26065,Ingham,Michigan,imported,1,NaN,NaN
-26065,Ingham,Michigan,local,0,NaN,NaN
-26081,Kent,Michigan,imported,2,NaN,NaN
-26081,Kent,Michigan,local,2,NaN,NaN
-26099,Macomb,Michigan,imported,1,NaN,NaN
-26099,Macomb,Michigan,local,1,NaN,NaN
-26103,Marquette,Michigan,imported,0,NaN,NaN
-26103,Marquette,Michigan,local,2,NaN,NaN
-26117,Montcalm,Michigan,imported,1,NaN,NaN
-26117,Montcalm,Michigan,local,3,NaN,NaN
-26121,Muskegon,Michigan,imported,0,NaN,NaN
-26121,Muskegon,Michigan,local,1,NaN,NaN
-26125,Oakland,Michigan,imported,1,NaN,NaN
-26125,Oakland,Michigan,local,0,NaN,NaN
-26133,Osceola,Michigan,imported,0,NaN,NaN
-26133,Osceola,Michigan,local,7,NaN,NaN
-27037,Dakota,Minnesota,imported,0,NaN,NaN
-27037,Dakota,Minnesota,local,1,NaN,NaN
-27053,Hennepin,Minnesota,imported,2,NaN,NaN
-27053,Hennepin,Minnesota,local,0,NaN,NaN
-27163,Washington,Minnesota,imported,1,NaN,NaN
-27163,Washington,Minnesota,local,0,NaN,NaN
-29039,Cedar,Missouri,imported,0,NaN,NaN
-29039,Cedar,Missouri,local,5,NaN,NaN
-29143,New Madrid,Missouri,imported,0,NaN,NaN
-29143,New Madrid,Missouri,local,1,NaN,NaN
-29213,Taney,Missouri,imported,1,NaN,NaN
-29213,Taney,Missouri,local,0,NaN,NaN
-30013,Cascade,Montana,imported,0,NaN,NaN
-30013,Cascade,Montana,local,1,NaN,NaN
-30029,Flathead,Montana,imported,2,NaN,NaN
-30029,Flathead,Montana,local,0,NaN,NaN
-30031,Gallatin,Montana,imported,5,NaN,NaN
-30031,Gallatin,Montana,local,14,NaN,NaN
-30041,Hill,Montana,imported,0,NaN,NaN
-30041,Hill,Montana,local,4,NaN,NaN
-30049,Lewis and Clark,Montana,imported,0,NaN,NaN
-30049,Lewis and Clark,Montana,local,2,NaN,NaN
-30111,Yellowstone,Montana,imported,0,NaN,NaN
-30111,Yellowstone,Montana,local,4,NaN,NaN
-31161,Sheridan,Nebraska,imported,1,NaN,NaN
-31161,Sheridan,Nebraska,local,0,NaN,NaN
-34003,Bergen,New Jersey,imported,1,NaN,NaN
-34003,Bergen,New Jersey,local,3,NaN,NaN
-34017,Hudson,New Jersey,imported,0,NaN,NaN
-34017,Hudson,New Jersey,local,2,NaN,NaN
-34029,Ocean,New Jersey,imported,0,NaN,NaN
-34029,Ocean,New Jersey,local,1,NaN,NaN
-34031,Passaic,New Jersey,imported,1,NaN,NaN
-34031,Passaic,New Jersey,local,0,NaN,NaN
-35005,Chaves,New Mexico,imported,0,NaN,NaN
-35005,Chaves,New Mexico,local,1,NaN,NaN
-35009,Curry,New Mexico,imported,0,NaN,NaN
-35009,Curry,New Mexico,local,1,NaN,NaN
-,Dona Ana,New Mexico,imported,0,NaN,NaN
-,Dona Ana,New Mexico,local,2,NaN,NaN
-35015,Eddy,New Mexico,imported,0,NaN,NaN
-35015,Eddy,New Mexico,local,3,NaN,NaN
-35025,Lea,New Mexico,imported,0,NaN,NaN
-35025,Lea,New Mexico,local,67,NaN,NaN
-35029,Luna,New Mexico,imported,0,NaN,NaN
-35029,Luna,New Mexico,local,14,NaN,NaN
-35045,San Juan,New Mexico,imported,0,NaN,NaN
-35045,San Juan,New Mexico,local,1,NaN,NaN
-35043,Sandoval,New Mexico,imported,0,NaN,NaN
-35043,Sandoval,New Mexico,local,6,NaN,NaN
-35049,Santa Fe,New Mexico,imported,1,NaN,NaN
-35049,Santa Fe,New Mexico,local,4,NaN,NaN
-36069,Ontario,New York,imported,0,NaN,NaN
-36069,Ontario,New York,local,1,NaN,NaN
-36071,Orange,New York,imported,3,NaN,NaN
-36071,Orange,New York,local,1,NaN,NaN
-36079,Putnam,New York,imported,0,NaN,NaN
-36079,Putnam,New York,local,1,NaN,NaN
-36087,Rockland,New York,imported,1,NaN,NaN
-36087,Rockland,New York,local,0,NaN,NaN
-36103,Suffolk,New York,imported,0,NaN,NaN
-36103,Suffolk,New York,local,1,NaN,NaN
-37081,Guilford,North Carolina,imported,1,NaN,NaN
-37081,Guilford,North Carolina,local,0,NaN,NaN
-38013,Burke,North Dakota,imported,1,NaN,NaN
-38013,Burke,North Dakota,local,0,NaN,NaN
-38017,Cass,North Dakota,imported,2,NaN,NaN
-38017,Cass,North Dakota,local,5,NaN,NaN
-38035,Grand Forks,North Dakota,imported,2,NaN,NaN
-38035,Grand Forks,North Dakota,local,8,NaN,NaN
-38105,Williams,North Dakota,imported,1,NaN,NaN
-38105,Williams,North Dakota,local,17,NaN,NaN
-39003,Allen,Ohio,imported,1,NaN,NaN
-39003,Allen,Ohio,local,0,NaN,NaN
-39007,Ashtabula,Ohio,imported,3,NaN,NaN
-39007,Ashtabula,Ohio,local,13,NaN,NaN
-39035,Cuyahoga,Ohio,imported,1,NaN,NaN
-39035,Cuyahoga,Ohio,local,0,NaN,NaN
-39039,Defiance,Ohio,imported,1,NaN,NaN
-39039,Defiance,Ohio,local,0,NaN,NaN
-39049,Franklin,Ohio,imported,0,NaN,NaN
-39049,Franklin,Ohio,local,1,NaN,NaN
-39075,Holmes,Ohio,imported,0,NaN,NaN
-39075,Holmes,Ohio,local,1,NaN,NaN
-39083,Knox,Ohio,imported,0,NaN,NaN
-39083,Knox,Ohio,local,14,NaN,NaN
-39119,Muskingum,Ohio,imported,0,NaN,NaN
-39119,Muskingum,Ohio,local,3,NaN,NaN
-41051,Multnomah,Oregon,imported,1,NaN,NaN
-41051,Multnomah,Oregon,local,0,NaN,NaN
-42017,Bucks,Pennsylvania,imported,1,NaN,NaN
-42017,Bucks,Pennsylvania,local,0,NaN,NaN
-42049,Erie,Pennsylvania,imported,2,NaN,NaN
-42049,Erie,Pennsylvania,local,6,NaN,NaN
-42071,Lancaster,Pennsylvania,imported,0,NaN,NaN
-42071,Lancaster,Pennsylvania,local,1,NaN,NaN
-42091,Montgomery,Pennsylvania,imported,1,NaN,NaN
-42091,Montgomery,Pennsylvania,local,0,NaN,NaN
-42101,Philadelphia,Pennsylvania,imported,2,NaN,NaN
-42101,Philadelphia,Pennsylvania,local,0,NaN,NaN
-44007,Providence,Rhode Island,imported,1,NaN,NaN
-44007,Providence,Rhode Island,local,0,NaN,NaN
-,Upstate,South Carolina,imported,2,NaN,NaN
-,Upstate,South Carolina,local,2,NaN,NaN
-46083,Lincoln,South Dakota,imported,7,NaN,NaN
-46083,Lincoln,South Dakota,local,1,NaN,NaN
-46093,Meade,South Dakota,imported,1,NaN,NaN
-46093,Meade,South Dakota,local,1,NaN,NaN
-46103,Pennington,South Dakota,imported,1,NaN,NaN
-46103,Pennington,South Dakota,local,1,NaN,NaN
-48003,Andrews,Texas,imported,0,NaN,NaN
-48003,Andrews,Texas,local,3,NaN,NaN
-48013,Atascosa,Texas,imported,0,NaN,NaN
-48013,Atascosa,Texas,local,1,NaN,NaN
-48017,Bailey,Texas,imported,0,NaN,NaN
-48017,Bailey,Texas,local,2,NaN,NaN
-48027,Bell,Texas,imported,0,NaN,NaN
-48027,Bell,Texas,local,1,NaN,NaN
-48029,Bexar,Texas,imported,0,NaN,NaN
-48029,Bexar,Texas,local,2,NaN,NaN
-48033,Borden,Texas,imported,0,NaN,NaN
-48033,Borden,Texas,local,1,NaN,NaN
-48039,Brazoria,Texas,imported,0,NaN,NaN
-48039,Brazoria,Texas,local,1,NaN,NaN
-48043,Brewster,Texas,imported,0,NaN,NaN
-48043,Brewster,Texas,local,1,NaN,NaN
-48049,Brown,Texas,imported,0,NaN,NaN
-48049,Brown,Texas,local,1,NaN,NaN
-48065,Carson,Texas,imported,0,NaN,NaN
-48065,Carson,Texas,local,1,NaN,NaN
-48079,Cochran,Texas,imported,0,NaN,NaN
-48079,Cochran,Texas,local,14,NaN,NaN
-48085,Collin,Texas,imported,0,NaN,NaN
-48085,Collin,Texas,local,4,NaN,NaN
-48111,Dallam,Texas,imported,0,NaN,NaN
-48111,Dallam,Texas,local,7,NaN,NaN
-48113,Dallas,Texas,imported,0,NaN,NaN
-48113,Dallas,Texas,local,1,NaN,NaN
-48115,Dawson,Texas,imported,0,NaN,NaN
-48115,Dawson,Texas,local,26,NaN,NaN
-48121,Denton,Texas,imported,0,NaN,NaN
-48121,Denton,Texas,local,2,NaN,NaN
-48133,Eastland,Texas,imported,0,NaN,NaN
-48133,Eastland,Texas,local,2,NaN,NaN
-48135,Ector,Texas,imported,0,NaN,NaN
-48135,Ector,Texas,local,12,NaN,NaN
-48141,El Paso,Texas,imported,0,NaN,NaN
-48141,El Paso,Texas,local,61,NaN,NaN
-48143,Erath,Texas,imported,0,NaN,NaN
-48143,Erath,Texas,local,1,NaN,NaN
-48147,Fannin,Texas,imported,0,NaN,NaN
-48147,Fannin,Texas,local,4,NaN,NaN
-48157,Fort Bend,Texas,imported,0,NaN,NaN
-48157,Fort Bend,Texas,local,1,NaN,NaN
-48165,Gaines,Texas,imported,0,NaN,NaN
-48165,Gaines,Texas,local,414,NaN,NaN
-48169,Garza,Texas,imported,0,NaN,NaN
-48169,Garza,Texas,local,2,NaN,NaN
-48189,Hale,Texas,imported,0,NaN,NaN
-48189,Hale,Texas,local,5,NaN,NaN
-48197,Hardeman,Texas,imported,0,NaN,NaN
-48197,Hardeman,Texas,local,1,NaN,NaN
-48201,Harris,Texas,imported,0,NaN,NaN
-48201,Harris,Texas,local,5,NaN,NaN
-48203,Harrison,Texas,imported,0,NaN,NaN
-48203,Harrison,Texas,local,1,NaN,NaN
-48209,Hays,Texas,imported,0,NaN,NaN
-48209,Hays,Texas,local,1,NaN,NaN
-48219,Hockley,Texas,imported,0,NaN,NaN
-48219,Hockley,Texas,local,7,NaN,NaN
-48277,Lamar,Texas,imported,0,NaN,NaN
-48277,Lamar,Texas,local,28,NaN,NaN
-48279,Lamb,Texas,imported,0,NaN,NaN
-48279,Lamb,Texas,local,1,NaN,NaN
-48303,Lubbock,Texas,imported,0,NaN,NaN
-48303,Lubbock,Texas,local,52,NaN,NaN
-48305,Lynn,Texas,imported,0,NaN,NaN
-48305,Lynn,Texas,local,2,NaN,NaN
-48317,Martin,Texas,imported,0,NaN,NaN
-48317,Martin,Texas,local,3,NaN,NaN
-48309,McLennan,Texas,imported,0,NaN,NaN
-48309,McLennan,Texas,local,9,NaN,NaN
-48329,Midland,Texas,imported,0,NaN,NaN
-48329,Midland,Texas,local,7,NaN,NaN
-48369,Parmer,Texas,imported,0,NaN,NaN
-48369,Parmer,Texas,local,5,NaN,NaN
-48375,Potter,Texas,imported,0,NaN,NaN
-48375,Potter,Texas,local,1,NaN,NaN
-48379,Rains,Texas,imported,1,NaN,NaN
-48379,Rains,Texas,local,0,NaN,NaN
-48381,Randall,Texas,imported,0,NaN,NaN
-48381,Randall,Texas,local,3,NaN,NaN
-48389,Reeves,Texas,imported,0,NaN,NaN
-48389,Reeves,Texas,local,2,NaN,NaN
-48397,Rockwall,Texas,imported,0,NaN,NaN
-48397,Rockwall,Texas,local,2,NaN,NaN
-48415,Scurry,Texas,imported,0,NaN,NaN
-48415,Scurry,Texas,local,1,NaN,NaN
-48417,Shackelford,Texas,imported,0,NaN,NaN
-48417,Shackelford,Texas,local,1,NaN,NaN
-48439,Tarrant,Texas,imported,0,NaN,NaN
-48439,Tarrant,Texas,local,4,NaN,NaN
-48445,Terry,Texas,imported,0,NaN,NaN
-48445,Terry,Texas,local,60,NaN,NaN
-48453,Travis,Texas,imported,0,NaN,NaN
-48453,Travis,Texas,local,2,NaN,NaN
-48459,Upshur,Texas,imported,0,NaN,NaN
-48459,Upshur,Texas,local,5,NaN,NaN
-48491,Williamson,Texas,imported,0,NaN,NaN
-48491,Williamson,Texas,local,8,NaN,NaN
-48501,Yoakum,Texas,imported,0,NaN,NaN
-48501,Yoakum,Texas,local,20,NaN,NaN
-49049,Utah,Utah,imported,0,NaN,NaN
-49049,Utah,Utah,local,7,NaN,NaN
-50015,Lamoille,Vermont,imported,1,NaN,NaN
-50015,Lamoille,Vermont,local,0,NaN,NaN
-53033,King,Washington,imported,5,NaN,NaN
-53033,King,Washington,local,1,NaN,NaN
-53061,Snohomish,Washington,imported,2,NaN,NaN
-53061,Snohomish,Washington,local,0,NaN,NaN
-53063,Spokane,Washington,imported,1,NaN,NaN
-53063,Spokane,Washington,local,0,NaN,NaN
-53073,Whatcom,Washington,imported,2,NaN,NaN
-53073,Whatcom,Washington,local,0,NaN,NaN
-55083,Oconto,Wisconsin,imported,9,NaN,NaN
-55083,Oconto,Wisconsin,local,27,NaN,NaN
-56007,Carbon,Wyoming,imported,1,NaN,NaN
-56007,Carbon,Wyoming,local,6,NaN,NaN
-56025,Natrona,Wyoming,imported,0,NaN,NaN
-56025,Natrona,Wyoming,local,1,NaN,NaN
-56027,Niobrara,Wyoming,imported,0,NaN,NaN
-56027,Niobrara,Wyoming,local,1,NaN,NaN
-06001,Alameda,California,local,NaN,2,1
-06003,Alpine,California,local,NaN,2,1
-06005,Amador,California,local,NaN,2,1
-06007,Butte,California,local,NaN,2,1
-06009,Calaveras,California,local,NaN,2,1
-06011,Colusa,California,local,NaN,2,1
-06013,Contra Costa,California,local,NaN,2,1
-06015,Del Norte,California,local,NaN,2,1
-06017,El Dorado,California,local,NaN,2,1
-06019,Fresno,California,local,NaN,2,1
-06021,Glenn,California,local,NaN,2,1
-06023,Humboldt,California,local,NaN,2,1
-06025,Imperial,California,local,NaN,2,1
-06027,Inyo,California,local,NaN,2,1
-06029,Kern,California,local,NaN,2,1
-06031,Kings,California,local,NaN,2,1
-06033,Lake,California,local,NaN,2,1
-06035,Lassen,California,local,NaN,2,1
-06037,Los Angeles,California,local,NaN,2,1
-06039,Madera,California,local,NaN,2,1
-06041,Marin,California,local,NaN,2,1
-06043,Mariposa,California,local,NaN,2,1
-06045,Mendocino,California,local,NaN,2,1
-06047,Merced,California,local,NaN,2,1
-06049,Modoc,California,local,NaN,2,1
-06051,Mono,California,local,NaN,2,1
-06053,Monterey,California,local,NaN,2,1
-06055,Napa,California,local,NaN,2,1
-06057,Nevada,California,local,NaN,2,1
-06059,Orange,California,local,NaN,2,1
-06061,Placer,California,local,NaN,2,1
-06063,Plumas,California,local,NaN,2,1
-06065,Riverside,California,local,NaN,2,1
-06067,Sacramento,California,local,NaN,2,1
-06069,San Benito,California,local,NaN,2,1
-06071,San Bernardino,California,local,NaN,2,1
-06073,San Diego,California,local,NaN,2,1
-06075,San Francisco,California,local,NaN,2,1
-06077,San Joaquin,California,local,NaN,2,1
-06079,San Luis Obispo,California,local,NaN,2,1
-06081,San Mateo,California,local,NaN,2,1
-06083,Santa Barbara,California,local,NaN,2,1
-06085,Santa Clara,California,local,NaN,2,1
-06087,Santa Cruz,California,local,NaN,2,1
-06089,Shasta,California,local,NaN,2,1
-06091,Sierra,California,local,NaN,2,1
-06093,Siskiyou,California,local,NaN,2,1
-06095,Solano,California,local,NaN,2,1
-06097,Sonoma,California,local,NaN,2,1
-06099,Stanislaus,California,local,NaN,2,1
-06101,Sutter,California,local,NaN,2,1
-06103,Tehama,California,local,NaN,2,1
-06105,Trinity,California,local,NaN,2,1
-06107,Tulare,California,local,NaN,2,1
-06109,Tuolumne,California,local,NaN,2,1
-06111,Ventura,California,local,NaN,2,1
-06113,Yolo,California,local,NaN,2,1
-06115,Yuba,California,local,NaN,2,1
+06001,Alameda,California,local,NaN,2,2
+06003,Alpine,California,local,NaN,2,2
+06005,Amador,California,local,NaN,2,2
+06007,Butte,California,local,NaN,2,2
+06009,Calaveras,California,local,NaN,2,2
+06011,Colusa,California,local,NaN,2,2
+06013,Contra Costa,California,local,NaN,2,2
+06015,Del Norte,California,local,NaN,2,2
+06017,El Dorado,California,local,NaN,2,2
+06019,Fresno,California,local,NaN,2,2
+06021,Glenn,California,local,NaN,2,2
+06023,Humboldt,California,local,NaN,2,2
+06025,Imperial,California,local,NaN,2,2
+06027,Inyo,California,local,NaN,2,2
+06029,Kern,California,local,NaN,2,2
+06031,Kings,California,local,NaN,2,2
+06033,Lake,California,local,NaN,2,2
+06035,Lassen,California,local,NaN,2,2
+06037,Los Angeles,California,local,NaN,2,2
+06039,Madera,California,local,NaN,2,2
+06041,Marin,California,local,NaN,2,2
+06043,Mariposa,California,local,NaN,2,2
+06045,Mendocino,California,local,NaN,2,2
+06047,Merced,California,local,NaN,2,2
+06049,Modoc,California,local,NaN,2,2
+06051,Mono,California,local,NaN,2,2
+06053,Monterey,California,local,NaN,2,2
+06055,Napa,California,local,NaN,2,2
+06057,Nevada,California,local,NaN,2,2
+06059,Orange,California,local,NaN,2,2
+06061,Placer,California,local,NaN,2,2
+06063,Plumas,California,local,NaN,2,2
+06065,Riverside,California,local,NaN,2,2
+06067,Sacramento,California,local,NaN,2,2
+06069,San Benito,California,local,NaN,2,2
+06071,San Bernardino,California,local,NaN,2,2
+06073,San Diego,California,local,NaN,2,2
+06075,San Francisco,California,local,NaN,2,2
+06077,San Joaquin,California,local,NaN,2,2
+06079,San Luis Obispo,California,local,NaN,2,2
+06081,San Mateo,California,local,NaN,2,2
+06083,Santa Barbara,California,local,NaN,2,2
+06085,Santa Clara,California,local,NaN,2,2
+06087,Santa Cruz,California,local,NaN,2,2
+06089,Shasta,California,local,NaN,2,2
+06091,Sierra,California,local,NaN,2,2
+06093,Siskiyou,California,local,NaN,2,2
+06095,Solano,California,local,NaN,2,2
+06097,Sonoma,California,local,NaN,2,2
+06099,Stanislaus,California,local,NaN,2,2
+06101,Sutter,California,local,NaN,2,2
+06103,Tehama,California,local,NaN,2,2
+06105,Trinity,California,local,NaN,2,2
+06107,Tulare,California,local,NaN,2,2
+06109,Tuolumne,California,local,NaN,2,2
+06111,Ventura,California,local,NaN,2,2
+06113,Yolo,California,local,NaN,2,2
+06115,Yuba,California,local,NaN,2,2
 19007,Appanoose,Iowa,local,NaN,3,1
 19015,Boone,Iowa,local,NaN,3,1
 19023,Butler,Iowa,local,NaN,3,1
@@ -490,7 +340,7 @@ GEOID,county,state,type,case_count,ID_Unknown,unkown_case_count
 19129,Mills,Iowa,local,NaN,4,1
 19133,Monona,Iowa,local,NaN,4,1
 19137,Montgomery,Iowa,local,NaN,4,1
-19141,O'Brien,Iowa,local,NaN,4,1
+19141,OBrien,Iowa,local,NaN,4,1
 19143,Osceola,Iowa,local,NaN,4,1
 19145,Page,Iowa,local,NaN,4,1
 19147,Palo Alto,Iowa,local,NaN,4,1
@@ -686,93 +536,93 @@ GEOID,county,state,type,case_count,ID_Unknown,unkown_case_count
 21235,Whitley,Kentucky,imported,NaN,7,1
 21237,Wolfe,Kentucky,imported,NaN,7,1
 21239,Woodford,Kentucky,imported,NaN,7,1
-27001,Aitkin,Minnesota,local,NaN,8,4
-27003,Anoka,Minnesota,local,NaN,8,4
-27005,Becker,Minnesota,local,NaN,8,4
-27007,Beltrami,Minnesota,local,NaN,8,4
-27009,Benton,Minnesota,local,NaN,8,4
-27011,Big Stone,Minnesota,local,NaN,8,4
-27013,Blue Earth,Minnesota,local,NaN,8,4
-27015,Brown,Minnesota,local,NaN,8,4
-27017,Carlton,Minnesota,local,NaN,8,4
-27019,Carver,Minnesota,local,NaN,8,4
-27021,Cass,Minnesota,local,NaN,8,4
-27023,Chippewa,Minnesota,local,NaN,8,4
-27025,Chisago,Minnesota,local,NaN,8,4
-27027,Clay,Minnesota,local,NaN,8,4
-27029,Clearwater,Minnesota,local,NaN,8,4
-27031,Cook,Minnesota,local,NaN,8,4
-27033,Cottonwood,Minnesota,local,NaN,8,4
-27035,Crow Wing,Minnesota,local,NaN,8,4
-27037,Dakota,Minnesota,local,NaN,8,4
-27039,Dodge,Minnesota,local,NaN,8,4
-27041,Douglas,Minnesota,local,NaN,8,4
-27043,Faribault,Minnesota,local,NaN,8,4
-27045,Fillmore,Minnesota,local,NaN,8,4
-27047,Freeborn,Minnesota,local,NaN,8,4
-27049,Goodhue,Minnesota,local,NaN,8,4
-27051,Grant,Minnesota,local,NaN,8,4
-27053,Hennepin,Minnesota,local,NaN,8,4
-27055,Houston,Minnesota,local,NaN,8,4
-27057,Hubbard,Minnesota,local,NaN,8,4
-27059,Isanti,Minnesota,local,NaN,8,4
-27061,Itasca,Minnesota,local,NaN,8,4
-27063,Jackson,Minnesota,local,NaN,8,4
-27065,Kanabec,Minnesota,local,NaN,8,4
-27067,Kandiyohi,Minnesota,local,NaN,8,4
-27069,Kittson,Minnesota,local,NaN,8,4
-27071,Koochiching,Minnesota,local,NaN,8,4
-27073,Lac qui Parle,Minnesota,local,NaN,8,4
-27075,Lake,Minnesota,local,NaN,8,4
-27077,Lake of the Woods,Minnesota,local,NaN,8,4
-27079,Le Sueur,Minnesota,local,NaN,8,4
-27081,Lincoln,Minnesota,local,NaN,8,4
-27083,Lyon,Minnesota,local,NaN,8,4
-27087,Mahnomen,Minnesota,local,NaN,8,4
-27089,Marshall,Minnesota,local,NaN,8,4
-27091,Martin,Minnesota,local,NaN,8,4
-27085,McLeod,Minnesota,local,NaN,8,4
-27093,Meeker,Minnesota,local,NaN,8,4
-27095,Mille Lacs,Minnesota,local,NaN,8,4
-27097,Morrison,Minnesota,local,NaN,8,4
-27099,Mower,Minnesota,local,NaN,8,4
-27101,Murray,Minnesota,local,NaN,8,4
-27103,Nicollet,Minnesota,local,NaN,8,4
-27105,Nobles,Minnesota,local,NaN,8,4
-27107,Norman,Minnesota,local,NaN,8,4
-27109,Olmsted,Minnesota,local,NaN,8,4
-27111,Otter Tail,Minnesota,local,NaN,8,4
-27113,Pennington,Minnesota,local,NaN,8,4
-27115,Pine,Minnesota,local,NaN,8,4
-27117,Pipestone,Minnesota,local,NaN,8,4
-27119,Polk,Minnesota,local,NaN,8,4
-27121,Pope,Minnesota,local,NaN,8,4
-27123,Ramsey,Minnesota,local,NaN,8,4
-27125,Red Lake,Minnesota,local,NaN,8,4
-27127,Redwood,Minnesota,local,NaN,8,4
-27129,Renville,Minnesota,local,NaN,8,4
-27131,Rice,Minnesota,local,NaN,8,4
-27133,Rock,Minnesota,local,NaN,8,4
-27135,Roseau,Minnesota,local,NaN,8,4
-27139,Scott,Minnesota,local,NaN,8,4
-27141,Sherburne,Minnesota,local,NaN,8,4
-27143,Sibley,Minnesota,local,NaN,8,4
-27137,St. Louis,Minnesota,local,NaN,8,4
-27145,Stearns,Minnesota,local,NaN,8,4
-27147,Steele,Minnesota,local,NaN,8,4
-27149,Stevens,Minnesota,local,NaN,8,4
-27151,Swift,Minnesota,local,NaN,8,4
-27153,Todd,Minnesota,local,NaN,8,4
-27155,Traverse,Minnesota,local,NaN,8,4
-27157,Wabasha,Minnesota,local,NaN,8,4
-27159,Wadena,Minnesota,local,NaN,8,4
-27161,Waseca,Minnesota,local,NaN,8,4
-27163,Washington,Minnesota,local,NaN,8,4
-27165,Watonwan,Minnesota,local,NaN,8,4
-27167,Wilkin,Minnesota,local,NaN,8,4
-27169,Winona,Minnesota,local,NaN,8,4
-27171,Wright,Minnesota,local,NaN,8,4
-27173,Yellow Medicine,Minnesota,local,NaN,8,4
+27001,Aitkin,Minnesota,local,NaN,8,6
+27003,Anoka,Minnesota,local,NaN,8,6
+27005,Becker,Minnesota,local,NaN,8,6
+27007,Beltrami,Minnesota,local,NaN,8,6
+27009,Benton,Minnesota,local,NaN,8,6
+27011,Big Stone,Minnesota,local,NaN,8,6
+27013,Blue Earth,Minnesota,local,NaN,8,6
+27015,Brown,Minnesota,local,NaN,8,6
+27017,Carlton,Minnesota,local,NaN,8,6
+27019,Carver,Minnesota,local,NaN,8,6
+27021,Cass,Minnesota,local,NaN,8,6
+27023,Chippewa,Minnesota,local,NaN,8,6
+27025,Chisago,Minnesota,local,NaN,8,6
+27027,Clay,Minnesota,local,NaN,8,6
+27029,Clearwater,Minnesota,local,NaN,8,6
+27031,Cook,Minnesota,local,NaN,8,6
+27033,Cottonwood,Minnesota,local,NaN,8,6
+27035,Crow Wing,Minnesota,local,NaN,8,6
+27037,Dakota,Minnesota,local,NaN,8,6
+27039,Dodge,Minnesota,local,NaN,8,6
+27041,Douglas,Minnesota,local,NaN,8,6
+27043,Faribault,Minnesota,local,NaN,8,6
+27045,Fillmore,Minnesota,local,NaN,8,6
+27047,Freeborn,Minnesota,local,NaN,8,6
+27049,Goodhue,Minnesota,local,NaN,8,6
+27051,Grant,Minnesota,local,NaN,8,6
+27053,Hennepin,Minnesota,local,NaN,8,6
+27055,Houston,Minnesota,local,NaN,8,6
+27057,Hubbard,Minnesota,local,NaN,8,6
+27059,Isanti,Minnesota,local,NaN,8,6
+27061,Itasca,Minnesota,local,NaN,8,6
+27063,Jackson,Minnesota,local,NaN,8,6
+27065,Kanabec,Minnesota,local,NaN,8,6
+27067,Kandiyohi,Minnesota,local,NaN,8,6
+27069,Kittson,Minnesota,local,NaN,8,6
+27071,Koochiching,Minnesota,local,NaN,8,6
+27073,Lac qui Parle,Minnesota,local,NaN,8,6
+27075,Lake,Minnesota,local,NaN,8,6
+27077,Lake of the Woods,Minnesota,local,NaN,8,6
+27079,Le Sueur,Minnesota,local,NaN,8,6
+27081,Lincoln,Minnesota,local,NaN,8,6
+27083,Lyon,Minnesota,local,NaN,8,6
+27087,Mahnomen,Minnesota,local,NaN,8,6
+27089,Marshall,Minnesota,local,NaN,8,6
+27091,Martin,Minnesota,local,NaN,8,6
+27085,McLeod,Minnesota,local,NaN,8,6
+27093,Meeker,Minnesota,local,NaN,8,6
+27095,Mille Lacs,Minnesota,local,NaN,8,6
+27097,Morrison,Minnesota,local,NaN,8,6
+27099,Mower,Minnesota,local,NaN,8,6
+27101,Murray,Minnesota,local,NaN,8,6
+27103,Nicollet,Minnesota,local,NaN,8,6
+27105,Nobles,Minnesota,local,NaN,8,6
+27107,Norman,Minnesota,local,NaN,8,6
+27109,Olmsted,Minnesota,local,NaN,8,6
+27111,Otter Tail,Minnesota,local,NaN,8,6
+27113,Pennington,Minnesota,local,NaN,8,6
+27115,Pine,Minnesota,local,NaN,8,6
+27117,Pipestone,Minnesota,local,NaN,8,6
+27119,Polk,Minnesota,local,NaN,8,6
+27121,Pope,Minnesota,local,NaN,8,6
+27123,Ramsey,Minnesota,local,NaN,8,6
+27125,Red Lake,Minnesota,local,NaN,8,6
+27127,Redwood,Minnesota,local,NaN,8,6
+27129,Renville,Minnesota,local,NaN,8,6
+27131,Rice,Minnesota,local,NaN,8,6
+27133,Rock,Minnesota,local,NaN,8,6
+27135,Roseau,Minnesota,local,NaN,8,6
+27139,Scott,Minnesota,local,NaN,8,6
+27141,Sherburne,Minnesota,local,NaN,8,6
+27143,Sibley,Minnesota,local,NaN,8,6
+27137,St. Louis,Minnesota,local,NaN,8,6
+27145,Stearns,Minnesota,local,NaN,8,6
+27147,Steele,Minnesota,local,NaN,8,6
+27149,Stevens,Minnesota,local,NaN,8,6
+27151,Swift,Minnesota,local,NaN,8,6
+27153,Todd,Minnesota,local,NaN,8,6
+27155,Traverse,Minnesota,local,NaN,8,6
+27157,Wabasha,Minnesota,local,NaN,8,6
+27159,Wadena,Minnesota,local,NaN,8,6
+27161,Waseca,Minnesota,local,NaN,8,6
+27163,Washington,Minnesota,local,NaN,8,6
+27165,Watonwan,Minnesota,local,NaN,8,6
+27167,Wilkin,Minnesota,local,NaN,8,6
+27169,Winona,Minnesota,local,NaN,8,6
+27171,Wright,Minnesota,local,NaN,8,6
+27173,Yellow Medicine,Minnesota,local,NaN,8,6
 34001,Atlantic,New Jersey,imported,NaN,9,2
 34003,Bergen,New Jersey,imported,NaN,9,2
 34005,Burlington,New Jersey,imported,NaN,9,2
@@ -871,11 +721,11 @@ GEOID,county,state,type,case_count,ID_Unknown,unkown_case_count
 40149,Washita,Oklahoma,local,NaN,10,17
 40151,Woods,Oklahoma,local,NaN,10,17
 40153,Woodward,Oklahoma,local,NaN,10,17
-36005,Bronx,New York,local,NaN,11,16
-36047,Kings,New York,local,NaN,11,16
-36061,New York,New York,local,NaN,11,16
-36081,Queens,New York,local,NaN,11,16
-36085,Richmond,New York,local,NaN,11,16
+36005,Bronx,New York,local,NaN,11,18
+36047,Kings,New York,local,NaN,11,18
+36061,New York,New York,local,NaN,11,18
+36081,Queens,New York,local,NaN,11,18
+36085,Richmond,New York,local,NaN,11,18
 47021,Cheatham,Tennessee,local,NaN,12,3
 47037,Davidson,Tennessee,local,NaN,12,3
 47043,Dickson,Tennessee,local,NaN,12,3
@@ -909,16 +759,15 @@ GEOID,county,state,type,case_count,ID_Unknown,unkown_case_count
 49007,Carbon,Utah,local,NaN,15,3
 49015,Emery,Utah,local,NaN,15,3
 49019,Grand,Utah,local,NaN,15,3
-49001,Beaver,Utah,local,NaN,16,30
-49017,Garfield,Utah,local,NaN,16,30
-49021,Iron,Utah,local,NaN,16,30
-49025,Kane,Utah,local,NaN,16,30
-49053,Washington,Utah,local,NaN,16,30
+49001,Beaver,Utah,local,NaN,16,44
+49017,Garfield,Utah,local,NaN,16,44
+49021,Iron,Utah,local,NaN,16,44
+49025,Kane,Utah,local,NaN,16,44
+49053,Washington,Utah,local,NaN,16,44
 51001,Accomack,Virginia,local,NaN,17,1
 51550,Chesapeake,Virginia,local,NaN,17,1
 51057,Essex,Virginia,local,NaN,17,1
-,51620,Franklin,Virginia,NaN,NaN,17
-,51620,Franklin,Virginia,NaN,NaN,17
+51620,Franklin,Virginia,local,NaN,17,1
 51073,Gloucester,Virginia,local,NaN,17,1
 51650,Hampton,Virginia,local,NaN,17,1
 51093,Isle of Wight,Virginia,local,NaN,17,1
@@ -934,8 +783,7 @@ GEOID,county,state,type,case_count,ID_Unknown,unkown_case_count
 51133,Northumberland,Virginia,local,NaN,17,1
 51735,Poquoson,Virginia,local,NaN,17,1
 51740,Portsmouth,Virginia,local,NaN,17,1
-51159,51760,Richmond,Virginia,local,NaN,17,1
-51159,51760,Richmond,Virginia,local,NaN,17,1
+51760,Richmond,Virginia,local,NaN,17,1
 51175,Southampton,Virginia,local,NaN,17,1
 51800,Suffolk,Virginia,local,NaN,17,1
 51810,Virginia Beach,Virginia,local,NaN,17,1
@@ -1004,3 +852,283 @@ GEOID,county,state,type,case_count,ID_Unknown,unkown_case_count
 51187,Warren,Virginia,local,NaN,19,1
 51820,Waynesboro,Virginia,local,NaN,19,1
 51840,Winchester,Virginia,local,NaN,19,1
+17001,Adams,Illinois,local,NaN,20,2
+17003,Alexander,Illinois,local,NaN,20,2
+17005,Bond,Illinois,local,NaN,20,2
+17007,Boone,Illinois,local,NaN,20,2
+17009,Brown,Illinois,local,NaN,20,2
+17011,Bureau,Illinois,local,NaN,20,2
+17013,Calhoun,Illinois,local,NaN,20,2
+17015,Carroll,Illinois,local,NaN,20,2
+17017,Cass,Illinois,local,NaN,20,2
+17019,Champaign,Illinois,local,NaN,20,2
+17021,Christian,Illinois,local,NaN,20,2
+17023,Clark,Illinois,local,NaN,20,2
+17025,Clay,Illinois,local,NaN,20,2
+17027,Clinton,Illinois,local,NaN,20,2
+17029,Coles,Illinois,local,NaN,20,2
+17031,Cook,Illinois,local,NaN,20,2
+17033,Crawford,Illinois,local,NaN,20,2
+17035,Cumberland,Illinois,local,NaN,20,2
+17039,De Witt,Illinois,local,NaN,20,2
+17037,DeKalb,Illinois,local,NaN,20,2
+17041,Douglas,Illinois,local,NaN,20,2
+17043,DuPage,Illinois,local,NaN,20,2
+17045,Edgar,Illinois,local,NaN,20,2
+17047,Edwards,Illinois,local,NaN,20,2
+17049,Effingham,Illinois,local,NaN,20,2
+17051,Fayette,Illinois,local,NaN,20,2
+17053,Ford,Illinois,local,NaN,20,2
+17055,Franklin,Illinois,local,NaN,20,2
+17057,Fulton,Illinois,local,NaN,20,2
+17059,Gallatin,Illinois,local,NaN,20,2
+17061,Greene,Illinois,local,NaN,20,2
+17063,Grundy,Illinois,local,NaN,20,2
+17065,Hamilton,Illinois,local,NaN,20,2
+17067,Hancock,Illinois,local,NaN,20,2
+17069,Hardin,Illinois,local,NaN,20,2
+17071,Henderson,Illinois,local,NaN,20,2
+17073,Henry,Illinois,local,NaN,20,2
+17075,Iroquois,Illinois,local,NaN,20,2
+17077,Jackson,Illinois,local,NaN,20,2
+17079,Jasper,Illinois,local,NaN,20,2
+17081,Jefferson,Illinois,local,NaN,20,2
+17083,Jersey,Illinois,local,NaN,20,2
+17085,Jo Daviess,Illinois,local,NaN,20,2
+17087,Johnson,Illinois,local,NaN,20,2
+17089,Kane,Illinois,local,NaN,20,2
+17091,Kankakee,Illinois,local,NaN,20,2
+17093,Kendall,Illinois,local,NaN,20,2
+17095,Knox,Illinois,local,NaN,20,2
+17099,LaSalle,Illinois,local,NaN,20,2
+17097,Lake,Illinois,local,NaN,20,2
+17101,Lawrence,Illinois,local,NaN,20,2
+17103,Lee,Illinois,local,NaN,20,2
+17105,Livingston,Illinois,local,NaN,20,2
+17107,Logan,Illinois,local,NaN,20,2
+17115,Macon,Illinois,local,NaN,20,2
+17117,Macoupin,Illinois,local,NaN,20,2
+17119,Madison,Illinois,local,NaN,20,2
+17121,Marion,Illinois,local,NaN,20,2
+17123,Marshall,Illinois,local,NaN,20,2
+17125,Mason,Illinois,local,NaN,20,2
+17127,Massac,Illinois,local,NaN,20,2
+17109,McDonough,Illinois,local,NaN,20,2
+17111,McHenry,Illinois,local,NaN,20,2
+17113,McLean,Illinois,local,NaN,20,2
+17129,Menard,Illinois,local,NaN,20,2
+17131,Mercer,Illinois,local,NaN,20,2
+17133,Monroe,Illinois,local,NaN,20,2
+17135,Montgomery,Illinois,local,NaN,20,2
+17137,Morgan,Illinois,local,NaN,20,2
+17139,Moultrie,Illinois,local,NaN,20,2
+17141,Ogle,Illinois,local,NaN,20,2
+17143,Peoria,Illinois,local,NaN,20,2
+17145,Perry,Illinois,local,NaN,20,2
+17147,Piatt,Illinois,local,NaN,20,2
+17149,Pike,Illinois,local,NaN,20,2
+17151,Pope,Illinois,local,NaN,20,2
+17153,Pulaski,Illinois,local,NaN,20,2
+17155,Putnam,Illinois,local,NaN,20,2
+17157,Randolph,Illinois,local,NaN,20,2
+17159,Richland,Illinois,local,NaN,20,2
+17161,Rock Island,Illinois,local,NaN,20,2
+17165,Saline,Illinois,local,NaN,20,2
+17167,Sangamon,Illinois,local,NaN,20,2
+17169,Schuyler,Illinois,local,NaN,20,2
+17171,Scott,Illinois,local,NaN,20,2
+17173,Shelby,Illinois,local,NaN,20,2
+17163,St. Clair,Illinois,local,NaN,20,2
+17175,Stark,Illinois,local,NaN,20,2
+17177,Stephenson,Illinois,local,NaN,20,2
+17179,Tazewell,Illinois,local,NaN,20,2
+17181,Union,Illinois,local,NaN,20,2
+17183,Vermilion,Illinois,local,NaN,20,2
+17185,Wabash,Illinois,local,NaN,20,2
+17187,Warren,Illinois,local,NaN,20,2
+17189,Washington,Illinois,local,NaN,20,2
+17191,Wayne,Illinois,local,NaN,20,2
+17193,White,Illinois,local,NaN,20,2
+17195,Whiteside,Illinois,local,NaN,20,2
+17197,Will,Illinois,local,NaN,20,2
+17199,Williamson,Illinois,local,NaN,20,2
+17201,Winnebago,Illinois,local,NaN,20,2
+17203,Woodford,Illinois,local,NaN,20,2
+20001,Allen,Kansas,Local,NaN,21,17
+20003,Anderson,Kansas,Local,NaN,21,17
+20005,Atchison,Kansas,Local,NaN,21,17
+20007,Barber,Kansas,Local,NaN,21,17
+20009,Barton,Kansas,Local,NaN,21,17
+20011,Bourbon,Kansas,Local,NaN,21,17
+20013,Brown,Kansas,Local,NaN,21,17
+20015,Butler,Kansas,Local,NaN,21,17
+20017,Chase,Kansas,Local,NaN,21,17
+20019,Chautauqua,Kansas,Local,NaN,21,17
+20021,Cherokee,Kansas,Local,NaN,21,17
+20023,Cheyenne,Kansas,Local,NaN,21,17
+20025,Clark,Kansas,Local,NaN,21,17
+20027,Clay,Kansas,Local,NaN,21,17
+20029,Cloud,Kansas,Local,NaN,21,17
+20031,Coffey,Kansas,Local,NaN,21,17
+20033,Comanche,Kansas,Local,NaN,21,17
+20035,Cowley,Kansas,Local,NaN,21,17
+20037,Crawford,Kansas,Local,NaN,21,17
+20039,Decatur,Kansas,Local,NaN,21,17
+20041,Dickinson,Kansas,Local,NaN,21,17
+20043,Doniphan,Kansas,Local,NaN,21,17
+20045,Douglas,Kansas,Local,NaN,21,17
+20047,Edwards,Kansas,Local,NaN,21,17
+20049,Elk,Kansas,Local,NaN,21,17
+20051,Ellis,Kansas,Local,NaN,21,17
+20053,Ellsworth,Kansas,Local,NaN,21,17
+20055,Finney,Kansas,Local,NaN,21,17
+20057,Ford,Kansas,Local,NaN,21,17
+20059,Franklin,Kansas,Local,NaN,21,17
+20061,Geary,Kansas,Local,NaN,21,17
+20063,Gove,Kansas,Local,NaN,21,17
+20065,Graham,Kansas,Local,NaN,21,17
+20067,Grant,Kansas,Local,NaN,21,17
+20069,Gray,Kansas,Local,NaN,21,17
+20071,Greeley,Kansas,Local,NaN,21,17
+20073,Greenwood,Kansas,Local,NaN,21,17
+20075,Hamilton,Kansas,Local,NaN,21,17
+20077,Harper,Kansas,Local,NaN,21,17
+20079,Harvey,Kansas,Local,NaN,21,17
+20081,Haskell,Kansas,Local,NaN,21,17
+20083,Hodgeman,Kansas,Local,NaN,21,17
+20085,Jackson,Kansas,Local,NaN,21,17
+20087,Jefferson,Kansas,Local,NaN,21,17
+20089,Jewell,Kansas,Local,NaN,21,17
+20091,Johnson,Kansas,Local,NaN,21,17
+20093,Kearny,Kansas,Local,NaN,21,17
+20095,Kingman,Kansas,Local,NaN,21,17
+20097,Kiowa,Kansas,Local,NaN,21,17
+20099,Labette,Kansas,Local,NaN,21,17
+20101,Lane,Kansas,Local,NaN,21,17
+20103,Leavenworth,Kansas,Local,NaN,21,17
+20105,Lincoln,Kansas,Local,NaN,21,17
+20107,Linn,Kansas,Local,NaN,21,17
+20109,Logan,Kansas,Local,NaN,21,17
+20111,Lyon,Kansas,Local,NaN,21,17
+20115,Marion,Kansas,Local,NaN,21,17
+20117,Marshall,Kansas,Local,NaN,21,17
+20113,McPherson,Kansas,Local,NaN,21,17
+20119,Meade,Kansas,Local,NaN,21,17
+20121,Miami,Kansas,Local,NaN,21,17
+20123,Mitchell,Kansas,Local,NaN,21,17
+20125,Montgomery,Kansas,Local,NaN,21,17
+20127,Morris,Kansas,Local,NaN,21,17
+20129,Morton,Kansas,Local,NaN,21,17
+20131,Nemaha,Kansas,Local,NaN,21,17
+20133,Neosho,Kansas,Local,NaN,21,17
+20135,Ness,Kansas,Local,NaN,21,17
+20137,Norton,Kansas,Local,NaN,21,17
+20139,Osage,Kansas,Local,NaN,21,17
+20141,Osborne,Kansas,Local,NaN,21,17
+20143,Ottawa,Kansas,Local,NaN,21,17
+20145,Pawnee,Kansas,Local,NaN,21,17
+20147,Phillips,Kansas,Local,NaN,21,17
+20149,Pottawatomie,Kansas,Local,NaN,21,17
+20151,Pratt,Kansas,Local,NaN,21,17
+20153,Rawlins,Kansas,Local,NaN,21,17
+20155,Reno,Kansas,Local,NaN,21,17
+20157,Republic,Kansas,Local,NaN,21,17
+20159,Rice,Kansas,Local,NaN,21,17
+20161,Riley,Kansas,Local,NaN,21,17
+20163,Rooks,Kansas,Local,NaN,21,17
+20165,Rush,Kansas,Local,NaN,21,17
+20167,Russell,Kansas,Local,NaN,21,17
+20169,Saline,Kansas,Local,NaN,21,17
+20171,Scott,Kansas,Local,NaN,21,17
+20173,Sedgwick,Kansas,Local,NaN,21,17
+20175,Seward,Kansas,Local,NaN,21,17
+20177,Shawnee,Kansas,Local,NaN,21,17
+20179,Sheridan,Kansas,Local,NaN,21,17
+20181,Sherman,Kansas,Local,NaN,21,17
+20183,Smith,Kansas,Local,NaN,21,17
+20185,Stafford,Kansas,Local,NaN,21,17
+20187,Stanton,Kansas,Local,NaN,21,17
+20189,Stevens,Kansas,Local,NaN,21,17
+20191,Sumner,Kansas,Local,NaN,21,17
+20193,Thomas,Kansas,Local,NaN,21,17
+20195,Trego,Kansas,Local,NaN,21,17
+20197,Wabaunsee,Kansas,Local,NaN,21,17
+20199,Wallace,Kansas,Local,NaN,21,17
+20201,Washington,Kansas,Local,NaN,21,17
+20203,Wichita,Kansas,Local,NaN,21,17
+20205,Wilson,Kansas,Local,NaN,21,17
+20207,Woodson,Kansas,Local,NaN,21,17
+20209,Wyandotte,Kansas,Local,NaN,21,17
+27003,Anoka,Minnesota,Imported,NaN,22,10
+27019,Carver,Minnesota,Imported,NaN,22,10
+27037,Dakota,Minnesota,Imported,NaN,22,10
+27053,Hennepin,Minnesota,Imported,NaN,22,10
+27123,Ramsey,Minnesota,Imported,NaN,22,10
+27139,Scott,Minnesota,Imported,NaN,22,10
+27163,Washington,Minnesota,Imported,NaN,22,10
+45001,Abbeville,South Carolina,Local,NaN,23,1
+45003,Aiken,South Carolina,Local,NaN,23,1
+45005,Allendale,South Carolina,Local,NaN,23,1
+45007,Anderson,South Carolina,Local,NaN,23,1
+45009,Bamberg,South Carolina,Local,NaN,23,1
+45011,Barnwell,South Carolina,Local,NaN,23,1
+45013,Beaufort,South Carolina,Local,NaN,23,1
+45015,Berkeley,South Carolina,Local,NaN,23,1
+45017,Calhoun,South Carolina,Local,NaN,23,1
+45019,Charleston,South Carolina,Local,NaN,23,1
+45021,Cherokee,South Carolina,Local,NaN,23,1
+45023,Chester,South Carolina,Local,NaN,23,1
+45025,Chesterfield,South Carolina,Local,NaN,23,1
+45027,Clarendon,South Carolina,Local,NaN,23,1
+45029,Colleton,South Carolina,Local,NaN,23,1
+45031,Darlington,South Carolina,Local,NaN,23,1
+45033,Dillon,South Carolina,Local,NaN,23,1
+45035,Dorchester,South Carolina,Local,NaN,23,1
+45037,Edgefield,South Carolina,Local,NaN,23,1
+45039,Fairfield,South Carolina,Local,NaN,23,1
+45041,Florence,South Carolina,Local,NaN,23,1
+45043,Georgetown,South Carolina,Local,NaN,23,1
+45045,Greenville,South Carolina,Local,NaN,23,1
+45047,Greenwood,South Carolina,Local,NaN,23,1
+45049,Hampton,South Carolina,Local,NaN,23,1
+45051,Horry,South Carolina,Local,NaN,23,1
+45053,Jasper,South Carolina,Local,NaN,23,1
+45055,Kershaw,South Carolina,Local,NaN,23,1
+45057,Lancaster,South Carolina,Local,NaN,23,1
+45059,Laurens,South Carolina,Local,NaN,23,1
+45061,Lee,South Carolina,Local,NaN,23,1
+45063,Lexington,South Carolina,Local,NaN,23,1
+45067,Marion,South Carolina,Local,NaN,23,1
+45069,Marlboro,South Carolina,Local,NaN,23,1
+45065,McCormick,South Carolina,Local,NaN,23,1
+45071,Newberry,South Carolina,Local,NaN,23,1
+45073,Oconee,South Carolina,Local,NaN,23,1
+45075,Orangeburg,South Carolina,Local,NaN,23,1
+45077,Pickens,South Carolina,Local,NaN,23,1
+45079,Richland,South Carolina,Local,NaN,23,1
+45081,Saluda,South Carolina,Local,NaN,23,1
+45083,Spartanburg,South Carolina,Local,NaN,23,1
+45085,Sumter,South Carolina,Local,NaN,23,1
+45087,Union,South Carolina,Local,NaN,23,1
+45089,Williamsburg,South Carolina,Local,NaN,23,1
+45091,York,South Carolina,Local,NaN,23,1
+45001,Abbeville,South Carolina,Local,NaN,24,1
+45007,Anderson,South Carolina,Local,NaN,24,1
+45021,Cherokee,South Carolina,Local,NaN,24,1
+45045,Greenville,South Carolina,Local,NaN,24,1
+45047,Greenwood,South Carolina,Local,NaN,24,1
+45059,Laurens,South Carolina,Local,NaN,24,1
+45073,Oconee,South Carolina,Local,NaN,24,1
+45077,Pickens,South Carolina,Local,NaN,24,1
+45083,Spartanburg,South Carolina,Local,NaN,24,1
+45087,Union,South Carolina,Local,NaN,24,1
+45001,Abbeville,South Carolina,Imported,NaN,25,1
+45007,Anderson,South Carolina,Imported,NaN,25,1
+45021,Cherokee,South Carolina,Imported,NaN,25,1
+45045,Greenville,South Carolina,Imported,NaN,25,1
+45047,Greenwood,South Carolina,Imported,NaN,25,1
+45059,Laurens,South Carolina,Imported,NaN,25,1
+45073,Oconee,South Carolina,Imported,NaN,25,1
+45077,Pickens,South Carolina,Imported,NaN,25,1
+45083,Spartanburg,South Carolina,Imported,NaN,25,1
+45087,Union,South Carolina,Imported,NaN,25,1

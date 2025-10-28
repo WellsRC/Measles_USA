@@ -1,4 +1,4 @@
-function [County_Info,dZ_Reduction]=Decline_Adjustment_Factor(Vaccine,Model_Num,dZ_County,National_Reduction,Age_Reduction)
+function [County_Info,dZ_Reduction]=Decline_Adjustment_Factor(Vaccine,Model_Num,dZ_County,National_Reduction,Age_Reduction,Age_0_6)
 Year=2023;
 % Load the data
 [County_Data_0_to_4,~] = Load_Data_Adjustment(Vaccine,'Age_0_to_4');
@@ -178,7 +178,7 @@ load([Vaccine '_Model_' num2str(Model_Num) '.mat'],'final_model_par');
 
 opts_lsq=optimoptions('lsqnonlin','ConstraintTolerance',10^(-12),'FunctionTolerance',10^(-12),'MaxFunctionEvaluations',10^6,'MaxIterations',10^4,'OptimalityTolerance',10^(-12),'StepTolerance',10^(-12));
 
-[dZ_Reduction,f_val]=lsqnonlin(@(x)Objective_Redution_National_Coverage(x,beta_x,beta_insurance,County_Data_model_0_to_4,County_Data_model_5_to_9,County_Data_model_10_to_14,County_Data_model_15_to_19,County_Data_model_20_to_24,dZ_County,National_Reduction),0,-40,40,[],[],[],[],[],opts_lsq);
+[dZ_Reduction,f_val]=lsqnonlin(@(x)Objective_Redution_National_Coverage(x,beta_x,beta_insurance,County_Data_model_0_to_4,County_Data_model_5_to_9,County_Data_model_10_to_14,County_Data_model_15_to_19,County_Data_model_20_to_24,dZ_County,National_Reduction,Age_0_6),0,-40,40,[],[],[],[],[],opts_lsq);
     
 
 [Estimated_Vaccination_Coverage] = Vaccination_Coverage_Adjusted([County_Data_model_0_to_4.X County_Data_model_0_to_4.XI County_Data_model_0_to_4.X2],beta_x,beta_insurance,County_Data_model_0_to_4,dZ_County(:,1)+dZ_Reduction);

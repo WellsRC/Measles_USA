@@ -1,4 +1,4 @@
-function J = Objective_Redution_National_Coverage(x,beta_x,beta_insurance,County_Data_model_0_to_4,County_Data_model_5_to_9,County_Data_model_10_to_14,County_Data_model_15_to_19,County_Data_model_20_to_24,dZ_County,National_Reduction)
+function J = Objective_Redution_National_Coverage(x,beta_x,beta_insurance,County_Data_model_0_to_4,County_Data_model_5_to_9,County_Data_model_10_to_14,County_Data_model_15_to_19,County_Data_model_20_to_24,dZ_County,National_Reduction,Age_0_6)
 
 dZ_Reduction = x;
 
@@ -11,11 +11,20 @@ Reduced_v_county_0_to_4=Estimated_Vaccination_Coverage.Overall(:).*County_Data_m
 
 if(~isempty(County_Data_model_5_to_9))
     [Estimated_Vaccination_Coverage] = Vaccination_Coverage_Adjusted([County_Data_model_5_to_9.X County_Data_model_5_to_9.XI County_Data_model_5_to_9.X2],beta_x,beta_insurance,County_Data_model_5_to_9,dZ_County(:,2));
-    v_county_5_to_9=Estimated_Vaccination_Coverage.Overall(:).*County_Data_model_5_to_9.Weight(:);
-    Pop_5_to_9=County_Data_model_5_to_9.Weight(:);
+    if(~Age_0_6)
+        v_county_5_to_9=Estimated_Vaccination_Coverage.Overall(:).*County_Data_model_5_to_9.Weight(:);
+        Pop_5_to_9=County_Data_model_5_to_9.Weight(:);
+    else
+        v_county_5_to_9=(2/5).*Estimated_Vaccination_Coverage.Overall(:).*County_Data_model_5_to_9.Weight(:);
+        Pop_5_to_9=(2/5).*County_Data_model_5_to_9.Weight(:);
+    end
 
     [Estimated_Vaccination_Coverage] = Vaccination_Coverage_Adjusted([County_Data_model_5_to_9.X County_Data_model_5_to_9.XI County_Data_model_5_to_9.X2],beta_x,beta_insurance,County_Data_model_5_to_9,dZ_County(:,2)+dZ_Reduction);
-    Reduced_v_county_5_to_9=Estimated_Vaccination_Coverage.Overall(:).*County_Data_model_5_to_9.Weight(:);
+    if(~Age_0_6)
+        Reduced_v_county_5_to_9=Estimated_Vaccination_Coverage.Overall(:).*County_Data_model_5_to_9.Weight(:);
+    else
+        Reduced_v_county_5_to_9=(2/5).*Estimated_Vaccination_Coverage.Overall(:).*County_Data_model_5_to_9.Weight(:);
+    end
 else
     v_county_5_to_9=0;
     Reduced_v_county_5_to_9=0;

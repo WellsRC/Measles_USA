@@ -1,7 +1,10 @@
-function National_Reduction_Vaccine_Uptake(National_Reduction,Age_Reduction)
-
-for ii=2:length(Age_Reduction)
-    Age_Reduction(ii)=Age_Reduction(ii-1) & Age_Reduction(ii);
+function National_Reduction_Vaccine_Uptake(National_Reduction,Age_Reduction,Age_0_6)
+if(~Age_0_6)
+    for ii=2:length(Age_Reduction)
+        Age_Reduction(ii)=Age_Reduction(ii-1) & Age_Reduction(ii);
+    end
+else
+    Age_Reduction=[true(1,2) false(1,3)];
 end
 Vaccine='MMR';
 L_F=zeros(2^7,4);
@@ -16,7 +19,7 @@ L_T=sum(L_F,2)+sum(L_S,2);
     
 [~,Model_Num]=max(L_T);
 
-clearvars -except Model_Num Vaccine National_Reduction Age_Reduction
+clearvars -except Model_Num Vaccine National_Reduction Age_Reduction Age_0_6
 
 Age_Class={'Age_0_to_4','Age_5_to_9','Age_10_to_14','Age_15_to_19','Age_20_to_24'};
 Age_Class=Age_Class(Age_Reduction);
@@ -29,7 +32,7 @@ for aa=1:length(Age_Class)
     [~,dZ_County(:,aa)]=Age_Adjustment_Factor(Vaccine,Model_Num,Age_Class{aa});
 end
 
-[County_Info,~]=Decline_Adjustment_Factor(Vaccine,Model_Num,dZ_County,National_Reduction,Age_Reduction);
+[County_Info,~]=Decline_Adjustment_Factor(Vaccine,Model_Num,dZ_County,National_Reduction,Age_Reduction,Age_0_6);
 
 
 load([Vaccine '_Immunity.mat'],'County_Data')
@@ -176,6 +179,10 @@ County_Data_Vaccine_Reduction.R_eff=R_eff;
 County_Data_Vaccine_Reduction.Final_Size_Est=Final_Size_Est;
 County_Data_Vaccine_Reduction.All_Contacts=All_Contacts;
 County_Data_Vaccine_Reduction.Unvaccinated_Contacts=Unvaccinated_Contacts;
-save(['National_Reduction=' num2str(100*National_Reduction) '_' FN_Age_Class{:} '.mat'],'County_Data_Vaccine_Reduction','Proportion_Size_Age_Unvaccinated','Proportion_Size_Age_Vaccinated')
+if(~Age_0_6)
+    save(['National_Reduction=' num2str(100*National_Reduction) '_' FN_Age_Class{:} '.mat'],'County_Data_Vaccine_Reduction','Proportion_Size_Age_Unvaccinated','Proportion_Size_Age_Vaccinated')
+else
+    save(['National_Reduction=' num2str(100*National_Reduction) '_Ages_0_to_6.mat'],'County_Data_Vaccine_Reduction','Proportion_Size_Age_Unvaccinated','Proportion_Size_Age_Vaccinated')
+end
 
 end

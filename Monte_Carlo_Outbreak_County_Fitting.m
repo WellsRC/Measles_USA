@@ -24,7 +24,7 @@ for ss=1:length(p_c)
             [pdf_0] = Chain_Size_Distribution(cc,Reff(ss),k_mealses);
 
             r=pdf_0+(1-pdf_0).*r_outbreak(jj);
-            while (pdf_0<r && cc<min(100,Max_Outbreak(ss)))
+            while (pdf_0<r && cc<min(101,Max_Outbreak(ss)))
                 cc=cc+1;
                 pdf_0 = pdf_0+Chain_Size_Distribution(cc,Reff(ss),k_mealses);
             end

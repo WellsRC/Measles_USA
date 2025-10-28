@@ -3,13 +3,15 @@ function  Refine_Fit_Model(Vaccine,Spatial_Validation)
 Spatial_Set=[1:4];
 Spatial_Training=Spatial_Set(~ismember(Spatial_Set,Spatial_Validation)); 
 
-[County_Data,State_Data] = Load_Data(Vaccine);
+[County_Data,State_Data,NE_Data] = Load_Data(Vaccine);
 
 filter_county_train= ismember(County_Data.Spatial_Identifier,Spatial_Training);
 filter_state_train= ismember(State_Data.Spatial_Identifier,Spatial_Training);
+filter_NE_train= ismember(NE_Data.Spatial_Identifier,Spatial_Training);
 
 filter_county_spatial_validation= ismember(County_Data.Spatial_Identifier,Spatial_Validation);
 filter_state_spatial_validation= ismember(State_Data.Spatial_Identifier,Spatial_Validation);
+filter_NE_spatial_validation= ismember(NE_Data.Spatial_Identifier,Spatial_Validation);
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
 % Model index for fitting
@@ -50,7 +52,7 @@ bin_model=dec2bin([0:2^7-1]',7)=='1';
     load([ Vaccine '_Set_Spatial_Validation=' num2str(Spatial_Validation) '.mat'],'model_par');
     filter_paramters=false(2^7,571);
     
-    for model_num=1:2^7
+    parfor model_num=1:2^7
         x_temp=Model_Var(model_num,:);
         x2_temp=Model_Var(model_num,3:end-9);
         xi_temp=[];
@@ -110,15 +112,15 @@ bin_model=dec2bin([0:2^7-1]',7)=='1';
         ub(end-1:end)=4;
         ub(1:5)=50;
         
-        opts_ga=optimoptions("ga","PlotFcn",[],'UseParallel',false,"MaxGenerations",250,"FunctionTolerance",10^(-9),'CrossoverFcn','crossoverheuristic','MigrationInterval',25,'SelectionFcn',{@selectiontournament,8},'PopulationSize',250,'InitialPopulationMatrix',par_0);
-        [par_est]=ga(@(x)Objective_Function_Coverage(x,County_Data_model,State_Data,filter_county_train,filter_state_train),length(lb),[],[],[],[],lb,ub,[],[],opts_ga);
+        opts_ga=optimoptions("ga","PlotFcn",[],'UseParallel',false,"MaxGenerations",100,"FunctionTolerance",10^(-9),'CrossoverFcn','crossoverheuristic','MigrationInterval',25,'SelectionFcn',{@selectiontournament,8},'PopulationSize',250,'InitialPopulationMatrix',par_0);
+        [par_est]=ga(@(x)Objective_Function_Coverage(x,County_Data_model,State_Data,NE_Data,filter_county_train,filter_state_train,filter_NE_train),length(lb),[],[],[],[],lb,ub,[],[],opts_ga);
     
         opts_pats=optimoptions('patternsearch','UseParallel',false,"PlotFcn",[],'FunctionTolerance',10^(-12),'MaxIterations',1000,'StepTolerance',10^(-9),'MaxFunctionEvaluations',10^4,'Cache','on');
-        [par_final,f_final]=patternsearch(@(x)Objective_Function_Coverage(x,County_Data_model,State_Data,filter_county_train,filter_state_train),par_est,[],[],[],[],lb,ub,[],opts_pats);
+        [par_final,f_final]=patternsearch(@(x)Objective_Function_Coverage(x,County_Data_model,State_Data,NE_Data,filter_county_train,filter_state_train,filter_NE_train),par_est,[],[],[],[],lb,ub,[],opts_pats);
 
         refine_model_par{model_num}=par_final;
         L_fit(model_num)=-f_final;
-        L_spatial_val(model_num)=-Objective_Function_Coverage(par_final,County_Data_model,State_Data,filter_county_spatial_validation,filter_state_spatial_validation);
+        L_spatial_val(model_num)=-Objective_Function_Coverage(par_final,County_Data_model,State_Data,NE_Data,filter_county_spatial_validation,filter_state_spatial_validation,filter_NE_spatial_validation);
     end
     save(['Refine_' Vaccine '_Set_Spatial_Validation=' num2str(Spatial_Validation) '.mat'],'refine_model_par','L_fit','L_spatial_val','Var_Names');
 end

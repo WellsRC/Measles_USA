@@ -20,10 +20,11 @@ for Spatial_Valiation=1:4
     par_0=[par_0; refine_model_par{Model_Num}];
 end
 
-[County_Data,State_Data] = Load_Data(Vaccine);
+[County_Data,State_Data,NE_Data] = Load_Data(Vaccine);
 
 filter_county_train= ismember(County_Data.Spatial_Identifier,[1:4]);
 filter_state_train= ismember(State_Data.Spatial_Identifier,[1:4]);
+filter_NE_train= ismember(NE_Data.Spatial_Identifier,[1:4]);
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
 % Model index for fitting
@@ -91,26 +92,25 @@ z_fit=log(v_temp(t_fit)./(1-v_temp(t_fit)));
 
 
 if(~isempty(County_Data_model.XI))
-
     lX=length(County_Data_model.X(1,:));
     mdl_temp=fitlm([County_Data_model.X(t_fit,:) County_Data_model.X2(t_fit,:)],z_fit);
-    par_0=[par_0; mdl_temp.Coefficients.Estimate(1).*ones(10,3) repmat(mdl_temp.Coefficients.Estimate(2:(2+lX-1))',10,1) zeros(10,length(County_Data_model.XI(1,:))) repmat(mdl_temp.Coefficients.Estimate((2+lX):end)',10,1) flip(linspace(-1,3,10))' flip(linspace(-1,3,10))' (linspace(1.01,3,10))' (linspace(1.01,3,10))'];
+    par_0=[mdl_temp.Coefficients.Estimate(1).*ones(10,3) repmat(mdl_temp.Coefficients.Estimate(2:(2+lX-1))',10,1) zeros(10,length(County_Data_model.XI(1,:))) repmat(mdl_temp.Coefficients.Estimate((2+lX):end)',10,1) flip(linspace(-1,3,10))' flip(linspace(-1,3,10))' flip(linspace(-1,3,10))' (linspace(1.01,3,10))' (linspace(1.01,3,10))'];
 
     mdl_temp=fitlm([County_Data_model.X(t_fit,:) County_Data_model.XI(t_fit,:)],z_fit);
-    par_0=[par_0; mdl_temp.Coefficients.Estimate(1).*ones(10,2) repmat(mdl_temp.Coefficients.Estimate',10,1) zeros(10,length(County_Data_model.X2(1,:))) flip(linspace(-1,3,10))' flip(linspace(-1,3,10))' (linspace(1.01,3,10))' (linspace(1.01,3,10))'];
+    par_0=[par_0; mdl_temp.Coefficients.Estimate(1).*ones(10,2) repmat(mdl_temp.Coefficients.Estimate',10,1) zeros(10,length(County_Data_model.X2(1,:))) flip(linspace(-1,3,10))' flip(linspace(-1,3,10))' flip(linspace(-1,3,10))' (linspace(1.01,3,10))' (linspace(1.01,3,10))'];
 
     mdl_temp=fitlm([County_Data_model.X(t_fit,:)],z_fit);
-    par_0=[par_0; mdl_temp.Coefficients.Estimate(1).*ones(10,2) repmat(mdl_temp.Coefficients.Estimate',10,1) zeros(10,length(County_Data_model.XI(1,:))) zeros(10,length(County_Data_model.X2(1,:))) flip(linspace(-1,3,10))' flip(linspace(-1,3,10))' (linspace(1.01,3,10))' (linspace(1.01,3,10))'];
+    par_0=[par_0; mdl_temp.Coefficients.Estimate(1).*ones(10,2) repmat(mdl_temp.Coefficients.Estimate',10,1) zeros(10,length(County_Data_model.XI(1,:))) zeros(10,length(County_Data_model.X2(1,:))) flip(linspace(-1,3,10))' flip(linspace(-1,3,10))' flip(linspace(-1,3,10))' (linspace(1.01,3,10))' (linspace(1.01,3,10))'];
 
     mdl_temp=fitlm([County_Data_model.X(t_fit,:) County_Data_model.XI(t_fit,:) County_Data_model.X2(t_fit,:)],z_fit);
-    par_0=[par_0;mdl_temp.Coefficients.Estimate(1).*ones(10,2) repmat(mdl_temp.Coefficients.Estimate',10,1) flip(linspace(-1,3,10))' flip(linspace(-1,3,10))' (linspace(1.01,3,10))' (linspace(1.01,3,10))'];
+    par_0=[par_0;mdl_temp.Coefficients.Estimate(1).*ones(10,2) repmat(mdl_temp.Coefficients.Estimate',10,1) flip(linspace(-1,3,10))' flip(linspace(-1,3,10))' flip(linspace(-1,3,10))' (linspace(1.01,3,10))' (linspace(1.01,3,10))'];
 
 elseif(~isempty(County_Data_model.X2))
     mdl_temp=fitlm([County_Data_model.X(t_fit,:) County_Data_model.X2(t_fit,:)],z_fit);
-    par_0=[mdl_temp.Coefficients.Estimate(1).*ones(10,2) repmat(mdl_temp.Coefficients.Estimate',10,1) flip(linspace(-1,3,10))' flip(linspace(-1,3,10))' (linspace(1.01,3,10))' (linspace(1.01,3,10))'];
+    par_0=[mdl_temp.Coefficients.Estimate(1).*ones(10,2) repmat(mdl_temp.Coefficients.Estimate',10,1) flip(linspace(-1,3,10))' flip(linspace(-1,3,10))' flip(linspace(-1,3,10))' (linspace(1.01,3,10))' (linspace(1.01,3,10))'];
 else
     mdl_temp=fitlm([County_Data_model.X(t_fit,:)],z_fit);
-    par_0=[mdl_temp.Coefficients.Estimate(1).*ones(10,2) repmat(mdl_temp.Coefficients.Estimate',10,1) flip(linspace(-1,3,10))' flip(linspace(-1,3,10))' (linspace(1.01,3,10))' (linspace(1.01,3,10))'];
+    par_0=[mdl_temp.Coefficients.Estimate(1).*ones(10,2) repmat(mdl_temp.Coefficients.Estimate',10,1) flip(linspace(-1,3,10))' flip(linspace(-1,3,10))' flip(linspace(-1,3,10))' (linspace(1.01,3,10))' (linspace(1.01,3,10))'];
 end
 
 
@@ -118,25 +118,26 @@ test=coefCI(mdl_temp)';
 
 test=[test(:,1) test(:,1) test];
 
-par_samp=[repmat(test(1,:),100,1)+repmat((test(2,:)-test(1,:)),100,1).*rand(100,length(test(1,:))) -1+4.*rand(100,2) 1.01+2.99.*rand(100,2)];
+par_samp=[repmat(test(1,:),124,1)+repmat((test(2,:)-test(1,:)),124,1).*rand(124,length(test(1,:))) -1+4.*rand(124,3) 1.01+2.99.*rand(124,2)];
 
 par_0=[par_0; par_samp];
 
 
-lb=-5.*10^4.*ones(1,num_par+7); % 3 interept and 4 hyper paramters
-lb(end-3:end-2)=-2;
+
+lb=-5*10^4.*ones(1,num_par+8); % 3 intercept and 5 hyper paramters
+lb(end-4:end-2)=-2;
 lb(end-1:end)=0;
 lb(1:5)=-50;
-ub=5.*10^4.*ones(1,num_par+7);  % 3 interept and 4 hyper paramters
-ub(end-3:end-2)=4;
+ub=5*10^4.*ones(1,num_par+8);  % 3 intercept and 5 hyper paramters
+ub(end-4:end-2)=4;
 ub(end-1:end)=4;
 ub(1:5)=50;
 
-opts_ga=optimoptions("ga","PlotFcn",[],'UseParallel',true,"MaxGenerations",100,"FunctionTolerance",10^(-9),'CrossoverFcn','crossoverheuristic','MigrationInterval',25,'SelectionFcn',{@selectiontournament,8},'PopulationSize',250,'InitialPopulationMatrix',par_0);
-[par_est]=ga(@(x)Objective_Function_Coverage(x,County_Data_model,State_Data,filter_county_train,filter_state_train),length(lb),[],[],[],[],lb,ub,[],[],opts_ga);
+opts_ga=optimoptions("ga","PlotFcn",[],'UseParallel',true,"MaxGenerations",500,"FunctionTolerance",10^(-9),'CrossoverFcn','crossoverheuristic','MigrationInterval',25,'SelectionFcn',{@selectiontournament,8},'PopulationSize',250,'InitialPopulationMatrix',par_0);
+[par_est]=ga(@(x)Objective_Function_Coverage(x,County_Data_model,State_Data,NE_Data,filter_county_train,filter_state_train,filter_NE_train),length(lb),[],[],[],[],lb,ub,[],[],opts_ga);
 
-opts_pats=optimoptions('patternsearch','UseParallel',true,"PlotFcn",[],'FunctionTolerance',10^(-12),'MaxIterations',1000,'StepTolerance',10^(-9),'MaxFunctionEvaluations',10^4,'Cache','on');
-[par_final,f_final]=patternsearch(@(x)Objective_Function_Coverage(x,County_Data_model,State_Data,filter_county_train,filter_state_train),par_est,[],[],[],[],lb,ub,[],opts_pats);
+opts_pats=optimoptions('patternsearch','UseParallel',true,"PlotFcn",[],'FunctionTolerance',10^(-12),'MaxIterations',5000,'StepTolerance',10^(-9),'MaxFunctionEvaluations',10^4,'Cache','on');
+[par_final,f_final]=patternsearch(@(x)Objective_Function_Coverage(x,County_Data_model,State_Data,NE_Data,filter_county_train,filter_state_train,filter_NE_train),par_est,[],[],[],[],lb,ub,[],opts_pats);
 
 final_model_par=par_final;
 L_fit=-f_final;

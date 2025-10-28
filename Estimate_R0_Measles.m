@@ -4,9 +4,8 @@ clc;
 load('Turncated_Negative_Binomial_Parameter.mat');
 F_NB = scatteredInterpolant(kv(:),avg_fs(:),log(pv(:)./(1-pv(:))));
 
-T=readtable('National_Measles_Cases_Weekly_2023_to_2025.csv');
-T=T(year(T.week_end)==2025,:);
-Week_Nat_Case_Count=T.cases;
+T=readtable('National_Measles_Cases_Weekly_2025.xlsx');
+Week_Nat_Case_Count=T.local_cases;
 Vaccine='MMR';
 load([Vaccine '_Immunity.mat'],'County_Data')
 
@@ -32,8 +31,8 @@ Measles_Cases=readtable('County_Level_Measles_Cases_Adjusted.csv');
 Imported_Case=zeros(length(County_Data.County),1);
 
 Known_Ind_Cases=zeros(length(County_Data.County),1);
-Unknown_Ind_Cases=NaN.*zeros(length(County_Data.County),1);
-Unknown_Ind_Cases_Weight=NaN.*zeros(length(County_Data.County),1);
+Unknown_Ind_Cases=NaN.*zeros(length(County_Data.County),2);
+Unknown_Ind_Cases_Weight=NaN.*zeros(length(County_Data.County),2);
 
 % Known imported cases
 for cc=1:length(Imported_Case)
@@ -53,11 +52,16 @@ for indx=1:max(Measles_Cases.ID_Unknown)
 
     t_county=ismember(str2double(County_Data.GEOID),Measles_Cases.GEOID(t_f));
 
-    w_pop=County_Data.Total_Immunity(t_county);
+    w_pop=County_Data.Total_Population(t_county)-County_Data.Total_Immunity(t_county);
     w_pop=w_pop./sum(w_pop);
+    if(sum(~isnan(Unknown_Ind_Cases(t_county,1)))>1)
+        sc_unkown=2;
+    else
+        sc_unkown=1;
+    end
     if(ismember('local',Measles_Cases.type(t_f)))
-        Unknown_Ind_Cases(t_county)=Measles_Cases.unkown_case_count(t_f);
-        Unknown_Ind_Cases_Weight(t_county)=w_pop;
+        Unknown_Ind_Cases(t_county,sc_unkown)=Measles_Cases.unkown_case_count(t_f);
+        Unknown_Ind_Cases_Weight(t_county,sc_unkown)=w_pop;
     else
         Imported_Case(t_county)=Imported_Case(t_county)+w_pop.*Measles_Cases.unkown_case_count(t_f);
     end

@@ -32,7 +32,7 @@ L_Known=zeros(size(p_c));
 L_Unknown=zeros(size(p_c));
 
 for cc=1:length(Known_Ind_Cases)
-    if(isnan(Unknown_Ind_Cases_Weight(cc)))        
+    if(isnan(Unknown_Ind_Cases_Weight(cc,1)))        
         if(Known_Ind_Cases(cc)==0)
             L_Known(cc)=log(p_c(cc));
         elseif(Reff(cc)>1)
@@ -46,18 +46,37 @@ for cc=1:length(Known_Ind_Cases)
             L_Known(cc)=log((1-p_c(cc)).*(1-temp_cdf)); %add one to known cases as assuming there was an introduction from some place for this local transmission to happen 
         end
     else
-        for uu=0:Unknown_Ind_Cases(cc)            
-            if(Known_Ind_Cases(cc)+uu==0)
-                L_Unknown(cc)=L_Unknown(cc)+log(binopdf(uu,Unknown_Ind_Cases(cc),Unknown_Ind_Cases_Weight(cc)).*p_c(cc));
-            elseif(Reff(cc)>1)
-                z_nb=F_NB(log10(k_nbin),log10(max(Case_Count(cc),1.01)))';
-                p_nb=1./(1+exp(-z_nb));
-                pd = makedist('NegativeBinomial','R',k_nbin,'P',p_nb);
-                pd = truncate(pd,1,inf);
-                L_Unknown(cc)=L_Unknown(cc)+log(binopdf(uu,Unknown_Ind_Cases(cc),Unknown_Ind_Cases_Weight(cc)).*(1-p_c(cc)).*(1-cdf(pd,Known_Ind_Cases(cc)+uu))); 
-            else
-                temp_cdf=min((Chain_Size_Distribution_CDF(uu+Known_Ind_Cases(cc)+1,Reff(cc),k_mealses)-Chain_Size_Distribution_CDF(1,Reff(cc),k_mealses))./(1-Chain_Size_Distribution_CDF(1,Reff(cc),k_mealses)),1);
-                L_Unknown(cc)=L_Unknown(cc)+log(binopdf(uu,Unknown_Ind_Cases(cc),Unknown_Ind_Cases_Weight(cc)).*(1-p_c(cc)).*(1-temp_cdf)); %add one to known cases as assuming there was an introduction from some place for this local transmission to happen
+        if(isnan(Unknown_Ind_Cases(cc,2)))
+            for uu=0:Unknown_Ind_Cases(cc,1)            
+                if(Known_Ind_Cases(cc)+uu==0)
+                    L_Unknown(cc)=L_Unknown(cc)+log(binopdf(uu,Unknown_Ind_Cases(cc,1),Unknown_Ind_Cases_Weight(cc,1)).*p_c(cc));
+                elseif(Reff(cc)>1)
+                    z_nb=F_NB(log10(k_nbin),log10(max(Case_Count(cc),1.01)))';
+                    p_nb=1./(1+exp(-z_nb));
+                    pd = makedist('NegativeBinomial','R',k_nbin,'P',p_nb);
+                    pd = truncate(pd,1,inf);
+                    L_Unknown(cc)=L_Unknown(cc)+log(binopdf(uu,Unknown_Ind_Cases(cc,1),Unknown_Ind_Cases_Weight(cc,1)).*(1-p_c(cc)).*(1-cdf(pd,Known_Ind_Cases(cc)+uu))); 
+                else
+                    temp_cdf=min((Chain_Size_Distribution_CDF(uu+Known_Ind_Cases(cc)+1,Reff(cc),k_mealses)-Chain_Size_Distribution_CDF(1,Reff(cc),k_mealses))./(1-Chain_Size_Distribution_CDF(1,Reff(cc),k_mealses)),1);
+                    L_Unknown(cc)=L_Unknown(cc)+log(binopdf(uu,Unknown_Ind_Cases(cc,1),Unknown_Ind_Cases_Weight(cc,1)).*(1-p_c(cc)).*(1-temp_cdf)); %add one to known cases as assuming there was an introduction from some place for this local transmission to happen
+                end
+            end
+        else
+            for yy=0:Unknown_Ind_Cases(cc,2)            
+                for uu=0:Unknown_Ind_Cases(cc,1)            
+                    if(Known_Ind_Cases(cc)+uu+yy==0)
+                        L_Unknown(cc)=L_Unknown(cc)+log(binopdf(uu,Unknown_Ind_Cases(cc,1),Unknown_Ind_Cases_Weight(cc,1)).*binopdf(yy,Unknown_Ind_Cases(cc,2),Unknown_Ind_Cases_Weight(cc,2)).*p_c(cc));
+                    elseif(Reff(cc)>1)
+                        z_nb=F_NB(log10(k_nbin),log10(max(Case_Count(cc),1.01)))';
+                        p_nb=1./(1+exp(-z_nb));
+                        pd = makedist('NegativeBinomial','R',k_nbin,'P',p_nb);
+                        pd = truncate(pd,1,inf);
+                        L_Unknown(cc)=L_Unknown(cc)+log(binopdf(uu,Unknown_Ind_Cases(cc,1),Unknown_Ind_Cases_Weight(cc,1)).*binopdf(yy,Unknown_Ind_Cases(cc,2),Unknown_Ind_Cases_Weight(cc,2)).*(1-p_c(cc)).*(1-cdf(pd,Known_Ind_Cases(cc)+yy+uu))); 
+                    else
+                        temp_cdf=min((Chain_Size_Distribution_CDF(yy+uu+Known_Ind_Cases(cc)+1,Reff(cc),k_mealses)-Chain_Size_Distribution_CDF(1,Reff(cc),k_mealses))./(1-Chain_Size_Distribution_CDF(1,Reff(cc),k_mealses)),1);
+                        L_Unknown(cc)=L_Unknown(cc)+log(binopdf(uu,Unknown_Ind_Cases(cc,1),Unknown_Ind_Cases_Weight(cc,1)).*binopdf(yy,Unknown_Ind_Cases(cc,2),Unknown_Ind_Cases_Weight(cc,2)).*(1-p_c(cc)).*(1-temp_cdf)); %add one to known cases as assuming there was an introduction from some place for this local transmission to happen
+                    end
+                end
             end
         end
     end
