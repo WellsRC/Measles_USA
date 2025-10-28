@@ -1,6 +1,6 @@
 clear;
 clc;
-parpool(48);
+% parpool(48);
 Vaccine='MMR';
 L_F=zeros(2^7,4);
 L_S=zeros(2^7,4);
@@ -94,7 +94,7 @@ z_fit=log(v_temp(t_fit)./(1-v_temp(t_fit)));
 if(~isempty(County_Data_model.XI))
     lX=length(County_Data_model.X(1,:));
     mdl_temp=fitlm([County_Data_model.X(t_fit,:) County_Data_model.X2(t_fit,:)],z_fit);
-    par_0=[mdl_temp.Coefficients.Estimate(1).*ones(10,3) repmat(mdl_temp.Coefficients.Estimate(2:(2+lX-1))',10,1) zeros(10,length(County_Data_model.XI(1,:))) repmat(mdl_temp.Coefficients.Estimate((2+lX):end)',10,1) flip(linspace(-1,3,10))' flip(linspace(-1,3,10))' flip(linspace(-1,3,10))' (linspace(1.01,3,10))' (linspace(1.01,3,10))'];
+    par_0=[par_0; mdl_temp.Coefficients.Estimate(1).*ones(10,3) repmat(mdl_temp.Coefficients.Estimate(2:(2+lX-1))',10,1) zeros(10,length(County_Data_model.XI(1,:))) repmat(mdl_temp.Coefficients.Estimate((2+lX):end)',10,1) flip(linspace(-1,3,10))' flip(linspace(-1,3,10))' flip(linspace(-1,3,10))' (linspace(1.01,3,10))' (linspace(1.01,3,10))'];
 
     mdl_temp=fitlm([County_Data_model.X(t_fit,:) County_Data_model.XI(t_fit,:)],z_fit);
     par_0=[par_0; mdl_temp.Coefficients.Estimate(1).*ones(10,2) repmat(mdl_temp.Coefficients.Estimate',10,1) zeros(10,length(County_Data_model.X2(1,:))) flip(linspace(-1,3,10))' flip(linspace(-1,3,10))' flip(linspace(-1,3,10))' (linspace(1.01,3,10))' (linspace(1.01,3,10))'];

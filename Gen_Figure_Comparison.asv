@@ -1,0 +1,111 @@
+function Gen_Figure_Comparison(Measure_Baseline,Measure_Reduction,x_baseline,C_Baseline,text_v,inq_txt,X_Label_Baseline,prct_label,x_diff,C_diff,text_v_diff,X_Label_Diff)
+
+
+states = shaperead('usastatelo', 'UseGeoCoords', true);
+
+figure('units','normalized','outerposition',[0.15 0.075 0.5 0.4]);
+
+subplot("Position",[0.035 0.135 0.44 0.025])
+dv=linspace(x_baseline(1),x_baseline(end),1001);
+CC_Baseline=interp1(x_baseline,C_Baseline,dv);
+
+for jj=1:1000
+    patch([dv(jj) dv(jj+1) dv(jj+1) dv(jj)],[0 0 1 1],CC_Baseline(jj,:),'LineStyle','None'); hold on;
+end
+
+plot([x_baseline(1) x_baseline(1)],[0 1],'k','LineWidth',1)
+plot([x_baseline(end) x_baseline(end)],[0 1],'k','LineWidth',1)
+plot([x_baseline(1) x_baseline(end)],[0 0],'k','LineWidth',1)
+plot([x_baseline(1) x_baseline(end)],[1 1],'k','LineWidth',1)
+
+if(prct_label)
+    for jj=1:length(text_v)
+        if(inq_txt(jj)<0)
+            text(text_v(jj),-1.2,['\leq ' num2str(text_v(jj)) '%'],'Fontsize',14,'VerticalAlignment','middle','HorizontalAlignment','center');
+        elseif(inq_txt(jj)>0)
+            text(text_v(jj),-1.2,['\geq ' num2str(text_v(jj)) '%'],'Fontsize',14,'VerticalAlignment','middle','HorizontalAlignment','center');
+        else
+            text(text_v(jj),-1.2,[num2str(text_v(jj)) '%'],'Fontsize',14,'VerticalAlignment','middle','HorizontalAlignment','center');
+        end
+    end
+else
+    for jj=1:length(text_v)
+        if(inq_txt(jj)<0)
+            text(text_v(jj),-1.2,['\leq ' num2str(text_v(jj))],'Fontsize',14,'VerticalAlignment','middle','HorizontalAlignment','center');
+        elseif(inq_txt(jj)>0)
+            text(text_v(jj),-1.2,['\geq ' num2str(text_v(jj))],'Fontsize',14,'VerticalAlignment','middle','HorizontalAlignment','center');
+        else
+            text(text_v(jj),-1.2,[num2str(text_v(jj))],'Fontsize',14,'VerticalAlignment','middle','HorizontalAlignment','center');
+        end
+    end
+end
+text(0.5,-3.9,X_Label_Baseline,'FontSize',16,'HorizontalAlignment','center','VerticalAlignment','middle')
+text(0.405,33.5,'A','FontSize',28,'HorizontalAlignment','center','VerticalAlignment','middle')
+text(52.5,33.5,'Baseline','FontSize',16,'HorizontalAlignment','center','VerticalAlignment','middle')
+axis off;
+xlim([x_baseline(1) x_baseline(end)])
+
+subplot("Position",[0.535 0.135 0.44 0.025])
+dv=linspace(x_diff(1),x_diff(end),1001);
+CC_Diff=interp1(x_diff,C_diff,dv);
+
+for jj=1:1000
+    patch([dv(jj) dv(jj+1) dv(jj+1) dv(jj)],[0 0 1 1],CC_Diff(jj,:),'LineStyle','None'); hold on;
+end
+
+plot([x_diff(1) x_diff(1)],[0 1],'k','LineWidth',1)
+plot([x_diff(end) x_diff(end)],[0 1],'k','LineWidth',1)
+plot([x_diff(1) x_diff(end)],[0 0],'k','LineWidth',1)
+plot([x_diff(1) x_diff(end)],[1 1],'k','LineWidth',1)
+
+if(prct_label)
+    for jj=1:length(text_v_diff)
+        text(text_v_diff(jj),-1.2,[num2str(text_v_diff(jj)) '%'],'Fontsize',14,'VerticalAlignment','middle','HorizontalAlignment','center');
+    end
+else
+    for jj=1:length(text_v_diff)
+        text(text_v_diff(jj),-1.2,[num2str(text_v_diff(jj))],'Fontsize',14,'VerticalAlignment','middle','HorizontalAlignment','center');
+    end
+end
+text(0.5,-3.9,X_Label_Diff,'FontSize',16,'HorizontalAlignment','center','VerticalAlignment','middle','Units','normalized');
+axis off;
+text(-0.05,33.5,'B','FontSize',28,'HorizontalAlignment','center','VerticalAlignment','middle','Units','normalized')
+text(0.5,33.5,'Difference','FontSize',16,'HorizontalAlignment','center','VerticalAlignment','middle','Units','normalized')
+xlim([x_diff(1) x_diff(end)])
+
+
+Measure_Diff=Measure_Reduction-Measure_Baseline;
+
+Measure_Baseline(Measure_Baseline<0.05)=0.05;
+Measure_Baseline(Measure_Baseline<0.05)=0.05;
+
+NS=length(S);
+
+CC_Baseline=interp1(x_vac,C_vac,Measure_Baseline(:));
+CC_Baseline(isnan(Measure_Baseline(:)),:)=repmat([0.5 0.5 0.5],sum(isnan(Measure_Baseline(:))),1);
+CM=makesymbolspec('Polygon',{'INDEX',[1 NS],'FaceColor',CC_Baseline});
+
+ax1=usamap('conus');
+ framem off; gridm off; mlabel off; plabel off;
+ax1.Position=[-0.3,-2,0.6,0.6];
+geoshow(ax1,S,'SymbolSpec',CM,'LineStyle','None'); hold on;
+geoshow(ax1, states,'Facecolor','none','LineWidth',1.5); 
+
+
+CC_Diff=interp1(x_diff,C_diff,Measure_Diff(:));
+CC_Diff(isnan(Measure_Diff(:)),:)=repmat([0.5 0.5 0.5],sum(isnan(Measure_Diff(:))),1);
+CM=makesymbolspec('Polygon',{'INDEX',[1 NS],'FaceColor',CC_Diff});
+
+ax3=usamap('conus');
+ framem off; gridm off; mlabel off; plabel off;
+
+ax3.Position=[-0.3,-0.1,0.6,0.6];
+
+geoshow(ax3,S,'SymbolSpec',CM,'LineStyle','None'); hold on;
+geoshow(ax3, states,'Facecolor','none','LineWidth',1.5); 
+
+
+ax1.Position=[-0.25, -0.015 ,1,1];
+ax3.Position=[0.25, -0.015 ,1,1];
+
+end

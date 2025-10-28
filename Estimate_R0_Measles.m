@@ -54,6 +54,8 @@ for indx=1:max(Measles_Cases.ID_Unknown)
 
     w_pop=County_Data.Total_Population(t_county)-County_Data.Total_Immunity(t_county);
     w_pop=w_pop./sum(w_pop);
+
+    imp_pop=County_Data.Total_Population(t_county)./sum(County_Data.Total_Population(t_county));
     if(sum(~isnan(Unknown_Ind_Cases(t_county,1)))>1)
         sc_unkown=2;
     else
@@ -63,14 +65,14 @@ for indx=1:max(Measles_Cases.ID_Unknown)
         Unknown_Ind_Cases(t_county,sc_unkown)=Measles_Cases.unkown_case_count(t_f);
         Unknown_Ind_Cases_Weight(t_county,sc_unkown)=w_pop;
     else
-        Imported_Case(t_county)=Imported_Case(t_county)+w_pop.*Measles_Cases.unkown_case_count(t_f);
+        Imported_Case(t_county)=Imported_Case(t_county)+imp_pop.*Measles_Cases.unkown_case_count(t_f);
     end
 end
 
 A=[-1 0 0 0 0 0 1];
-X0=[-0.447898707147628	-1.46815489000982	-1.63785138481623	-1.01173645013150	-0.267975340004251	-2.56820726791434	-0.812497090490520];
+X0=[-0.378550180403027	-2.99984413784748	-0.719730821420188	-2.97147368135396	-0.334632514873287	-2.62263319770825	-0.888579869274175];
 opts=optimoptions('surrogateopt','PlotFcn','surrogateoptplot','MaxFunctionEvaluations',10^3,'UseParallel',false,'InitialPoints',X0);
-lb=[-1.1 -3 -3 -3 -3 -3.5 -1.1];
+lb=[-1.1 -4 -4 -4 -4 -3.5 -1.1];
 ub=[log10(1.5) 3 1  1  1 1 log10(1.5)];
 
 rng(20251009)

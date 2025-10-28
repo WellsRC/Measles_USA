@@ -101,7 +101,7 @@ for cc=1:length(indx_known_county)
     X0=log(trim_County_Data_model.Vaccine_Uptake./(1-trim_County_Data_model.Vaccine_Uptake))-log(v_county./(1-v_county));
 
     [dZ_County_est(cc),f_val(cc)]=lsqnonlin(@(x)Objective_Adjustment_Coverage_County(x,beta_x,beta_insurance,trim_County_Data_model),X0,-40,40,[],[],[],[],[],opts_lsq);
-    
+  test=0;  
 end
 
 for ss=1:length(u_state_fill)
@@ -131,6 +131,7 @@ for ss=1:length(u_state_fill)
     X0=log(trim_State_Data.Vaccine_Uptake./(1-trim_State_Data.Vaccine_Uptake))-log(v_state./(1-v_state));
 
     [dZ_County_est(sum(known_county)+ss),f_val(sum(known_county)+ss)]=lsqnonlin(@(x)Objective_Adjustment_Coverage_State(x,beta_x,beta_insurance,trim_County_Data_model,trim_State_Data),X0,-40,40,[],[],[],[],[],opts_lsq);
+    test=0;
 end
 
 
