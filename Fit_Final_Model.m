@@ -1,6 +1,6 @@
 clear;
 clc;
-% parpool(48);
+parpool(48);
 Vaccine='MMR';
 L_F=zeros(2^7,4);
 L_S=zeros(2^7,4);
