@@ -2,7 +2,7 @@ clear;
 clc;
 
 avg_fs=linspace(0,6,500);
-kv=linspace(-3.5,1,750);
+kv=linspace(-4,1,750);
 [avg_fs,kv]=meshgrid(avg_fs,kv);
 old_size=size(avg_fs);
 pv=zeros(size(avg_fs));

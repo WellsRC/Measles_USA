@@ -28,7 +28,7 @@ for ss=1:length(p_c)
                 cc=cc+1;
                 pdf_0 = pdf_0+Chain_Size_Distribution(cc,Reff(ss),k_mealses);
             end
-            os(jj)=cc-1; % Need to remove the introductory seed for the chain as we classified it as an import in the likelihood
+            os(jj)=cc; % Need to remove the introductory seed for the chain as we classified it as an import in the likelihood
         end
     end
     Outbreak_County(ss,r_z>p_c(ss))=os;

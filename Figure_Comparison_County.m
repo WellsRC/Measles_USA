@@ -1,11 +1,5 @@
-% function Figure_Comparison_County(National_Reduction,Scenario,Age_0_to_6)
-% 
-National_Reduction=0.01;
-Scenario='Sample_2025';
-Age_0_to_6=true;
-
+function Figure_Comparison_County(National_Reduction,Scenario,Age_0_to_6)
 close all;
-
 if(~Age_0_to_6)
     Age_Reduction=[true(1,1) false(1,4)];
 else
@@ -55,8 +49,8 @@ for cc=1:length(S)
         Hospital_Baseline(cc,:)=10.^6.*hospital_baseline(tf)./(County_Data_Vaccine_Reduction.Total_Population(tf));
         Hospital_Reduction(cc,:)=10.^6.*hospital_reduction(tf)./(County_Data_Vaccine_Reduction.Total_Population(tf));
 
-        Cost_Baseline(cc,:)=10.^4.*cost_baseline(tf)./(County_Data_Vaccine_Reduction.Total_Population(tf));
-        Cost_Reduction(cc,:)=10.^4.*cost_reduction(tf)./(County_Data_Vaccine_Reduction.Total_Population(tf));
+        Cost_Baseline(cc,:)=10.^3.*cost_baseline(tf)./(County_Data_Vaccine_Reduction.Total_Population(tf));
+        Cost_Reduction(cc,:)=10.^3.*cost_reduction(tf)./(County_Data_Vaccine_Reduction.Total_Population(tf));
 
         Cost_per_case_Baseline(cc,:)=cost_per_case_baseline(tf);
         Cost_per_case_Reduction(cc,:)=cost_per_case_reduction(tf);
@@ -81,9 +75,9 @@ for cc=1:length(S)
 end
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%55
-% Plot Vaccine Uptake
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%55
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%55
+%Plot Vaccine Uptake
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%55
  Cb=flip({'#ffffff';
      '#ffffcc';
 '#ffeda0';
@@ -103,18 +97,19 @@ end
 Measure_Baseline=V_Baseline;
 Measure_Reduction=V_Reduction;
 
-x_baseline=linspace(0.05,1,11);
+x_baseline=linspace(0.5,1,11);
 C_Baseline=hex2rgb(Cb);
 
-x_diff=[0 National_Reduction, ceil(100.*(max(V_Diff(:))))./100];
+x_diff=[0 National_Reduction, 0.02];
 C_diff=hex2rgb(Cd);
 
-X_Label_Baseline='MMR uptake';
+X_Label_Baseline=['MMR uptake (0' char(8211) '6 years of age)'];
 X_Label_Diff='Absolute reduction in MMR uptake';
 
 prct_label=true;
+monitary_label=false;
 
-text_v=[0.05 0.2:0.2:1];
+text_v=[0.5:0.1:1];
 text_v_diff=[0 0.01 0.02];
 
 
@@ -125,11 +120,14 @@ inq_txt_diff=zeros(size(text_v_diff));
 
 measure_increase=false;
 
-Gen_Figure_Comparison(Measure_Baseline,Measure_Reduction,x_baseline,C_Baseline,text_v,inq_txt_baseline,X_Label_Baseline,prct_label,x_diff,C_diff,text_v_diff,inq_txt_diff,X_Label_Diff,S,measure_increase);
+Gen_Figure_Comparison(Measure_Baseline,Measure_Reduction,x_baseline,C_Baseline,text_v,inq_txt_baseline,X_Label_Baseline,prct_label,monitary_label,x_diff,C_diff,text_v_diff,inq_txt_diff,X_Label_Diff,S,measure_increase);
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+print(gcf,['Figure_Vaccine_Uptake_Reduction=' num2str(National_Reduction*100) '.png'],'-dpng','-r300');
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Cases
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
  Cb={'#ffffff';
@@ -141,240 +139,112 @@ Gen_Figure_Comparison(Measure_Baseline,Measure_Reduction,x_baseline,C_Baseline,t
 '#ef3b2c';
 '#cb181d';
 '#a50f15';
-'#67000d';
-'#000000'};
+'#67000d'};
 
  Cd=({'#ffffff';
-'#fde0dd';
-'#fcc5c0';
-'#fa9fb5';
+'#fcc5c0';...
 '#f768a1';
-'#dd3497';
-'#ae017e';
-'#7a0177';
-'#49006a';
-'#000000'});
+     '#ae017e';
+'#49006a';});
 
 Measure_Baseline=Case_Baseline;
 Measure_Reduction=Case_Reduction;
 
-x_baseline=linspace(0.05,1,11);
+x_baseline=[0.01 1:0.5:5];
 C_Baseline=hex2rgb(Cb);
 
-x_diff=[0 National_Reduction, ceil(100.*(max(V_Diff(:))))./100];
+x_diff=[0:0.025:0.1];
 C_diff=hex2rgb(Cd);
 
-X_Label_Baseline='Annual measles cases (2025)';
-X_Label_Diff='Additional measles cases';
+X_Label_Baseline='Measles cases per 10,000';
+X_Label_Diff='Additional measles cases per 10,000';
 
-prct_label=true;
+prct_label=false;
+monitary_label=false;
 
-text_v=[0.05 0.2:0.2:1];
-text_v_diff=[0 0.01 0.02];
+text_v=[0.01 1:5];
+text_v_diff=[0:0.025:0.1];
 
 
 inq_txt_baseline=zeros(size(text_v));
 inq_txt_baseline(1)=-1;
+inq_txt_baseline(end)=1;
 
 inq_txt_diff=zeros(size(text_v_diff));
+inq_txt_diff(end)=1;
 
 measure_increase=true;
 
-Gen_Figure_Comparison(Measure_Baseline,Measure_Reduction,x_baseline,C_Baseline,text_v,inq_txt_baseline,X_Label_Baseline,prct_label,x_diff,C_diff,text_v_diff,inq_txt_diff,X_Label_Diff,S,measure_increase);
+Gen_Figure_Comparison(Measure_Baseline,Measure_Reduction,x_baseline,C_Baseline,text_v,inq_txt_baseline,X_Label_Baseline,prct_label,monitary_label,x_diff,C_diff,text_v_diff,inq_txt_diff,X_Label_Diff,S,measure_increase);
 
 print(gcf,['Figure_Cases_Vaccine_Uptake_Reduction=' num2str(National_Reduction*100) '.png'],'-dpng','-r300');
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Hospitalizations
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
- C={'#ffffff';
+ Cb={'#ffffff';
      '#fff5f0';
 '#fee0d2';
 '#fcbba1';
-'#fc9272';
 '#fb6a4a';
 '#ef3b2c';
 '#cb181d';
-'#a50f15';
-'#67000d';
-'#000000'};
+'#67000d'};
 
-
-C_vac=hex2rgb(C);
-
-mx=round(100.*min(prctile(Hospital_Baseline,[1]),prctile(Hospital_Reduction,[1])))./100;
-MX=round(100.*max(prctile(Hospital_Baseline,[99]),prctile(Hospital_Reduction,[99])))./100;
-x_vac=linspace(mx,MX,11);
-
-
-dC=Hospital_Reduction-Hospital_Baseline;
- C=({'#ffffff';
-'#fde0dd';
+ Cd=({'#ffffff';
 '#fcc5c0';
-'#fa9fb5';
-'#f768a1';
-'#dd3497';
-'#ae017e';
-'#7a0177';
-'#49006a';
-'#000000'});
+     '#dd3497';
+'#49006a';});
+
+Measure_Baseline=Hospital_Baseline;
+Measure_Reduction=Hospital_Reduction;
+
+x_baseline=[0.2 5:5:35];
+C_Baseline=hex2rgb(Cb);
+
+x_diff=[0.05 0.25:0.25:0.75];
+C_diff=hex2rgb(Cd);
+
+X_Label_Baseline='Hospitalizations per 1,000,000';
+X_Label_Diff='Additional hospitalizations per 1,000,000';
+
+prct_label=false;
+monitary_label=false;
+
+text_v=[0.2 5:5:35];
+text_v_diff=[0.05 0.25:0.25:0.75];
 
 
-C_diff=hex2rgb(C);
-x_diff=linspace(floor(100.*prctile(dC,[1]))./100,ceil(100.*prctile(dC,[99]))./100,size(C_diff,1));
+inq_txt_baseline=zeros(size(text_v));
+inq_txt_baseline(1)=-1;
+inq_txt_baseline(end)=1;
 
-states = shaperead('usastatelo', 'UseGeoCoords', true);
+inq_txt_diff=zeros(size(text_v_diff));
+inq_txt_diff(1)=-1;
+inq_txt_diff(end)=1;
 
-figure('units','normalized','outerposition',[0.15 0.075 0.7 0.4]);
+measure_increase=true;
 
-subplot("Position",[0.0225 0.135 0.28 0.025])
-dv=linspace(mx,MX,1001);
-CC_Vac=interp1(x_vac,C_vac,dv);
+Gen_Figure_Comparison(Measure_Baseline,Measure_Reduction,x_baseline,C_Baseline,text_v,inq_txt_baseline,X_Label_Baseline,prct_label,monitary_label,x_diff,C_diff,text_v_diff,inq_txt_diff,X_Label_Diff,S,measure_increase);
 
-for jj=1:1000
-    patch([dv(jj) dv(jj+1) dv(jj+1) dv(jj)],[0 0 1 1],CC_Vac(jj,:),'LineStyle','None'); hold on;
-end
-
-plot([mx mx],[0 1],'k','LineWidth',1)
-plot([MX MX],[0 1],'k','LineWidth',1)
-plot([mx MX],[0 0],'k','LineWidth',1)
-plot([mx MX],[1 1],'k','LineWidth',1)
-
-text_v=[mx 40:40:MX];
-for jj=1:length(text_v)
-    if(jj==1)
-        text(text_v(jj),-1.2,['\leq ' num2str(text_v(jj))],'Fontsize',14,'VerticalAlignment','middle','HorizontalAlignment','center');
-    elseif(jj==length(text_v))
-        text(text_v(jj),-1.2,['\geq ' num2str(text_v(jj))],'Fontsize',14,'VerticalAlignment','middle','HorizontalAlignment','center');
-    else
-        text(text_v(jj),-1.2,[num2str(text_v(jj)) ],'Fontsize',14,'VerticalAlignment','middle','HorizontalAlignment','center');
-    end
-end
-text(0.5,-3.9,'Hospitalizations per 1,000,000','FontSize',16,'HorizontalAlignment','center','VerticalAlignment','middle','Units','normalized')
-text(-0.05,33.5,'A','FontSize',28,'HorizontalAlignment','center','VerticalAlignment','middle','Units','normalized')
-text(0.5,33.5,'Baseline','FontSize',16,'HorizontalAlignment','center','VerticalAlignment','middle','Units','normalized')
-axis off;
-xlim([mx MX])
-
-subplot("Position",[0.36 0.135 0.28 0.025])
-dv=linspace(mx,MX,1001);
-CC_Vac=interp1(x_vac,C_vac,dv);
-
-for jj=1:1000
-    patch([dv(jj) dv(jj+1) dv(jj+1) dv(jj)],[0 0 1 1],CC_Vac(jj,:),'LineStyle','None'); hold on;
-end
-
-plot([mx mx],[0 1],'k','LineWidth',1)
-plot([MX MX],[0 1],'k','LineWidth',1)
-plot([mx MX],[0 0],'k','LineWidth',1)
-plot([mx MX],[1 1],'k','LineWidth',1)
-
-text_v=[mx 40:40:MX];
-for jj=1:length(text_v)
-    if(jj==1)
-        text(text_v(jj),-1.2,['\leq ' num2str(text_v(jj))],'Fontsize',14,'VerticalAlignment','middle','HorizontalAlignment','center');
-    elseif(jj==length(text_v))
-        text(text_v(jj),-1.2,['\geq ' num2str(text_v(jj))],'Fontsize',14,'VerticalAlignment','middle','HorizontalAlignment','center');
-    else
-        text(text_v(jj),-1.2,[num2str(text_v(jj))],'Fontsize',14,'VerticalAlignment','middle','HorizontalAlignment','center');
-    end
-end
-text(0.5,-3.9,'Hospitalizations per 1,000,000','FontSize',16,'HorizontalAlignment','center','VerticalAlignment','middle','Units','normalized')
-text(-0.05,33.5,'B','FontSize',28,'HorizontalAlignment','center','VerticalAlignment','middle','Units','normalized')
-text(0.5,33.5,'Reduction','FontSize',16,'HorizontalAlignment','center','VerticalAlignment','middle','Units','normalized')
-axis off;
-xlim([mx MX])
-
-
-subplot("Position",[0.7 0.135 0.28 0.025])
-dv=linspace(min(x_diff),max(x_diff),1001);
-CC_Diff=interp1(x_diff,C_diff,dv);
-
-for jj=1:1000
-    patch([dv(jj) dv(jj+1) dv(jj+1) dv(jj)],[0 0 1 1],CC_Diff(jj,:),'LineStyle','None'); hold on;
-end
-
-plot([min(x_diff) min(x_diff)],[0 1],'k','LineWidth',1)
-plot([max(x_diff) max(x_diff)],[0 1],'k','LineWidth',1)
-plot([min(x_diff) max(x_diff)],[0 0],'k','LineWidth',1)
-plot([min(x_diff) max(x_diff)],[1 1],'k','LineWidth',1)
-
-text_v=round(linspace(min(x_diff),max(x_diff),6),2);
-for jj=1:length(text_v)
-    if(jj==1)
-        text(text_v(jj),-1.2,['\leq ' num2str(text_v(jj))],'Fontsize',14,'VerticalAlignment','middle','HorizontalAlignment','center');
-    elseif(jj<length(text_v))
-        text(text_v(jj),-1.2,[num2str(text_v(jj))],'Fontsize',14,'VerticalAlignment','middle','HorizontalAlignment','center');
-    else
-        text(text_v(jj),-1.2,['\geq ' num2str(text_v(jj))],'Fontsize',14,'VerticalAlignment','middle','HorizontalAlignment','center');
-    end
-end
-text(0.5,-3.9,'Additional hospitalizations per 1,000,000','FontSize',16,'HorizontalAlignment','center','VerticalAlignment','middle','Units','normalized')
-axis off;
-text(-0.05,33.5,'C','FontSize',28,'HorizontalAlignment','center','VerticalAlignment','middle','Units','normalized')
-text(0.5,33.5,'Difference','FontSize',16,'HorizontalAlignment','center','VerticalAlignment','middle','Units','normalized')
-xlim([min(x_diff) max(x_diff)])
-
-Hospital_Baseline(Hospital_Baseline<mx)=mx;
-Hospital_Reduction(Hospital_Reduction<mx)=mx;
-Hospital_Baseline(Hospital_Baseline>MX)=MX;
-Hospital_Reduction(Hospital_Reduction>MX)=MX;
-dC(dC>max(x_diff))=max(x_diff);
-dC(dC<min(x_diff))=min(x_diff);
-
-NS=length(S);
-
-CC_Vac=interp1(x_vac,C_vac,Hospital_Baseline(:));
-CC_Vac(isnan(Hospital_Baseline(:)),:)=repmat([0.5 0.5 0.5],sum(isnan(Hospital_Baseline(:))),1);
-CM=makesymbolspec('Polygon',{'INDEX',[1 NS],'FaceColor',CC_Vac});
-
-ax1=usamap('conus');
- framem off; gridm off; mlabel off; plabel off;
-ax1.Position=[-0.3,-2,0.6,0.6];
-geoshow(ax1,S,'SymbolSpec',CM,'LineStyle','None'); hold on;
-geoshow(ax1, states,'Facecolor','none','LineWidth',1.5); 
-
-
-CC_Vac=interp1(x_vac,C_vac,Hospital_Reduction(:));
-CC_Vac(isnan(Hospital_Reduction(:)),:)=repmat([0.5 0.5 0.5],sum(isnan(Hospital_Reduction(:))),1);
-CM=makesymbolspec('Polygon',{'INDEX',[1 NS],'FaceColor',CC_Vac});
-ax2=usamap('conus');
- framem off; gridm off; mlabel off; plabel off;
-
-ax2.Position=[1.7,0.4,0.6,0.6];
-geoshow(ax2,S,'SymbolSpec',CM,'LineStyle','None'); hold on;
-geoshow(ax2, states,'Facecolor','none','LineWidth',1.5); 
-
-
-CC_Diff=interp1(x_diff,C_diff,dC(:));
-CC_Diff(isnan(dC(:)),:)=repmat([0.5 0.5 0.5],sum(isnan(dC(:))),1);
-CM=makesymbolspec('Polygon',{'INDEX',[1 NS],'FaceColor',CC_Diff});
-
-ax3=usamap('conus');
- framem off; gridm off; mlabel off; plabel off;
-
-ax3.Position=[-0.3,-0.1,0.6,0.6];
-
-geoshow(ax3,S,'SymbolSpec',CM,'LineStyle','None'); hold on;
-geoshow(ax3, states,'Facecolor','none','LineWidth',1.5); 
-
-
-ax1.Position=[-0.32, -0.015 ,1,1];
-ax2.Position=[0.02, -0.015 ,1,1];
-ax3.Position=[0.35, -0.015 ,1,1];
 
 print(gcf,['Figure_Hospitalizations_Vaccine_Uptake_Reduction=' num2str(National_Reduction*100) '.png'],'-dpng','-r300');
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Costs
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+ Cb={'#ffffff';
+'#fee0d2';
+'#fcbba1';
+'#ef3b2c';
+'#67000d'};
 
- C={'#ffffff';
-     '#fff5f0';
+ Cd=({'#08306b'; ...
+     '#ffffff';
 '#fee0d2';
 '#fcbba1';
 '#fc9272';
@@ -382,172 +252,39 @@ print(gcf,['Figure_Hospitalizations_Vaccine_Uptake_Reduction=' num2str(National_
 '#ef3b2c';
 '#cb181d';
 '#a50f15';
-'#67000d';
-'#000000'};
+'#67000d';});
+
+Measure_Baseline=Cost_Baseline;
+Measure_Reduction=Cost_Reduction;
+
+x_baseline=[100 500 10^3 5.*10^3 10^4];
+C_Baseline=hex2rgb(Cb);
+
+x_diff=[-200 0 100:100:800];
+C_diff=hex2rgb(Cd);
+
+X_Label_Baseline='Cost of measles cases per 1,000';
+X_Label_Diff='Additional cost of measles cases per 1,000';
+
+prct_label=false;
+monitary_label=true;
+
+text_v=[10^2 5.*10^3 10^4];
+text_v_diff=[-200 0 200:200:800];
 
 
-C_vac=hex2rgb(C);
+inq_txt_baseline=zeros(size(text_v));
+inq_txt_baseline(1)=-1;
+inq_txt_baseline(end)=1;
 
-mx=round(100.*min(prctile(Cost_Baseline,[1]),prctile(Cost_Reduction,[1])))./100;
-MX=round(100.*max(prctile(Cost_Baseline,[99]),prctile(Cost_Reduction,[99])))./100;
-x_vac=linspace(mx,MX,11);
+inq_txt_diff=zeros(size(text_v_diff));
+inq_txt_diff(1)=-1;
+inq_txt_diff(end)=1;
 
+measure_increase=true;
 
-dC=Cost_Reduction-Cost_Baseline;
- C=({'#ffffff';
-'#fde0dd';
-'#fcc5c0';
-'#fa9fb5';
-'#f768a1';
-'#dd3497';
-'#ae017e';
-'#7a0177';
-'#49006a';
-'#000000'});
+Gen_Figure_Comparison(Measure_Baseline,Measure_Reduction,x_baseline,C_Baseline,text_v,inq_txt_baseline,X_Label_Baseline,prct_label,monitary_label,x_diff,C_diff,text_v_diff,inq_txt_diff,X_Label_Diff,S,measure_increase);
 
-
-C_diff=hex2rgb(C);
-x_diff=linspace(floor(100.*prctile(dC,[1]))./100,ceil(100.*prctile(dC,[99]))./100,size(C_diff,1));
-
-states = shaperead('usastatelo', 'UseGeoCoords', true);
-
-figure('units','normalized','outerposition',[0.15 0.075 0.7 0.4]);
-
-subplot("Position",[0.0225 0.135 0.28 0.025])
-dv=linspace(mx,MX,1001);
-CC_Vac=interp1(x_vac,C_vac,dv);
-
-for jj=1:1000
-    patch([dv(jj) dv(jj+1) dv(jj+1) dv(jj)],[0 0 1 1],CC_Vac(jj,:),'LineStyle','None'); hold on;
-end
-
-plot([mx mx],[0 1],'k','LineWidth',1)
-plot([MX MX],[0 1],'k','LineWidth',1)
-plot([mx MX],[0 0],'k','LineWidth',1)
-plot([mx MX],[1 1],'k','LineWidth',1)
-
-text_v=[mx 40:40:MX];
-for jj=1:length(text_v)
-    if(jj==1)
-        text(text_v(jj),-1.2,['\leq ' num2str(text_v(jj))],'Fontsize',14,'VerticalAlignment','middle','HorizontalAlignment','center');
-    elseif(jj==length(text_v))
-        text(text_v(jj),-1.2,['\geq ' num2str(text_v(jj))],'Fontsize',14,'VerticalAlignment','middle','HorizontalAlignment','center');
-    else
-        text(text_v(jj),-1.2,[num2str(text_v(jj)) ],'Fontsize',14,'VerticalAlignment','middle','HorizontalAlignment','center');
-    end
-end
-text(0.5,-3.9,'cost per 10,000','FontSize',16,'HorizontalAlignment','center','VerticalAlignment','middle','Units','normalized')
-text(-0.05,33.5,'A','FontSize',28,'HorizontalAlignment','center','VerticalAlignment','middle','Units','normalized')
-text(0.5,33.5,'Baseline','FontSize',16,'HorizontalAlignment','center','VerticalAlignment','middle','Units','normalized')
-axis off;
-xlim([mx MX])
-
-subplot("Position",[0.36 0.135 0.28 0.025])
-dv=linspace(mx,MX,1001);
-CC_Vac=interp1(x_vac,C_vac,dv);
-
-for jj=1:1000
-    patch([dv(jj) dv(jj+1) dv(jj+1) dv(jj)],[0 0 1 1],CC_Vac(jj,:),'LineStyle','None'); hold on;
-end
-
-plot([mx mx],[0 1],'k','LineWidth',1)
-plot([MX MX],[0 1],'k','LineWidth',1)
-plot([mx MX],[0 0],'k','LineWidth',1)
-plot([mx MX],[1 1],'k','LineWidth',1)
-
-text_v=[mx 40:40:MX];
-for jj=1:length(text_v)
-    if(jj==1)
-        text(text_v(jj),-1.2,['\leq ' num2str(text_v(jj))],'Fontsize',14,'VerticalAlignment','middle','HorizontalAlignment','center');
-    elseif(jj==length(text_v))
-        text(text_v(jj),-1.2,['\geq ' num2str(text_v(jj))],'Fontsize',14,'VerticalAlignment','middle','HorizontalAlignment','center');
-    else
-        text(text_v(jj),-1.2,[num2str(text_v(jj))],'Fontsize',14,'VerticalAlignment','middle','HorizontalAlignment','center');
-    end
-end
-text(0.5,-3.9,'cost per 10,000','FontSize',16,'HorizontalAlignment','center','VerticalAlignment','middle','Units','normalized')
-text(-0.05,33.5,'B','FontSize',28,'HorizontalAlignment','center','VerticalAlignment','middle','Units','normalized')
-text(0.5,33.5,'Reduction','FontSize',16,'HorizontalAlignment','center','VerticalAlignment','middle','Units','normalized')
-axis off;
-xlim([mx MX])
-
-
-subplot("Position",[0.7 0.135 0.28 0.025])
-dv=linspace(min(x_diff),max(x_diff),1001);
-CC_Diff=interp1(x_diff,C_diff,dv);
-
-for jj=1:1000
-    patch([dv(jj) dv(jj+1) dv(jj+1) dv(jj)],[0 0 1 1],CC_Diff(jj,:),'LineStyle','None'); hold on;
-end
-
-plot([min(x_diff) min(x_diff)],[0 1],'k','LineWidth',1)
-plot([max(x_diff) max(x_diff)],[0 1],'k','LineWidth',1)
-plot([min(x_diff) max(x_diff)],[0 0],'k','LineWidth',1)
-plot([min(x_diff) max(x_diff)],[1 1],'k','LineWidth',1)
-
-text_v=round(linspace(min(x_diff),max(x_diff),6),2);
-for jj=1:length(text_v)
-    if(jj==1)
-        text(text_v(jj),-1.2,['\leq ' num2str(text_v(jj))],'Fontsize',14,'VerticalAlignment','middle','HorizontalAlignment','center');
-    elseif(jj<length(text_v))
-        text(text_v(jj),-1.2,[num2str(text_v(jj))],'Fontsize',14,'VerticalAlignment','middle','HorizontalAlignment','center');
-    else
-        text(text_v(jj),-1.2,['\geq ' num2str(text_v(jj))],'Fontsize',14,'VerticalAlignment','middle','HorizontalAlignment','center');
-    end
-end
-text(0.5,-3.9,'Additional cost per 10,000','FontSize',16,'HorizontalAlignment','center','VerticalAlignment','middle','Units','normalized')
-axis off;
-text(-0.05,33.5,'C','FontSize',28,'HorizontalAlignment','center','VerticalAlignment','middle','Units','normalized')
-text(0.5,33.5,'Difference','FontSize',16,'HorizontalAlignment','center','VerticalAlignment','middle','Units','normalized')
-xlim([min(x_diff) max(x_diff)])
-
-Cost_Baseline(Cost_Baseline<mx)=mx;
-Cost_Reduction(Cost_Reduction<mx)=mx;
-Cost_Baseline(Cost_Baseline>MX)=MX;
-Cost_Reduction(Cost_Reduction>MX)=MX;
-dC(dC>max(x_diff))=max(x_diff);
-dC(dC<min(x_diff))=min(x_diff);
-
-NS=length(S);
-
-CC_Vac=interp1(x_vac,C_vac,Cost_Baseline(:));
-CC_Vac(isnan(Cost_Baseline(:)),:)=repmat([0.5 0.5 0.5],sum(isnan(Cost_Baseline(:))),1);
-CM=makesymbolspec('Polygon',{'INDEX',[1 NS],'FaceColor',CC_Vac});
-
-ax1=usamap('conus');
- framem off; gridm off; mlabel off; plabel off;
-ax1.Position=[-0.3,-2,0.6,0.6];
-geoshow(ax1,S,'SymbolSpec',CM,'LineStyle','None'); hold on;
-geoshow(ax1, states,'Facecolor','none','LineWidth',1.5); 
-
-
-CC_Vac=interp1(x_vac,C_vac,Cost_Reduction(:));
-CC_Vac(isnan(Cost_Reduction(:)),:)=repmat([0.5 0.5 0.5],sum(isnan(Cost_Reduction(:))),1);
-CM=makesymbolspec('Polygon',{'INDEX',[1 NS],'FaceColor',CC_Vac});
-ax2=usamap('conus');
- framem off; gridm off; mlabel off; plabel off;
-
-ax2.Position=[1.7,0.4,0.6,0.6];
-geoshow(ax2,S,'SymbolSpec',CM,'LineStyle','None'); hold on;
-geoshow(ax2, states,'Facecolor','none','LineWidth',1.5); 
-
-
-CC_Diff=interp1(x_diff,C_diff,dC(:));
-CC_Diff(isnan(dC(:)),:)=repmat([0.5 0.5 0.5],sum(isnan(dC(:))),1);
-CM=makesymbolspec('Polygon',{'INDEX',[1 NS],'FaceColor',CC_Diff});
-
-ax3=usamap('conus');
- framem off; gridm off; mlabel off; plabel off;
-
-ax3.Position=[-0.3,-0.1,0.6,0.6];
-
-geoshow(ax3,S,'SymbolSpec',CM,'LineStyle','None'); hold on;
-geoshow(ax3, states,'Facecolor','none','LineWidth',1.5); 
-
-
-ax1.Position=[-0.32, -0.015 ,1,1];
-ax2.Position=[0.02, -0.015 ,1,1];
-ax3.Position=[0.35, -0.015 ,1,1];
 
 print(gcf,['Figure_Cost_Vaccine_Uptake_Reduction=' num2str(National_Reduction*100) '.png'],'-dpng','-r300');
 
@@ -556,181 +293,58 @@ print(gcf,['Figure_Cost_Vaccine_Uptake_Reduction=' num2str(National_Reduction*10
 % Cost_per_case
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+ Cb=flip({'#543005';
+'#8c510a';
+'#bf812d';
+'#dfc27d';
+'#f6e8c3';
+'#f5f5f5';
+'#c7eae5';
+'#80cdc1';
+'#35978f';
+'#01665e';
+'#003c30'});
 
- C={'#ffffff';
-     '#fff5f0';
-'#fee0d2';
-'#fcbba1';
-'#fc9272';
-'#fb6a4a';
-'#ef3b2c';
-'#cb181d';
-'#a50f15';
-'#67000d';
-'#000000'};
+ Cd=flip({'#b2182b';
+'#d6604d';
+'#f4a582';
+'#fddbc7';
+'#ffffff';
+'#d1e5f0';
+'#92c5de';
+'#4393c3';
+'#2166ac';});
 
+Measure_Baseline=Cost_per_case_Baseline;
+Measure_Reduction=Cost_per_case_Reduction;
 
-C_vac=hex2rgb(C);
+x_baseline=[42500 45000 47500 50000 52500 55000 57500 60000 62500 65000 67500];
+C_Baseline=hex2rgb(Cb);
 
-mx=round(100.*min(prctile(Cost_per_case_Baseline,[1]),prctile(Cost_per_case_Reduction,[1])))./100;
-MX=round(100.*max(prctile(Cost_per_case_Baseline,[99]),prctile(Cost_per_case_Reduction,[99])))./100;
-x_vac=linspace(mx,MX,11);
+x_diff=[-500:125:500];
+C_diff=hex2rgb(Cd);
 
+X_Label_Baseline='Cost per measles case';
+X_Label_Diff='Additional cost per measles case';
 
-dC=Cost_per_case_Reduction-Cost_per_case_Baseline;
- C=({'#ffffff';
-'#fde0dd';
-'#fcc5c0';
-'#fa9fb5';
-'#f768a1';
-'#dd3497';
-'#ae017e';
-'#7a0177';
-'#49006a';
-'#000000'});
+prct_label=false;
+monitary_label=true;
 
-
-C_diff=hex2rgb(C);
-x_diff=linspace(floor(100.*prctile(dC,[1]))./100,ceil(100.*prctile(dC,[99]))./100,size(C_diff,1));
-
-states = shaperead('usastatelo', 'UseGeoCoords', true);
-
-figure('units','normalized','outerposition',[0.15 0.075 0.7 0.4]);
-
-subplot("Position",[0.0225 0.135 0.28 0.025])
-dv=linspace(mx,MX,1001);
-CC_Vac=interp1(x_vac,C_vac,dv);
-
-for jj=1:1000
-    patch([dv(jj) dv(jj+1) dv(jj+1) dv(jj)],[0 0 1 1],CC_Vac(jj,:),'LineStyle','None'); hold on;
-end
-
-plot([mx mx],[0 1],'k','LineWidth',1)
-plot([MX MX],[0 1],'k','LineWidth',1)
-plot([mx MX],[0 0],'k','LineWidth',1)
-plot([mx MX],[1 1],'k','LineWidth',1)
-
-text_v=[mx 40:40:MX];
-for jj=1:length(text_v)
-    if(jj==1)
-        text(text_v(jj),-1.2,['\leq ' num2str(text_v(jj))],'Fontsize',14,'VerticalAlignment','middle','HorizontalAlignment','center');
-    elseif(jj==length(text_v))
-        text(text_v(jj),-1.2,['\geq ' num2str(text_v(jj))],'Fontsize',14,'VerticalAlignment','middle','HorizontalAlignment','center');
-    else
-        text(text_v(jj),-1.2,[num2str(text_v(jj)) ],'Fontsize',14,'VerticalAlignment','middle','HorizontalAlignment','center');
-    end
-end
-text(0.5,-3.9,'cost per 10,000','FontSize',16,'HorizontalAlignment','center','VerticalAlignment','middle','Units','normalized')
-text(-0.05,33.5,'A','FontSize',28,'HorizontalAlignment','center','VerticalAlignment','middle','Units','normalized')
-text(0.5,33.5,'Baseline','FontSize',16,'HorizontalAlignment','center','VerticalAlignment','middle','Units','normalized')
-axis off;
-xlim([mx MX])
-
-subplot("Position",[0.36 0.135 0.28 0.025])
-dv=linspace(mx,MX,1001);
-CC_Vac=interp1(x_vac,C_vac,dv);
-
-for jj=1:1000
-    patch([dv(jj) dv(jj+1) dv(jj+1) dv(jj)],[0 0 1 1],CC_Vac(jj,:),'LineStyle','None'); hold on;
-end
-
-plot([mx mx],[0 1],'k','LineWidth',1)
-plot([MX MX],[0 1],'k','LineWidth',1)
-plot([mx MX],[0 0],'k','LineWidth',1)
-plot([mx MX],[1 1],'k','LineWidth',1)
-
-text_v=[mx 40:40:MX];
-for jj=1:length(text_v)
-    if(jj==1)
-        text(text_v(jj),-1.2,['\leq ' num2str(text_v(jj))],'Fontsize',14,'VerticalAlignment','middle','HorizontalAlignment','center');
-    elseif(jj==length(text_v))
-        text(text_v(jj),-1.2,['\geq ' num2str(text_v(jj))],'Fontsize',14,'VerticalAlignment','middle','HorizontalAlignment','center');
-    else
-        text(text_v(jj),-1.2,[num2str(text_v(jj))],'Fontsize',14,'VerticalAlignment','middle','HorizontalAlignment','center');
-    end
-end
-text(0.5,-3.9,'cost per 10,000','FontSize',16,'HorizontalAlignment','center','VerticalAlignment','middle','Units','normalized')
-text(-0.05,33.5,'B','FontSize',28,'HorizontalAlignment','center','VerticalAlignment','middle','Units','normalized')
-text(0.5,33.5,'Reduction','FontSize',16,'HorizontalAlignment','center','VerticalAlignment','middle','Units','normalized')
-axis off;
-xlim([mx MX])
+text_v=[42500 55000 67500];
+text_v_diff=[-500:250:500];
 
 
-subplot("Position",[0.7 0.135 0.28 0.025])
-dv=linspace(min(x_diff),max(x_diff),1001);
-CC_Diff=interp1(x_diff,C_diff,dv);
+inq_txt_baseline=zeros(size(text_v));
+inq_txt_baseline(1)=-1;
+inq_txt_baseline(end)=1;
 
-for jj=1:1000
-    patch([dv(jj) dv(jj+1) dv(jj+1) dv(jj)],[0 0 1 1],CC_Diff(jj,:),'LineStyle','None'); hold on;
-end
+inq_txt_diff=zeros(size(text_v_diff));
+inq_txt_diff(1)=-1;
+inq_txt_diff(end)=1;
 
-plot([min(x_diff) min(x_diff)],[0 1],'k','LineWidth',1)
-plot([max(x_diff) max(x_diff)],[0 1],'k','LineWidth',1)
-plot([min(x_diff) max(x_diff)],[0 0],'k','LineWidth',1)
-plot([min(x_diff) max(x_diff)],[1 1],'k','LineWidth',1)
+measure_increase=true;
 
-text_v=round(linspace(min(x_diff),max(x_diff),6),2);
-for jj=1:length(text_v)
-    if(jj==1)
-        text(text_v(jj),-1.2,['\leq ' num2str(text_v(jj))],'Fontsize',14,'VerticalAlignment','middle','HorizontalAlignment','center');
-    elseif(jj<length(text_v))
-        text(text_v(jj),-1.2,[num2str(text_v(jj))],'Fontsize',14,'VerticalAlignment','middle','HorizontalAlignment','center');
-    else
-        text(text_v(jj),-1.2,['\geq ' num2str(text_v(jj))],'Fontsize',14,'VerticalAlignment','middle','HorizontalAlignment','center');
-    end
-end
-text(0.5,-3.9,'Additional cost per 10,000','FontSize',16,'HorizontalAlignment','center','VerticalAlignment','middle','Units','normalized')
-axis off;
-text(-0.05,33.5,'C','FontSize',28,'HorizontalAlignment','center','VerticalAlignment','middle','Units','normalized')
-text(0.5,33.5,'Difference','FontSize',16,'HorizontalAlignment','center','VerticalAlignment','middle','Units','normalized')
-xlim([min(x_diff) max(x_diff)])
-
-Cost_per_case_Baseline(Cost_per_case_Baseline<mx)=mx;
-Cost_per_case_Reduction(Cost_per_case_Reduction<mx)=mx;
-Cost_per_case_Baseline(Cost_per_case_Baseline>MX)=MX;
-Cost_per_case_Reduction(Cost_per_case_Reduction>MX)=MX;
-dC(dC>max(x_diff))=max(x_diff);
-dC(dC<min(x_diff))=min(x_diff);
-
-NS=length(S);
-
-CC_Vac=interp1(x_vac,C_vac,Cost_per_case_Baseline(:));
-CC_Vac(isnan(Cost_per_case_Baseline(:)),:)=repmat([0.5 0.5 0.5],sum(isnan(Cost_per_case_Baseline(:))),1);
-CM=makesymbolspec('Polygon',{'INDEX',[1 NS],'FaceColor',CC_Vac});
-
-ax1=usamap('conus');
- framem off; gridm off; mlabel off; plabel off;
-ax1.Position=[-0.3,-2,0.6,0.6];
-geoshow(ax1,S,'SymbolSpec',CM,'LineStyle','None'); hold on;
-geoshow(ax1, states,'Facecolor','none','LineWidth',1.5); 
-
-
-CC_Vac=interp1(x_vac,C_vac,Cost_per_case_Reduction(:));
-CC_Vac(isnan(Cost_per_case_Reduction(:)),:)=repmat([0.5 0.5 0.5],sum(isnan(Cost_per_case_Reduction(:))),1);
-CM=makesymbolspec('Polygon',{'INDEX',[1 NS],'FaceColor',CC_Vac});
-ax2=usamap('conus');
- framem off; gridm off; mlabel off; plabel off;
-
-ax2.Position=[1.7,0.4,0.6,0.6];
-geoshow(ax2,S,'SymbolSpec',CM,'LineStyle','None'); hold on;
-geoshow(ax2, states,'Facecolor','none','LineWidth',1.5); 
-
-
-CC_Diff=interp1(x_diff,C_diff,dC(:));
-CC_Diff(isnan(dC(:)),:)=repmat([0.5 0.5 0.5],sum(isnan(dC(:))),1);
-CM=makesymbolspec('Polygon',{'INDEX',[1 NS],'FaceColor',CC_Diff});
-
-ax3=usamap('conus');
- framem off; gridm off; mlabel off; plabel off;
-
-ax3.Position=[-0.3,-0.1,0.6,0.6];
-
-geoshow(ax3,S,'SymbolSpec',CM,'LineStyle','None'); hold on;
-geoshow(ax3, states,'Facecolor','none','LineWidth',1.5); 
-
-
-ax1.Position=[-0.32, -0.015 ,1,1];
-ax2.Position=[0.02, -0.015 ,1,1];
-ax3.Position=[0.35, -0.015 ,1,1];
+Gen_Figure_Comparison(Measure_Baseline,Measure_Reduction,x_baseline,C_Baseline,text_v,inq_txt_baseline,X_Label_Baseline,prct_label,monitary_label,x_diff,C_diff,text_v_diff,inq_txt_diff,X_Label_Diff,S,measure_increase);
 
 print(gcf,['Figure_Cost_per_case_Vaccine_Uptake_Reduction=' num2str(National_Reduction*100) '.png'],'-dpng','-r300');
+end

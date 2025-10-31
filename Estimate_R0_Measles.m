@@ -5,7 +5,7 @@ load('Turncated_Negative_Binomial_Parameter.mat');
 F_NB = scatteredInterpolant(kv(:),avg_fs(:),log(pv(:)./(1-pv(:))));
 
 T=readtable('National_Measles_Cases_Weekly_2025.xlsx');
-Week_Nat_Case_Count=T.local_cases;
+Week_Nat_Case_Count=T.total_cases;
 Vaccine='MMR';
 load([Vaccine '_Immunity.mat'],'County_Data')
 
@@ -70,9 +70,9 @@ for indx=1:max(Measles_Cases.ID_Unknown)
 end
 
 A=[-1 0 0 0 0 0 1];
-X0=[-0.378550180403027	-2.99984413784748	-0.719730821420188	-2.97147368135396	-0.334632514873287	-2.62263319770825	-0.888579869274175];
+X0=[-0.370148983019891	-3.95612420451353	-3.87003707955592	-3.99173972560107	-1.03162935138905	-3.49694083157202	-0.920111297122289];
 opts=optimoptions('surrogateopt','PlotFcn','surrogateoptplot','MaxFunctionEvaluations',10^3,'UseParallel',false,'InitialPoints',X0);
-lb=[-1.1 -4 -4 -4 -4 -3.5 -1.1];
+lb=[-1.1 -6 -6 -6 -3 -4 -1.1];
 ub=[log10(1.5) 3 1  1  1 1 log10(1.5)];
 
 rng(20251009)

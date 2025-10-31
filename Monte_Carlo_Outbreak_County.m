@@ -33,7 +33,7 @@ for ss=1:size(p_c,1)
                 cc=cc+1;
                 pdf_0 = pdf_0+Chain_Size_Distribution(cc,Reff(ss),k_mealses);
             end
-            os(jj)=cc-1; % Need to remove the introductory seed for the chain as we classified it as an import in the likelihood
+            os(jj)=cc; % Need to remove the introductory seed for the chain as we classified it as an import in the likelihood
         end
     end
     Outbreak_County(ss,r_z>p_c(ss,:))=os;
@@ -45,8 +45,8 @@ for ss=1:size(p_c,1)
             rng(5.*nn+size(p_c,1)-ss); % Need to have a function like this here to reseed so one doesn't get negative hospitalizations
             r = random(pd,1,Outbreak_County(ss,nn));
             for jj=1:size(Proportion_Size_Age_Unvaccinated,2)
-                Vaccinated_Cases_County(ss,jj,nn)=sum(r==jj);
-                Unvaccinated_Cases_County(ss,jj,nn)=sum(r==(jj+size(Proportion_Size_Age_Unvaccinated,2)));
+                Unvaccinated_Cases_County(ss,jj,nn)=sum(r==jj);
+                Vaccinated_Cases_County(ss,jj,nn)=sum(r==(jj+size(Proportion_Size_Age_Unvaccinated,2)));
             end
         end
     end

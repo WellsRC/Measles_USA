@@ -1,11 +1,11 @@
-function Gen_Figure_Comparison(Measure_Baseline,Measure_Reduction,x_baseline,C_Baseline,text_v,inq_txt_baseline,X_Label_Baseline,prct_label,x_diff,C_diff,text_v_diff,inq_txt_diff,X_Label_Diff,S,measure_increase)
+function Gen_Figure_Comparison(Measure_Baseline,Measure_Reduction,x_baseline,C_Baseline,text_v,inq_txt_baseline,X_Label_Baseline,prct_label,monitary_label,x_diff,C_diff,text_v_diff,inq_txt_diff,X_Label_Diff,S,measure_increase)
 
 
 states = shaperead('usastatelo', 'UseGeoCoords', true);
 
-figure('units','normalized','outerposition',[0.15 0.075 0.5 0.4]);
+figure('units','normalized','outerposition',[0.15 0.075 0.5 0.43]);
 
-subplot("Position",[0.035 0.135 0.44 0.025])
+subplot("Position",[0.045 0.135 0.4 0.025])
 dv=linspace(x_baseline(1),x_baseline(end),1001);
 CC_Baseline=interp1(x_baseline,C_Baseline,dv);
 
@@ -21,33 +21,48 @@ plot([x_baseline(1) x_baseline(end)],[1 1],'k','LineWidth',1)
 if(prct_label)
     for jj=1:length(text_v)
         if(inq_txt_baseline(jj)<0)
-            text(text_v(jj),-1.2,['\leq ' num2str(100.*text_v(jj)) '%'],'Fontsize',14,'VerticalAlignment','middle','HorizontalAlignment','center');
+            text(text_v(jj),-1.2,['\leq ' num2str(100.*abs(text_v(jj))) '%'],'Fontsize',14,'VerticalAlignment','middle','HorizontalAlignment','center');
         elseif(inq_txt_baseline(jj)>0)
-            text(text_v(jj),-1.2,['\geq ' num2str(100.*text_v(jj)) '%'],'Fontsize',14,'VerticalAlignment','middle','HorizontalAlignment','center');
+            text(text_v(jj),-1.2,['\geq ' num2str(100.*abs(text_v(jj))) '%'],'Fontsize',14,'VerticalAlignment','middle','HorizontalAlignment','center');
         else
-            text(text_v(jj),-1.2,[num2str(100.*text_v(jj)) '%'],'Fontsize',14,'VerticalAlignment','middle','HorizontalAlignment','center');
+            text(text_v(jj),-1.2,[num2str(100.*abs(text_v(jj))) '%'],'Fontsize',14,'VerticalAlignment','middle','HorizontalAlignment','center');
+        end
+    end
+elseif(monitary_label)
+    for jj=1:length(text_v)
+        if(text_v(jj)<0)
+            sgn='-';
+        else
+            sgn=[];
+        end
+        if(inq_txt_baseline(jj)<0)
+            text(text_v(jj),-1.2,['\leq' sgn '$' num2str(abs(text_v(jj)))],'Fontsize',14,'VerticalAlignment','middle','HorizontalAlignment','center');
+        elseif(inq_txt_baseline(jj)>0)
+            text(text_v(jj),-1.2,['\geq' sgn '$' num2str(abs(text_v(jj)))],'Fontsize',14,'VerticalAlignment','middle','HorizontalAlignment','center');
+        else
+            text(text_v(jj),-1.2,[sgn '$' num2str(abs(text_v(jj)))],'Fontsize',14,'VerticalAlignment','middle','HorizontalAlignment','center');
         end
     end
 else
     for jj=1:length(text_v)
         if(inq_txt_baseline(jj)<0)
-            text(text_v(jj),-1.2,['\leq ' num2str(text_v(jj))],'Fontsize',14,'VerticalAlignment','middle','HorizontalAlignment','center');
+            text(text_v(jj),-1.2,['\leq ' num2str(abs(text_v(jj)))],'Fontsize',14,'VerticalAlignment','middle','HorizontalAlignment','center');
         elseif(inq_txt_baseline(jj)>0)
-            text(text_v(jj),-1.2,['\geq ' num2str(text_v(jj))],'Fontsize',14,'VerticalAlignment','middle','HorizontalAlignment','center');
+            text(text_v(jj),-1.2,['\geq ' num2str(abs(text_v(jj)))],'Fontsize',14,'VerticalAlignment','middle','HorizontalAlignment','center');
         else
-            text(text_v(jj),-1.2,[num2str(text_v(jj))],'Fontsize',14,'VerticalAlignment','middle','HorizontalAlignment','center');
+            text(text_v(jj),-1.2,[num2str(abs(text_v(jj)))],'Fontsize',14,'VerticalAlignment','middle','HorizontalAlignment','center');
         end
     end
 end
 text(0.5,-3.9,X_Label_Baseline,'FontSize',16,'HorizontalAlignment','center','VerticalAlignment','middle','Units','normalized');
 axis off;
-text(-0.05,33.5,'A','FontSize',28,'HorizontalAlignment','center','VerticalAlignment','middle','Units','normalized')
-text(0.5,33.5,'Baseline','FontSize',16,'HorizontalAlignment','center','VerticalAlignment','middle','Units','normalized')
+text(-0.04,32.5,'A','FontSize',28,'HorizontalAlignment','center','VerticalAlignment','middle','Units','normalized')
+text(0.5,32.5,'Baseline','FontSize',16,'HorizontalAlignment','center','VerticalAlignment','middle','Units','normalized')
 
 axis off;
 xlim([x_baseline(1) x_baseline(end)])
 
-subplot("Position",[0.535 0.135 0.44 0.025])
+subplot("Position",[0.545 0.135 0.4 0.025])
 dv=linspace(x_diff(1),x_diff(end),1001);
 CC_Diff=interp1(x_diff,C_diff,dv);
 
@@ -64,29 +79,44 @@ plot([x_diff(1) x_diff(end)],[1 1],'k','LineWidth',1)
 if(prct_label)
     for jj=1:length(text_v_diff)
         if(inq_txt_diff(jj)<0)
-            text(text_v_diff(jj),-1.2,['\leq ' num2str(100.*text_v_diff(jj)) '%'],'Fontsize',14,'VerticalAlignment','middle','HorizontalAlignment','center');
+            text(text_v_diff(jj),-1.2,['\leq ' num2str(100.*abs(text_v_diff(jj))) '%'],'Fontsize',14,'VerticalAlignment','middle','HorizontalAlignment','center');
         elseif(inq_txt_diff(jj)>0)
-            text(text_v_diff(jj),-1.2,['\geq ' num2str(100.*text_v_diff(jj)) '%'],'Fontsize',14,'VerticalAlignment','middle','HorizontalAlignment','center');
+            text(text_v_diff(jj),-1.2,['\geq ' num2str(100.*abs(text_v_diff(jj))) '%'],'Fontsize',14,'VerticalAlignment','middle','HorizontalAlignment','center');
         else
-            text(text_v_diff(jj),-1.2,[num2str(100.*text_v_diff(jj)) '%'],'Fontsize',14,'VerticalAlignment','middle','HorizontalAlignment','center');
+            text(text_v_diff(jj),-1.2,[num2str(100.*abs(text_v_diff(jj))) '%'],'Fontsize',14,'VerticalAlignment','middle','HorizontalAlignment','center');
+        end
+    end
+elseif(monitary_label)
+    for jj=1:length(text_v_diff)
+        if(text_v_diff(jj)<0)
+            sgn='-';
+        else
+            sgn=[];
+        end
+        if(inq_txt_diff(jj)<0)
+            text(text_v_diff(jj),-1.2,['\leq' sgn '$' num2str(abs(text_v_diff(jj)))],'Fontsize',14,'VerticalAlignment','middle','HorizontalAlignment','center');
+        elseif(inq_txt_diff(jj)>0)
+            text(text_v_diff(jj),-1.2,['\geq' sgn '$' num2str(abs(text_v_diff(jj)))],'Fontsize',14,'VerticalAlignment','middle','HorizontalAlignment','center');
+        else
+            text(text_v_diff(jj),-1.2,[sgn '$' num2str(abs(text_v_diff(jj)))],'Fontsize',14,'VerticalAlignment','middle','HorizontalAlignment','center');
         end
     end
 else
     for jj=1:length(text_v_diff)
         if(inq_txt_diff(jj)<0)
-            text(text_v_diff(jj),-1.2,['\leq ' num2str(text_v_diff(jj))],'Fontsize',14,'VerticalAlignment','middle','HorizontalAlignment','center');
+            text(text_v_diff(jj),-1.2,['\leq ' num2str(abs(text_v_diff(jj)))],'Fontsize',14,'VerticalAlignment','middle','HorizontalAlignment','center');
         elseif(inq_txt_diff(jj)>0)
-            text(text_v_diff(jj),-1.2,['\geq ' num2str(text_v_diff(jj))],'Fontsize',14,'VerticalAlignment','middle','HorizontalAlignment','center');
+            text(text_v_diff(jj),-1.2,['\geq ' num2str(abs(text_v_diff(jj)))],'Fontsize',14,'VerticalAlignment','middle','HorizontalAlignment','center');
         else
-            text(text_v_diff(jj),-1.2,[num2str(text_v_diff(jj))],'Fontsize',14,'VerticalAlignment','middle','HorizontalAlignment','center');
+            text(text_v_diff(jj),-1.2,[num2str(abs(text_v_diff(jj)))],'Fontsize',14,'VerticalAlignment','middle','HorizontalAlignment','center');
         end
     end
 end
 
 text(0.5,-3.9,X_Label_Diff,'FontSize',16,'HorizontalAlignment','center','VerticalAlignment','middle','Units','normalized');
 axis off;
-text(-0.05,33.5,'B','FontSize',28,'HorizontalAlignment','center','VerticalAlignment','middle','Units','normalized')
-text(0.5,33.5,'Difference','FontSize',16,'HorizontalAlignment','center','VerticalAlignment','middle','Units','normalized')
+text(-0.04,32.5,'B','FontSize',28,'HorizontalAlignment','center','VerticalAlignment','middle','Units','normalized')
+text(0.5,32.5,'Difference','FontSize',16,'HorizontalAlignment','center','VerticalAlignment','middle','Units','normalized')
 xlim([x_diff(1) x_diff(end)])
 
 if(measure_increase)
