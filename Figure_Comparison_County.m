@@ -7,8 +7,8 @@ else
 end
 N_Samp=2.5.*10^3;
 
-[cases_baseline,hospital_baseline,cost_baseline,cost_per_case_baseline]=County_Outcome_Central_Measure(0,Age_Reduction,N_Samp,Scenario,Age_0_to_6);
-[cases_reduction,hospital_reduction,cost_reduction,cost_per_case_reduction]=County_Outcome_Central_Measure(National_Reduction,Age_Reduction,N_Samp,Scenario,Age_0_to_6);
+% [cases_baseline,hospital_baseline,cost_baseline,cost_per_case_baseline]=County_Outcome_Central_Measure(0,Age_Reduction,N_Samp,Scenario,Age_0_to_6);
+% [cases_reduction,hospital_reduction,cost_reduction,cost_per_case_reduction]=County_Outcome_Central_Measure(National_Reduction,Age_Reduction,N_Samp,Scenario,Age_0_to_6);
 S=shaperead([pwd '\Shapefile\cb_2023_us_county_20m.shp'],"UseGeoCoords",true);
 
 FN_Age_Class={'Age_0_to_4','_Age_5_to_9','_Age_10_to_14','_Age_15_to_19','_Age_20_to_24'};
@@ -43,17 +43,17 @@ for cc=1:length(S)
         else
             V_Baseline(cc,:)=(table2array(County_Data_Vaccine_Reduction.Vaccine_Uptake(tf,1)).*table2array(County_Data_Vaccine_Reduction.Population(tf,1))+(2/5).*table2array(County_Data_Vaccine_Reduction.Vaccine_Uptake(tf,2)).*table2array(County_Data_Vaccine_Reduction.Population(tf,2)))./(table2array(County_Data_Vaccine_Reduction.Population(tf,1))+(2/5).*table2array(County_Data_Vaccine_Reduction.Population(tf,2)));
         end
-        Case_Baseline(cc,:)=10.^4.*cases_baseline(tf)./(County_Data_Vaccine_Reduction.Total_Population(tf));
-        Case_Reduction(cc,:)=10.^4.*cases_reduction(tf)./(County_Data_Vaccine_Reduction.Total_Population(tf));
-
-        Hospital_Baseline(cc,:)=10.^6.*hospital_baseline(tf)./(County_Data_Vaccine_Reduction.Total_Population(tf));
-        Hospital_Reduction(cc,:)=10.^6.*hospital_reduction(tf)./(County_Data_Vaccine_Reduction.Total_Population(tf));
-
-        Cost_Baseline(cc,:)=10.^3.*cost_baseline(tf)./(County_Data_Vaccine_Reduction.Total_Population(tf));
-        Cost_Reduction(cc,:)=10.^3.*cost_reduction(tf)./(County_Data_Vaccine_Reduction.Total_Population(tf));
-
-        Cost_per_case_Baseline(cc,:)=cost_per_case_baseline(tf);
-        Cost_per_case_Reduction(cc,:)=cost_per_case_reduction(tf);
+        % Case_Baseline(cc,:)=10.^4.*cases_baseline(tf)./(County_Data_Vaccine_Reduction.Total_Population(tf));
+        % Case_Reduction(cc,:)=10.^4.*cases_reduction(tf)./(County_Data_Vaccine_Reduction.Total_Population(tf));
+        % 
+        % Hospital_Baseline(cc,:)=10.^6.*hospital_baseline(tf)./(County_Data_Vaccine_Reduction.Total_Population(tf));
+        % Hospital_Reduction(cc,:)=10.^6.*hospital_reduction(tf)./(County_Data_Vaccine_Reduction.Total_Population(tf));
+        % 
+        % Cost_Baseline(cc,:)=10.^3.*cost_baseline(tf)./(County_Data_Vaccine_Reduction.Total_Population(tf));
+        % Cost_Reduction(cc,:)=10.^3.*cost_reduction(tf)./(County_Data_Vaccine_Reduction.Total_Population(tf));
+        % 
+        % Cost_per_case_Baseline(cc,:)=cost_per_case_baseline(tf);
+        % Cost_per_case_Reduction(cc,:)=cost_per_case_reduction(tf);
     end
 end
 

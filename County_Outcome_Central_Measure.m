@@ -1,12 +1,15 @@
-function [cases,hospital,cost,cost_per_case]=County_Outcome_Central_Measure(National_Reduction,Age_Reduction,NS,Scenario_Plot,Age_0_to_6)
+function [cases,hospital,cost,cost_per_case]=County_Outcome_Central_Measure(National_Reduction,Scenario_Plot,Age_0_to_6)
 
 load('Turncated_Negative_Binomial_Parameter.mat');
 F_NB = scatteredInterpolant(kv(:),avg_fs(:),log(pv(:)./(1-pv(:))));
 [p_H_Unvaccinated,p_H_Vaccinated]=Hospitalization_Probability();
 [Productivity_Cost_Under_15_Case,Productivity_Cost_15_plus_Case,Productivity_Cost_Under_15_Contact,Productivity_Cost_15_plus_Contact,Cost_per_Contact,Cost_per_Vaccine_dose_Private,Cost_per_Vaccine_dose_VFC,Cost_per_Hospitalization,Cost_per_Non_Hospitalization,Tests_per_Contact,Cost_per_Test]=Measles_Outbreak_Cost();
 
-[Outbreak_Cases_County,Unvaccinated_Cases_County_Baseline,Vaccinated_Cases_County_Baseline,Total_Contacts_Baseline,Unvaccinated_Contacts_Baseline]=Monte_Carlo_Incidence(F_NB,National_Reduction,Age_Reduction,NS,Scenario_Plot,Age_0_to_6);
-
+if(Age_0_to_6)
+    load(['Monte_Carlo_Run_' Scenario_Plot '_National_Reduction=' num2str(National_Reduction.*100) '_Ages_0_to_6.mat'],'Total_Cases_County','Unvaccinated_Cases_County_Baseline','Vaccinated_Cases_County_Baseline','Total_Contacts_Baseline','Unvaccinated_Contacts_Baseline','Imported_Case');
+else
+    load(['Monte_Carlo_Run_' Scenario_Plot '_National_Reduction=' num2str(National_Reduction.*100) '_Ages_0_to_4.mat'],'Total_Cases_County','Unvaccinated_Cases_County_Baseline','Vaccinated_Cases_County_Baseline','Total_Contacts_Baseline','Unvaccinated_Contacts_Baseline','Imported_Case');
+end
 
 Productivity_loss_Cases=[Productivity_Cost_Under_15_Case.*ones(1,3) Productivity_Cost_15_plus_Case.*ones(1,15)];
 Productivity_loss_Contacts=[Productivity_Cost_Under_15_Contact.*ones(1,3) Productivity_Cost_15_plus_Contact.*ones(1,15)];
@@ -26,21 +29,21 @@ for cc=1:size(Hospitalizations_Baseline,1)
     Productivity_Loss_total(cc,:)=Productivity_loss_Contacts*squeeze(Unvaccinated_Contacts_Baseline(cc,:,:))+Productivity_loss_Cases*(squeeze(Unvaccinated_Cases_County_Baseline(cc,:,:))+squeeze(Vaccinated_Cases_County_Baseline(cc,:,:)));
 end
 
-Cost_Case_Medical=Cost_per_Hospitalization.*Hospitalizations_Baseline+Cost_per_Non_Hospitalization.*(Outbreak_Cases_County-Hospitalizations_Baseline);
+Cost_Case_Medical=Cost_per_Hospitalization.*Hospitalizations_Baseline+Cost_per_Non_Hospitalization.*(Total_Cases_County-Hospitalizations_Baseline);
 Testing_Cost=Tests_per_Contact.*Cost_per_Test.*Total_Contacts_Baseline;
 Contact_Tracing_Costs=Cost_per_Contact.*Total_Contacts_Baseline;
 Cost_Baseline=Contact_Tracing_Costs+Cost_Case_Medical+Testing_Cost+Cost_Vaccination_Contacts+Productivity_Loss_total;
 
-cases=mean(Outbreak_Cases_County,2);
+cases=mean(Total_Cases_County,2);
 hospital=mean(Hospitalizations_Baseline,2);
 
 cost=NaN.*zeros(size(hospital));
 cost_per_case=NaN.*zeros(size(hospital));
 for cc=1:length(cost_per_case)
-    tf=Outbreak_Cases_County(cc,:)>0;
+    tf=Total_Cases_County(cc,:)>0;
     if(sum(tf)>0)
         cost(cc)=mean(Cost_Baseline(cc,tf));
-        cost_per_case(cc)=mean(Cost_Baseline(cc,tf)./Outbreak_Cases_County(cc,tf));
+        cost_per_case(cc)=mean(Cost_Baseline(cc,tf)./Total_Cases_County(cc,tf));
     end
 end
 

@@ -1,8 +1,8 @@
-function [Outbreak_County,Unvaccinated_Cases_County,Vaccinated_Cases_County]=Monte_Carlo_Outbreak_County(F_NB,Max_Outbreak,p_c,mu_c,k_nbin,Reff,k_mealses,Proportion_Size_Age_Unvaccinated,Proportion_Size_Age_Vaccinated,NS)
+function [Total_Cases_County,Unvaccinated_Cases_County,Vaccinated_Cases_County]=Monte_Carlo_Outbreak_County(F_NB,Max_Outbreak,p_c,mu_c,k_nbin,Reff,k_mealses,Proportion_Size_Age_Unvaccinated,Proportion_Size_Age_Vaccinated,NS,Imported_Case)
 rng(20251009)
 r_z_samp=rand(size(p_c,1),NS);
 r_os_samp=rand(size(p_c,1),NS);
-Outbreak_County=zeros(size(p_c,1),NS);
+Total_Cases_County=Imported_Case;
 Unvaccinated_Cases_County=zeros(size(p_c,1),size(Proportion_Size_Age_Unvaccinated,2),NS);
 Vaccinated_Cases_County=zeros(size(p_c,1),size(Proportion_Size_Age_Vaccinated,2),NS);
 for ss=1:size(p_c,1)
@@ -36,14 +36,14 @@ for ss=1:size(p_c,1)
             os(jj)=cc; % Need to remove the introductory seed for the chain as we classified it as an import in the likelihood
         end
     end
-    Outbreak_County(ss,r_z>p_c(ss,:))=os;
+    Total_Cases_County(ss,r_z>p_c(ss,:))=Total_Cases_County(ss,r_z>p_c(ss,:))+os';
 
     p_vec=[Proportion_Size_Age_Unvaccinated(ss,:) Proportion_Size_Age_Vaccinated(ss,:) ];
     pd = makedist('Multinomial','Probabilities',p_vec);
     for nn=1:NS
-        if(Outbreak_County(ss,nn)>0)
+        if(Total_Cases_County(ss,nn)>0)
             rng(5.*nn+size(p_c,1)-ss); % Need to have a function like this here to reseed so one doesn't get negative hospitalizations
-            r = random(pd,1,Outbreak_County(ss,nn));
+            r = random(pd,1,Total_Cases_County(ss,nn));
             for jj=1:size(Proportion_Size_Age_Unvaccinated,2)
                 Unvaccinated_Cases_County(ss,jj,nn)=sum(r==jj);
                 Vaccinated_Cases_County(ss,jj,nn)=sum(r==(jj+size(Proportion_Size_Age_Unvaccinated,2)));

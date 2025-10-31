@@ -26,16 +26,16 @@ function Output_Table=Figure_Incidence(Scenario_Plot,Age_0_to_6)
     % Baseline Calculations
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     National_Reduction=0;
-    [pd_baseline_cases,pd_baseline_hospital,pd_baseline_cost,pd_baseline_cost_per_case]=National_Outcome_Distribution(National_Reduction,Age_Reduction,NS,Scenario_Plot,Age_0_to_6);
+    [pd_baseline_cases,pd_baseline_hospital,pd_baseline_cost,pd_baseline_cost_per_case]=National_Outcome_Distribution(National_Reduction,Scenario_Plot,Age_0_to_6);
     
     National_Reduction=0.01;
-    [pd_reduction_1_cases,pd_reduction_1_hospital,pd_reduction_1_cost,pd_reduction_1_cost_per_case]=National_Outcome_Distribution(National_Reduction,Age_Reduction,NS,Scenario_Plot,Age_0_to_6);
+    [pd_reduction_1_cases,pd_reduction_1_hospital,pd_reduction_1_cost,pd_reduction_1_cost_per_case]=National_Outcome_Distribution(National_Reduction,Scenario_Plot,Age_0_to_6);
 
     National_Reduction=0.025;
-    [pd_reduction_2_5_cases,pd_reduction_2_5_hospital,pd_reduction_2_5_cost,pd_reduction_2_5_cost_per_case]=National_Outcome_Distribution(National_Reduction,Age_Reduction,NS,Scenario_Plot,Age_0_to_6);
+    [pd_reduction_2_5_cases,pd_reduction_2_5_hospital,pd_reduction_2_5_cost,pd_reduction_2_5_cost_per_case]=National_Outcome_Distribution(National_Reduction,Scenario_Plot,Age_0_to_6);
 
     National_Reduction=0.05;
-    [pd_reduction_5_cases,pd_reduction_5_hospital,pd_reduction_5_cost,pd_reduction_5_cost_per_case]=National_Outcome_Distribution(National_Reduction,Age_Reduction,NS,Scenario_Plot,Age_0_to_6);
+    [pd_reduction_5_cases,pd_reduction_5_hospital,pd_reduction_5_cost,pd_reduction_5_cost_per_case]=National_Outcome_Distribution(National_Reduction,Scenario_Plot,Age_0_to_6);
 
 
     Scenario={'Baseline';'1% Reduction'; '2.5% Reduction'; '5% Reduction'};
