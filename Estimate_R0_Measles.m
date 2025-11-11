@@ -4,8 +4,8 @@ clc;
 load('Turncated_Negative_Binomial_Parameter.mat');
 F_NB = scatteredInterpolant(kv(:),avg_fs(:),log(pv(:)./(1-pv(:))));
 
-T=readtable('National_Measles_Cases_Weekly_2025.xlsx');
-Week_Nat_Case_Count=T.total_cases;
+T=readtable('National_Measles_Cases_Weekly_2023_2025.xlsx');
+Week_Nat_Case_Count_2025=T.total_cases(T.Year==2025);
 Vaccine='MMR';
 load([Vaccine '_Immunity.mat'],'County_Data')
 
@@ -69,27 +69,32 @@ for indx=1:max(Measles_Cases.ID_Unknown)
     end
 end
 
-A=[-1 0 0 0 0 0 1];
-X0=[-0.370148983019891	-3.95612420451353	-3.87003707955592	-3.99173972560107	-1.03162935138905	-3.49694083157202	-0.920111297122289];
+% [Importation_Cases_County_2024] = Case_Importation_Sample('Sample_2024',500);
+% [Importation_Cases_County_2023] = Case_Importation_Sample('Sample_2023',500);
+
+A=[];
+X0=[-0.900585602899950	2.61176764317632	-5.75974820979949	-4.38964539471613	-0.416995137899064	-3.68399151986741	-0.0456643792169190; 
+    -0.900585602899950	2.61176764317632	-5.75974820979949	-2.38964539471613	-0.416995137899064	-1.68399151986741	-0.0456643792169190;
+    -0.919105557593447	2.44932597042403	-5.39855770747366	-2.27514071705288	-0.452726356477612	-3.69668885902970	-0.0438257808097951;
+    -0.919105557593447	2.44932597042403	-5.39855770747366	-4.27514071705288	-0.452726356477612	-3.69668885902970	-0.0438257808097951;
+    -1.03591091251131	-2.73390885648704	-3.60928486970385	-3.31907054831215	-0.817456549781539	-1.71044810642087	-0.569053623227815];
+
 opts=optimoptions('surrogateopt','PlotFcn','surrogateoptplot','MaxFunctionEvaluations',10^3,'UseParallel',false,'InitialPoints',X0);
-lb=[-1.1 -6 -6 -6 -3 -4 -1.1];
+lb=[-1.1 -6 -6 -6 -3 -5 -1.1];
 ub=[log10(1.5) 3 1  1  1 1 log10(1.5)];
 
 rng(20251009)
-r_samp_pc=rand(length(Known_Ind_Cases),100);
-r_samp_outbreak=rand(length(Known_Ind_Cases),100);
+r_samp_pc_2025=rand(length(Known_Ind_Cases),100);
+r_samp_outbreak_2025=rand(length(Known_Ind_Cases),100);
 
-[par_0,fval_0]=surrogateopt(@(x)Objective_Estimate_R0(x,County_Data,Imported_Case,Known_Ind_Cases,Unknown_Ind_Cases,Unknown_Ind_Cases_Weight,Population_i,Population_j,Distance_Matrix_ij,Week_Nat_Case_Count,r_samp_pc,r_samp_outbreak,F_NB,Max_Outbreak),lb,ub,[],A,0,[],[],opts);
-
+[par_0,fval_0]=surrogateopt(@(x)Objective_Estimate_R0(x,County_Data,Imported_Case,Known_Ind_Cases,Unknown_Ind_Cases,Unknown_Ind_Cases_Weight,Population_i,Population_j,Distance_Matrix_ij,Week_Nat_Case_Count_2025,r_samp_pc_2025,r_samp_outbreak_2025,F_NB,Max_Outbreak),lb,ub,[],[],[],[],[],opts);
 
 opts_ps=optimoptions('patternsearch','UseParallel',false,'FunctionTolerance',10^(-9),'MaxIterations',10^3,'MaxFunctionEvaluations',10^4,'PlotFcn','psplotbestf','UseCompleteSearch',true,'UseCompletePoll',true,'Cache','on');
-[par,fval]=patternsearch(@(x)Objective_Estimate_R0(x,County_Data,Imported_Case,Known_Ind_Cases,Unknown_Ind_Cases,Unknown_Ind_Cases_Weight,Population_i,Population_j,Distance_Matrix_ij,Week_Nat_Case_Count,r_samp_pc,r_samp_outbreak,F_NB,Max_Outbreak),par_0,A,0,[],[],lb,ub,[],opts_ps);
+[par,fval]=patternsearch(@(x)Objective_Estimate_R0(x,County_Data,Imported_Case,Known_Ind_Cases,Unknown_Ind_Cases,Unknown_Ind_Cases_Weight,Population_i,Population_j,Distance_Matrix_ij,Week_Nat_Case_Count_2025,r_samp_pc_2025,r_samp_outbreak_2025,F_NB,Max_Outbreak),par_0,[],[],[],[],lb,ub,[],opts_ps);
 
 if(fval_0<fval)
     par=par_0;
 end
-
-psi_c=County_Data.Total_Immunity;
 
 beta_seed=10.^par(1);
 lambda_0=par(2);

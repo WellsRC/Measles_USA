@@ -32,9 +32,12 @@ for ss=1:length(State)
     w_24=w2.Data(strcmp(w2.Location,State{ss}));
 
     temp_35=V_35.Birth_Year_2020(strcmp(V_35.State,State{ss}));
-    w_35=w3.Data(strcmp(w3.Location,State{ss}))+w4.Data(strcmp(w4.Location,State{ss}));
+    w_35=w3.Data(strcmp(w3.Location,State{ss}));
 
-    Vaccine_Uptake(ss)=(temp_13.*w_13+temp_24.*w_24+temp_35.*w_35)./(w_13+w_24+w_35+w_NB);
+    temp_48=V_35.Birth_Year_2019(strcmp(V_35.State,State{ss}));
+    w_48=w4.Data(strcmp(w4.Location,State{ss}));
+
+    Vaccine_Uptake(ss)=(temp_13.*w_13+temp_24.*w_24+temp_35.*w_35+temp_48.*w_48)./(w_13+w_24+w_35+w_NB+w_48);
 end
 
 T=table(State,STUSPS,State_FIPs,Vaccine_Uptake);

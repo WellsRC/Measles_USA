@@ -162,7 +162,7 @@ function Output_Table=Figure_Incidence(Scenario_Plot,Age_0_to_6)
     ylabel('Probability density','FontSize',18)
     legend({'Baseline','1% reduction','2.5% reduction','5% reduction'},'FontSize',16);
     box off;
-    xlim([min_x,max_x])
+    xlim([min_x,2500])
     
     myAxes=findobj(s1,'Type','Axes');
     exportgraphics(myAxes,['National_Incidence_' Xlabel_Add_TXT{:} '.png'],'Resolution',300);
@@ -181,7 +181,7 @@ function Output_Table=Figure_Incidence(Scenario_Plot,Age_0_to_6)
     ylabel('Probability density','FontSize',18)
     legend({'Baseline','1% reduction','2.5% reduction','5% reduction'},'FontSize',16);
     box off;
-    xlim([min_x,max_x])
+    xlim([min_x,700])
     
     myAxes=findobj(s2,'Type','Axes');
     exportgraphics(myAxes,['National_Hospital_' Xlabel_Add_TXT{:} '.png'],'Resolution',300);
@@ -200,7 +200,7 @@ function Output_Table=Figure_Incidence(Scenario_Plot,Age_0_to_6)
     legend({'Baseline','1% reduction','2.5% reduction','5% reduction'},'FontSize',16);
     box off;
     xtickformat('$%,.0f')
-    xlim([0,300])
+    xlim([min_x,max_x])
 
     myAxes=findobj(s3,'Type','Axes');
     exportgraphics(myAxes,['National_Cost_' Xlabel_Add_TXT{:} '.png'],'Resolution',300);
@@ -219,7 +219,7 @@ function Output_Table=Figure_Incidence(Scenario_Plot,Age_0_to_6)
     legend({'Baseline','1% reduction','2.5% reduction','5% reduction'},'FontSize',16);
     box off;
     xtickformat('$%,.0f')
-    xlim([50,90])
+    xlim([min_x,80])
 
     myAxes=findobj(s4,'Type','Axes');
     exportgraphics(myAxes,['National_Cot_per_case_' Xlabel_Add_TXT{:} '.png'],'Resolution',300);

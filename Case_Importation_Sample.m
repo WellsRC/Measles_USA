@@ -12,6 +12,24 @@ if(strcmp('Baseline',Type))
             Importation_Cases_County(cc)=Measles_Cases.case_count(t_f);
         end
     end
+elseif(strcmp('Add',Type(1:3)))
+
+    rng(348769934);
+    [Importation_Cases_County] = Case_Importation_Sample('Sample_2025',NS);
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
+    % Additional numebr
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
+    AvgI=str2double(Type(5:end));
+    Total_Import=poissrnd(AvgI,NS,1);
+    import_weight=cumsum(County_Data.Total_Population)./sum(County_Data.Total_Population);
+    for ss=1:NS
+        for ii=1:Total_Import(ss)
+            r=rand(1);
+            indx_c=find(r<=import_weight,1,"first");
+            Importation_Cases_County(indx_c,ss)=Importation_Cases_County(indx_c,ss)+1;
+        end
+    end
 else
     rng(23102025)
     Importation_Cases_County=zeros(length(County_Data.County),NS);

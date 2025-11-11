@@ -1,10 +1,9 @@
-function National_Reduction_Vaccine_Uptake(National_Reduction,Age_Reduction,Age_0_6)
-if(~Age_0_6)
-    for ii=2:length(Age_Reduction)
-        Age_Reduction(ii)=Age_Reduction(ii-1) & Age_Reduction(ii);
-    end
-else
-    Age_Reduction=[true(1,2) false(1,3)];
+function National_Reduction_Vaccine_Uptake(National_Annual_Reduction,Year_Reduced)
+
+if(National_Annual_Reduction>0)
+    Age_Group_Reduction=Compute_Age_Group_Reduction(National_Annual_Reduction,Year_Reduced);
+elseif(National_Annual_Reduction==0)
+    Age_Group_Reduction=zeros(1,3);
 end
 Vaccine='MMR';
 L_F=zeros(2^7,4);
@@ -19,21 +18,19 @@ L_T=sum(L_F,2)+sum(L_S,2);
     
 [~,Model_Num]=max(L_T);
 
-clearvars -except Model_Num Vaccine National_Reduction Age_Reduction Age_0_6
+clearvars -except Model_Num Vaccine National_Annual_Reduction Year_Reduced Age_Group_Reduction
 
-Age_Class={'Age_0_to_4','Age_5_to_9','Age_10_to_14','Age_15_to_19','Age_20_to_24'};
-Age_Class=Age_Class(Age_Reduction);
+Age_Class={'Age_0_to_4','Age_5_to_9','Age_10_to_14'}; %,'Age_15_to_19','Age_20_to_24'};
 
-FN_Age_Class={'Age_0_to_4','_Age_5_to_9','_Age_10_to_14','_Age_15_to_19','_Age_20_to_24'};
-FN_Age_Class=FN_Age_Class(Age_Reduction);
 
-dZ_County=zeros(3143,sum(Age_Reduction));
-for aa=1:length(Age_Class)
-    [~,dZ_County(:,aa)]=Age_Adjustment_Factor(Vaccine,Model_Num,Age_Class{aa});
+if(National_Annual_Reduction~=0)
+    dZ_County=zeros(3143,length(Age_Class));
+    for aa=1:length(Age_Class)
+        [~,dZ_County(:,aa)]=Age_Adjustment_Factor(Vaccine,Model_Num,Age_Class{aa});
+    end
+    
+    [County_Info,~]=Decline_Adjustment_Factor(Vaccine,Model_Num,dZ_County,Age_Group_Reduction);
 end
-
-[County_Info,~]=Decline_Adjustment_Factor(Vaccine,Model_Num,dZ_County,National_Reduction,Age_Reduction,Age_0_6);
-
 
 load([Vaccine '_Immunity.mat'],'County_Data')
 
@@ -44,41 +41,44 @@ clear County_Data
 epsv1=0.93;
 epsv2=0.97;
 
-Immunity_0_to_4=epsv1.*County_Info.Vaccine_Uptake_0_to_4;
-Vaccine_Uptake_0_to_4=County_Info.Vaccine_Uptake_0_to_4;
-
-if(Age_Reduction(2))
+if(National_Annual_Reduction~=0)
+    Immunity_0_to_4=epsv1.*County_Info.Vaccine_Uptake_0_to_4;
+    Vaccine_Uptake_0_to_4=County_Info.Vaccine_Uptake_0_to_4;
+    
     Immunity_5_to_9=epsv2.*County_Info.Vaccine_Uptake_5_to_9;
     Vaccine_Uptake_5_to_9=County_Info.Vaccine_Uptake_5_to_9;
-else
-    Immunity_5_to_9=table2array(County_Data_Vaccine_Reduction.Immunity(:,2));
-    Vaccine_Uptake_5_to_9=table2array(County_Data_Vaccine_Reduction.Vaccine_Uptake(:,2));
-end
-
-if(Age_Reduction(3))
+    
     Immunity_10_to_14=epsv2.*County_Info.Vaccine_Uptake_10_to_14;
     Vaccine_Uptake_10_to_14=County_Info.Vaccine_Uptake_10_to_14;
-else
-    Immunity_10_to_14=table2array(County_Data_Vaccine_Reduction.Immunity(:,3));
-    Vaccine_Uptake_10_to_14=table2array(County_Data_Vaccine_Reduction.Vaccine_Uptake(:,3));
-end
-
-if(Age_Reduction(4))
-    Immunity_15_to_19=epsv2.*County_Info.Vaccine_Uptake_15_to_19;
-    Vaccine_Uptake_15_to_19=County_Info.Vaccine_Uptake_15_to_19;
-else
+    
+    
+    % Immunity_15_to_19=epsv2.*County_Info.Vaccine_Uptake_15_to_19;
+    % Vaccine_Uptake_15_to_19=County_Info.Vaccine_Uptake_15_to_19;
+    
     Immunity_15_to_19=table2array(County_Data_Vaccine_Reduction.Immunity(:,4));
     Vaccine_Uptake_15_to_19=table2array(County_Data_Vaccine_Reduction.Vaccine_Uptake(:,4));
-end
-
-if(Age_Reduction(5))
-    Immunity_20_to_24=epsv2.*County_Info.Vaccine_Uptake_20_to_24;
-    Vaccine_Uptake_20_to_24=County_Info.Vaccine_Uptake_20_to_24;
+    
+    % Immunity_20_to_24=epsv2.*County_Info.Vaccine_Uptake_20_to_24;
+    % Vaccine_Uptake_20_to_24=County_Info.Vaccine_Uptake_20_to_24;
+   
+    Immunity_20_to_24=table2array(County_Data_Vaccine_Reduction.Immunity(:,5));
+    Vaccine_Uptake_20_to_24=table2array(County_Data_Vaccine_Reduction.Vaccine_Uptake(:,5));
 else
+    Immunity_0_to_4=table2array(County_Data_Vaccine_Reduction.Immunity(:,1));
+    Vaccine_Uptake_0_to_4=table2array(County_Data_Vaccine_Reduction.Vaccine_Uptake(:,1));
+    
+    Immunity_5_to_9=table2array(County_Data_Vaccine_Reduction.Immunity(:,2));
+    Vaccine_Uptake_5_to_9=table2array(County_Data_Vaccine_Reduction.Vaccine_Uptake(:,2));
+
+    Immunity_10_to_14=table2array(County_Data_Vaccine_Reduction.Immunity(:,3));
+    Vaccine_Uptake_10_to_14=table2array(County_Data_Vaccine_Reduction.Vaccine_Uptake(:,3));
+    
+    Immunity_15_to_19=table2array(County_Data_Vaccine_Reduction.Immunity(:,4));
+    Vaccine_Uptake_15_to_19=table2array(County_Data_Vaccine_Reduction.Vaccine_Uptake(:,4));
+
     Immunity_20_to_24=table2array(County_Data_Vaccine_Reduction.Immunity(:,5));
     Vaccine_Uptake_20_to_24=table2array(County_Data_Vaccine_Reduction.Vaccine_Uptake(:,5));
 end
-
 Vac_Susceptible=zeros(size(County_Data_Vaccine_Reduction.Immunity));
 Unvac_Susceptible=1-table2array(County_Data_Vaccine_Reduction.Immunity);
 
@@ -179,10 +179,7 @@ County_Data_Vaccine_Reduction.R_eff=R_eff;
 County_Data_Vaccine_Reduction.Final_Size_Est=Final_Size_Est;
 County_Data_Vaccine_Reduction.All_Contacts=All_Contacts;
 County_Data_Vaccine_Reduction.Unvaccinated_Contacts=Unvaccinated_Contacts;
-if(~Age_0_6)
-    save(['National_Reduction=' num2str(100*National_Reduction) '_' FN_Age_Class{:} '.mat'],'County_Data_Vaccine_Reduction','Proportion_Size_Age_Unvaccinated','Proportion_Size_Age_Vaccinated')
-else
-    save(['National_Reduction=' num2str(100*National_Reduction) '_Ages_0_to_6.mat'],'County_Data_Vaccine_Reduction','Proportion_Size_Age_Unvaccinated','Proportion_Size_Age_Vaccinated')
-end
+
+save(['National_Reduction=' num2str(100*National_Annual_Reduction) '_Year=' num2str(Year_Reduced) '.mat'],'County_Data_Vaccine_Reduction','Proportion_Size_Age_Unvaccinated','Proportion_Size_Age_Vaccinated')
 
 end
