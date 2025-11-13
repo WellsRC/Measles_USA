@@ -88,12 +88,12 @@ parfor ii=1:length(Final_Size_Est)
     % (https://pmc.ncbi.nlm.nih.gov/articles/PMC7088810/pdf/11538_2010_Article_9623.pdf)
     A_0=beta_j(b_indx(ii)).*repmat(Pop,18,1).*M./repmat(Pop,18,1);
     A_0(repmat(Pop,18,1)==0)=0;
-    R_0(ii)=max(eig(A_0));
+    R_0(ii)=max(abs(eig(A_0)));
     
     A_eff=beta_j(b_indx(ii)).*repmat(S_Pop,18,1).*M./repmat(Pop,18,1);
     A_eff(repmat(Pop,18,1)==0)=0;
-    R_eff(ii)=max(eig(A_eff));
-    if(max(eig(A_eff))>1)            
+    R_eff(ii)=max(abs(eig(A_eff)));
+    if(max(abs(eig(A_eff)))>1)            
         z=lsqnonlin(@(x) A_eff*x(:)+log(1-x(:)), 0.999.*ones(1,18),zeros(1,18),ones(1,18),[],[],[],[],[],opts);
         Final_Size_Est(ii)=S_Pop*z(:);
     end

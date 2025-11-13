@@ -12,6 +12,7 @@ if(strcmp('Baseline',Type))
             Importation_Cases_County(cc)=Measles_Cases.case_count(t_f);
         end
     end
+    Importation_Cases_County=repmat(Importation_Cases_County,1,NS);
 elseif(strcmp('Add',Type(1:3)))
 
     rng(348769934);

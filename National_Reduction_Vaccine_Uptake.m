@@ -153,8 +153,8 @@ for s_indx=1:length(County_Data_Vaccine_Reduction.State)
     
     A_eff=beta_j.*repmat(S_Pop,18,1).*M./repmat(Pop,18,1);
     A_eff(repmat(Pop,18,1)==0)=0;
-    R_eff(s_indx)=max(eig(A_eff));
-    if(max(eig(A_eff))>1)            
+    R_eff(s_indx)=max(abs(eig(A_eff)));
+    if(max(abs(eig(A_eff)))>1)            
         z=lsqnonlin(@(x) A_eff*x(:)+log(1-x(:)), 0.999.*ones(1,18),zeros(1,18),ones(1,18),[],[],[],[],[],opts);
         Final_Size_Est(s_indx)=S_Pop*z(:);
         w_vac=Vac_Susceptible(s_indx,:)./(Vac_Susceptible(s_indx,:)+Unvac_Susceptible(s_indx,:));
@@ -170,7 +170,7 @@ for s_indx=1:length(County_Data_Vaccine_Reduction.State)
     
     A_eff=beta_seed.*repmat(S_Pop,18,1).*M./repmat(Pop,18,1);
     A_eff(repmat(Pop,18,1)==0)=0;
-    R_eff_Seed(s_indx)=max(eig(A_eff));
+    R_eff_Seed(s_indx)=max(abs(eig(A_eff)));
 end
 
 

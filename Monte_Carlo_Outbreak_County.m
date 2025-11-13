@@ -8,7 +8,7 @@ Vaccinated_Cases_County=zeros(size(p_c,1),size(Proportion_Size_Age_Vaccinated,2)
 for ss=1:size(p_c,1)
     r_z=r_z_samp(ss,:);
     if(Reff(ss)>1)
-        z_nb=F_NB(log10(k_nbin),log10(max(mu_c(ss),1)))';
+        z_nb=F_NB(log10(k_nbin),log10(max(mu_c(ss),1.01)))';
         p_nb=1./(1+exp(-z_nb));
         pd = makedist('NegativeBinomial','R',k_nbin,'P',p_nb);
         pd = truncate(pd,1,inf);

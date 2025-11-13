@@ -5,7 +5,7 @@ for ss=1:length(p_c)
     r_outbreak=r_samp_outbreak(ss,:);
     r_outbreak=r_outbreak(r_z>p_c(ss));
     if(Reff(ss)>1)
-        z_nb=F_NB(log10(k_nbin),log10(max(mu_c(ss),1)))';
+        z_nb=F_NB(log10(k_nbin),log10(max(mu_c(ss),1.01)))';
         p_nb=1./(1+exp(-z_nb));
         pd = makedist('NegativeBinomial','R',k_nbin,'P',p_nb);
         pd = truncate(pd,1,inf);
