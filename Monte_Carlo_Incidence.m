@@ -4,8 +4,10 @@ load([Vaccine '_Immunity.mat'],'County_Data')
 load('Baseline_Estimate_Measles_Incidence.mat',"k_nbin","lambda_0","lambda_i","lambda_j","lambda_d",'k_mealses');
 
 
-[Imported_Case] = Case_Importation_Sample(Scenario_Plot,NS);
+[Imported_Case,Kansas_Discrete] = Case_Importation_Sample(Scenario_Plot,NS);
 
+t_f= strcmp(County_Data.State,'Kansas');
+Imported_Case(t_f,:)=Kansas_Discrete;
 load('County_Matrix_Gravity_Covariates.mat',"Distance_Matrix_ij",'Population_j','Population_i','County_GEOID')
 
 indx_G=zeros(length(County_Data.County),1);
@@ -43,6 +45,10 @@ w_g(Distance_Matrix_ij==0)=0; % NO IMPACT ON DIAGONAL
 Domestic_Import=w_g*exp_case;
 
 p_c=nbinpdf(0,k_mealses,k_mealses./(k_mealses+Reff_Seed)).^(Imported_Case+Domestic_Import);
+
+% Adjust the imported cases into Kansas to be discrete for the
+% determinaition of vaccinated or unvaccianted cases. 
+
 
 [Total_Cases_County,Unvaccinated_Cases_County,Vaccinated_Cases_County]=Monte_Carlo_Outbreak_County(F_NB,Max_Outbreak,p_c,Case_Count,k_nbin,Reff,k_mealses,Proportion_Size_Age_Unvaccinated,Proportion_Size_Age_Vaccinated,NS,Imported_Case);
 

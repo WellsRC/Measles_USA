@@ -7,11 +7,13 @@ for ss=1:size(p_c,1)
     r_z=r_z_samp(ss,:);
     if(Reff(ss)>1)
         z_nb=F_NB(log10(k_nbin),log10(max(mu_c(ss),1)))';
-        p_nb=1./(1+exp(-z_nb));
-        pd = makedist('NegativeBinomial','R',k_nbin,'P',p_nb);
-        pd = truncate(pd,1,inf);
+        x0=1./(1+exp(-z_nb));
+        % pd = makedist('NegativeBinomial','R',k_nbin,'P',p_nb);
+        % pd = truncate(pd,1,inf);
         x=[1:Max_Outbreak(ss)];
-        cdf_v=cdf(pd,x);
+        [lb,fval]=fmincon(@(z) (sum(x.*(logncdf(x,z,2)-logncdf(x-1,z,2)))./(sum(logncdf(x,z,2)-logncdf(x-1,z,2)))-mu_c(ss)).^2,0);
+        p_nb=surrogateopt(@(z)  (sum(x.*(logncdf(x,z,2)-logncdf(x-1,z,2)))./(sum(logncdf(x,z,2)-logncdf(x-1,z,2)))-mu_c(ss)).^2,lb,lb+1);
+        cdf_v=logncdf(x,p_nb,2);
         cdf_v=cdf_v./cdf_v(end);
         os=zeros(sum(r_z>p_c(ss,:)),1);
         temp_r=r_os_samp(ss,r_z>p_c(ss,:));

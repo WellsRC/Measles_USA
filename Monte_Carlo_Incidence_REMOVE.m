@@ -7,8 +7,10 @@ Vaccine='MMR';
 load([Vaccine '_Immunity.mat'],'County_Data')
 load('Baseline_Estimate_Measles_Incidence.mat',"k_nbin","lambda_0","lambda_i","lambda_j","lambda_d",'k_mealses');
 
+[Imported_Case,Kansas_Discrete] = Case_Importation_Sample(Scenario_Plot,NS);
 
-[Imported_Case] = Case_Importation_Sample(Scenario_Plot,NS);
+t_f= strcmp(County_Data.State,'Kansas');
+Imported_Case(t_f,:)=Kansas_Discrete;
 
 load('County_Matrix_Gravity_Covariates.mat',"Distance_Matrix_ij",'Population_j','Population_i','County_GEOID')
 
@@ -32,7 +34,7 @@ Reff_Seed=County_Data_Vaccine_Reduction.R_eff_Seed;
 Reff=County_Data_Vaccine_Reduction.R_eff;
 Case_Count=County_Data_Vaccine_Reduction.Final_Size_Est;
 
-Max_Outbreak=County_Data.Total_Population(:).*(1-County_Data.Total_Immunity(:));
+Max_Outbreak=County_Data.Total_Population(:).*(1-County_Data_Vaccine_Reduction.Total_Immunity(:));
 
 Case_Count(Reff<1)=1./(1-Reff(Reff<1));
 

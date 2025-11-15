@@ -1,4 +1,4 @@
-function [Importation_Cases_County] = Case_Importation_Sample(Type,NS)
+function [Importation_Cases_County,Kansas_Discrete] = Case_Importation_Sample(Type,NS)
 
 Vaccine='MMR';
 load([Vaccine '_Immunity.mat'],'County_Data')
@@ -12,9 +12,36 @@ if(strcmp('Baseline',Type))
             Importation_Cases_County(cc)=Measles_Cases.case_count(t_f);
         end
     end
+    
+    % load('Baseline_Estimate_Measles_Incidence.mat','Import_Gaines','Import_Kansas');
+    t_f=strcmp(County_Data.County,'Gaines') & strcmp(County_Data.State,'Texas');
+    Importation_Cases_County(t_f)=Importation_Cases_County(t_f)+1; 
+
+    % t_f= strcmp(County_Data.State,'Kansas');
+    % Kansas_Discrete=repmat(Importation_Cases_County(t_f),1,NS); % Take what it is at baeline then add on the unknown
+
+    % Importation_Cases_County(t_f)=Importation_Cases_County(t_f)+Import_Kansas.*County_Data.Total_Population(t_f)./sum(County_Data.Total_Population(t_f)); 
+
     Importation_Cases_County=repmat(Importation_Cases_County,1,NS);
+
+    % t_f= strcmp(County_Data.State,'Kansas');
+    % w_kansas=County_Data.Total_Population(t_f)./sum(County_Data.Total_Population(t_f)); 
+    % 
+    % pd = makedist('Multinomial','Probabilities',w_kansas);
+    % rng(8675309)
+    % for ss=1:NS
+    %     r = random(pd,1,Import_Kansas);
+    %     % Kanasa unrtain so distribute across state based on poulation
+    %     for jj=1:length(r)
+    %         Kansas_Discrete(r,ss)=Kansas_Discrete(r,ss)+1;
+    %     end
+    % end
+    
+
 elseif(strcmp('Add',Type(1:3)))
 
+    t_f= strcmp(County_Data.State,'Kansas');
+    Kansas_Discrete=zeros(sum(t_f),NS);
     rng(348769934);
     [Importation_Cases_County] = Case_Importation_Sample('Sample_2025',NS);
 
@@ -32,6 +59,8 @@ elseif(strcmp('Add',Type(1:3)))
         end
     end
 else
+    t_f= strcmp(County_Data.State,'Kansas');
+    Kansas_Discrete=zeros(sum(t_f),NS);
     rng(23102025)
     Importation_Cases_County=zeros(length(County_Data.County),NS);
     State_Importaton=readtable('NNDSS_Weekly_Data_Meales_Importation_2023_to_2025.csv');

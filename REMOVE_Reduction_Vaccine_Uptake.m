@@ -6,7 +6,7 @@ County_Data_Vaccine_Reduction=County_Data;
 
 clear County_Data
 
-County_Data_Vaccine_Reduction.Immunity=0.65.*County_Data_Vaccine_Reduction.Immunity;
+County_Data_Vaccine_Reduction.Immunity=array2table(0.6.*ones(size(County_Data_Vaccine_Reduction.Immunity)));
 
 
 County_Data_Vaccine_Reduction.Total_Immunity=sum(table2array(County_Data_Vaccine_Reduction.Population).*table2array(County_Data_Vaccine_Reduction.Immunity),2);
