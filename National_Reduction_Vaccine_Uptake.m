@@ -118,14 +118,21 @@ County_Data_Vaccine_Reduction.Vaccine_Uptake(:,5)=array2table(Vaccine_Uptake_20_
 
 
 County_Data_Vaccine_Reduction.Total_Immunity=sum(table2array(County_Data_Vaccine_Reduction.Population).*table2array(County_Data_Vaccine_Reduction.Immunity),2);
+% 
+% load('Baseline_Estimate_Measles_Incidence.mat','indx_beta');
+% 
+% load('Explore_Beta_Relation_Parameters.mat')
+% 
+% [X_Samp]=unique(X_Samp,"rows");
+% 
+% beta_j=Transmission_Relation(1-County_Data_Vaccine_Reduction.Total_Immunity,X_Samp(indx_beta,:));
 
-load('Baseline_Estimate_Measles_Incidence.mat','beta_j','beta_seed');
+load('Baseline_Estimate_Measles_Incidence.mat','beta_j');
 
 Final_Size_Est=zeros(length(County_Data_Vaccine_Reduction.State),1);
 Proportion_Size_Age_Unvaccinated=zeros(length(County_Data_Vaccine_Reduction.State),18);
 Proportion_Size_Age_Vaccinated=zeros(length(County_Data_Vaccine_Reduction.State),18);
 R_eff=zeros(length(County_Data_Vaccine_Reduction.State),1);
-R_eff_Seed=zeros(length(County_Data_Vaccine_Reduction.State),1);
 
 All_Contacts=zeros(length(County_Data_Vaccine_Reduction.State),18);
 Unvaccinated_Contacts=zeros(length(County_Data_Vaccine_Reduction.State),18);
@@ -151,7 +158,7 @@ for s_indx=1:length(County_Data_Vaccine_Reduction.State)
     % Equation 13
     % (https://pmc.ncbi.nlm.nih.gov/articles/PMC7088810/pdf/11538_2010_Article_9623.pdf)
     
-    A_eff=beta_j.*repmat(S_Pop,18,1).*M./repmat(Pop,18,1);
+    A_eff=beta_j(s_indx).*repmat(S_Pop,18,1).*M./repmat(Pop,18,1);
     A_eff(repmat(Pop,18,1)==0)=0;
     R_eff(s_indx)=max(abs(eig(A_eff)));
     if(max(abs(eig(A_eff)))>1)            
@@ -167,14 +174,8 @@ for s_indx=1:length(County_Data_Vaccine_Reduction.State)
         Proportion_Size_Age_Unvaccinated(s_indx,:)=n_s(:).*(1-w_vac(:));
         Proportion_Size_Age_Vaccinated(s_indx,:)=n_s(:).*(w_vac(:));
     end
-    
-    A_eff=beta_seed.*repmat(S_Pop,18,1).*M./repmat(Pop,18,1);
-    A_eff(repmat(Pop,18,1)==0)=0;
-    R_eff_Seed(s_indx)=max(abs(eig(A_eff)));
 end
 
-
-County_Data_Vaccine_Reduction.R_eff_Seed=R_eff_Seed;
 County_Data_Vaccine_Reduction.R_eff=R_eff;
 County_Data_Vaccine_Reduction.Final_Size_Est=Final_Size_Est;
 County_Data_Vaccine_Reduction.All_Contacts=All_Contacts;

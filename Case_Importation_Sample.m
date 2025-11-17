@@ -13,29 +13,29 @@ if(strcmp('Baseline',Type))
         end
     end
     
-    % load('Baseline_Estimate_Measles_Incidence.mat','Import_Gaines','Import_Kansas');
+    load('Baseline_Estimate_Measles_Incidence.mat','Import_Gaines','Import_Kansas');
     t_f=strcmp(County_Data.County,'Gaines') & strcmp(County_Data.State,'Texas');
-    Importation_Cases_County(t_f)=Importation_Cases_County(t_f)+1; 
+    Importation_Cases_County(t_f)=Importation_Cases_County(t_f)+Import_Gaines; 
 
-    % t_f= strcmp(County_Data.State,'Kansas');
-    % Kansas_Discrete=repmat(Importation_Cases_County(t_f),1,NS); % Take what it is at baeline then add on the unknown
+    t_f= strcmp(County_Data.State,'Kansas');
+    Kansas_Discrete=repmat(Importation_Cases_County(t_f),1,NS); % Take what it is at baeline then add on the unknown
 
-    % Importation_Cases_County(t_f)=Importation_Cases_County(t_f)+Import_Kansas.*County_Data.Total_Population(t_f)./sum(County_Data.Total_Population(t_f)); 
+    Importation_Cases_County(t_f)=Importation_Cases_County(t_f)+Import_Kansas.*County_Data.Total_Population(t_f)./sum(County_Data.Total_Population(t_f)); 
 
     Importation_Cases_County=repmat(Importation_Cases_County,1,NS);
 
-    % t_f= strcmp(County_Data.State,'Kansas');
-    % w_kansas=County_Data.Total_Population(t_f)./sum(County_Data.Total_Population(t_f)); 
-    % 
-    % pd = makedist('Multinomial','Probabilities',w_kansas);
-    % rng(8675309)
-    % for ss=1:NS
-    %     r = random(pd,1,Import_Kansas);
-    %     % Kanasa unrtain so distribute across state based on poulation
-    %     for jj=1:length(r)
-    %         Kansas_Discrete(r,ss)=Kansas_Discrete(r,ss)+1;
-    %     end
-    % end
+    t_f= strcmp(County_Data.State,'Kansas');
+    w_kansas=County_Data.Total_Population(t_f)./sum(County_Data.Total_Population(t_f)); 
+
+    pd = makedist('Multinomial','Probabilities',w_kansas);
+    rng(8675309)
+    for ss=1:NS
+        r = random(pd,1,Import_Kansas);
+        % Kanasa unrtain so distribute across state based on poulation
+        for jj=1:length(r)
+            Kansas_Discrete(r,ss)=Kansas_Discrete(r,ss)+1;
+        end
+    end
     
 
 elseif(strcmp('Add',Type(1:3)))

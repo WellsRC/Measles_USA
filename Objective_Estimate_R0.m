@@ -9,15 +9,15 @@ lambda_out=10.^x(6);
 
 
 indx_beta=round(x(7));
-beta_j=Transmission_Relation(1-County_Data.Total_Immunity,X_Samp);
+beta_j=Transmission_Relation(1-County_Data.Total_Immunity,X_Samp(indx_beta,:));
 
 R_NHG=round(x(8));
 Import_Gaines=round(x(9));
 Import_Kansas=round(x(10));
 
-L_Transmission=L_Samp;
+L_Transmission=L_Samp(indx_beta);
 
-K_NHG=Max_Outbreak;
+K_NHG=Max_Outbreak-1; % Substract one since we using the neg. hyprgeometric from o to maximal outbreak
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Source is unknown
@@ -56,9 +56,9 @@ L_Measles=log(gampdf(k_mealses,11.5327,0.23/(11.5327-1)));
         Case_Count(ss)=interp1(County_Data.beta_j',County_Data.Final_Size_Est(ss,:)',beta_j(ss))';
     end
     
-    Case_Count(Reff<1)=1./(1-Reff(Reff<1));   
+    Case_Count(Reff<=1)=min(1./(1-Reff(Reff<1)),100);   
     
-    Case_Count(Reff>=1 & Case_Count<=1+10^(-8))=1+10^(-8);
+    Case_Count(Reff>1 & Case_Count<=1+10^(-8))=1+10^(-8);
 
 
     N_NHG=(R_NHG.*K_NHG+(Case_Count-1).*K_NHG-(Case_Count-1))./(Case_Count-1); % Subtract one as a simplication to trunating to get the average
@@ -82,12 +82,15 @@ L_Measles=log(gampdf(k_mealses,11.5327,0.23/(11.5327-1)));
     % We scale by the immunity level a a region with full immunity would
     % has greatest chance of n outbreak an with lowest immunuty the lowest
     % chance of no outbrak
-    p_ij= exp(-lambda_out.*(1-repmat(County_Data.Total_Immunity,1,size(w_ij,2))).*repmat(exp_case,1,size(w_ij,2)).*w_ij); % Probability that county i does NOT trigger an outbeak in county j
+    
+
+    % Take the transpose of Total_Immunity a this is the desitantion where
+    % the outbreak may possibely start as the outbreak is originating in i
+    % and going to j
+    p_ij= exp(-lambda_out.*(1-repmat(County_Data.Total_Immunity',size(w_ij,1),1)).*repmat(exp_case,1,size(w_ij,2)).*w_ij); % Probability that county i does NOT trigger an outbeak in county j
 
     p_j = prod(p_ij,1)'; % Probability that an outbeak is NOT triggered in county j by domestic import
-    
-    
-       
+
     p_zero=p_j.*(q_0.^Imported_Case);
     
     L_Known=zeros(size(p_zero));
@@ -144,7 +147,7 @@ L_Measles=log(gampdf(k_mealses,11.5327,0.23/(11.5327-1)));
         opts=optimoptions('fmincon','Display','none','MaxFunctionEvaluations',5.*10^3,'FunctionTolerance',10^(-8),'StepTolerance',10^(-8),'MaxIterations',10^3);
         
         parfor jj=1:length(NOB_2025)
-            [~,temp_L]=fmincon(@(g)-sum(log(nbinpdf(Week_Nat_Case_Count_2025(:)',10.^g(3),10.^g(3)./(10.^g(3)+(NOB_2025(jj)./gamcdf(52,10.^g(1),10.^g(2))).*(gamcdf(1:length(Week_Nat_Case_Count_2025),10.^g(1),10.^g(2))-gamcdf(0:(length(Week_Nat_Case_Count_2025)-1),10.^g(1),10.^g(2))))))),x0_2025,[],[],[],[],[-16 -16 -16],[3 3 3],[],opts);
+            [~,temp_L]=fmincon(@(g)-sum(log(nbinpdf(Week_Nat_Case_Count_2025(:)',10.^g(3),10.^g(3)./(10.^g(3)+(NOB_2025(jj)./gamcdf(52,10.^g(1),10.^g(2))).*(gamcdf(1:length(Week_Nat_Case_Count_2025),10.^g(1),10.^g(2))-gamcdf(0:(length(Week_Nat_Case_Count_2025)-1),10.^g(1),10.^g(2))))))),x0_2025,[],[],[],[],[-16 -16 log10(5)],[3 3 3],[],opts);
             L_Weekly_2025(jj)=-temp_L;        
         end
     else

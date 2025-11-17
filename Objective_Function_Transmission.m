@@ -1,6 +1,7 @@
-function J=Objective_Function_Transmission(X,N_temp,Known_Ind_Cases,County_Data,f_out,lsq)
+function J=Objective_Function_Transmission(X,N_temp,b_temp,County_Data,Known_Ind_Cases,f_out,lsq)
 
-
+w=Known_Ind_Cases(f_out);
+w=w./sum(w); % Allowing as much uncertainty so it can be teased out in the fitting of the data
 X=10.^X;
 X(1)=-X(1);
 err=X(5);
@@ -12,9 +13,9 @@ for jj=1:length(beta_j)
 end
 
 if(lsq)
-     J=Known_Ind_Cases(:)-FS(:);
+     J=w(:).*(b_temp(:)-FS(:));
 else
-    J=-sum(log(normpdf(Known_Ind_Cases(:),FS(:),err)));
+    J=-sum(w(:).*log(normpdf(b_temp(:),beta_j(:),err)));
 end
 
 end

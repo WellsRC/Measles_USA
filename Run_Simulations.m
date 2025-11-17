@@ -1,7 +1,6 @@
 clear;
 
-% for ii=0:0.01:0.05
-ii=0.01;
+for ii=0:0.0025:0.01
     if(ii==0)
         National_Reduction_Vaccine_Uptake(ii,0);
         Monte_Carlo_Runs(ii,2500,'Baseline',0);
@@ -14,5 +13,4 @@ ii=0.01;
             Monte_Carlo_Runs(ii,2500,'Baseline',yy);
         end
     end
-    
-% end
+end

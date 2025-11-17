@@ -1,6 +1,6 @@
 clear;
 clc;
-% parpool(6);
+parpool(10);
 T=readtable('National_Measles_Cases_Weekly_2023_2025.xlsx');
 Week_Nat_Case_Count_2025=T.total_cases(T.Year==2025);
 Vaccine='MMR';
@@ -66,47 +66,56 @@ for indx=1:max(Measles_Cases.ID_Unknown)
     end
 end
 
+
+
+X_Samp=[];
+L_Samp=0;
+load('Explore_Beta_Relation_Parameters.mat')
+
+[X_Samp,indx_s]=unique(X_Samp,"rows");
+L_Samp=L_Samp(indx_s);
+
+
+
 A=[];
 X0=[];
 
 
 % Bounds for parameters for Gravity model https://link.springer.com/article/10.1007/s42001-025-00414-7
 
-opts=optimoptions('surrogateopt','PlotFcn','surrogateoptplot','MaxFunctionEvaluations',10^3,'UseParallel',false,'InitialPoints',X0);
+opts=optimoptions('surrogateopt','PlotFcn',[],'MaxFunctionEvaluations',10^3,'UseParallel',false,'InitialPoints',X0);
 lb=[ -6 -9 -9 -9 log10(0.05) -7 1 0 0 0];
-ub=[3 0  0  log10(3)  log10(0.5) -3 1000 30 5 5];
+ub=[3 0  0  log10(3)  log10(0.5) -3 length(L_Samp) 30 5 5];
 
 rng(20251009)
 r_samp_pc_2025=rand(length(Known_Ind_Cases),100);
 r_samp_outbreak_2025=rand(length(Known_Ind_Cases),100);
 
-X_Samp=[];
-L_Samp=0;
 [par_0,fval_0]=surrogateopt(@(x)Objective_Estimate_R0(x,County_Data,Imported_Case,Known_Ind_Cases,Unknown_Ind_Cases,Unknown_Ind_Cases_Weight,Population_i,Population_j,Distance_Matrix_ij,Week_Nat_Case_Count_2025,r_samp_pc_2025,r_samp_outbreak_2025,Max_Outbreak,X_Samp,L_Samp),lb,ub,[6 7 8],[],[],[],[],opts);
 
 % Need to adjust since pattern search does not do integer constraints
 lb(end-3:end)=lb(end-3:end)-0.499;
 ub(end-3:end)=ub(end-3:end)+0.499;
 
-opts_ps=optimoptions('patternsearch','UseParallel',false,'FunctionTolerance',10^(-9),'MaxIterations',10^3,'MaxFunctionEvaluations',10^4,'PlotFcn','psplotbestf','UseCompleteSearch',true,'UseCompletePoll',true,'Cache','on');
+opts_ps=optimoptions('patternsearch','UseParallel',false,'FunctionTolerance',10^(-9),'MaxIterations',10^3,'MaxFunctionEvaluations',10^4,'PlotFcn',[],'UseCompleteSearch',true,'UseCompletePoll',true,'Cache','on');
 [par,fval]=patternsearch(@(x)Objective_Estimate_R0(x,County_Data,Imported_Case,Known_Ind_Cases,Unknown_Ind_Cases,Unknown_Ind_Cases_Weight,Population_i,Population_j,Distance_Matrix_ij,Week_Nat_Case_Count_2025,r_samp_pc_2025,r_samp_outbreak_2025,Max_Outbreak,X_Samp,L_Samp),par_0,[],[],[],[],lb,ub,[],opts_ps);
 
 if(fval_0<fval)
     par=par_0;
 end
-lambda_0=-10.^x(1);
-lambda_i=10.^x(2);
-lambda_j=10.^x(3);
-lambda_d=10.^x(4);
-k_mealses=10.^x(5); 
-lambda_out=10.^x(6); 
+lambda_0=-10.^par(1);
+lambda_i=10.^par(2);
+lambda_j=10.^par(3);
+lambda_d=10.^par(4);
+k_mealses=10.^par(5); 
+lambda_out=10.^par(6); 
 
 
-indx_beta=round(x(7));
+indx_beta=round(par(7));
 beta_j=Transmission_Relation(1-County_Data.Total_Immunity,X_Samp(indx_beta,1:4));
 
-R_NHG=round(x(8));
-Import_Gaines=round(x(9));
-Import_Kansas=round(x(10));
+R_NHG=round(par(8));
+Import_Gaines=round(par(9));
+Import_Kansas=round(par(10));
 
-save('Baseline_Estimate_Measles_Incidence.mat','lambda_out',"R_NHG","lambda_0","lambda_i","lambda_j","lambda_d",'k_mealses','Import_Gaines','Import_Kansas','beta_j');
+save('Baseline_Estimate_Measles_Incidence.mat','lambda_out',"R_NHG","lambda_0","lambda_i","lambda_j","lambda_d",'k_mealses','Import_Gaines','Import_Kansas','beta_j','indx_beta');
