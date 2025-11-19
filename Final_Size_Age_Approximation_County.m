@@ -60,7 +60,7 @@ County_Data.Vaccine_Uptake=Vaccine_Uptake;
 County_Data.Immunity=Immunity;
 County_Data.Total_Immunity=sum(table2array(County_Data.Population).*table2array(County_Data.Immunity),2);
 
-beta_j=10.^(linspace(-1.1,log10(1.5),10^3));
+beta_j=10.^(linspace(-1.1,log10(3),10^3));
 Final_Size_Est=zeros(length(County_Data.State),length(beta_j));
 opts=optimoptions('lsqnonlin','OptimalityTolerance',10^(-12),'StepTolerance',10^(-12),'FunctionTolerance',10^(-16),'MaxFunctionEvaluations',10^6,'MaxIterations',10^(6));
     

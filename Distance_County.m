@@ -20,7 +20,8 @@ County_GEOID={County_T.GEOID};
 
 
 
-County_Data=readtable([pwd '/County_Data.xlsx'],'Sheet',['Year_2023']);
+Vaccine='MMR';
+load([Vaccine '_Immunity.mat'],'County_Data')
 
 Population_i=zeros(length(County_Data.County));
 Population_j=zeros(length(County_Data.County));
@@ -35,4 +36,4 @@ for cc=1:size(Population_i,1)
     end
 end
 
-save('County_Matrix_Gravity_Covariates.mat',"Distance_Matrix_ij",'Population_j','Population_i','County_GEOID')
+save('County_Matrix_Gravity_Covariates.mat',"Distance_Matrix_ij",'Population_j','Population_i')

@@ -1,0 +1,107 @@
+clear;
+clc;
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Baseline Calculations
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+count=1;
+
+Output_Table=cell(4,1);
+Cumulative_Costs=cell(5,4);
+for National_Annual_Reduction=0.0025:0.0025:0.01
+    [pd_1_cases,pd_1_hospital,pd_1_cost,pd_1_cost_per_case]=National_Outcome_Distribution(National_Annual_Reduction,'Baseline',1);
+    [pd_2_cases,pd_2_hospital,pd_2_cost,pd_2_cost_per_case]=National_Outcome_Distribution(National_Annual_Reduction,'Baseline',2);
+    [pd_3_cases,pd_3_hospital,pd_3_cost,pd_3_cost_per_case]=National_Outcome_Distribution(National_Annual_Reduction,'Baseline',3);
+    [pd_4_cases,pd_4_hospital,pd_4_cost,pd_4_cost_per_case]=National_Outcome_Distribution(National_Annual_Reduction,'Baseline',4);
+    [pd_5_cases,pd_5_hospital,pd_5_cost,pd_5_cost_per_case]=National_Outcome_Distribution(National_Annual_Reduction,'Baseline',5);
+        
+    Year={'Y1';'Y2';'Y3';'Y4';'Y5'};
+    Cases=cell(length(Year),1);
+    Hospitalizations=cell(length(Year),1);
+    Cost=cell(length(Year),1);
+    Cost_per_Case=cell(length(Year),1);
+    
+    
+    % Cases
+        
+    Cases{1} = [num2str(icdf(pd_1_cases,0.5),'%5.0f') ' (IQR:' num2str(icdf(pd_1_cases,0.25),'%5.0f') char(8211) num2str(icdf(pd_1_cases,0.75),'%5.0f') ')'];
+    
+    Cases{2} = [num2str(icdf(pd_2_cases,0.5),'%5.0f') ' (IQR:' num2str(icdf(pd_2_cases,0.25),'%5.0f') char(8211) num2str(icdf(pd_2_cases,0.75),'%5.0f') ')'];
+    
+    Cases{3} = [num2str(icdf(pd_3_cases,0.5),'%5.0f') ' (IQR:' num2str(icdf(pd_3_cases,0.25),'%5.0f') char(8211) num2str(icdf(pd_3_cases,0.75),'%5.0f') ')'];
+    
+    Cases{4} = [num2str(icdf(pd_4_cases,0.5),'%5.0f') ' (IQR:' num2str(icdf(pd_4_cases,0.25),'%5.0f') char(8211) num2str(icdf(pd_4_cases,0.75),'%5.0f') ')'];
+    
+    Cases{5} = [num2str(icdf(pd_5_cases,0.5),'%5.0f') ' (IQR:' num2str(icdf(pd_5_cases,0.25),'%5.0f') char(8211) num2str(icdf(pd_5_cases,0.75),'%5.0f') ')'];
+    
+    % Hospitalizations
+    
+    Hospitalizations{1} = [num2str(icdf(pd_1_hospital,0.5),'%5.0f') ' (IQR:' num2str(icdf(pd_1_hospital,0.25),'%5.0f') char(8211) num2str(icdf(pd_1_hospital,0.75),'%5.0f') ')'];
+    
+    Hospitalizations{2} = [num2str(icdf(pd_2_hospital,0.5),'%5.0f') ' (IQR:' num2str(icdf(pd_2_hospital,0.25),'%5.0f') char(8211) num2str(icdf(pd_2_hospital,0.75),'%5.0f') ')'];
+    
+    Hospitalizations{3} = [num2str(icdf(pd_3_hospital,0.5),'%5.0f') ' (IQR:' num2str(icdf(pd_3_hospital,0.25),'%5.0f') char(8211) num2str(icdf(pd_3_hospital,0.75),'%5.0f') ')'];
+    
+    Hospitalizations{4} = [num2str(icdf(pd_4_hospital,0.5),'%5.0f') ' (IQR:' num2str(icdf(pd_4_hospital,0.25),'%5.0f') char(8211) num2str(icdf(pd_4_hospital,0.75),'%5.0f') ')'];
+    
+    Hospitalizations{5} = [num2str(icdf(pd_5_hospital,0.5),'%5.0f') ' (IQR:' num2str(icdf(pd_5_hospital,0.25),'%5.0f') char(8211) num2str(icdf(pd_5_hospital,0.75),'%5.0f') ')'];
+    
+    % Cost
+    
+    Cost{1} = [num2str(icdf(pd_1_cost,0.5),'%4.1f') ' (IQR:' num2str(icdf(pd_1_cost,0.25),'%4.1f') char(8211) num2str(icdf(pd_1_cost,0.75),'%4.1f') ')'];
+    
+    Cost{2} = [num2str(icdf(pd_2_cost,0.5),'%4.1f') ' (IQR:' num2str(icdf(pd_2_cost,0.25),'%4.1f') char(8211) num2str(icdf(pd_2_cost,0.75),'%4.1f') ')'];
+    
+    Cost{3} = [num2str(icdf(pd_3_cost,0.5),'%4.1f') ' (IQR:' num2str(icdf(pd_3_cost,0.25),'%4.1f') char(8211) num2str(icdf(pd_3_cost,0.75),'%4.1f') ')'];
+    
+    Cost{4} = [num2str(icdf(pd_4_cost,0.5),'%4.1f') ' (IQR:' num2str(icdf(pd_4_cost,0.25),'%4.1f') char(8211) num2str(icdf(pd_4_cost,0.75),'%4.1f') ')'];
+    
+    Cost{5} = [num2str(icdf(pd_5_cost,0.5),'%4.1f') ' (IQR:' num2str(icdf(pd_5_cost,0.25),'%4.1f') char(8211) num2str(icdf(pd_5_cost,0.75),'%4.1f') ')'];
+    
+    
+    % Cost per case
+    
+    Cost_per_Case{1} = [num2str(icdf(pd_1_cost_per_case,0.5),'%4.1f') ' (IQR:' num2str(icdf(pd_1_cost_per_case,0.25),'%4.1f') char(8211) num2str(icdf(pd_1_cost_per_case,0.75),'%4.1f') ')'];
+    
+    Cost_per_Case{2} = [num2str(icdf(pd_2_cost_per_case,0.5),'%4.1f') ' (IQR:' num2str(icdf(pd_2_cost_per_case,0.25),'%4.1f') char(8211) num2str(icdf(pd_2_cost_per_case,0.75),'%4.1f') ')'];
+    
+    Cost_per_Case{3} = [num2str(icdf(pd_3_cost_per_case,0.5),'%4.1f') ' (IQR:' num2str(icdf(pd_3_cost_per_case,0.25),'%4.1f') char(8211) num2str(icdf(pd_3_cost_per_case,0.75),'%4.1f') ')'];
+    
+    Cost_per_Case{4} = [num2str(icdf(pd_4_cost_per_case,0.5),'%4.1f') ' (IQR:' num2str(icdf(pd_4_cost_per_case,0.25),'%4.1f') char(8211) num2str(icdf(pd_4_cost_per_case,0.75),'%4.1f') ')'];
+    
+    Cost_per_Case{5} = [num2str(icdf(pd_5_cost_per_case,0.5),'%4.1f') ' (IQR:' num2str(icdf(pd_5_cost_per_case,0.25),'%4.1f') char(8211) num2str(icdf(pd_5_cost_per_case,0.75),'%4.1f') ')'];
+    
+    
+    Output_Table{count}=table(Year,Cases,Hospitalizations,Cost,Cost_per_Case);
+    
+
+    rng(30302030);
+    r1=random(pd_1_cost,2500,1);
+    r2=random(pd_2_cost,2500,1);
+    r3=random(pd_3_cost,2500,1);
+    r4=random(pd_4_cost,2500,1);
+    r5=random(pd_5_cost,2500,1);
+
+    
+    T=r1;
+    pdC=fitdist(T./10^3,'Kernel','Support','positive');
+    Cumulative_Costs{1,count}=[num2str(icdf(pdC,0.5),'%3.2f') ' (IQR:' num2str(icdf(pdC,0.25),'%3.2f') char(8211) num2str(icdf(pdC,0.75),'%3.2f') ')'];
+
+    T=r1+r2;
+    pdC=fitdist(T./10^3,'Kernel','Support','positive');
+    Cumulative_Costs{2,count}=[num2str(icdf(pdC,0.5),'%3.2f') ' (IQR:' num2str(icdf(pdC,0.25),'%3.2f') char(8211) num2str(icdf(pdC,0.75),'%3.2f') ')'];
+    
+    T=r1+r2+r3;
+    pdC=fitdist(T./10^3,'Kernel','Support','positive');
+    Cumulative_Costs{3,count}=[num2str(icdf(pdC,0.5),'%3.2f') ' (IQR:' num2str(icdf(pdC,0.25),'%3.2f') char(8211) num2str(icdf(pdC,0.75),'%3.2f') ')'];
+
+    T=r1+r2+r3+r4;
+    pdC=fitdist(T./10^3,'Kernel','Support','positive');
+    Cumulative_Costs{4,count}=[num2str(icdf(pdC,0.5),'%3.2f') ' (IQR:' num2str(icdf(pdC,0.25),'%3.2f') char(8211) num2str(icdf(pdC,0.75),'%3.2f') ')'];
+    
+    T=r1+r2+r3+r4+r5;
+    pdC=fitdist(T./10^3,'Kernel','Support','positive');
+    Cumulative_Costs{5,count}=[num2str(icdf(pdC,0.5),'%3.2f') ' (IQR:' num2str(icdf(pdC,0.25),'%3.2f') char(8211) num2str(icdf(pdC,0.75),'%3.2f') ')'];
+    
+    count=count+1;
+end

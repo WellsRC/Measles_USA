@@ -5,7 +5,7 @@ states = shaperead('usastatelo', 'UseGeoCoords', true);
 
 figure('units','normalized','outerposition',[0.15 0.075 0.3 0.43]);
 
-subplot("Position",[0.075 0.135 0.85 0.025])
+subplot("Position",[0.085 0.135 0.83 0.025])
 dv=linspace(x_baseline(1),x_baseline(end),1001);
 CC_Baseline=interp1(x_baseline,C_Baseline,dv);
 

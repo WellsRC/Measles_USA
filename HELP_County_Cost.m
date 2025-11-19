@@ -1,12 +1,11 @@
 function HELP_County_Cost()
 close all;
 Scenario='Sample_2025';
-Age_0_to_6=true;
 
-[cases_baseline,hospital_baseline,cost_baseline,cost_per_case_baseline]=County_Outcome_Central_Measure(0,Scenario,Age_0_to_6);
+[cases_baseline,hospital_baseline,cost_baseline,cost_per_case_baseline]=County_Outcome_Central_Measure(0,0,Scenario);
 S=shaperead([pwd '\Shapefile\cb_2023_us_county_20m.shp'],"UseGeoCoords",true);
 
-load(['National_Reduction=' num2str(100*0) '_Ages_0_to_6.mat'],'County_Data_Vaccine_Reduction')
+load(['National_Reduction=' num2str(100*0) '_Year=' num2str(0) '.mat'],'County_Data_Vaccine_Reduction')
 
 V_Baseline=NaN.*zeros(length(S),1);
 
@@ -36,15 +35,15 @@ end
 
  Measure_Baseline=Cost_per_case_Baseline;
 
-x_baseline=[79000 91500 104000];
+x_baseline=[75000 87700 100000];
 C_Baseline=hex2rgb(Cb);
 
-X_Label_Baseline=['Average cost per case'];
+X_Label_Baseline=['Cost per case'];
 
 prct_label=false;
 monitary_label=true;
 
-text_v=[79000 91500 104000];
+text_v=[75000 87700 100000];
 
 
 inq_txt_baseline=zeros(size(text_v));
@@ -74,7 +73,7 @@ print(gcf,['HELP_County_Cost_per_Case.png'],'-dpng','-r300');
 x_baseline=linspace(0.65,0.95,length(Cb));
 C_Baseline=hex2rgb(Cb);
 
-X_Label_Baseline=['MMR uptake among children 0' char(8211) '6 years of age'];
+X_Label_Baseline=['MMR coverage among children 0' char(8211) '6 years of age'];
 
 prct_label=true;
 monitary_label=false;

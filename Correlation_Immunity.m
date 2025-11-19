@@ -1,9 +1,9 @@
 clear;
 close all;
 
-load('National_Reduction=0_Ages_0_to_6.mat')
+load(['National_Reduction=' num2str(100*0) '_Year=' num2str(0) '.mat'],'County_Data_Vaccine_Reduction')
 X=1-County_Data_Vaccine_Reduction.Total_Immunity;
-[cases,hospital,cost,cost_per_case]=County_Outcome_Central_Measure(0,'Sample_2025',true);
+[cases,hospital,cost,cost_per_case]=County_Outcome_Central_Measure(0,0,'Baseline');
 [r,p]=corr(X(:),cost_per_case(:),'Type','Spearman')
 
 figure('units','normalized','outerposition',[0.05 0.05 0.6 0.6]);

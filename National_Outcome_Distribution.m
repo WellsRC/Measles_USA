@@ -1,4 +1,4 @@
-function [pd_cases,pd_hospital,pd_cost,pd_cost_per_case,pd_pro_loss,pd_med_cost,pd_test_vac_cost,pd_ct_cost,pd_pro_loss_per_case,pd_med_cost_per_case,pd_test_vac_cost_per_case,pd_ct_cost_per_case,break_pro_loss,break_test_vac_cost,break_ct_cost,break_med_cost]=National_Outcome_Distribution(National_Annual_Reduction,Scenario_Plot,Year_Reduced)
+function [pd_cases,pd_hospital,pd_cost,pd_cost_per_case,pd_pro_loss,pd_med_cost,pd_test_vac_cost,pd_ct_cost,pd_pro_loss_per_case,pd_med_cost_per_case,pd_test_vac_cost_per_case,pd_ct_cost_per_case,break_pro_loss,break_test_vac_cost,break_ct_cost,break_med_cost,pd_outbreak_response_cost]=National_Outcome_Distribution(National_Annual_Reduction,Scenario_Plot,Year_Reduced)
 
 [p_H_Unvaccinated,p_H_Vaccinated,duration_hospitalization]=Hospitalization_Probability();
 [Productivity_Days_Lost_Under_15_Case,Productivity_Days_Lost_15_plus_Case,Productivity_Days_Lost_Under_15_Contact,Productivity_Days_Lost_15_plus_Contact,Cost_per_Contact,Cost_per_Vaccine_dose_Private,Cost_per_Vaccine_dose_VFC,Cost_per_Non_Hospitalization,Tests_per_Contact,Cost_per_Test]=Measles_Outbreak_Cost();
@@ -63,6 +63,9 @@ Contact_Tracing_Costs=Contact_Tracing_Costs(:);
 
 
 Cost_Baseline=Contact_Tracing_Costs(:)+Cost_Case_Medical(:)+Testing_Cost(:)+Cost_Vaccination_Contacts(:)+Total_Productivity_loss_Cases(:)+Total_Productivity_loss_Contacts(:);
+
+temp_c=Contact_Tracing_Costs(:)+Testing_Cost(:)+Cost_Vaccination_Contacts(:);
+pd_outbreak_response_cost=fitdist(temp_c(:),'Kernel','Support','positive');
 
 % Breakdown proucitivty
 temp_c=(Total_Productivity_loss_Cases(:)+Total_Productivity_loss_Contacts(:))./Cost_Baseline;

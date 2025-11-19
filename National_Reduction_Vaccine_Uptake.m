@@ -118,14 +118,6 @@ County_Data_Vaccine_Reduction.Vaccine_Uptake(:,5)=array2table(Vaccine_Uptake_20_
 
 
 County_Data_Vaccine_Reduction.Total_Immunity=sum(table2array(County_Data_Vaccine_Reduction.Population).*table2array(County_Data_Vaccine_Reduction.Immunity),2);
-% 
-% load('Baseline_Estimate_Measles_Incidence.mat','indx_beta');
-% 
-% load('Explore_Beta_Relation_Parameters.mat')
-% 
-% [X_Samp]=unique(X_Samp,"rows");
-% 
-% beta_j=Transmission_Relation(1-County_Data_Vaccine_Reduction.Total_Immunity,X_Samp(indx_beta,:));
 
 load('Baseline_Estimate_Measles_Incidence.mat','beta_j');
 

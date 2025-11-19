@@ -1,0 +1,12 @@
+function [Total_Cases_County,Unvaccinated_Cases_County,Vaccinated_Cases_County,Total_Contacts,Unvaccinated_Contacts]=Monte_Carlo_Fixed_Outbreak(Outbreak_Size,NS,County_Data_Vaccine_Reduction,Proportion_Size_Age_Unvaccinated,Proportion_Size_Age_Vaccinated)
+
+
+
+[Total_Cases_County,Unvaccinated_Cases_County,Vaccinated_Cases_County]=Monte_Carlo_Outbreak_County_Fixed_Outbreak(Outbreak_Size,Proportion_Size_Age_Unvaccinated,Proportion_Size_Age_Vaccinated,NS);
+
+Contacts=repmat(County_Data_Vaccine_Reduction.All_Contacts,1,1,size(Vaccinated_Cases_County,3));
+Total_Contacts=Contacts.*(Vaccinated_Cases_County+Unvaccinated_Cases_County).*8;
+
+Contacts=repmat(County_Data_Vaccine_Reduction.Unvaccinated_Contacts,1,1,size(Vaccinated_Cases_County,3));
+Unvaccinated_Contacts=Contacts.*(Vaccinated_Cases_County+Unvaccinated_Cases_County).*8;
+end

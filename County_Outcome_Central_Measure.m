@@ -1,15 +1,12 @@
-function [cases,hospital,cost,cost_per_case]=County_Outcome_Central_Measure(National_Reduction,Scenario_Plot,Age_0_to_6)
+function [cases,hospital,cost,cost_per_case]=County_Outcome_Central_Measure(National_Annual_Reduction,Year_Reduced,Scenario_Plot)
 
 
 [p_H_Unvaccinated,p_H_Vaccinated,duration_hospitalization]=Hospitalization_Probability();
 [Productivity_Days_Lost_Under_15_Case,Productivity_Days_Lost_15_plus_Case,Productivity_Days_Lost_Under_15_Contact,Productivity_Days_Lost_15_plus_Contact,Cost_per_Contact,Cost_per_Vaccine_dose_Private,Cost_per_Vaccine_dose_VFC,Cost_per_Non_Hospitalization,Tests_per_Contact,Cost_per_Test]=Measles_Outbreak_Cost();
 
-if(Age_0_to_6)
-    load(['National_Reduction=' num2str(National_Reduction.*100) '_Ages_0_to_6.mat'],'County_Data_Vaccine_Reduction')
-    load(['Monte_Carlo_Run_' Scenario_Plot '_National_Reduction=' num2str(National_Reduction.*100) '_Ages_0_to_6.mat'],'Total_Cases_County','Unvaccinated_Cases_County_Baseline','Vaccinated_Cases_County_Baseline','Total_Contacts_Baseline','Unvaccinated_Contacts_Baseline','Imported_Case');
-else
-    load(['Monte_Carlo_Run_' Scenario_Plot '_National_Reduction=' num2str(National_Reduction.*100) '_Ages_0_to_4.mat'],'Total_Cases_County','Unvaccinated_Cases_County_Baseline','Vaccinated_Cases_County_Baseline','Total_Contacts_Baseline','Unvaccinated_Contacts_Baseline','Imported_Case');
-end
+load(['National_Reduction=' num2str(100*National_Annual_Reduction) '_Year=' num2str(Year_Reduced) '.mat'],'County_Data_Vaccine_Reduction')
+    load(['Monte_Carlo_Run_' Scenario_Plot '_National_Reduction=' num2str(100*National_Annual_Reduction) '_Year=' num2str(Year_Reduced) '.mat'],'Total_Cases_County','Unvaccinated_Cases_County_Baseline','Vaccinated_Cases_County_Baseline','Total_Contacts_Baseline','Unvaccinated_Contacts_Baseline','Imported_Case');
+
 
 Productivity_loss_Cases=[Productivity_Days_Lost_Under_15_Case.*ones(1,3) Productivity_Days_Lost_15_plus_Case.*ones(1,15)];
 Productivity_loss_Cases_School=[Productivity_Days_Lost_Under_15_Case.*ones(1,3) zeros(1,15)];
@@ -69,8 +66,8 @@ cost_per_case=NaN.*zeros(size(hospital));
 for cc=1:length(cost_per_case)
     tf=Total_Cases_County(cc,:)>0;
     if(sum(tf)>0)
-        cost(cc)=mean(Cost_Baseline(cc,tf));
-        cost_per_case(cc)=mean(Cost_Baseline(cc,tf)./Total_Cases_County(cc,tf));
+        cost(cc)=median(Cost_Baseline(cc,tf));
+        cost_per_case(cc)=median(Cost_Baseline(cc,tf)./Total_Cases_County(cc,tf));
     end
 end
 

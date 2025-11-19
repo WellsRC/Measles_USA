@@ -9,20 +9,6 @@ load([Vaccine '_Immunity.mat'],'County_Data')
 Max_Outbreak=County_Data.Total_Population(:).*(1-County_Data.Total_Immunity(:));
 load('County_Matrix_Gravity_Covariates.mat',"Distance_Matrix_ij",'Population_j','Population_i','County_GEOID')
 
-indx_G=zeros(length(County_Data.County),1);
-for cc=1:length(County_Data.County)
-   indx_G(cc)=find(strcmp(County_GEOID,County_Data.GEOID{cc}));
-end
-
-Distance_Matrix_ij=Distance_Matrix_ij(indx_G,:);
-Distance_Matrix_ij=Distance_Matrix_ij(:,indx_G);
-
-Population_j=Population_j(indx_G,:);
-Population_j=Population_j(:,indx_G);
-
-Population_i=Population_i(indx_G,:);
-Population_i=Population_i(:,indx_G);
-
 Measles_Cases=readtable('County_Level_Measles_Cases_Adjusted.csv');
 
 Imported_Case=zeros(length(County_Data.County),1);
@@ -84,14 +70,14 @@ X0=[];
 % Bounds for parameters for Gravity model https://link.springer.com/article/10.1007/s42001-025-00414-7
 
 opts=optimoptions('surrogateopt','PlotFcn',[],'MaxFunctionEvaluations',10^3,'UseParallel',false,'InitialPoints',X0);
-lb=[ -6 -9 -9 -9 log10(0.05) -7 1 0 0 0];
+lb=[ -6 -9 -9 -9 log10(0.05) -7 1 1 0 0];
 ub=[3 0  0  log10(3)  log10(0.5) -3 length(L_Samp) 30 5 5];
 
 rng(20251009)
 r_samp_pc_2025=rand(length(Known_Ind_Cases),100);
 r_samp_outbreak_2025=rand(length(Known_Ind_Cases),100);
 
-[par_0,fval_0]=surrogateopt(@(x)Objective_Estimate_R0(x,County_Data,Imported_Case,Known_Ind_Cases,Unknown_Ind_Cases,Unknown_Ind_Cases_Weight,Population_i,Population_j,Distance_Matrix_ij,Week_Nat_Case_Count_2025,r_samp_pc_2025,r_samp_outbreak_2025,Max_Outbreak,X_Samp,L_Samp),lb,ub,[6 7 8],[],[],[],[],opts);
+[par_0,fval_0]=surrogateopt(@(x)Objective_Estimate_R0(x,County_Data,Imported_Case,Known_Ind_Cases,Unknown_Ind_Cases,Unknown_Ind_Cases_Weight,Population_i,Population_j,Distance_Matrix_ij,Week_Nat_Case_Count_2025,r_samp_pc_2025,r_samp_outbreak_2025,Max_Outbreak,X_Samp,L_Samp),lb,ub,[7 8 9 10],[],[],[],[],opts);
 
 % Need to adjust since pattern search does not do integer constraints
 lb(end-3:end)=lb(end-3:end)-0.499;
