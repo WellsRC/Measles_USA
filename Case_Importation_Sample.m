@@ -38,21 +38,21 @@ if(strcmp('Baseline',Type))
     end
     
 
-elseif(strcmp('Add',Type(1:3)))
+elseif(strcmp('Scenario',Type(1:8)))
 
     t_f= strcmp(County_Data.State,'Kansas');
     Kansas_Discrete=zeros(sum(t_f),NS);
     rng(348769934);
-    [Importation_Cases_County] = Case_Importation_Sample('Sample_2025',NS);
+    Total_Importations=str2double(Type(10:end));
 
+    Importation_Cases_County=zeros(length(County_Data.Total_Population),NS);
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
     % Additional numebr
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
-    AvgI=str2double(Type(5:end));
-    Total_Import=poissrnd(AvgI,NS,1);
+    
     import_weight=cumsum(County_Data.Total_Population)./sum(County_Data.Total_Population);
     for ss=1:NS
-        for ii=1:Total_Import(ss)
+        for ii=1:Total_Importations
             r=rand(1);
             indx_c=find(r<=import_weight,1,"first");
             Importation_Cases_County(indx_c,ss)=Importation_Cases_County(indx_c,ss)+1;

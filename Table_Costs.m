@@ -83,9 +83,9 @@ for National_Annual_Reduction=0.0025:0.0025:0.01
     r5=random(pd_5_cost,2500,1);
 
     
-    T=r1;
-    pdC=fitdist(T./10^3,'Kernel','Support','positive');
-    Cumulative_Costs{1,count}=[num2str(icdf(pdC,0.5),'%3.2f') ' (IQR:' num2str(icdf(pdC,0.25),'%3.2f') char(8211) num2str(icdf(pdC,0.75),'%3.2f') ')'];
+    % T=r1;
+    % pdC=fitdist(T./10^3,'Kernel','Support','positive');
+    Cumulative_Costs{1,count}=[num2str(icdf(pd_1_cost,0.5)./10^3,'%3.2f') ' (IQR:' num2str(icdf(pd_1_cost,0.25)./10^3,'%3.2f') char(8211) num2str(icdf(pd_1_cost,0.75)./10^3,'%3.2f') ')'];
 
     T=r1+r2;
     pdC=fitdist(T./10^3,'Kernel','Support','positive');
