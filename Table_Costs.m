@@ -61,15 +61,15 @@ for National_Annual_Reduction=0.0025:0.0025:0.01
     
     % Cost per case
     
-    Cost_per_Case{1} = [num2str(icdf(pd_1_cost_per_case,0.5),'%4.1f') ' (IQR:' num2str(icdf(pd_1_cost_per_case,0.25),'%4.1f') char(8211) num2str(icdf(pd_1_cost_per_case,0.75),'%4.1f') ')'];
+    Cost_per_Case{1} = [num2str(icdf(pd_1_cost_per_case,0.5).*10^3,'%5.0f') ' (IQR:' num2str(icdf(pd_1_cost_per_case,0.25).*10^3,'%5.0f') char(8211) num2str(icdf(pd_1_cost_per_case,0.75).*10^3,'%5.0f') ')'];
     
-    Cost_per_Case{2} = [num2str(icdf(pd_2_cost_per_case,0.5),'%4.1f') ' (IQR:' num2str(icdf(pd_2_cost_per_case,0.25),'%4.1f') char(8211) num2str(icdf(pd_2_cost_per_case,0.75),'%4.1f') ')'];
+    Cost_per_Case{2} = [num2str(icdf(pd_2_cost_per_case,0.5).*10^3,'%5.0f') ' (IQR:' num2str(icdf(pd_2_cost_per_case,0.25).*10^3,'%5.0f') char(8211) num2str(icdf(pd_2_cost_per_case,0.75).*10^3,'%5.0f') ')'];
     
-    Cost_per_Case{3} = [num2str(icdf(pd_3_cost_per_case,0.5),'%4.1f') ' (IQR:' num2str(icdf(pd_3_cost_per_case,0.25),'%4.1f') char(8211) num2str(icdf(pd_3_cost_per_case,0.75),'%4.1f') ')'];
+    Cost_per_Case{3} = [num2str(icdf(pd_3_cost_per_case,0.5).*10^3,'%5.0f') ' (IQR:' num2str(icdf(pd_3_cost_per_case,0.25).*10^3,'%5.0f') char(8211) num2str(icdf(pd_3_cost_per_case,0.75).*10^3,'%5.0f') ')'];
     
-    Cost_per_Case{4} = [num2str(icdf(pd_4_cost_per_case,0.5),'%4.1f') ' (IQR:' num2str(icdf(pd_4_cost_per_case,0.25),'%4.1f') char(8211) num2str(icdf(pd_4_cost_per_case,0.75),'%4.1f') ')'];
+    Cost_per_Case{4} = [num2str(icdf(pd_4_cost_per_case,0.5).*10^3,'%5.0f') ' (IQR:' num2str(icdf(pd_4_cost_per_case,0.25).*10^3,'%5.0f') char(8211) num2str(icdf(pd_4_cost_per_case,0.75).*10^3,'%5.0f') ')'];
     
-    Cost_per_Case{5} = [num2str(icdf(pd_5_cost_per_case,0.5),'%4.1f') ' (IQR:' num2str(icdf(pd_5_cost_per_case,0.25),'%4.1f') char(8211) num2str(icdf(pd_5_cost_per_case,0.75),'%4.1f') ')'];
+    Cost_per_Case{5} = [num2str(icdf(pd_5_cost_per_case,0.5).*10^3,'%5.0f') ' (IQR:' num2str(icdf(pd_5_cost_per_case,0.25).*10^3,'%5.0f') char(8211) num2str(icdf(pd_5_cost_per_case,0.75).*10^3,'%5.0f') ')'];
     
     
     Output_Table{count}=table(Year,Cases,Hospitalizations,Cost,Cost_per_Case);

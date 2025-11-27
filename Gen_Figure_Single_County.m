@@ -1,4 +1,4 @@
-function Gen_Figure_Single_County(Measure_Baseline,x_baseline,C_Baseline,text_v,inq_txt_baseline,X_Label_Baseline,prct_label,monitary_label,S)
+function Gen_Figure_Single_County(Measure_Baseline,x_baseline,C_Baseline,text_v,inq_txt_baseline,X_Label_Baseline,prct_label,monitary_label,S,label_plot)
 
 
 states = shaperead('usastatelo', 'UseGeoCoords', true);
@@ -55,6 +55,9 @@ else
     end
 end
 text(0.5,-3.9,X_Label_Baseline,'FontSize',16,'HorizontalAlignment','center','VerticalAlignment','middle','Units','normalized');
+if(label_plot>0)
+    text(-0.099,32.28,char(64+label_plot),'Fontsize',32,'Units','normalized')
+end
 axis off;
 xlim([x_baseline(1) x_baseline(end)])
 
@@ -74,5 +77,7 @@ geoshow(ax1,S,'SymbolSpec',CM,'LineStyle','None'); hold on;
 geoshow(ax1, states,'Facecolor','none','LineWidth',1.5); 
 
 ax1.Position=[-0.135, -0.11 ,1.3,1.3];
+
+
 
 end
