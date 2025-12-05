@@ -13,9 +13,6 @@ Uninsured_Vaccinated_Cases_County=zeros(size(p_c,1),size(Proportion_Size_Age_Vac
 Public_Unvaccinated_Cases_County=zeros(size(p_c,1),size(Proportion_Size_Age_Unvaccinated,2),NS);
 Public_Vaccinated_Cases_County=zeros(size(p_c,1),size(Proportion_Size_Age_Vaccinated,2),NS);
 
-Private_Unvaccinated_Cases_County=zeros(size(p_c,1),size(Proportion_Size_Age_Unvaccinated,2),NS);
-Private_Vaccinated_Cases_County=zeros(size(p_c,1),size(Proportion_Size_Age_Vaccinated,2),NS);
-
 for ss=1:size(p_c,1)
     r_z=r_z_samp(ss,:);
     if(Reff(ss)>1)

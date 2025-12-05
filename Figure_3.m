@@ -3,10 +3,10 @@ clc;
 
 Outbreak_Size=50;
 NS=2500;
-load(['National_Reduction=' num2str(100*0) '_Year=' num2str(0) '.mat'],'County_Data_Vaccine_Reduction','Proportion_Size_Age_Unvaccinated','Proportion_Size_Age_Vaccinated');
-[Total_Cases_County,Unvaccinated_Cases_County_Baseline,Vaccinated_Cases_County_Baseline,Total_Contacts_Baseline,Unvaccinated_Contacts_Baseline]=Monte_Carlo_Fixed_Outbreak(Outbreak_Size,NS,County_Data_Vaccine_Reduction,Proportion_Size_Age_Unvaccinated,Proportion_Size_Age_Vaccinated);
+load(['National_Reduction=' num2str(0) '_Year=' num2str(0) '.mat'],'County_Data_Vaccine_Reduction','Proportion_Size_Age_Unvaccinated','Proportion_Size_Age_Vaccinated','Proportion_Age_Unvaccinated_Uninsured','Proportion_Age_Unvaccinated_Public','Proportion_Age_Unvaccinated_Private','Proportion_Age_Vaccinated_Uninsured','Proportion_Age_Vaccinated_Public','Proportion_Age_Vaccinated_Private');
+[Total_Cases_County,Unvaccinated_Cases_County,Vaccinated_Cases_County,Uninsured_Unvaccinated_Cases_County,Uninsured_Vaccinated_Cases_County,Public_Unvaccinated_Cases_County,Public_Vaccinated_Cases_County,Total_Contacts,Unvaccinated_Contacts]=Monte_Carlo_Fixed_Outbreak(Outbreak_Size,NS,County_Data_Vaccine_Reduction,Proportion_Size_Age_Unvaccinated,Proportion_Size_Age_Vaccinated,Proportion_Age_Unvaccinated_Uninsured,Proportion_Age_Unvaccinated_Public,Proportion_Age_Unvaccinated_Private,Proportion_Age_Vaccinated_Uninsured,Proportion_Age_Vaccinated_Public,Proportion_Age_Vaccinated_Private);
 
-[Total_Cost,~,~,~]=County_Level_Costs(County_Data_Vaccine_Reduction,Unvaccinated_Cases_County_Baseline,Vaccinated_Cases_County_Baseline,Total_Contacts_Baseline,Unvaccinated_Contacts_Baseline);
+[Total_Cost,~,~,~]=County_Level_Costs(County_Data_Vaccine_Reduction,Unvaccinated_Cases_County,Vaccinated_Cases_County,Uninsured_Unvaccinated_Cases_County,Uninsured_Vaccinated_Cases_County,Public_Unvaccinated_Cases_County,Public_Vaccinated_Cases_County,Total_Contacts,Unvaccinated_Contacts);
 
 Estimate_Cost_per_Case=median(Total_Cost./Total_Cases_County,2);
 
@@ -29,7 +29,7 @@ end
 Cb={'#003c30'; ...
      '#ffffff';
 '#543005'};
-x_baseline=[75000 87500 100000];
+x_baseline=[75000 89500 104000];
 C_Baseline=hex2rgb(Cb);
 
 X_Label_Baseline=['Cost per case'];
@@ -37,7 +37,7 @@ X_Label_Baseline=['Cost per case'];
 prct_label=false;
 monitary_label=true;
 
-text_v=[75000 87500 100000];
+text_v=[75000 89500 104000];
 
 
 inq_txt_baseline=zeros(size(text_v));
