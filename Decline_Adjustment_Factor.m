@@ -164,17 +164,26 @@ opts_lsq=optimoptions('fmincon','FunctionTolerance',10^(-12),'MaxFunctionEvaluat
 [dZ_Reduction_0_4,f_val_0_4]=fmincon(@(x)Objective_Redution_National_Coverage(x,beta_x,beta_insurance,County_Data_model_0_to_4,dZ_County(:,1),Age_Group_Reduction(1)),0,[],[],[],[],-40,40,[],opts_lsq);    
 
 [Estimated_Vaccination_Coverage] = Vaccination_Coverage_Adjusted([County_Data_model_0_to_4.X County_Data_model_0_to_4.XI County_Data_model_0_to_4.X2],beta_x,beta_insurance,County_Data_model_0_to_4,dZ_County(:,1)+dZ_Reduction_0_4);
-County_Info.Vaccine_Uptake_0_to_4=Estimated_Vaccination_Coverage.Overall;
+County_Info.Vaccine_Uptake_0_to_4.Overall=Estimated_Vaccination_Coverage.Overall;
+County_Info.Vaccine_Uptake_0_to_4.Uninsured=Estimated_Vaccination_Coverage.Uninsured;
+County_Info.Vaccine_Uptake_0_to_4.Public=Estimated_Vaccination_Coverage.Public;
+County_Info.Vaccine_Uptake_0_to_4.Private=Estimated_Vaccination_Coverage.Private;
 
 [dZ_Reduction_5_9,f_val_5_9]=fmincon(@(x)Objective_Redution_National_Coverage(x,beta_x,beta_insurance,County_Data_model_5_to_9,dZ_County(:,2),Age_Group_Reduction(2)),0,[],[],[],[],-40,40,[],opts_lsq);    
 
 [Estimated_Vaccination_Coverage] = Vaccination_Coverage_Adjusted([County_Data_model_5_to_9.X County_Data_model_5_to_9.XI County_Data_model_5_to_9.X2],beta_x,beta_insurance,County_Data_model_5_to_9,dZ_County(:,2)+dZ_Reduction_5_9);
-County_Info.Vaccine_Uptake_5_to_9=Estimated_Vaccination_Coverage.Overall;
+County_Info.Vaccine_Uptake_5_to_9.Overall=Estimated_Vaccination_Coverage.Overall;
+County_Info.Vaccine_Uptake_5_to_9.Uninsured=Estimated_Vaccination_Coverage.Uninsured;
+County_Info.Vaccine_Uptake_5_to_9.Public=Estimated_Vaccination_Coverage.Public;
+County_Info.Vaccine_Uptake_5_to_9.Private=Estimated_Vaccination_Coverage.Private;
 
 [dZ_Reduction_10_14,f_val_10_14]=fmincon(@(x)Objective_Redution_National_Coverage(x,beta_x,beta_insurance,County_Data_model_10_to_14,dZ_County(:,3),Age_Group_Reduction(3)),0,[],[],[],[],-40,40,[],opts_lsq);    
 
 [Estimated_Vaccination_Coverage] = Vaccination_Coverage_Adjusted([County_Data_model_10_to_14.X County_Data_model_10_to_14.XI County_Data_model_10_to_14.X2],beta_x,beta_insurance,County_Data_model_10_to_14,dZ_County(:,3)+dZ_Reduction_10_14);
-County_Info.Vaccine_Uptake_10_to_14=Estimated_Vaccination_Coverage.Overall;
+County_Info.Vaccine_Uptake_10_to_14.Overall=Estimated_Vaccination_Coverage.Overall;
+County_Info.Vaccine_Uptake_10_to_14.Uninsured=Estimated_Vaccination_Coverage.Uninsured;
+County_Info.Vaccine_Uptake_10_to_14.Public=Estimated_Vaccination_Coverage.Public;
+County_Info.Vaccine_Uptake_10_to_14.Private=Estimated_Vaccination_Coverage.Private;
 
 County_Info.County=County_Data_0_to_4.County;
 County_Info.State=County_Data_0_to_4.State;

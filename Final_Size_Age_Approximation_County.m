@@ -37,11 +37,25 @@ for aa=1:length(Age_Class)
             County_Data.Total_Population=temp_county.Total_Population;
             Immunity=epsv1.*temp_county.Vaccine_Uptake;
             Vaccine_Uptake=temp_county.Vaccine_Uptake;
+            Vaccine_Uptake_Uninsured=temp_county.Vaccine_Uptake_Uninsured;
+            Vaccine_Uptake_Private=temp_county.Vaccine_Uptake_Private;
+            Vaccine_Uptake_Public=temp_county.Vaccine_Uptake_Public;
+
+            Uninsured=temp_county.Uninsured;
+            Public=temp_county.Public;
+            Private=temp_county.Private;
         else
             Immunity=[Immunity epsv2.*temp_county.Vaccine_Uptake];
             Vaccine_Uptake=[Vaccine_Uptake temp_county.Vaccine_Uptake];
+            Vaccine_Uptake_Uninsured=[Vaccine_Uptake_Uninsured temp_county.Vaccine_Uptake_Uninsured];
+            Vaccine_Uptake_Private=[Vaccine_Uptake_Private temp_county.Vaccine_Uptake_Private];
+            Vaccine_Uptake_Public=[Vaccine_Uptake_Public temp_county.Vaccine_Uptake_Public];
+            Uninsured=[Uninsured temp_county.Uninsured];
+            Public=[Public temp_county.Public];
+            Private=[Private temp_county.Private];
         end
     else
+        [temp_county,~]=Age_Adjustment_Factor_25_plus(Vaccine,Model_Num,Age_Class{aa});
         temp_immunity=zeros(length(County_Data.County),1);
         T_temp=T(strcmp(T.Age_Group,Age_Class{aa}),:);
         for ss=1:height(T_temp)
@@ -49,15 +63,31 @@ for aa=1:length(Age_Class)
             temp_immunity(tf)=T_temp.Immunity(ss);
         end
         Immunity=[Immunity temp_immunity];
+        Vaccine_Uptake=[Vaccine_Uptake temp_county.Vaccine_Uptake];
+        Vaccine_Uptake_Uninsured=[Vaccine_Uptake_Uninsured temp_county.Vaccine_Uptake_Uninsured];
+        Vaccine_Uptake_Private=[Vaccine_Uptake_Private temp_county.Vaccine_Uptake_Private];
+        Vaccine_Uptake_Public=[Vaccine_Uptake_Public temp_county.Vaccine_Uptake_Public];
+
+        Uninsured=[Uninsured temp_county.Uninsured];
+        Public=[Public temp_county.Public];
+        Private=[Private temp_county.Private];
     end
 end
 
 Vaccine_Uptake=array2table(Vaccine_Uptake);
-Vaccine_Uptake.Properties.VariableNames=V_Age_Class;
+Vaccine_Uptake.Properties.VariableNames=Age_Class;
 Immunity=array2table(Immunity);
 Immunity.Properties.VariableNames=Age_Class;
 County_Data.Vaccine_Uptake=Vaccine_Uptake;
+County_Data.Vaccine_Uptake_Uninsured=Vaccine_Uptake_Uninsured;
+County_Data.Vaccine_Uptake_Private=Vaccine_Uptake_Private;
+County_Data.Vaccine_Uptake_Public=Vaccine_Uptake_Public;
 County_Data.Immunity=Immunity;
+
+County_Data.Uninsured=Uninsured;
+County_Data.Public=Public;
+County_Data.Private=Private;
+
 County_Data.Total_Immunity=sum(table2array(County_Data.Population).*table2array(County_Data.Immunity),2);
 
 beta_j=10.^(linspace(-1.1,log10(3),10^3));

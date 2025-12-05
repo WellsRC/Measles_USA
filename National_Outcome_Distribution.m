@@ -18,7 +18,9 @@ School_Cost=readtable('Cost_School_Day.xlsx');
 State_Hospital_Cost=readtable('State_Daily_Hospital_Cost.xlsx');
 Wages=readtable('County_Daily_Wages_2025.xlsx');
 W=zeros(length(County_Data_Vaccine_Reduction.GEOID),1);
-Cost_Hospitalizations_Baseline=zeros(size(Unvaccinated_Cases_County_Baseline));
+Cost_Hospitalizations_Uninured=zeros(size(Unvaccinated_Cases_County_Baseline));
+Cost_Hospitalizations_Public=zeros(size(Unvaccinated_Cases_County_Baseline));
+Cost_Hospitalizations_Private=zeros(size(Unvaccinated_Cases_County_Baseline));
 
 Total_Productivity_loss_Cases=zeros(size(Unvaccinated_Cases_County_Baseline));
 Total_Productivity_loss_Contacts=zeros(size(Unvaccinated_Cases_County_Baseline));
@@ -37,7 +39,7 @@ for ww=1:length(W)
     Wage_Loss=Wages.daily_wage_2025(f_wages).*repmat(Productivity_loss_Contacts(:),1,size(Unvaccinated_Contacts_Baseline,3)).*squeeze(Unvaccinated_Contacts_Baseline(ww,:,:));
     School_Loss=School_Cost.Daily_Cost_Student(school_state).*repmat(Productivity_loss_Contacts_School(:),1,size(Unvaccinated_Contacts_Baseline,3)).*squeeze(Unvaccinated_Contacts_Baseline(ww,:,:));
     Total_Productivity_loss_Contacts(ww,:,:)=Wage_Loss+School_Loss;
-    Cost_Hospitalizations_Baseline(ww,:,:)=State_Hospital_Cost.Cost_2025(f_state).*(repmat(p_H_Unvaccinated(:).*duration_hospitalization(:),1,size(Unvaccinated_Cases_County_Baseline,3)).*squeeze(Unvaccinated_Cases_County_Baseline(ww,:,:))+repmat(p_H_Vaccinated(:).*duration_hospitalization(:),1,size(Unvaccinated_Cases_County_Baseline,3)).*squeeze(Vaccinated_Cases_County_Baseline(ww,:,:)));    
+    Cost_Hospitalizations_Uninured(ww,:,:)=State_Hospital_Cost.Cost_2025(f_state).*(repmat(p_H_Unvaccinated(:).*duration_hospitalization(:),1,size(Unvaccinated_Cases_County_Baseline,3)).*squeeze(Unvaccinated_Cases_County_Baseline(ww,:,:))+repmat(p_H_Vaccinated(:).*duration_hospitalization(:),1,size(Unvaccinated_Cases_County_Baseline,3)).*squeeze(Vaccinated_Cases_County_Baseline(ww,:,:)));    
 end
 
 
@@ -50,7 +52,7 @@ Total_Contacts_Baseline=squeeze(sum(Total_Contacts_Baseline,[1 2]));
 % 54 % elgible for VFC
 Cost_Vac_Age=[(0.54.*Cost_per_Vaccine_dose_VFC+(1-0.54).*Cost_per_Vaccine_dose_Private).*ones(1,4) Cost_per_Vaccine_dose_Private.*ones(1,14)];
 Cost_Vaccination_Contacts=Cost_Vac_Age*squeeze(sum(Unvaccinated_Contacts_Baseline,1));
-Cost_Case_Medical=squeeze(sum(Cost_Hospitalizations_Baseline,[1 2]))+Cost_Non_Hospitalizations_Baseline(:);
+Cost_Case_Medical=squeeze(sum(Cost_Hospitalizations_Uninured,[1 2]))+Cost_Non_Hospitalizations_Baseline(:);
 Testing_Cost=Tests_per_Contact.*Cost_per_Test.*Total_Contacts_Baseline;
 Contact_Tracing_Costs=Cost_per_Contact.*Total_Contacts_Baseline;
 

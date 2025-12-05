@@ -45,6 +45,90 @@ year_data_A_15_19=year_data-2;
         Uninsured=[T.Uninsured_19_to_25];
         Private=[T.Private_insured_19_to_25];
         Public=[T.Public_insured_19_to_25];
+    else
+        Insurance_25_plus=readtable([pwd '/Insurance_25_plus.xlsx']);
+        if(strcmp(Age_Group,'Age_25_to_29'))
+            Weight=[T.Population_25_to_29.*T.Total_Population];
+            
+            Uninsured=[Insurance_25_plus.Uninsured_26_to_34];
+            Private=[Insurance_25_plus.Private_insured_26_to_34];
+            Public=[Insurance_25_plus.Public_insured_26_to_34];
+        elseif(strcmp(Age_Group,'Age_30_to_34'))
+            Weight=[T.Population_30_to_34.*T.Total_Population];
+            
+            Uninsured=[Insurance_25_plus.Uninsured_26_to_34];
+            Private=[Insurance_25_plus.Private_insured_26_to_34];
+            Public=[Insurance_25_plus.Public_insured_26_to_34];
+        elseif(strcmp(Age_Group,'Age_35_to_39'))
+            Weight=[T.Population_35_to_39.*T.Total_Population];
+    
+            Uninsured=[Insurance_25_plus.Uninsured_35_to_44];
+            Private=[Insurance_25_plus.Private_insured_35_to_44];
+            Public=[Insurance_25_plus.Public_insured_35_to_44];
+    
+        elseif(strcmp(Age_Group,'Age_40_to_44'))
+            Weight=[T.Population_40_to_44.*T.Total_Population];
+    
+            Uninsured=[Insurance_25_plus.Uninsured_35_to_44];
+            Private=[Insurance_25_plus.Private_insured_35_to_44];
+            Public=[Insurance_25_plus.Public_insured_35_to_44];
+        elseif(strcmp(Age_Group,'Age_45_to_49'))
+            Weight=[T.Population_45_to_49.*T.Total_Population];
+            
+            Uninsured=[Insurance_25_plus.Uninsured_45_to_54];
+            Private=[Insurance_25_plus.Private_insured_45_to_54];
+            Public=[Insurance_25_plus.Public_insured_45_to_54];
+        elseif(strcmp(Age_Group,'Age_50_to_54'))
+            Weight=[T.Population_50_to_54.*T.Total_Population];
+            
+            Uninsured=[Insurance_25_plus.Uninsured_45_to_54];
+            Private=[Insurance_25_plus.Private_insured_45_to_54];
+            Public=[Insurance_25_plus.Public_insured_45_to_54];
+        elseif(strcmp(Age_Group,'Age_55_to_59'))
+            Weight=[T.Population_55_to_59.*T.Total_Population];
+    
+            Uninsured=[Insurance_25_plus.Uninsured_55_to_64];
+            Private=[Insurance_25_plus.Private_insured_55_to_64];
+            Public=[Insurance_25_plus.Public_insured_55_to_64];
+    
+        elseif(strcmp(Age_Group,'Age_60_to_64'))
+            Weight=[T.Population_60_to_64.*T.Total_Population];
+    
+            Uninsured=[Insurance_25_plus.Uninsured_55_to_64];
+            Private=[Insurance_25_plus.Private_insured_55_to_64];
+            Public=[Insurance_25_plus.Public_insured_55_to_64];
+        elseif(strcmp(Age_Group,'Age_65_to_69'))
+            Weight=[T.Population_65_to_69.*T.Total_Population];
+            
+            Uninsured=[Insurance_25_plus.Uninsured_65_to_74];
+            Private=[Insurance_25_plus.Private_insured_65_to_74];
+            Public=[Insurance_25_plus.Public_insured_65_to_74];
+        elseif(strcmp(Age_Group,'Age_70_to_74'))
+            Weight=[T.Population_70_to_74.*T.Total_Population];
+            
+            Uninsured=[Insurance_25_plus.Uninsured_65_to_74];
+            Private=[Insurance_25_plus.Private_insured_65_to_74];
+            Public=[Insurance_25_plus.Public_insured_65_to_74];
+        elseif(strcmp(Age_Group,'Age_75_to_79'))
+            Weight=[T.Population_75_to_79.*T.Total_Population];
+    
+            Uninsured=[Insurance_25_plus.Uninsured_75_to_100];
+            Private=[Insurance_25_plus.Private_insured_75_to_100];
+            Public=[Insurance_25_plus.Public_insured_75_to_100];
+    
+        elseif(strcmp(Age_Group,'Age_80_to_84'))
+            Weight=[T.Population_80_to_84.*T.Total_Population];
+    
+            Uninsured=[Insurance_25_plus.Uninsured_75_to_100];
+            Private=[Insurance_25_plus.Private_insured_75_to_100];
+            Public=[Insurance_25_plus.Public_insured_75_to_100];
+        elseif(strcmp(Age_Group,'Age_85_plus'))
+            Weight=[T.Population_85_to_100.*T.Total_Population];
+    
+            Uninsured=[Insurance_25_plus.Uninsured_75_to_100];
+            Private=[Insurance_25_plus.Private_insured_75_to_100];
+            Public=[Insurance_25_plus.Public_insured_75_to_100];
+        end
     end
     State_Name=[T.State];
     County_Name=[T.County];
@@ -83,6 +167,15 @@ County_Data.State_FIP=State_FIP(t_not_nan);
 County_Data.Weight=Weight(t_not_nan);
 if(strcmp(Age_Group,'Age_5_to_9'))
     County_Data.Vaccine_Uptake=Vaccine_Uptake(t_not_nan);
+elseif(~(strcmp(Age_Group,'Age_0_to_4')|strcmp(Age_Group,'Age_5_to_9')|strcmp(Age_Group,'Age_10_to_14')|strcmp(Age_Group,'Age_15_to_19')|strcmp(Age_Group,'Age_20_to_24')))
+    I=readtable([pwd '/Immunity_Age.xlsx']);
+    temp_immunity=zeros(length(County_Data.County),1);
+    T_temp=I(strcmp(I.Age_Group,Age_Group),:);
+    for ss=1:height(T_temp)
+        tf=strcmp(County_Data.State,T_temp.State{ss});
+        temp_immunity(tf)=T_temp.Immunity(ss);
+    end
+    County_Data.Immunity=temp_immunity;
 else
     County_Data.Vaccine_Uptake=NaN.*Vaccine_Uptake(t_not_nan);
 end
@@ -90,7 +183,7 @@ County_Data.X=table2array(X);
 
 
 
-
+No_state=false;
 Spatial_Stratification=cell(4,1);
 Spatial_Stratification{1}={'ME','VT','NH','MA','RI','CT','NY','PA','NJ'};
 
@@ -183,9 +276,14 @@ elseif(strcmp(Age_Group,'Age_20_to_24'))
     V=table2array(T(:,4)); % Takes year 2016
     State=T.State;
     Vaccine_Uptake=V;
+else
+    No_state=true;
 end
 
-
-State_Data=table(Year,State,State_FIP,Spatial_Identifier,Vaccine_Uptake);
-State_Data=State_Data(~isnan(Vaccine_Uptake),:);
+if(~No_state)
+    State_Data=table(Year,State,State_FIP,Spatial_Identifier,Vaccine_Uptake);
+    State_Data=State_Data(~isnan(Vaccine_Uptake),:);
+else
+    State_Data=[];
+end
 end

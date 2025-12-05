@@ -1,5 +1,5 @@
 function [County_Info,dZ_County]=Age_Adjustment_Factor(Vaccine,Model_Num,Age_Group)
-Year=2023;
+
 % Load the data
 [County_Data,State_Data] = Load_Data_Adjustment(Vaccine,Age_Group);
 
@@ -157,11 +157,17 @@ end
 
 [Estimated_Vaccination_Coverage] = Vaccination_Coverage_Adjusted([County_Data_model.X County_Data_model.XI County_Data_model.X2],beta_x,beta_insurance,County_Data_model,dZ_County);
 
+County_Info.Vaccine_Uptake_Uninsured=Estimated_Vaccination_Coverage.Uninsured;
+County_Info.Vaccine_Uptake_Public=Estimated_Vaccination_Coverage.Public;
+County_Info.Vaccine_Uptake_Private=Estimated_Vaccination_Coverage.Private;
 County_Info.Vaccine_Uptake=Estimated_Vaccination_Coverage.Overall;
 County_Info.County=County_Data.County;
 County_Info.State=County_Data.State;
 County_Info.GEOID=County_Data.GEOID;
 County_Info.Population=County_Data.Population;
+County_Info.Uninsured=County_Data.Uninsured;
+County_Info.Public=County_Data.Public;
+County_Info.Private=County_Data.Private;
 County_Info.Total_Population=County_Data.Total_Population;
 
 end
