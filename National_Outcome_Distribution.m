@@ -65,14 +65,17 @@ pd_med_cost=fitdist(temp_c(:),'Kernel','Support','positive');
 
 % Medical_Costs
 temp_c=Cost_Case_Medical_Uninsured;
+temp_c(temp_c==0)=10^(-16);
 pd_med_cost_uninsured=fitdist(temp_c(:),'Kernel','Support','positive');
 
 % Medical_Costs
 temp_c=Cost_Case_Medical_Public;
+temp_c(temp_c==0)=10^(-16);
 pd_med_cost_public=fitdist(temp_c(:),'Kernel','Support','positive');
 
 % Medical_Costs
 temp_c=Cost_Case_Medical_Private;
+temp_c(temp_c==0)=10^(-16);
 pd_med_cost_private=fitdist(temp_c(:),'Kernel','Support','positive');
 
 % Testing_Vaccination

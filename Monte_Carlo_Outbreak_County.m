@@ -64,7 +64,7 @@ for ss=1:size(p_c,1)
                 Vaccinated_Cases_County(ss,jj,nn)=sum(r==(jj+size(Proportion_Size_Age_Unvaccinated,2)));
                 w_ins=[Proportion_Age_Vaccinated_Uninsured(ss,jj) Proportion_Age_Vaccinated_Public(ss,jj) Proportion_Age_Vaccinated_Private(ss,jj)];
                 w_ins=w_ins./sum(w_ins);
-                for zz=1:sum(r==jj)
+                for zz=1:sum(r==(jj+size(Proportion_Size_Age_Unvaccinated,2)))
                     ins_typ=rand(1);
                     if(ins_typ<=w_ins(1))
                         Uninsured_Vaccinated_Cases_County(ss,jj,nn)=Uninsured_Vaccinated_Cases_County(ss,jj,nn)+1;
