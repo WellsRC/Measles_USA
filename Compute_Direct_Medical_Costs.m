@@ -41,10 +41,10 @@ for ww=1:length(County_Data_Vaccine_Reduction.GEOID)
         f_medaid=strcmp(Medicaid_Medicare_Ratio.State,County_Data_Vaccine_Reduction.State{ww});
         medc_ratio_in=Medicare_Ratio.Inpatient(f_medcare)./100;
         mm_ratio=Medicaid_Medicare_Ratio.PrimaryCare(f_medaid);
-        Adjustment_Cost_Inpatient=medc_ratio_in.*[mm_ratio.*ones(1,13) ones(1,5)];
+        Adjustment_Cost_Inpatient=[mm_ratio.*ones(1,13) ones(1,5)]./medc_ratio_in;
 
         medc_ratio_out=Medicare_Ratio.Outpatient(f_medcare)./100;
-        Adjustment_Cost_Outpatient=medc_ratio_out.*[mm_ratio.*ones(1,13) ones(1,5)];
+        Adjustment_Cost_Outpatient=[mm_ratio.*ones(1,13) ones(1,5)]./medc_ratio_out;
     elseif strcmp(payer_type,'Private')   
         Adjustment_Cost_Inpatient=[ones(1,18)];
         Adjustment_Cost_Outpatient=[ones(1,18)];
