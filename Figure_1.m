@@ -37,13 +37,15 @@ X_Label_Baseline=['Cost per case'];
 prct_label=false;
 monitary_label=true;
 
-text_v=[75000 87000 101000];
+text_v={'$75,000','$87,000','$101,000'};
 
 
 inq_txt_baseline=zeros(size(text_v));
 inq_txt_baseline(1)=-1;
 inq_txt_baseline(end)=1;
 
-Gen_Figure_Single_County(Cost_per_case_Baseline,x_baseline,C_Baseline,text_v,inq_txt_baseline,X_Label_Baseline,prct_label,monitary_label,S,0);
+f=Gen_Figure_Single_County(Cost_per_case_Baseline,x_baseline,C_Baseline,text_v,inq_txt_baseline,X_Label_Baseline,prct_label,monitary_label,S,0);
 
+theme(f, "light"); 
 print(gcf,['Figure_1.png'],'-dpng','-r300');
+print(gcf,['Figure_1.tif'],'-dtiff','-r300');

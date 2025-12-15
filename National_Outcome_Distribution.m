@@ -1,6 +1,7 @@
-function [pd_cases,pd_hospital,pd_cost,pd_cost_per_case,pd_pro_loss,pd_med_cost,pd_med_cost_uninsured,pd_med_cost_public,pd_med_cost_private,pd_test_vac_cost,pd_ct_cost,pd_outbreak_response_cost]=National_Outcome_Distribution(National_Annual_Reduction,Scenario_Plot,Year_Reduced)
+function [pd_cases,pd_hospital,pd_cost,pd_cost_per_case,pd_pro_loss,pd_med_cost,pd_med_cost_uninsured,pd_med_cost_public,pd_med_cost_private,pd_test_vac_cost,pd_ct_cost,pd_outbreak_response_cost,pd_severe_disease]=National_Outcome_Distribution(National_Annual_Reduction,Scenario_Plot,Year_Reduced)
 
 [p_H_Unvaccinated,p_H_Vaccinated,duration_hospitalization]=Hospitalization_Probability();
+[p_SD_Unvaccinated,p_SD_Vaccinated]=Severe_Disease_Probability();
 [Productivity_Days_Lost_Under_15_Case,Productivity_Days_Lost_15_plus_Case,Productivity_Days_Lost_Under_15_Contact,Productivity_Days_Lost_15_plus_Contact,Cost_per_Contact,Cost_per_Vaccine_dose_Private,Cost_per_Vaccine_dose_VFC,Cost_per_Non_Hospitalization,Tests_per_Contact,Cost_per_Test]=Measles_Outbreak_Cost();
 
 load(['National_Reduction=' num2str(100*National_Annual_Reduction) '_Year=' num2str(Year_Reduced) '.mat'],'County_Data_Vaccine_Reduction')
@@ -14,6 +15,7 @@ load(['National_Reduction=' num2str(100*National_Annual_Reduction) '_Year=' num2
 load(['Monte_Carlo_Run_' Scenario_Plot '_National_Reduction=' num2str(100*National_Annual_Reduction) '_Year=' num2str(Year_Reduced) '.mat'],'Total_Cases_County','Unvaccinated_Cases_County_Baseline','Vaccinated_Cases_County_Baseline','Total_Contacts_Baseline','Unvaccinated_Contacts_Baseline');
 
 Hospitalizations_Baseline=p_H_Unvaccinated*squeeze(sum(Unvaccinated_Cases_County_Baseline,1))+p_H_Vaccinated*squeeze(sum(Vaccinated_Cases_County_Baseline,1));
+Severe_Disease_Baseline=p_SD_Unvaccinated*squeeze(sum(Unvaccinated_Cases_County_Baseline,1))+p_SD_Vaccinated*squeeze(sum(Vaccinated_Cases_County_Baseline,1));
 
 Total_Contacts_Baseline=squeeze(sum(Total_Contacts_Baseline,[1 2]));
 % https://pmc.ncbi.nlm.nih.gov/articles/PMC11309373/#:~:text=In%202023%2C%20approximately%2054%25%20of,)%20born%20during%201994%E2%80%932023.
@@ -45,6 +47,10 @@ pd_cases=fitdist(temp_c(:),'Kernel','Support','positive');
 % Hospital
 temp_c=Hospitalizations_Baseline;
 pd_hospital=fitdist(temp_c(:),'Kernel','Support','positive');
+
+% Severe disease
+temp_c=Severe_Disease_Baseline;
+pd_severe_disease=fitdist(temp_c(:),'Kernel','Support','positive');
 
 % Cost
 temp_c=Cost_Baseline./10^6;

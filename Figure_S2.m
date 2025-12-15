@@ -9,7 +9,10 @@ clc;
 % % 
 
 Measure={'Cases';'Hospitalizations';'Cost';'Outbreak respons';'Direct Medical';'Direct Medical: Uninsured';'Direct Medical: Publicly insured';'Direct Medical: Privately insured';'Productivity loses';'Cost per case'};
-[pd_cases_2025,pd_hospital,pd_cost,pd_cost_per_case,pd_pro_loss,pd_med_cost,pd_med_cost_uninsured,pd_med_cost_public,pd_med_cost_private,~,~,pd_outbreak_response_cost]=National_Outcome_Distribution(0,'Baseline',0);
+[pd_cases_2025,pd_hospital,pd_cost,pd_cost_per_case,pd_pro_loss,pd_med_cost,pd_med_cost_uninsured,pd_med_cost_public,pd_med_cost_private,~,~,pd_outbreak_response_cost,pd_severe_disease]=National_Outcome_Distribution(0,'Baseline',0);
+
+[num2str(icdf(pd_severe_disease,0.5),'%5.0f') ' (IQR:' num2str(icdf(pd_severe_disease,0.25),'%5.0f') char(8211) num2str(icdf(pd_severe_disease,0.75),'%5.0f') ')']
+
 pd_cases=pd_cases_2025;
 Value_2025=cell(10,1);
   Value_2025{1} = [num2str(icdf(pd_cases,0.5),'%5.0f') ' (IQR:' num2str(icdf(pd_cases,0.25),'%5.0f') char(8211) num2str(icdf(pd_cases,0.75),'%5.0f') ')'];
@@ -80,7 +83,7 @@ Value_2023=cell(10,1);
 
 
 close all;
-figure('units','normalized','outerposition',[0.05 0.05 0.8 1]);
+f=figure('units','normalized','outerposition',[0.05 0.05 0.8 1]);
 s1=subplot("Position",[0.075 0.58 0.87 0.39]);
 
 Case_Count_2025=1753;
@@ -134,4 +137,6 @@ set(gca,'LineWidth',2,'Tickdir','out','XTick',[0:20:200],'Fontsize',16)
 xlabel(['Annual measles cases (2023)'],'FontSize',18)
 ylabel('Probability density','FontSize',18)
 text(-0.1711,1,'C','FontSize',34,'Units','normalized');
+
+theme(f,'light');
 print(gcf,['Figure_S2.png'],'-dpng','-r300');

@@ -5,6 +5,7 @@ load('MMR_Immunity.mat','County_Data');
 S=shaperead([pwd '\Shapefile\cb_2023_us_county_20m.shp'],"UseGeoCoords",true);
 V_Baseline=NaN.*zeros(length(S),6);
 
+Pop_0_6=NaN.*zeros(length(S),1);
 for cc=1:length(S)
     tf=strcmp(County_Data.GEOID,S(cc).GEOID);
     if(sum(tf)>0)
@@ -12,6 +13,8 @@ for cc=1:length(S)
             V_Baseline(cc,jj)=table2array(County_Data.Vaccine_Uptake(tf,jj));
         end
         V_Baseline(cc,6)=(table2array(County_Data.Vaccine_Uptake(tf,1)).*table2array(County_Data.Population(tf,1))+(2/5).*table2array(County_Data.Vaccine_Uptake(tf,2)).*table2array(County_Data.Population(tf,2)))./(table2array(County_Data.Population(tf,1))+(2/5).*table2array(County_Data.Population(tf,2)));
+
+        Pop_0_6(cc)=(table2array(County_Data.Population(tf,1))+(2/5).*table2array(County_Data.Population(tf,2)));
     end
 end
 

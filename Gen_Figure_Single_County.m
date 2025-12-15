@@ -1,9 +1,9 @@
-function Gen_Figure_Single_County(Measure_Baseline,x_baseline,C_Baseline,text_v,inq_txt_baseline,X_Label_Baseline,prct_label,monitary_label,S,label_plot)
+function f=Gen_Figure_Single_County(Measure_Baseline,x_baseline,C_Baseline,text_v,inq_txt_baseline,X_Label_Baseline,prct_label,monitary_label,S,label_plot)
 
 
 states = shaperead('usastatelo', 'UseGeoCoords', true);
 
-figure('units','normalized','outerposition',[0.15 0.075 0.3 0.43]);
+f=figure('units','normalized','outerposition',[0.15 0.075 0.3 0.43]);
 
 subplot("Position",[0.085 0.135 0.83 0.025])
 dv=linspace(x_baseline(1),x_baseline(end),1001);
@@ -30,17 +30,17 @@ if(prct_label)
     end
 elseif(monitary_label)
     for jj=1:length(text_v)
-        if(text_v(jj)<0)
+        if(x_baseline(jj)<0)
             sgn='-';
         else
             sgn=[];
         end
         if(inq_txt_baseline(jj)<0)
-            text(text_v(jj),-1.2,['\leq' sgn '$' num2str(abs(text_v(jj)))],'Fontsize',14,'VerticalAlignment','middle','HorizontalAlignment','center');
+            text(x_baseline(jj),-1.2,['\leq' sgn text_v{jj}],'Fontsize',14,'VerticalAlignment','middle','HorizontalAlignment','center');
         elseif(inq_txt_baseline(jj)>0)
-            text(text_v(jj),-1.2,['\geq' sgn '$' num2str(abs(text_v(jj)))],'Fontsize',14,'VerticalAlignment','middle','HorizontalAlignment','center');
+            text(x_baseline(jj),-1.2,['\geq' sgn text_v{jj}],'Fontsize',14,'VerticalAlignment','middle','HorizontalAlignment','center');
         else
-            text(text_v(jj),-1.2,[sgn '$' num2str(abs(text_v(jj)))],'Fontsize',14,'VerticalAlignment','middle','HorizontalAlignment','center');
+            text(x_baseline(jj),-1.2,[sgn text_v{jj}],'Fontsize',14,'VerticalAlignment','middle','HorizontalAlignment','center');
         end
     end
 else

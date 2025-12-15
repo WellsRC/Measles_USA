@@ -1,7 +1,7 @@
 clear;
 clc;
 close all;
-figure('units','normalized','outerposition',[0.05 0.05 0.6 1]);
+f=figure('units','normalized','outerposition',[0.05 0.05 0.6 1]);
 CV=zeros(length(25:25:200),1);
 for imprt=25:25:200
     subplot('Position',[0.125,0.58,0.85,0.395]);
@@ -57,4 +57,7 @@ ylabel('Additional annual measles incidence','FontSize',18)
 legend([p1 p2 p3 p4],{'0.25%','0.50%','0.75%','1.00%'},'FontSize',16,'Location','northwest')
 text(-0.12,1,'B','Fontsize',32,'Units','normalized')
 xlim([12.5 212.5])
+
+theme(f, "light"); 
 print(gcf,['Figure_2.png'],'-dpng','-r300');
+print(gcf,['Figure_2.tif'],'-dtiff','-r300');
