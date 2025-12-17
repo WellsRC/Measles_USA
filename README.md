@@ -1,4 +1,4 @@
-#The health and economic repercussions of declining MMR coverage in the United States
+# The health and economic repercussions of declining MMR coverage in the United States
 
 Chad R. Wells <sup>1</sup>, Abhishek Pandey <sup>1</sup>, Yang Ye <sup>1</sup>, Carolyn Bawden <sup>1</sup>, Rebecca Giglio <sup>2</sup>,  Charlene Wong <sup>2</sup>, Velda Wang <sup>2</sup>, Chelsea Cipriano <sup>2</sup>, Lamia Ayaz <sup>1</sup>, Seyed M. Moghadas <sup>3</sup>, Meagan C. Fitzpatrick <sup>4</sup>, Dave A. Chokshi <sup>2</sup>, Burton H. Singer <sup>5</sup>, Alison P. Galvani <sup>1</sup>
 
