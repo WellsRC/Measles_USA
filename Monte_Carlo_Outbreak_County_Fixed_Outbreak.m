@@ -18,8 +18,8 @@ for ss=1:size(Proportion_Size_Age_Unvaccinated,1)
             r = random(pd,1,Total_Cases_County(ss,nn));
             for jj=1:size(Proportion_Size_Age_Unvaccinated,2)
                 Unvaccinated_Cases_County(ss,jj,nn)=sum(r==jj);
-                w_ins=[Proportion_Age_Unvaccinated_Uninsured(ss,jj) Proportion_Age_Unvaccinated_Public(ss,jj) Proportion_Age_Unvaccinated_Private(ss,jj)];
-                w_ins=w_ins./sum(w_ins);
+                w_ins=([Proportion_Age_Unvaccinated_Uninsured(ss,jj) Proportion_Age_Unvaccinated_Public(ss,jj) Proportion_Age_Unvaccinated_Private(ss,jj)]);
+                w_ins=cumsum(w_ins)./sum(w_ins);
                 for zz=1:sum(r==jj)
                     ins_typ=rand(1);
                     if(ins_typ<=w_ins(1))
@@ -30,8 +30,8 @@ for ss=1:size(Proportion_Size_Age_Unvaccinated,1)
                 end
 
                 Vaccinated_Cases_County(ss,jj,nn)=sum(r==(jj+size(Proportion_Size_Age_Unvaccinated,2)));
-                w_ins=[Proportion_Age_Vaccinated_Uninsured(ss,jj) Proportion_Age_Vaccinated_Public(ss,jj) Proportion_Age_Vaccinated_Private(ss,jj)];
-                w_ins=w_ins./sum(w_ins);
+                w_ins=([Proportion_Age_Vaccinated_Uninsured(ss,jj) Proportion_Age_Vaccinated_Public(ss,jj) Proportion_Age_Vaccinated_Private(ss,jj)]);
+                w_ins=cumsum(w_ins)./sum(w_ins);
                 for zz=1:sum(r==(jj+size(Proportion_Size_Age_Unvaccinated,2)))
                     ins_typ=rand(1);
                     if(ins_typ<=w_ins(1))

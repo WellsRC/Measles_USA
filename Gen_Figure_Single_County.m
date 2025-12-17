@@ -21,11 +21,11 @@ plot([x_baseline(1) x_baseline(end)],[1 1],'k','LineWidth',1)
 if(prct_label)
     for jj=1:length(text_v)
         if(inq_txt_baseline(jj)<0)
-            text(text_v(jj),-1.2,['\leq ' num2str(100.*abs(text_v(jj))) '%'],'Fontsize',14,'VerticalAlignment','middle','HorizontalAlignment','center');
+            text(text_v(jj),-1.2,['\leq ' num2str(100.*abs(text_v(jj))) '%'],'Fontsize',11,'VerticalAlignment','middle','HorizontalAlignment','center');
         elseif(inq_txt_baseline(jj)>0)
-            text(text_v(jj),-1.2,['\geq ' num2str(100.*abs(text_v(jj))) '%'],'Fontsize',14,'VerticalAlignment','middle','HorizontalAlignment','center');
+            text(text_v(jj),-1.2,['\geq ' num2str(100.*abs(text_v(jj))) '%'],'Fontsize',11,'VerticalAlignment','middle','HorizontalAlignment','center');
         else
-            text(text_v(jj),-1.2,[num2str(100.*abs(text_v(jj))) '%'],'Fontsize',14,'VerticalAlignment','middle','HorizontalAlignment','center');
+            text(text_v(jj),-1.2,[num2str(100.*abs(text_v(jj))) '%'],'Fontsize',11,'VerticalAlignment','middle','HorizontalAlignment','center');
         end
     end
 elseif(monitary_label)
@@ -36,25 +36,25 @@ elseif(monitary_label)
             sgn=[];
         end
         if(inq_txt_baseline(jj)<0)
-            text(x_baseline(jj),-1.2,['\leq' sgn text_v{jj}],'Fontsize',14,'VerticalAlignment','middle','HorizontalAlignment','center');
+            text(x_baseline(jj),-1.2,['\leq' sgn text_v{jj}],'Fontsize',11,'VerticalAlignment','middle','HorizontalAlignment','center');
         elseif(inq_txt_baseline(jj)>0)
-            text(x_baseline(jj),-1.2,['\geq' sgn text_v{jj}],'Fontsize',14,'VerticalAlignment','middle','HorizontalAlignment','center');
+            text(x_baseline(jj),-1.2,['\geq' sgn text_v{jj}],'Fontsize',11,'VerticalAlignment','middle','HorizontalAlignment','center');
         else
-            text(x_baseline(jj),-1.2,[sgn text_v{jj}],'Fontsize',14,'VerticalAlignment','middle','HorizontalAlignment','center');
+            text(x_baseline(jj),-1.2,[sgn text_v{jj}],'Fontsize',11,'VerticalAlignment','middle','HorizontalAlignment','center');
         end
     end
 else
     for jj=1:length(text_v)
         if(inq_txt_baseline(jj)<0)
-            text(text_v(jj),-1.2,['\leq ' num2str(abs(text_v(jj)))],'Fontsize',14,'VerticalAlignment','middle','HorizontalAlignment','center');
+            text(text_v(jj),-1.2,['\leq ' num2str(abs(text_v(jj)))],'Fontsize',11,'VerticalAlignment','middle','HorizontalAlignment','center');
         elseif(inq_txt_baseline(jj)>0)
-            text(text_v(jj),-1.2,['\geq ' num2str(abs(text_v(jj)))],'Fontsize',14,'VerticalAlignment','middle','HorizontalAlignment','center');
+            text(text_v(jj),-1.2,['\geq ' num2str(abs(text_v(jj)))],'Fontsize',11,'VerticalAlignment','middle','HorizontalAlignment','center');
         else
-            text(text_v(jj),-1.2,[num2str(abs(text_v(jj)))],'Fontsize',14,'VerticalAlignment','middle','HorizontalAlignment','center');
+            text(text_v(jj),-1.2,[num2str(abs(text_v(jj)))],'Fontsize',11,'VerticalAlignment','middle','HorizontalAlignment','center');
         end
     end
 end
-text(0.5,-3.9,X_Label_Baseline,'FontSize',16,'HorizontalAlignment','center','VerticalAlignment','middle','Units','normalized');
+text(0.5,-3.9,X_Label_Baseline,'FontSize',12,'HorizontalAlignment','center','VerticalAlignment','middle','Units','normalized');
 if(label_plot>0)
     text(-0.099,32.28,char(64+label_plot),'Fontsize',32,'Units','normalized')
 end

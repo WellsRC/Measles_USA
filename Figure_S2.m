@@ -8,76 +8,83 @@ clc;
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % % 
 
-Measure={'Cases';'Hospitalizations';'Cost';'Outbreak respons';'Direct Medical';'Direct Medical: Uninsured';'Direct Medical: Publicly insured';'Direct Medical: Privately insured';'Productivity loses';'Cost per case'};
+Measure={'Cases';'Hospitalizations';'Severe Disease';'Cost';'Outbreak respons';'Direct Medical';'Direct Medical: Uninsured';'Direct Medical: Publicly insured';'Direct Medical: Privately insured';'Productivity loses';'Cost per case'};
 [pd_cases_2025,pd_hospital,pd_cost,pd_cost_per_case,pd_pro_loss,pd_med_cost,pd_med_cost_uninsured,pd_med_cost_public,pd_med_cost_private,~,~,pd_outbreak_response_cost,pd_severe_disease]=National_Outcome_Distribution(0,'Baseline',0);
 
-[num2str(icdf(pd_severe_disease,0.5),'%5.0f') ' (IQR:' num2str(icdf(pd_severe_disease,0.25),'%5.0f') char(8211) num2str(icdf(pd_severe_disease,0.75),'%5.0f') ')']
+
 
 pd_cases=pd_cases_2025;
-Value_2025=cell(10,1);
-  Value_2025{1} = [num2str(icdf(pd_cases,0.5),'%5.0f') ' (IQR:' num2str(icdf(pd_cases,0.25),'%5.0f') char(8211) num2str(icdf(pd_cases,0.75),'%5.0f') ')'];
+Value_2025=cell(11,1);
+  Value_2025{1} = [num2str(icdf(pd_cases,0.5),'%5.0f') ' (' num2str(icdf(pd_cases,0.25),'%5.0f') char(8211) num2str(icdf(pd_cases,0.75),'%5.0f') ')'];
 
-    Value_2025{2} = [num2str(icdf(pd_hospital,0.5),'%5.0f') ' (IQR:' num2str(icdf(pd_hospital,0.25),'%5.0f') char(8211) num2str(icdf(pd_hospital,0.75),'%5.0f') ')'];
+    Value_2025{2} = [num2str(icdf(pd_hospital,0.5),'%5.0f') ' (' num2str(icdf(pd_hospital,0.25),'%5.0f') char(8211) num2str(icdf(pd_hospital,0.75),'%5.0f') ')'];
 
-    Value_2025{3} = [num2str(icdf(pd_cost,0.5),'%4.1f') ' (IQR:' num2str(icdf(pd_cost,0.25),'%4.1f') char(8211) num2str(icdf(pd_cost,0.75),'%4.1f') ') million'];
+    
+    Value_2025{3}=[num2str(icdf(pd_severe_disease,0.5),'%5.0f') ' (' num2str(icdf(pd_severe_disease,0.25),'%5.0f') char(8211) num2str(icdf(pd_severe_disease,0.75),'%5.0f') ')'];
 
-    Value_2025{4} = [num2str(icdf(pd_outbreak_response_cost,0.5)./10^6,'%4.1f') ' (IQR:' num2str(icdf(pd_outbreak_response_cost,0.25)./10^6,'%4.1f') char(8211) num2str(icdf(pd_outbreak_response_cost,0.75)./10^6,'%4.1f') ') million'];
+    Value_2025{4} = ['$' num2str(icdf(pd_cost,0.5),'%4.1f') ' million ($' num2str(icdf(pd_cost,0.25),'%4.1f') char(8211) '$' num2str(icdf(pd_cost,0.75),'%4.1f') ' million)'];
 
-    Value_2025{5} = [num2str(icdf(pd_med_cost,0.5)./10^6,'%4.1f') ' (IQR:' num2str(icdf(pd_med_cost,0.25)./10^6,'%4.1f') char(8211) num2str(icdf(pd_med_cost,0.75)./10^6,'%4.1f') ') million'];
+    Value_2025{5} = ['$' num2str(icdf(pd_outbreak_response_cost,0.5)./10^6,'%4.1f') ' million ($' num2str(icdf(pd_outbreak_response_cost,0.25)./10^6,'%4.1f') char(8211) '$' num2str(icdf(pd_outbreak_response_cost,0.75)./10^6,'%4.1f') ' million)'];
 
-    Value_2025{6} = [num2str(icdf(pd_med_cost_uninsured,0.5)./10^6,'%4.2f') ' (IQR:' num2str(icdf(pd_med_cost_uninsured,0.25)./10^6,'%4.2f') char(8211) num2str(icdf(pd_med_cost_uninsured,0.75)./10^6,'%4.2f') ') million'];
-    Value_2025{7} = [num2str(icdf(pd_med_cost_public,0.5)./10^6,'%4.2f') ' (IQR:' num2str(icdf(pd_med_cost_public,0.25)./10^6,'%4.2f') char(8211) num2str(icdf(pd_med_cost_public,0.75)./10^6,'%4.2f') ') million'];
-    Value_2025{8} = [num2str(icdf(pd_med_cost_private,0.5)./10^6,'%4.2f') ' (IQR:' num2str(icdf(pd_med_cost_private,0.25)./10^6,'%4.2f') char(8211) num2str(icdf(pd_med_cost_private,0.75)./10^6,'%4.2f') ') million'];
+    Value_2025{6} = ['$' num2str(icdf(pd_med_cost,0.5)./10^6,'%4.1f') ' million ($' num2str(icdf(pd_med_cost,0.25)./10^6,'%4.1f') char(8211) '$' num2str(icdf(pd_med_cost,0.75)./10^6,'%4.1f') ' million)'];
 
-    Value_2025{9} = [num2str(icdf(pd_pro_loss,0.5)./10^6,'%4.1f') ' (IQR:' num2str(icdf(pd_pro_loss,0.25)./10^6,'%4.1f') char(8211) num2str(icdf(pd_pro_loss,0.75)./10^6,'%4.1f') ') million'];
+    Value_2025{7} = ['$' num2str(icdf(pd_med_cost_uninsured,0.5)./10^6,'%4.2f') ' million ($' num2str(icdf(pd_med_cost_uninsured,0.25)./10^6,'%4.2f') char(8211) '$' num2str(icdf(pd_med_cost_uninsured,0.75)./10^6,'%4.2f') ' million)'];
+    Value_2025{8} = ['$' num2str(icdf(pd_med_cost_public,0.5)./10^6,'%4.2f') ' million ($' num2str(icdf(pd_med_cost_public,0.25)./10^6,'%4.2f') char(8211) '$' num2str(icdf(pd_med_cost_public,0.75)./10^6,'%4.2f') ' million)'];
+    Value_2025{9} = ['$' num2str(icdf(pd_med_cost_private,0.5)./10^6,'%4.2f') ' million ($' num2str(icdf(pd_med_cost_private,0.25)./10^6,'%4.2f') char(8211) '$' num2str(icdf(pd_med_cost_private,0.75)./10^6,'%4.2f') ' million)'];
 
-    Value_2025{10} = [num2str(10^3.*icdf(pd_cost_per_case,0.5),'%5.0f') ' (IQR:' num2str(10^3.*icdf(pd_cost_per_case,0.25),'%5.0f') char(8211) num2str(10^3.*icdf(pd_cost_per_case,0.75),'%5.0f') ')'];
+    Value_2025{10} = ['$' num2str(icdf(pd_pro_loss,0.5)./10^6,'%4.1f') ' million ($' num2str(icdf(pd_pro_loss,0.25)./10^6,'%4.1f') char(8211) '$' num2str(icdf(pd_pro_loss,0.75)./10^6,'%4.1f') ' million)'];
 
-[pd_cases_2024,pd_hospital,pd_cost,pd_cost_per_case,pd_pro_loss,pd_med_cost,pd_med_cost_uninsured,pd_med_cost_public,pd_med_cost_private,~,~,pd_outbreak_response_cost]=National_Outcome_Distribution(0,'Sample_2024',0);
+    Value_2025{11} = ['$' num2str(10^3.*icdf(pd_cost_per_case,0.5),'%5.0f') ' ($' num2str(10^3.*icdf(pd_cost_per_case,0.25),'%5.0f') char(8211) '$' num2str(10^3.*icdf(pd_cost_per_case,0.75),'%5.0f') ')'];
+
+[pd_cases_2024,pd_hospital,pd_cost,pd_cost_per_case,pd_pro_loss,pd_med_cost,pd_med_cost_uninsured,pd_med_cost_public,pd_med_cost_private,~,~,pd_outbreak_response_cost,pd_severe_disease]=National_Outcome_Distribution(0,'Sample_2024',0);
 
 pd_cases=pd_cases_2024;
 Value_2024=cell(10,1);
-  Value_2024{1} = [num2str(icdf(pd_cases,0.5),'%5.0f') ' (IQR:' num2str(icdf(pd_cases,0.25),'%5.0f') char(8211) num2str(icdf(pd_cases,0.75),'%5.0f') ')'];
+  Value_2024{1} = [num2str(icdf(pd_cases,0.5),'%5.0f') ' (' num2str(icdf(pd_cases,0.25),'%5.0f') char(8211) num2str(icdf(pd_cases,0.75),'%5.0f') ')'];
 
-    Value_2024{2} = [num2str(icdf(pd_hospital,0.5),'%5.0f') ' (IQR:' num2str(icdf(pd_hospital,0.25),'%5.0f') char(8211) num2str(icdf(pd_hospital,0.75),'%5.0f') ')'];
+    Value_2024{2} = [num2str(icdf(pd_hospital,0.5),'%5.0f') ' (' num2str(icdf(pd_hospital,0.25),'%5.0f') char(8211) num2str(icdf(pd_hospital,0.75),'%5.0f') ')'];
 
-    Value_2024{3} = [num2str(icdf(pd_cost,0.5),'%4.1f') ' (IQR:' num2str(icdf(pd_cost,0.25),'%4.1f') char(8211) num2str(icdf(pd_cost,0.75),'%4.1f') ') million'];
+    
+    Value_2024{3}=[num2str(icdf(pd_severe_disease,0.5),'%5.0f') ' (' num2str(icdf(pd_severe_disease,0.25),'%5.0f') char(8211) num2str(icdf(pd_severe_disease,0.75),'%5.0f') ')'];
 
-    Value_2024{4} = [num2str(icdf(pd_outbreak_response_cost,0.5)./10^6,'%4.1f') ' (IQR:' num2str(icdf(pd_outbreak_response_cost,0.25)./10^6,'%4.1f') char(8211) num2str(icdf(pd_outbreak_response_cost,0.75)./10^6,'%4.1f') ') million'];
+    Value_2024{4} = ['$' num2str(icdf(pd_cost,0.5),'%4.1f') ' million ($' num2str(icdf(pd_cost,0.25),'%4.1f') char(8211) '$' num2str(icdf(pd_cost,0.75),'%4.1f') ' million)'];
 
-    Value_2024{5} = [num2str(icdf(pd_med_cost,0.5)./10^6,'%4.1f') ' (IQR:' num2str(icdf(pd_med_cost,0.25)./10^6,'%4.1f') char(8211) num2str(icdf(pd_med_cost,0.75)./10^6,'%4.1f') ') million'];
+    Value_2024{5} = ['$' num2str(icdf(pd_outbreak_response_cost,0.5)./10^6,'%4.1f') ' million ($' num2str(icdf(pd_outbreak_response_cost,0.25)./10^6,'%4.1f') char(8211) '$' num2str(icdf(pd_outbreak_response_cost,0.75)./10^6,'%4.1f') ' million)'];
 
-     Value_2024{6} = [num2str(icdf(pd_med_cost_uninsured,0.5)./10^6,'%4.2f') ' (IQR:' num2str(icdf(pd_med_cost_uninsured,0.25)./10^6,'%4.2f') char(8211) num2str(icdf(pd_med_cost_uninsured,0.75)./10^6,'%4.2f') ') million'];
-    Value_2024{7} = [num2str(icdf(pd_med_cost_public,0.5)./10^6,'%4.2f') ' (IQR:' num2str(icdf(pd_med_cost_public,0.25)./10^6,'%4.2f') char(8211) num2str(icdf(pd_med_cost_public,0.75)./10^6,'%4.2f') ') million'];
-    Value_2024{8} = [num2str(icdf(pd_med_cost_private,0.5)./10^6,'%4.2f') ' (IQR:' num2str(icdf(pd_med_cost_private,0.25)./10^6,'%4.2f') char(8211) num2str(icdf(pd_med_cost_private,0.75)./10^6,'%4.2f') ') million'];
+    Value_2024{6} = ['$' num2str(icdf(pd_med_cost,0.5)./10^6,'%4.1f') ' million ($' num2str(icdf(pd_med_cost,0.25)./10^6,'%4.1f') char(8211) '$' num2str(icdf(pd_med_cost,0.75)./10^6,'%4.1f') ' million)'];
 
-    Value_2024{9} = [num2str(icdf(pd_pro_loss,0.5)./10^6,'%4.1f') ' (IQR:' num2str(icdf(pd_pro_loss,0.25)./10^6,'%4.1f') char(8211) num2str(icdf(pd_pro_loss,0.75)./10^6,'%4.1f') ') million'];
+    Value_2024{7} = ['$' num2str(icdf(pd_med_cost_uninsured,0.5)./10^6,'%4.2f') ' million ($' num2str(icdf(pd_med_cost_uninsured,0.25)./10^6,'%4.2f') char(8211) '$' num2str(icdf(pd_med_cost_uninsured,0.75)./10^6,'%4.2f') ' million)'];
+    Value_2024{8} = ['$' num2str(icdf(pd_med_cost_public,0.5)./10^6,'%4.2f') ' million ($' num2str(icdf(pd_med_cost_public,0.25)./10^6,'%4.2f') char(8211) '$' num2str(icdf(pd_med_cost_public,0.75)./10^6,'%4.2f') ' million)'];
+    Value_2024{9} = ['$' num2str(icdf(pd_med_cost_private,0.5)./10^6,'%4.2f') ' million ($' num2str(icdf(pd_med_cost_private,0.25)./10^6,'%4.2f') char(8211) '$' num2str(icdf(pd_med_cost_private,0.75)./10^6,'%4.2f') ' million)'];
 
-    Value_2024{10} = [num2str(10^3.*icdf(pd_cost_per_case,0.5),'%5.0f') ' (IQR:' num2str(10^3.*icdf(pd_cost_per_case,0.25),'%5.0f') char(8211) num2str(10^3.*icdf(pd_cost_per_case,0.75),'%5.0f') ')'];
+    Value_2024{10} = ['$' num2str(icdf(pd_pro_loss,0.5)./10^6,'%4.1f') ' million ($' num2str(icdf(pd_pro_loss,0.25)./10^6,'%4.1f') char(8211) '$' num2str(icdf(pd_pro_loss,0.75)./10^6,'%4.1f') ' million)'];
 
+    Value_2024{11} = ['$' num2str(10^3.*icdf(pd_cost_per_case,0.5),'%5.0f') ' ($' num2str(10^3.*icdf(pd_cost_per_case,0.25),'%5.0f') char(8211) '$' num2str(10^3.*icdf(pd_cost_per_case,0.75),'%5.0f') ')'];
 
-[pd_cases_2023,pd_hospital,pd_cost,pd_cost_per_case,pd_pro_loss,pd_med_cost,pd_med_cost_uninsured,pd_med_cost_public,pd_med_cost_private,~,~,pd_outbreak_response_cost]=National_Outcome_Distribution(0,'Sample_2023',0);
+[pd_cases_2023,pd_hospital,pd_cost,pd_cost_per_case,pd_pro_loss,pd_med_cost,pd_med_cost_uninsured,pd_med_cost_public,pd_med_cost_private,~,~,pd_outbreak_response_cost,pd_severe_disease]=National_Outcome_Distribution(0,'Sample_2023',0);
 
 pd_cases=pd_cases_2023;
 Value_2023=cell(10,1);
-  Value_2023{1} = [num2str(icdf(pd_cases,0.5),'%5.0f') ' (IQR:' num2str(icdf(pd_cases,0.25),'%5.0f') char(8211) num2str(icdf(pd_cases,0.75),'%5.0f') ')'];
-    
-    Value_2023{2} = [num2str(icdf(pd_hospital,0.5),'%5.0f') ' (IQR:' num2str(icdf(pd_hospital,0.25),'%5.0f') char(8211) num2str(icdf(pd_hospital,0.75),'%5.0f') ')'];
-    
-    Value_2023{3} = [num2str(icdf(pd_cost,0.5),'%4.1f') ' (IQR:' num2str(icdf(pd_cost,0.25),'%4.1f') char(8211) num2str(icdf(pd_cost,0.75),'%4.1f') ') million'];
-    
-    Value_2023{4} = [num2str(icdf(pd_outbreak_response_cost,0.5)./10^6,'%4.1f') ' (IQR:' num2str(icdf(pd_outbreak_response_cost,0.25)./10^6,'%4.1f') char(8211) num2str(icdf(pd_outbreak_response_cost,0.75)./10^6,'%4.1f') ') million'];
-    
-    Value_2023{5} = [num2str(icdf(pd_med_cost,0.5)./10^6,'%4.1f') ' (IQR:' num2str(icdf(pd_med_cost,0.25)./10^6,'%4.1f') char(8211) num2str(icdf(pd_med_cost,0.75)./10^6,'%4.1f') ') million'];
+  Value_2023{1} = [num2str(icdf(pd_cases,0.5),'%5.0f') ' (' num2str(icdf(pd_cases,0.25),'%5.0f') char(8211) num2str(icdf(pd_cases,0.75),'%5.0f') ')'];
 
-     Value_2023{6} = [num2str(icdf(pd_med_cost_uninsured,0.5)./10^6,'%4.2f') ' (IQR:' num2str(icdf(pd_med_cost_uninsured,0.25)./10^6,'%4.2f') char(8211) num2str(icdf(pd_med_cost_uninsured,0.75)./10^6,'%4.2f') ') million'];
-    Value_2023{7} = [num2str(icdf(pd_med_cost_public,0.5)./10^6,'%4.2f') ' (IQR:' num2str(icdf(pd_med_cost_public,0.25)./10^6,'%4.2f') char(8211) num2str(icdf(pd_med_cost_public,0.75)./10^6,'%4.2f') ') million'];
-    Value_2023{8} = [num2str(icdf(pd_med_cost_private,0.5)./10^6,'%4.2f') ' (IQR:' num2str(icdf(pd_med_cost_private,0.25)./10^6,'%4.2f') char(8211) num2str(icdf(pd_med_cost_private,0.75)./10^6,'%4.2f') ') million'];
+    Value_2023{2} = [num2str(icdf(pd_hospital,0.5),'%5.0f') ' (' num2str(icdf(pd_hospital,0.25),'%5.0f') char(8211) num2str(icdf(pd_hospital,0.75),'%5.0f') ')'];
 
+    
+    Value_2023{3}=[num2str(icdf(pd_severe_disease,0.5),'%5.0f') ' (' num2str(icdf(pd_severe_disease,0.25),'%5.0f') char(8211) num2str(icdf(pd_severe_disease,0.75),'%5.0f') ')'];
 
-    Value_2023{9} = [num2str(icdf(pd_pro_loss,0.5)./10^6,'%4.1f') ' (IQR:' num2str(icdf(pd_pro_loss,0.25)./10^6,'%4.1f') char(8211) num2str(icdf(pd_pro_loss,0.75)./10^6,'%4.1f') ') million'];
+    Value_2023{4} = ['$' num2str(icdf(pd_cost,0.5),'%4.1f') ' million ($' num2str(icdf(pd_cost,0.25),'%4.1f') char(8211) '$' num2str(icdf(pd_cost,0.75),'%4.1f') ' million)'];
 
-    Value_2023{10} = [num2str(10^3.*icdf(pd_cost_per_case,0.5),'%5.0f') ' (IQR:' num2str(10^3.*icdf(pd_cost_per_case,0.25),'%5.0f') char(8211) num2str(10^3.*icdf(pd_cost_per_case,0.75),'%5.0f') ')'];
+    Value_2023{5} = ['$' num2str(icdf(pd_outbreak_response_cost,0.5)./10^6,'%4.1f') ' million ($' num2str(icdf(pd_outbreak_response_cost,0.25)./10^6,'%4.1f') char(8211) '$' num2str(icdf(pd_outbreak_response_cost,0.75)./10^6,'%4.1f') ' million)'];
+
+    Value_2023{6} = ['$' num2str(icdf(pd_med_cost,0.5)./10^6,'%4.1f') ' million ($' num2str(icdf(pd_med_cost,0.25)./10^6,'%4.1f') char(8211) '$' num2str(icdf(pd_med_cost,0.75)./10^6,'%4.1f') ' million)'];
+
+    Value_2023{7} = ['$' num2str(icdf(pd_med_cost_uninsured,0.5)./10^6,'%4.2f') ' million ($' num2str(icdf(pd_med_cost_uninsured,0.25)./10^6,'%4.2f') char(8211) '$' num2str(icdf(pd_med_cost_uninsured,0.75)./10^6,'%4.2f') ' million)'];
+    Value_2023{8} = ['$' num2str(icdf(pd_med_cost_public,0.5)./10^6,'%4.2f') ' million ($' num2str(icdf(pd_med_cost_public,0.25)./10^6,'%4.2f') char(8211) '$' num2str(icdf(pd_med_cost_public,0.75)./10^6,'%4.2f') ' million)'];
+    Value_2023{9} = ['$' num2str(icdf(pd_med_cost_private,0.5)./10^6,'%4.2f') ' million ($' num2str(icdf(pd_med_cost_private,0.25)./10^6,'%4.2f') char(8211) '$' num2str(icdf(pd_med_cost_private,0.75)./10^6,'%4.2f') ' million)'];
+
+    Value_2023{10} = ['$' num2str(icdf(pd_pro_loss,0.5)./10^6,'%4.1f') ' million ($' num2str(icdf(pd_pro_loss,0.25)./10^6,'%4.1f') char(8211) '$' num2str(icdf(pd_pro_loss,0.75)./10^6,'%4.1f') ' million)'];
+
+    Value_2023{11} = ['$' num2str(10^3.*icdf(pd_cost_per_case,0.5),'%5.0f') ' ($' num2str(10^3.*icdf(pd_cost_per_case,0.25),'%5.0f') char(8211) '$' num2str(10^3.*icdf(pd_cost_per_case,0.75),'%5.0f') ')'];
 
  Output_Table=table(Measure,Value_2025,Value_2024,Value_2023);
 
@@ -139,4 +146,4 @@ ylabel('Probability density','FontSize',18)
 text(-0.1711,1,'C','FontSize',34,'Units','normalized');
 
 theme(f,'light');
-print(gcf,['Figure_S2.png'],'-dpng','-r300');
+print(gcf,['Figure_S2.png'],'-dpng','-r600');
