@@ -1,13 +1,16 @@
 function [Total_Cases_County,Unvaccinated_Cases_County,Vaccinated_Cases_County,Uninsured_Unvaccinated_Cases_County,Uninsured_Vaccinated_Cases_County,Public_Unvaccinated_Cases_County,Public_Vaccinated_Cases_County,Total_Contacts,Unvaccinated_Contacts,Imported_Case]=Monte_Carlo_Incidence(National_Annual_Reduction,NS,Scenario_Plot,Year_Reduced)
 Vaccine='MMR';
 load([Vaccine '_Immunity.mat'],'County_Data')
-load('Baseline_Estimate_Measles_Incidence.mat','lambda_out',"R_NHG","lambda_0","lambda_i","lambda_j","lambda_d",'k_mealses');
+load('Baseline_Estimate_Measles_Incidence.mat','lambda_out',"R_NHG","lambda_i","lambda_j","lambda_d",'k_mealses','lambda_RUCC');
 
 [Imported_Case,Kansas_Discrete] = Case_Importation_Sample(Scenario_Plot,NS);
 
 t_f= strcmp(County_Data.State,'Kansas');
 Imported_Case(t_f,:)=Kansas_Discrete;
 load('County_Matrix_Gravity_Covariates.mat',"Distance_Matrix_ij",'Population_j','Population_i')
+
+
+[~,RUCC_j] = Load_Transmission_Covariates(County_Data.GEOID);
 
 clear County_Data
 
@@ -25,10 +28,16 @@ Case_Count(Reff<=1)=min(1./(1-Reff(Reff<1)),100);
 Case_Count(Reff>1 & Case_Count<=1+10^(-8))=1+10^(-8);
 
 
-K_NHG=Max_Outbreak-1;
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Negatie hyper geomtric
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+K_NHG=Max_Outbreak-1; % Substract one since we using the neg. hyprgeometric from o to maximal outbreak
 N_NHG=(R_NHG.*K_NHG+(Case_Count-1).*K_NHG-(Case_Count-1))./(Case_Count-1); % Subtract one as a simplication to trunating to get the average
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Calcaultion of excess zeros
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 q_0=zeros(size(Reff));
 for cc=1:length(q_0)
     q_0(cc)=integral(@(x)nbinpdf(0,k_mealses,k_mealses./(k_mealses+Reff(cc).*x)),0,1);
@@ -36,10 +45,15 @@ end
 
 p_outbreak=(1-repmat(q_0,1,NS).^Imported_Case); % At least one of the imported cases triggers an utbreak
 exp_case=repmat(Case_Count,1,NS).*p_outbreak; % Expected outbreak
-% Gravity model for flow from i to j
-z_ij=lambda_0+lambda_i.*log(Population_i)+lambda_j.*log(Population_j)-lambda_d.*log(Distance_Matrix_ij);
+
+z_RUCC=RUCC_j*lambda_RUCC;
+
+z_ij=lambda_i.*log(Population_i)+lambda_j.*log(Population_j)-lambda_d.*log(Distance_Matrix_ij)+repmat(z_RUCC',length(z_RUCC),1);
 w_ij=1./(1+exp(-z_ij)); % Weight from population i (where the outbreak is) to population j
 w_ij(Distance_Matrix_ij==0)=0; % NO IMPACT ON DIAGONAL
+
+n_ij=sum(w_ij,1);
+w_ij=w_ij./(repmat(n_ij,length(n_ij),1));
 
 p_zero=zeros(size(Imported_Case));
 

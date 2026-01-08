@@ -6,6 +6,7 @@ for ss=1:length(p_c)
     r_outbreak=r_outbreak(r_z>p_c(ss));
     if(Reff(ss)>1)
         x=[1:Max_Outbreak(ss)]-1;
+        % x=[0:K_NHG(ss)];
         pdf_v=neghyp_pdf(x,N_NHG(ss),K_NHG(ss),R_NHG);
         cdf_v=cumsum(pdf_v)./sum(pdf_v);
         os=zeros(sum(r_z>p_c(ss)),1);

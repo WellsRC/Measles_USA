@@ -29,7 +29,7 @@ end
 Cb={'#003c30'; ...
      '#ffffff';
 '#543005'};
-x_baseline=[75000 87000 101000];
+x_baseline=[70000 85000 100000];
 C_Baseline=hex2rgb(Cb);
 
 X_Label_Baseline=['Cost per case'];
@@ -37,7 +37,7 @@ X_Label_Baseline=['Cost per case'];
 prct_label=false;
 monitary_label=true;
 
-text_v={'$75,000','$87,000','$101,000'};
+text_v={'$70,000','$85,000','$100,000'};
 
 
 inq_txt_baseline=zeros(size(text_v));

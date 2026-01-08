@@ -28,7 +28,7 @@ for yy=2017:2023
         temp_RUCC=T.Rural_Urban_Continum_Code;
         RUCC=zeros(height(T),9);
         for ss=1:9
-            RUCC(temp_RUCC==ss)=1;
+            RUCC(temp_RUCC==ss,ss)=1;
         end
     else
         X=[X;10.^4.*T.Physicians_per_capita table2array(T(:,22:26)) table2array(T(:,36:40)) log10(table2array(T(:,41))) table2array(T(:,42)) table2array(T(:,52:58)) table2array(T(:,59:70))];

@@ -1,22 +1,21 @@
-function J = Objective_Estimate_R0(x,County_Data,Imported_Case,Known_Ind_Cases,Unknown_Ind_Cases,Unknown_Ind_Cases_Weight,Population_i,Population_j,Distance_Matrix_ij,Week_Nat_Case_Count_2025,r_samp_pc_2025,r_samp_outbreak_2025,Max_Outbreak,X_Samp,L_Samp)
+function J = Objective_Estimate_R0(x,County_Data,Imported_Case,Known_Ind_Cases,Unknown_Ind_Cases,Unknown_Ind_Cases_Weight,Population_i,Population_j,Distance_Matrix_ij,Nat_Case_Count_2025,r_samp_pc_2025,r_samp_outbreak_2025,Max_Outbreak,County_Transmission_X,RUCC_j)
 
-lambda_0=-10.^x(1);
-lambda_i=10.^x(2);
-lambda_j=10.^x(3);
-lambda_d=10.^x(4);
-k_mealses=10.^x(5); 
-lambda_out=10.^x(6); 
+lambda_i=10.^x(1);
+lambda_j=10.^x(2);
+lambda_d=10.^x(3);
+k_mealses=10.^x(4); 
+lambda_out=10.^x(5); 
 
+R_NHG=round(x(6));
+Import_Gaines=round(x(7));
+Import_Kansas=round(x(8));
 
-indx_beta=round(x(7));
-beta_j=Transmission_Relation(1-County_Data.Total_Immunity,X_Samp(indx_beta,:));
+beta_transmission=x(9:38);
 
-R_NHG=round(x(8));
-Import_Gaines=round(x(9));
-Import_Kansas=round(x(10));
+lambda_RUCC=x(39:47);
+lambda_RUCC=lambda_RUCC(:);
 
-L_Transmission=L_Samp(indx_beta);
-
+[beta_j] = County_Transmission(beta_transmission,County_Transmission_X);
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Source is unknown
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -37,9 +36,9 @@ Imported_Case(t_f)=Imported_Case(t_f)+Import_Kansas.*County_Data.Total_Populatio
 L_Measles=log(gampdf(k_mealses,11.5327,0.23/(11.5327-1)));
 
 [Case_Count,Reff]=Determine_Model_County_Case_Count(County_Data,beta_j);
-[p_zero,N_NHG,K_NHG]=Hurdle_Parameters(County_Data,Case_Count,Max_Outbreak,R_NHG,Reff,k_mealses,Imported_Case,lambda_0,lambda_i,lambda_j,Population_i,Population_j,lambda_d,Distance_Matrix_ij,lambda_out);
-    
-    L_Known=zeros(size(p_zero));
+[p_zero,N_NHG,K_NHG]=Hurdle_Parameters(County_Data,Case_Count,Max_Outbreak,R_NHG,Reff,Imported_Case,lambda_i,lambda_j,Population_i,Population_j,lambda_d,Distance_Matrix_ij,lambda_out,RUCC_j,lambda_RUCC,k_mealses);
+
+L_Known=zeros(size(p_zero));
     
     L_Unknown=zeros(size(p_zero));
     
@@ -48,58 +47,61 @@ L_Measles=log(gampdf(k_mealses,11.5327,0.23/(11.5327-1)));
             if(Known_Ind_Cases(cc)==0)
                 L_Known(cc)=log(p_zero(cc));
             elseif(Reff(cc)>1)
-               L_Known(cc)=log((1-p_zero(cc)).*(neghyp_pdf(Known_Ind_Cases(cc)-1,N_NHG(cc),K_NHG(cc),R_NHG))) ; % as we decided to apprximate the trucnated distribution with a negative hypr geometric
+               L_Known(cc)=log((1-p_zero(cc)))+log((neghyp_pdf(Known_Ind_Cases(cc)-1,N_NHG(cc),K_NHG(cc),R_NHG))) ; % as we decided to apprximate the trucnated distribution with a negative hypr geometric
             else
-                % temp_cdf=min(Chain_Size_Distribution_CDF(Known_Ind_Cases(cc),Reff(cc),k_mealses),1);
-                L_Known(cc)=log((1-p_zero(cc)).*(Chain_Size_Distribution(Known_Ind_Cases(cc),Reff(cc),k_mealses))); %add one to known cases as assuming there was an introduction from some place for this local transmission to happen 
+                L_Known(cc)=log((1-p_zero(cc)))+log((Chain_Size_Distribution(Known_Ind_Cases(cc),Reff(cc),k_mealses))); 
             end
         else
             if(isnan(Unknown_Ind_Cases(cc,2)))
                 for uu=0:Unknown_Ind_Cases(cc,1)            
                     if(Known_Ind_Cases(cc)+uu==0)
-                        L_Unknown(cc)=L_Unknown(cc)+log(binopdf(uu,Unknown_Ind_Cases(cc,1),Unknown_Ind_Cases_Weight(cc,1)).*p_zero(cc));
+                        L_Unknown(cc)=L_Unknown(cc)+binopdf(uu,Unknown_Ind_Cases(cc,1),Unknown_Ind_Cases_Weight(cc,1)).*p_zero(cc);
                     elseif(Reff(cc)>1)
-                        L_Unknown(cc)=L_Unknown(cc)+log(binopdf(uu,Unknown_Ind_Cases(cc,1),Unknown_Ind_Cases_Weight(cc,1)).*(1-p_zero(cc)).*(neghyp_pdf(Known_Ind_Cases(cc)+uu-1,N_NHG(cc),K_NHG(cc),R_NHG))); 
+                        L_Unknown(cc)=L_Unknown(cc)+binopdf(uu,Unknown_Ind_Cases(cc,1),Unknown_Ind_Cases_Weight(cc,1)).*(1-p_zero(cc)).*neghyp_pdf(Known_Ind_Cases(cc)+uu-1,N_NHG(cc),K_NHG(cc),R_NHG); 
                     else
-                        % temp_cdf=min(Chain_Size_Distribution_CDF(uu+Known_Ind_Cases(cc),Reff(cc),k_mealses),1);
-                        L_Unknown(cc)=L_Unknown(cc)+log(binopdf(uu,Unknown_Ind_Cases(cc,1),Unknown_Ind_Cases_Weight(cc,1)).*(1-p_zero(cc)).*(Chain_Size_Distribution(uu+Known_Ind_Cases(cc),Reff(cc),k_mealses))); %add one to known cases as assuming there was an introduction from some place for this local transmission to happen
+                        L_Unknown(cc)=L_Unknown(cc)+binopdf(uu,Unknown_Ind_Cases(cc,1),Unknown_Ind_Cases_Weight(cc,1)).*(1-p_zero(cc)).*(Chain_Size_Distribution(uu+Known_Ind_Cases(cc),Reff(cc),k_mealses));
                     end
                 end
             else
                 for yy=0:Unknown_Ind_Cases(cc,2)            
                     for uu=0:Unknown_Ind_Cases(cc,1)            
                         if(Known_Ind_Cases(cc)+uu+yy==0)
-                            L_Unknown(cc)=L_Unknown(cc)+log(binopdf(uu,Unknown_Ind_Cases(cc,1),Unknown_Ind_Cases_Weight(cc,1)).*binopdf(yy,Unknown_Ind_Cases(cc,2),Unknown_Ind_Cases_Weight(cc,2)).*p_zero(cc));
+                            L_Unknown(cc)=L_Unknown(cc)+binopdf(uu,Unknown_Ind_Cases(cc,1),Unknown_Ind_Cases_Weight(cc,1)).*binopdf(yy,Unknown_Ind_Cases(cc,2),Unknown_Ind_Cases_Weight(cc,2)).*p_zero(cc);
                         elseif(Reff(cc)>1)
-                            L_Unknown(cc)=L_Unknown(cc)+log(binopdf(uu,Unknown_Ind_Cases(cc,1),Unknown_Ind_Cases_Weight(cc,1)).*binopdf(yy,Unknown_Ind_Cases(cc,2),Unknown_Ind_Cases_Weight(cc,2)).*(1-p_zero(cc)).*(neghyp_pdf(Known_Ind_Cases(cc)+uu+yy-1,N_NHG(cc),K_NHG(cc),R_NHG))); 
+                            L_Unknown(cc)=L_Unknown(cc)+binopdf(uu,Unknown_Ind_Cases(cc,1),Unknown_Ind_Cases_Weight(cc,1)).*binopdf(yy,Unknown_Ind_Cases(cc,2),Unknown_Ind_Cases_Weight(cc,2)).*(1-p_zero(cc)).*neghyp_pdf(Known_Ind_Cases(cc)+uu+yy-1,N_NHG(cc),K_NHG(cc),R_NHG); 
                         else
-                            % temp_cdf=min(Chain_Size_Distribution_CDF(yy+uu+Known_Ind_Cases(cc)+1,Reff(cc),k_mealses),1);
-                            L_Unknown(cc)=L_Unknown(cc)+log(binopdf(uu,Unknown_Ind_Cases(cc,1),Unknown_Ind_Cases_Weight(cc,1)).*binopdf(yy,Unknown_Ind_Cases(cc,2),Unknown_Ind_Cases_Weight(cc,2)).*(1-p_zero(cc)).*(Chain_Size_Distribution(yy+uu+Known_Ind_Cases(cc)+1,Reff(cc),k_mealses))); %add one to known cases as assuming there was an introduction from some place for this local transmission to happen
+                            L_Unknown(cc)=L_Unknown(cc)+binopdf(uu,Unknown_Ind_Cases(cc,1),Unknown_Ind_Cases_Weight(cc,1)).*binopdf(yy,Unknown_Ind_Cases(cc,2),Unknown_Ind_Cases_Weight(cc,2)).*(1-p_zero(cc)).*Chain_Size_Distribution(yy+uu+Known_Ind_Cases(cc),Reff(cc),k_mealses); 
                         end
                     end
                 end
             end
         end
     end
+    L_Unknown=log(L_Unknown);
+    L_Unknown(isnan(Unknown_Ind_Cases_Weight(:,1)))=0;
+
+    if(~isinf(-mean(L_Unknown(:)+L_Known(:))-L_Measles) && ~isnan(-mean(L_Unknown(:)+L_Known(:))-L_Measles))
+        try 
+            [Outbreak_County_2025]=Monte_Carlo_Outbreak_County_Fitting(Max_Outbreak,p_zero,N_NHG,K_NHG,R_NHG,Reff,k_mealses,r_samp_pc_2025,r_samp_outbreak_2025);
     
-    if(~isinf(-mean(L_Unknown(:)+L_Known(:))-L_Measles -L_Transmission))
+            NOB_2025=sum(Outbreak_County_2025,1)'+sum(Imported_Case(:));    
     
-        [Outbreak_County_2025]=Monte_Carlo_Outbreak_County_Fitting(Max_Outbreak,p_zero,N_NHG,K_NHG,R_NHG,Reff,k_mealses,r_samp_pc_2025,r_samp_outbreak_2025);
-        
-        NOB_2025=sum(Outbreak_County_2025,1)'+sum(Imported_Case(:));    
-        
-        L_Weekly_2025=zeros(size(NOB_2025));
-        x0_2025=log10([3.0129    6.9335    4.1784]);
-        opts=optimoptions('fmincon','Display','none','MaxFunctionEvaluations',5.*10^3,'FunctionTolerance',10^(-8),'StepTolerance',10^(-8),'MaxIterations',10^3);
-        
-        parfor jj=1:length(NOB_2025)
-            [~,temp_L]=fmincon(@(g)-sum(log(nbinpdf(Week_Nat_Case_Count_2025(:)',10.^g(3),10.^g(3)./(10.^g(3)+(NOB_2025(jj)./gamcdf(52,10.^g(1),10.^g(2))).*(gamcdf(1:length(Week_Nat_Case_Count_2025),10.^g(1),10.^g(2))-gamcdf(0:(length(Week_Nat_Case_Count_2025)-1),10.^g(1),10.^g(2))))))),x0_2025,[],[],[],[],[-16 -16 log10(5)],[3 3 3],[],opts);
-            L_Weekly_2025(jj)=-temp_L;        
+            NOB_2025(NOB_2025==0)=10^(-8);
+            pdf_nat=fitdist(NOB_2025(:),'Kernel','Support','positive');
+            L_Nat_2025=log(pdf(pdf_nat,Nat_Case_Count_2025));
+        catch
+            L_Nat_2025=NaN;
         end
     else
-        L_Weekly_2025=0;
+        L_Nat_2025=0;
     end
-    J=-mean(L_Unknown(:)+L_Known(:)) -mean(L_Weekly_2025(:)) -L_Measles -L_Transmission;
+
+
+    tt=Unknown_Ind_Cases_Weight(:,1);
+    tt(isnan(tt))=0;
+    Affected_Counties=sum(tt)+sum(Known_Ind_Cases>0);
+
+    J=-sum(L_Unknown(:)+L_Known(:))./Affected_Counties  -L_Measles -L_Nat_2025; % Scaled county likelihood such that it did not outweight national incidence
 
 
 end

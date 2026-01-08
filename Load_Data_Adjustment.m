@@ -9,7 +9,7 @@ year_data_A_15_19=year_data-2;
     temp_RUCC=T.Rural_Urban_Continum_Code;
     RUCC=zeros(height(T),9);
     for ss=1:9
-        RUCC(temp_RUCC==ss)=1;
+        RUCC(temp_RUCC==ss,ss)=1;
     end
     
 

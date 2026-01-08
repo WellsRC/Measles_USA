@@ -1,4 +1,4 @@
-function [p_zero,N_NHG,K_NHG]=Hurdle_Parameters(County_Data,Case_Count,Max_Outbreak,R_NHG,Reff,k_mealses,Imported_Case,lambda_0,lambda_i,lambda_j,Population_i,Population_j,lambda_d,Distance_Matrix_ij,lambda_out)
+function [p_zero,N_NHG,K_NHG]=Hurdle_Parameters(County_Data,Case_Count,Max_Outbreak,R_NHG,Reff,Imported_Case,lambda_i,lambda_j,Population_i,Population_j,lambda_d,Distance_Matrix_ij,lambda_out,RUCC_j,lambda_RUCC,k_mealses)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Negatie hyper geomtric
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -8,18 +8,25 @@ N_NHG=(R_NHG.*K_NHG+(Case_Count-1).*K_NHG-(Case_Count-1))./(Case_Count-1); % Sub
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Calcaultion of excess zeros
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
     q_0=zeros(size(Reff));
     for cc=1:length(q_0)
         q_0(cc)=integral(@(x)nbinpdf(0,k_mealses,k_mealses./(k_mealses+Reff(cc).*x)),0,1);
     end
 
-    p_outbreak=(1-q_0.^Imported_Case); % At least one of the imported cases triggers an utbreak
+    p_outbreak=(1-q_0.^Imported_Case); % At least one of the imported cases triggers an outbreak
     exp_case=Case_Count(:).*p_outbreak(:); % Expected outbreak
     % Gravity model for flow from i to j
-    z_ij=lambda_0+lambda_i.*log(Population_i)+lambda_j.*log(Population_j)-lambda_d.*log(Distance_Matrix_ij);
+
+    z_RUCC=RUCC_j*lambda_RUCC;
+
+    z_ij=lambda_i.*log(Population_i)+lambda_j.*log(Population_j)-lambda_d.*log(Distance_Matrix_ij)+repmat(z_RUCC',length(z_RUCC),1);
     w_ij=1./(1+exp(-z_ij)); % Weight from population i (where the outbreak is) to population j
     w_ij(Distance_Matrix_ij==0)=0; % NO IMPACT ON DIAGONAL
     
+    n_ij=sum(w_ij,1);
+    w_ij=w_ij./(repmat(n_ij,length(n_ij),1));
+
     % https://pmc.ncbi.nlm.nih.gov/articles/PMC8521690/#sec21
     % We scale by the immunity level a a region with full immunity would
     % has greatest chance of n outbreak an with lowest immunuty the lowest
@@ -31,8 +38,7 @@ N_NHG=(R_NHG.*K_NHG+(Case_Count-1).*K_NHG-(Case_Count-1))./(Case_Count-1); % Sub
     % and going to j
     p_ij= exp(-lambda_out.*(1-repmat(County_Data.Total_Immunity',size(w_ij,1),1)).*repmat(exp_case,1,size(w_ij,2)).*w_ij); % Probability that county i does NOT trigger an outbeak in county j
 
-    p_j = prod(p_ij,1)'; % Probability that an outbeak is NOT triggered in county j by domestic import
-
+    p_j = (prod(p_ij,1)'); % Probability that an outbeak is NOT triggered in county j by domestic import
     p_zero=p_j.*(q_0.^Imported_Case);
 
 end

@@ -90,7 +90,7 @@ County_Data.Private=Private;
 
 County_Data.Total_Immunity=sum(table2array(County_Data.Population).*table2array(County_Data.Immunity),2);
 
-beta_j=10.^(linspace(-1.1,log10(3),10^3));
+beta_j=10.^(linspace(-1.1,log10(5),10^3));
 Final_Size_Est=zeros(length(County_Data.State),length(beta_j));
 opts=optimoptions('lsqnonlin','OptimalityTolerance',10^(-12),'StepTolerance',10^(-12),'FunctionTolerance',10^(-16),'MaxFunctionEvaluations',10^6,'MaxIterations',10^(6));
     
@@ -124,7 +124,7 @@ parfor ii=1:length(Final_Size_Est)
     A_eff(repmat(Pop,18,1)==0)=0;
     R_eff(ii)=max(abs(eig(A_eff)));
     if(max(abs(eig(A_eff)))>1)            
-        z=lsqnonlin(@(x) A_eff*x(:)+log(1-x(:)), 0.999.*ones(1,18),zeros(1,18),ones(1,18),[],[],[],[],[],opts);
+        z=lsqnonlin(@(x) A_eff*x(:)+log(1-x(:)), 0.999.*ones(1,18),zeros(1,18),ones(1,18)-10^(-16),[],[],[],[],[],opts);
         Final_Size_Est(ii)=S_Pop*z(:);
     end
 end

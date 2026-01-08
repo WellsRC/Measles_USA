@@ -4,25 +4,45 @@ Vaccine='MMR';
 load([Vaccine '_Immunity.mat'],'County_Data')
 
 if(strcmp('Baseline',Type))
-    Importation_Cases_County=zeros(length(County_Data.County),1);
+    Importation_Cases_County=zeros(length(County_Data.County),NS);
     Measles_Cases=readtable('County_Level_Measles_Cases_Adjusted.csv');    
     for cc=1:length(Importation_Cases_County)
         t_f=str2double(County_Data.GEOID{cc})==Measles_Cases.GEOID & strcmp(Measles_Cases.type,'imported') & ~isnan(Measles_Cases.case_count);
         if(sum(t_f)>0)
-            Importation_Cases_County(cc)=Measles_Cases.case_count(t_f);
+            Importation_Cases_County(cc,:)=Measles_Cases.case_count(t_f);
+        end
+    end
+
+
+    for indx=1:max(Measles_Cases.ID_Unknown)
+        t_f=Measles_Cases.ID_Unknown==indx;
+    
+        t_county=find(ismember(str2double(County_Data.GEOID),Measles_Cases.GEOID(t_f)));
+        
+        imp_pop=(County_Data.Total_Population(t_county))./sum(County_Data.Total_Population(t_county));
+        
+        if(ismember('imported',Measles_Cases.type(t_f)))
+
+            pd = makedist('Multinomial','Probabilities',imp_pop);
+
+            for ss=1:NS
+                r = random(pd,1,unique(Measles_Cases.unkown_case_count(t_f)));
+                % Kanasa unrtain so distribute across state based on poulation
+                for jj=1:length(r)
+                    Importation_Cases_County(t_county(r(jj)),ss)=Importation_Cases_County(t_county(r(jj)),ss)+1;
+                end
+            end
         end
     end
     
     load('Baseline_Estimate_Measles_Incidence.mat','Import_Gaines','Import_Kansas');
     t_f=strcmp(County_Data.County,'Gaines') & strcmp(County_Data.State,'Texas');
-    Importation_Cases_County(t_f)=Importation_Cases_County(t_f)+Import_Gaines; 
+    Importation_Cases_County(t_f,:)=Importation_Cases_County(t_f,:)+Import_Gaines; 
 
     t_f= strcmp(County_Data.State,'Kansas');
-    Kansas_Discrete=repmat(Importation_Cases_County(t_f),1,NS); % Take what it is at baeline then add on the unknown
+    Kansas_Discrete=Importation_Cases_County(t_f,:); % Take what it is at baeline then add on the unknown
 
-    Importation_Cases_County(t_f)=Importation_Cases_County(t_f)+Import_Kansas.*County_Data.Total_Population(t_f)./sum(County_Data.Total_Population(t_f)); 
-
-    Importation_Cases_County=repmat(Importation_Cases_County,1,NS);
+    Importation_Cases_County(t_f,:)=Importation_Cases_County(t_f,:)+Import_Kansas.*County_Data.Total_Population(t_f)./sum(County_Data.Total_Population(t_f)); 
 
     t_f= strcmp(County_Data.State,'Kansas');
     w_kansas=County_Data.Total_Population(t_f)./sum(County_Data.Total_Population(t_f)); 
@@ -33,7 +53,7 @@ if(strcmp('Baseline',Type))
         r = random(pd,1,Import_Kansas);
         % Kanasa unrtain so distribute across state based on poulation
         for jj=1:length(r)
-            Kansas_Discrete(r,ss)=Kansas_Discrete(r,ss)+1;
+            Kansas_Discrete(r(jj),ss)=Kansas_Discrete(r(jj),ss)+1;
         end
     end
     
