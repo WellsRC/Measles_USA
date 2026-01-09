@@ -1,4 +1,4 @@
-function [p_zero,N_NHG,K_NHG]=Hurdle_Parameters(County_Data,Case_Count,Max_Outbreak,R_NHG,Reff,Imported_Case,lambda_i,lambda_j,Population_i,Population_j,lambda_d,Distance_Matrix_ij,lambda_out,RUCC_j,lambda_RUCC,k_mealses)
+function [p_zero,N_NHG,K_NHG]=Hurdle_Parameters(Case_Count,Max_Outbreak,R_NHG,Reff,Imported_Case,Population_i,lambda_d,Distance_Matrix_ij,RUCC_j,lambda_RUCC,k_mealses)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Negatie hyper geomtric
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -16,17 +16,16 @@ N_NHG=(R_NHG.*K_NHG+(Case_Count-1).*K_NHG-(Case_Count-1))./(Case_Count-1); % Sub
 
     p_outbreak=(1-q_0.^Imported_Case); % At least one of the imported cases triggers an outbreak
     exp_case=Case_Count(:).*p_outbreak(:); % Expected outbreak
+
+    Prev=repmat(exp_case,1,length(exp_case))./Population_i;
     % Gravity model for flow from i to j
 
     z_RUCC=RUCC_j*lambda_RUCC;
 
-    z_ij=lambda_i.*log(Population_i)+lambda_j.*log(Population_j)-lambda_d.*log(Distance_Matrix_ij)+repmat(z_RUCC',length(z_RUCC),1);
-    w_ij=1./(1+exp(-z_ij)); % Weight from population i (where the outbreak is) to population j
+    z_ij=-lambda_d.*(Distance_Matrix_ij.^2)+repmat(z_RUCC',length(z_RUCC),1);
+    w_ij=exp(z_ij); %1./(1+exp(-z_ij)); % Weight from population i (where the outbreak is) to population j
     w_ij(Distance_Matrix_ij==0)=0; % NO IMPACT ON DIAGONAL
     
-    n_ij=sum(w_ij,1);
-    w_ij=w_ij./(repmat(n_ij,length(n_ij),1));
-
     % https://pmc.ncbi.nlm.nih.gov/articles/PMC8521690/#sec21
     % We scale by the immunity level a a region with full immunity would
     % has greatest chance of n outbreak an with lowest immunuty the lowest
@@ -36,9 +35,12 @@ N_NHG=(R_NHG.*K_NHG+(Case_Count-1).*K_NHG-(Case_Count-1))./(Case_Count-1); % Sub
     % Take the transpose of Total_Immunity a this is the desitantion where
     % the outbreak may possibely start as the outbreak is originating in i
     % and going to j
-    p_ij= exp(-lambda_out.*(1-repmat(County_Data.Total_Immunity',size(w_ij,1),1)).*repmat(exp_case,1,size(w_ij,2)).*w_ij); % Probability that county i does NOT trigger an outbeak in county j
+    p_ij= exp(-(1-repmat(q_0',size(w_ij,1),1)).*Prev.*w_ij); % Probability that county i does NOT trigger an outbeak in county j
 
     p_j = (prod(p_ij,1)'); % Probability that an outbeak is NOT triggered in county j by domestic import
+
+
+    
     p_zero=p_j.*(q_0.^Imported_Case);
 
 end

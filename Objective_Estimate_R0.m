@@ -1,18 +1,13 @@
-function J = Objective_Estimate_R0(x,County_Data,Imported_Case,Known_Ind_Cases,Unknown_Ind_Cases,Unknown_Ind_Cases_Weight,Population_i,Population_j,Distance_Matrix_ij,Nat_Case_Count_2025,r_samp_pc_2025,r_samp_outbreak_2025,Max_Outbreak,County_Transmission_X,RUCC_j)
+function J = Objective_Estimate_R0(x,County_Data,Imported_Case,Known_Ind_Cases,Unknown_Ind_Cases,Unknown_Ind_Cases_Weight,Population_i,Distance_Matrix_ij,Nat_Case_Count_2025,r_samp_pc_2025,r_samp_outbreak_2025,Max_Outbreak,County_Transmission_X,RUCC_j,Import_Gaines)
 
-lambda_i=10.^x(1);
-lambda_j=10.^x(2);
-lambda_d=10.^x(3);
-k_mealses=10.^x(4); 
-lambda_out=10.^x(5); 
+lambda_d=10.^x(1);
+k_mealses=10.^x(2); 
 
-R_NHG=round(x(6));
-Import_Gaines=round(x(7));
-Import_Kansas=round(x(8));
+R_NHG=round(x(3));
 
-beta_transmission=x(9:38);
+beta_transmission=x(4:32);
 
-lambda_RUCC=x(39:47);
+lambda_RUCC=x(33:41);
 lambda_RUCC=lambda_RUCC(:);
 
 [beta_j] = County_Transmission(beta_transmission,County_Transmission_X);
@@ -23,10 +18,6 @@ lambda_RUCC=lambda_RUCC(:);
 t_f=strcmp(County_Data.County,'Gaines') & strcmp(County_Data.State,'Texas');
 Imported_Case(t_f)=Imported_Case(t_f)+Import_Gaines; 
 
-% Kanasa unrtain so distribute across state based on poulation
-t_f= strcmp(County_Data.State,'Kansas');
-Imported_Case(t_f)=Imported_Case(t_f)+Import_Kansas.*County_Data.Total_Population(t_f)./sum(County_Data.Total_Population(t_f)); 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
 % Priors on Ro and Reeff and Control
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
@@ -36,7 +27,7 @@ Imported_Case(t_f)=Imported_Case(t_f)+Import_Kansas.*County_Data.Total_Populatio
 L_Measles=log(gampdf(k_mealses,11.5327,0.23/(11.5327-1)));
 
 [Case_Count,Reff]=Determine_Model_County_Case_Count(County_Data,beta_j);
-[p_zero,N_NHG,K_NHG]=Hurdle_Parameters(County_Data,Case_Count,Max_Outbreak,R_NHG,Reff,Imported_Case,lambda_i,lambda_j,Population_i,Population_j,lambda_d,Distance_Matrix_ij,lambda_out,RUCC_j,lambda_RUCC,k_mealses);
+[p_zero,N_NHG,K_NHG]=Hurdle_Parameters(Case_Count,Max_Outbreak,R_NHG,Reff,Imported_Case,Population_i,lambda_d,Distance_Matrix_ij,RUCC_j,lambda_RUCC,k_mealses);
 
 L_Known=zeros(size(p_zero));
     
@@ -96,13 +87,13 @@ L_Known=zeros(size(p_zero));
         L_Nat_2025=0;
     end
 
+    Num_Outbreaks=49; %https://www.cdc.gov/measles/data-research/index.html
 
-    tt=Unknown_Ind_Cases_Weight(:,1);
-    tt(isnan(tt))=0;
-    Affected_Counties=sum(tt)+sum(Known_Ind_Cases>0);
+    J=-sum(L_Unknown(:)+L_Known(:))./Num_Outbreaks  -L_Measles -L_Nat_2025; % Scaled county likelihood such that it did not outweight national incidence
 
-    J=-sum(L_Unknown(:)+L_Known(:))./Affected_Counties  -L_Measles -L_Nat_2025; % Scaled county likelihood such that it did not outweight national incidence
-
+    if(~isreal(J))
+        J=NaN;
+    end
 
 end
 

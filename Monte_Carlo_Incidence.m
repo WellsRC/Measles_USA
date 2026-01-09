@@ -1,13 +1,11 @@
 function [Total_Cases_County,Unvaccinated_Cases_County,Vaccinated_Cases_County,Uninsured_Unvaccinated_Cases_County,Uninsured_Vaccinated_Cases_County,Public_Unvaccinated_Cases_County,Public_Vaccinated_Cases_County,Total_Contacts,Unvaccinated_Contacts,Imported_Case]=Monte_Carlo_Incidence(National_Annual_Reduction,NS,Scenario_Plot,Year_Reduced)
 Vaccine='MMR';
 load([Vaccine '_Immunity.mat'],'County_Data')
-load('Baseline_Estimate_Measles_Incidence.mat','lambda_out',"R_NHG","lambda_i","lambda_j","lambda_d",'k_mealses','lambda_RUCC');
+load('Baseline_Estimate_Measles_Incidence.mat',"R_NHG","lambda_d",'k_mealses','lambda_RUCC');
 
-[Imported_Case,Kansas_Discrete] = Case_Importation_Sample(Scenario_Plot,NS);
+[Imported_Case] = Case_Importation_Sample(Scenario_Plot,NS);
 
-t_f= strcmp(County_Data.State,'Kansas');
-Imported_Case(t_f,:)=Kansas_Discrete;
-load('County_Matrix_Gravity_Covariates.mat',"Distance_Matrix_ij",'Population_j','Population_i')
+load('County_Matrix_Gravity_Covariates.mat',"Distance_Matrix_ij",'Population_i')
 
 
 [~,RUCC_j] = Load_Transmission_Covariates(County_Data.GEOID);
@@ -46,29 +44,20 @@ end
 p_outbreak=(1-repmat(q_0,1,NS).^Imported_Case); % At least one of the imported cases triggers an utbreak
 exp_case=repmat(Case_Count,1,NS).*p_outbreak; % Expected outbreak
 
+
 z_RUCC=RUCC_j*lambda_RUCC;
 
-z_ij=lambda_i.*log(Population_i)+lambda_j.*log(Population_j)-lambda_d.*log(Distance_Matrix_ij)+repmat(z_RUCC',length(z_RUCC),1);
-w_ij=1./(1+exp(-z_ij)); % Weight from population i (where the outbreak is) to population j
+z_ij=-lambda_d.*(Distance_Matrix_ij.^2)+repmat(z_RUCC',length(z_RUCC),1);
+w_ij=exp(z_ij); %1./(1+exp(-z_ij)); % Weight from population i (where the outbreak is) to population j
 w_ij(Distance_Matrix_ij==0)=0; % NO IMPACT ON DIAGONAL
-
-n_ij=sum(w_ij,1);
-w_ij=w_ij./(repmat(n_ij,length(n_ij),1));
 
 p_zero=zeros(size(Imported_Case));
 
-Immunity=County_Data_Vaccine_Reduction.Total_Immunity;
 parfor nn=1:size(p_zero,2)  
+    
+    Prev=repmat(exp_case(:,nn),1,length(exp_case(:,nn)))./Population_i;
 
-    % https://pmc.ncbi.nlm.nih.gov/articles/PMC8521690/#sec21
-% We scale by the immunity level a a region with full immunity would
-% has greatest chance of n outbreak an with lowest immunuty the lowest
-% chance of no outbrak
-
-    % Take the transpose of Total_Immunity a this is the desitantion where
-    % the outbreak may possibely start as the outbreak is originating in i
-    % and going to j
-    p_ij= exp(-lambda_out.*(1-repmat(Immunity',size(w_ij,1),1)).*repmat(exp_case(:,nn),1,size(w_ij,2)).*w_ij); % Probability that county i does NOT trigger an outbeak in county j
+    p_ij= exp(-(1-repmat(q_0',size(w_ij,1),1)).*Prev.*w_ij); % Probability that county i does NOT trigger an outbeak in county j
     p_j = prod(p_ij,1)'; % Probability that an outbeak is NOT triggered in county j by domestic import
     p_zero(:,nn)=p_j.*(q_0.^Imported_Case(:,nn));
     
