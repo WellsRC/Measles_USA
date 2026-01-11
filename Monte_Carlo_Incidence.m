@@ -45,9 +45,9 @@ p_outbreak=(1-repmat(q_0,1,NS).^Imported_Case); % At least one of the imported c
 exp_case=repmat(Case_Count,1,NS).*p_outbreak; % Expected outbreak
 
 
-z_RUCC=RUCC_j*lambda_RUCC;
+p_RUCC=RUCC_j*lambda_RUCC;
 
-z_ij=-lambda_d.*(Distance_Matrix_ij.^2)+repmat(z_RUCC',length(z_RUCC),1);
+z_ij=-lambda_d.*(Distance_Matrix_ij.^2);
 w_ij=exp(z_ij); %1./(1+exp(-z_ij)); % Weight from population i (where the outbreak is) to population j
 w_ij(Distance_Matrix_ij==0)=0; % NO IMPACT ON DIAGONAL
 
@@ -57,7 +57,7 @@ parfor nn=1:size(p_zero,2)
     
     Prev=repmat(exp_case(:,nn),1,length(exp_case(:,nn)))./Population_i;
 
-    p_ij= exp(-(1-repmat(q_0',size(w_ij,1),1)).*Prev.*w_ij); % Probability that county i does NOT trigger an outbeak in county j
+    p_ij= exp(-repmat(p_RUCC',length(p_RUCC),1).*(1-repmat(q_0',size(w_ij,1),1)).*Prev.*w_ij); % Probability that county i does NOT trigger an outbeak in county j
     p_j = prod(p_ij,1)'; % Probability that an outbeak is NOT triggered in county j by domestic import
     p_zero(:,nn)=p_j.*(q_0.^Imported_Case(:,nn));
     

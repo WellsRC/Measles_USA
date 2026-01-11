@@ -1,4 +1,4 @@
-function J = Objective_Estimate_R0(x,County_Data,Imported_Case,Known_Ind_Cases,Unknown_Ind_Cases,Unknown_Ind_Cases_Weight,Population_i,Distance_Matrix_ij,Nat_Case_Count_2025,r_samp_pc_2025,r_samp_outbreak_2025,Max_Outbreak,County_Transmission_X,RUCC_j,Import_Gaines)
+function J = Objective_Estimate_R0(x,County_Data,Imported_Case,Known_Ind_Cases,Unknown_Ind_Cases,Unknown_Ind_Cases_Weight,Population_i,Population_j,Distance_Matrix_ij,Nat_Case_Count_2025,r_samp_pc_2025,r_samp_outbreak_2025,Max_Outbreak,County_Transmission_X,RUCC_j,Import_Gaines)
 
 lambda_d=10.^x(1);
 k_mealses=10.^x(2); 
@@ -7,7 +7,7 @@ R_NHG=round(x(3));
 
 beta_transmission=x(4:32);
 
-lambda_RUCC=x(33:41);
+lambda_RUCC=10.^x(33).*ones(1,9);% x(33:41);
 lambda_RUCC=lambda_RUCC(:);
 
 [beta_j] = County_Transmission(beta_transmission,County_Transmission_X);
@@ -27,7 +27,7 @@ Imported_Case(t_f)=Imported_Case(t_f)+Import_Gaines;
 L_Measles=log(gampdf(k_mealses,11.5327,0.23/(11.5327-1)));
 
 [Case_Count,Reff]=Determine_Model_County_Case_Count(County_Data,beta_j);
-[p_zero,N_NHG,K_NHG]=Hurdle_Parameters(Case_Count,Max_Outbreak,R_NHG,Reff,Imported_Case,Population_i,lambda_d,Distance_Matrix_ij,RUCC_j,lambda_RUCC,k_mealses);
+[p_zero,N_NHG,K_NHG]=Hurdle_Parameters(Case_Count,Max_Outbreak,R_NHG,Reff,Imported_Case,Population_i,Population_j,lambda_d,Distance_Matrix_ij,RUCC_j,lambda_RUCC,k_mealses);
 
 L_Known=zeros(size(p_zero));
     
@@ -79,7 +79,8 @@ L_Known=zeros(size(p_zero));
     
             NOB_2025(NOB_2025==0)=10^(-8);
             pdf_nat=fitdist(NOB_2025(:),'Kernel','Support','positive');
-            L_Nat_2025=log(pdf(pdf_nat,Nat_Case_Count_2025));
+
+            L_Nat_2025=log(pdf(pdf_nat,Nat_Case_Count_2025)); % Want the mode of the dist to be scaled equal for each distribution as we will use that for the central measure
         catch
             L_Nat_2025=NaN;
         end
@@ -87,9 +88,17 @@ L_Known=zeros(size(p_zero));
         L_Nat_2025=0;
     end
 
-    Num_Outbreaks=49; %https://www.cdc.gov/measles/data-research/index.html
 
-    J=-sum(L_Unknown(:)+L_Known(:))./Num_Outbreaks  -L_Measles -L_Nat_2025; % Scaled county likelihood such that it did not outweight national incidence
+    % temp_Case=Known_Ind_Cases;
+    % temp_Case(isnan(temp_Case))=0;
+    % 
+    % Affected_Counties=temp_Case;
+    % Affected_Counties(Affected_Counties>1)=1;
+    % 
+    % Affected_Counties=sum(Affected_Counties);
+
+    % Number_Outbreaks=49;
+    J=-sum(L_Unknown(:)+L_Known(:))./sum(Known_Ind_Cases>=3) -L_Measles -L_Nat_2025; % Scaled county likelihood such that it did not outweight national incidence
 
     if(~isreal(J))
         J=NaN;

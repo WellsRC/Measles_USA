@@ -1,4 +1,4 @@
-function [p_zero,N_NHG,K_NHG]=Hurdle_Parameters(Case_Count,Max_Outbreak,R_NHG,Reff,Imported_Case,Population_i,lambda_d,Distance_Matrix_ij,RUCC_j,lambda_RUCC,k_mealses)
+function [p_zero,N_NHG,K_NHG]=Hurdle_Parameters(Case_Count,Max_Outbreak,R_NHG,Reff,Imported_Case,Population_i,Population_j,lambda_d,Distance_Matrix_ij,RUCC_j,lambda_RUCC,k_mealses)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Negatie hyper geomtric
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -18,11 +18,11 @@ N_NHG=(R_NHG.*K_NHG+(Case_Count-1).*K_NHG-(Case_Count-1))./(Case_Count-1); % Sub
     exp_case=Case_Count(:).*p_outbreak(:); % Expected outbreak
 
     Prev=repmat(exp_case,1,length(exp_case))./Population_i;
-    % Gravity model for flow from i to j
+    % Flow model from 
 
-    z_RUCC=RUCC_j*lambda_RUCC;
+    p_RUCC=RUCC_j*lambda_RUCC;
 
-    z_ij=-lambda_d.*(Distance_Matrix_ij.^2)+repmat(z_RUCC',length(z_RUCC),1);
+    z_ij=log(Population_i)+log(Population_j)-lambda_d.*log(Distance_Matrix_ij);
     w_ij=exp(z_ij); %1./(1+exp(-z_ij)); % Weight from population i (where the outbreak is) to population j
     w_ij(Distance_Matrix_ij==0)=0; % NO IMPACT ON DIAGONAL
     
@@ -35,7 +35,7 @@ N_NHG=(R_NHG.*K_NHG+(Case_Count-1).*K_NHG-(Case_Count-1))./(Case_Count-1); % Sub
     % Take the transpose of Total_Immunity a this is the desitantion where
     % the outbreak may possibely start as the outbreak is originating in i
     % and going to j
-    p_ij= exp(-(1-repmat(q_0',size(w_ij,1),1)).*Prev.*w_ij); % Probability that county i does NOT trigger an outbeak in county j
+    p_ij= exp(-repmat(p_RUCC',length(p_RUCC),1).*(1-repmat(q_0',size(w_ij,1),1)).*Prev.*w_ij); % Probability that county i does NOT trigger an outbeak in county j
 
     p_j = (prod(p_ij,1)'); % Probability that an outbeak is NOT triggered in county j by domestic import
 

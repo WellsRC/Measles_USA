@@ -5,9 +5,9 @@ Vaccine='MMR';
 load([Vaccine '_Immunity.mat'],'County_Data')
 
 Max_Outbreak=County_Data.Total_Population(:).*(1-County_Data.Total_Immunity(:));
-load('County_Matrix_Gravity_Covariates.mat',"Distance_Matrix_ij",'Population_j','Population_i','County_GEOID')
+load('County_Matrix_Gravity_Covariates.mat',"Distance_Matrix_ij",'Population_i','Population_j')
 
-load('Prior_log_Regression_Transmission.mat','prior_mean_transmission','prior_covariance_transmission','transmission_bnds')
+load('Prior_log_Regression_Transmission.mat','prior_mean_transmission','transmission_bnds')
 % Data as of December 30
 Measles_Cases=readtable('County_Level_Measles_Cases_Adjusted.csv');
 
@@ -73,18 +73,19 @@ Import_Gaines=round(log(1-0.5)/log(q_0));
 
 
 A=[];
-r1=log10(0.1+2.9.*rand(50,1));
-X0=[ -7.509357645172464	-0.671900491142074	1.000000000000000	2.382228572256517	-3.992938004280498	1.038313605948621	1.447321814202811	-1.356604596770767	4.627256585738012	1.384426569213439	1.849183193965266	8.970985805067208	-1.062541489401979	55.956262530004757	9.504328740938426	-16.289161950564722	-3.664324358869183	20.767182276344538	9.308744986245594	-0.826455742962981	-20.159275604606936	7.601866462353867	-8.439388100948729	-11.523649761995596	-11.420230005687026	-10.875662739990188	-11.369685109942699	-11.107570842565682	-11.010864624844476	-11.321766299037595	-11.263185198214151	-11.400073942579734	-0.079906114293943	-0.118784110739932	-1.699355073087321	-0.663507810648139	-0.313236195282526	-1.987015296897200	-0.055476699328921	-2.639471288884554	-1.520089299947547
-    -7.009357645172464	-0.601587991142074	1.000000000000000	2.382228572256517	-3.992938004280498	1.038313605948621	1.447321814202811	-1.356604596770767	4.627256585738012	1.384426569213439	1.880433193965266	8.970985805067208	-1.156291489401979	55.956262530004757	9.504328740938426	-16.289161950564722	-3.789324358869183	20.767182276344538	9.308744986245594	-0.826455742962981	-20.159275604606936	7.601866462353867	-8.439388100948729	-11.523649761995596	-11.420230005687026	-10.875662739990188	-11.369685109942699	-10.857570842565682	-11.010864624844476	-11.196766299037595	-11.138185198214151	-11.400073942579734	-3.079906114293943	-2.243784110739932	-3.199355073087321	-2.163507810648139	-3.063236195282526	-2.987015296897200	-2.805476699328921	-2.889471288884554	-2.645089299947547
-    -8.973430561225456	-0.658750861907905	1.000000000000000	2.371085282501771	-4.004700277203306	1.012052722417525	1.441720009506884	-1.357960886090466	4.607314705045557	1.245435912334789	1.425685759219667	9.341979122722583	-1.065429324831885	55.959785573285778	9.733907098205830	-15.984189985691822	-3.652761002607996	27.057716952277527	9.821538369366044	-0.816035262922418	-20.108402750655383	7.461632261655628	-8.444223810337862	-11.498017296843088	-11.219323464731801	-10.806413349550006	-11.357814883707455	-11.397659732005700	-10.995018942722920	-11.410246852529314	-11.034425430951124	-11.176142741719314	-0.003191391623338	-0.055057638888049	-1.141804093148454	-0.337209440690931	-0.007926563747852	-0.869763574099851	-0.107084797348463	-1.794361546837253	-0.007402372390477];
+load('Test_X0.mat','XN');
+X0=[-0.682650734356208	-0.634984685061989	1.000000000000000	2.292915774596826	-3.885716365515917	1.349212745863400	1.689635478876136	-1.179180475574071	4.911991738864590	1.558763055599865	1.723791136646484	9.169578307464704	-2.406373602562711	56.513257866276874	9.019585705315873	-16.091994759357902	-1.674559337355726	23.993468450650575	8.671364425223091	-0.632640158570092	-20.523870128039437	7.792293135294987	-8.218379805515285	-11.513240556970029	-11.151701503897414	-10.735080698329510	-11.320892140350258	-11.305759531359817	-10.910912412765109	-11.125292001115980	-11.548730396773925	-10.908308911007506	-8.996586156804241;
+    -0.745150734356208	-0.642125798343239	1.000000000000000	2.292915774596826	-3.885716365515917	1.349212745863400	1.689635478876136	-1.179241510730321	4.911991738864590	1.558396844662365	0.973302855396484	10.403953307464704	-2.406373602562711	56.512281303776874	9.019585705315873	-15.338088509357902	-1.674559337355726	25.993468450650575	8.854958175223091	-0.632640158570092	-20.523870128039437	7.792293135294987	-8.218379805515285	-11.385555010095029	-11.162931972647414	-10.735080698329510	-11.371185109100258	-11.225803476672317	-10.910912412765109	-11.029588876115980	-11.048730396773925	-10.900740551632506	-8.996586156804241];
+X0=[X0;XN];
+lb=[-5 log10(0.05) 1  transmission_bnds(1,:) -16];
+ub=[1 log10(0.5)  30 transmission_bnds(2,:)  -6];
 
-lb=[-9 log10(0.05) 1  transmission_bnds(1,:)  -6.*ones(1,9)];
-ub=[-5 log10(0.5)  30 transmission_bnds(2,:)  0.*ones(1,9)];
 
-NS=1000;
-XS=X0;
+XS=[X0];
+
+NS=10;
 for xx=1:size(X0,1)
-    Xt=X0(xx,:).*(1+0.05.*(0.5-rand(NS,length(lb))));
+    Xt=X0(xx,:).*(1+0.01.*(0.5-rand(NS,length(lb))));
     Xt(:,3)=round(Xt(:,3)+(randi(3,size(Xt(:,3)))-2));
     Xt(Xt(:,3)<lb(3),3)=lb(3);
     Xt(Xt(:,3)>ub(3),3)=ub(3);
@@ -94,25 +95,26 @@ end
 % Bounds for parameters for Gravity model https://link.springer.com/article/10.1007/s42001-025-00414-7
 
 rng(20251009)
-r_samp_pc_2025=rand(length(Known_Ind_Cases),100);
-r_samp_outbreak_2025=rand(length(Known_Ind_Cases),100);
+r_samp_pc_2025=rand(length(Known_Ind_Cases),2500);
+r_samp_outbreak_2025=rand(length(Known_Ind_Cases),2500);
 
 Lt=zeros(size(XS,1),1);
+
 parfor ii=1:size(XS,1)
-    Lt(ii) = Objective_Estimate_R0(XS(ii,:), County_Data, Imported_Case, Known_Ind_Cases, Unknown_Ind_Cases, Unknown_Ind_Cases_Weight, Population_i, Distance_Matrix_ij, Nat_Case_Count_2025, r_samp_pc_2025, r_samp_outbreak_2025, Max_Outbreak, County_Transmission_X.X,RUCC_j,Import_Gaines);
+    Lt(ii) = Objective_Estimate_R0(XS(ii,:), County_Data, Imported_Case, Known_Ind_Cases, Unknown_Ind_Cases, Unknown_Ind_Cases_Weight, Population_i,Population_j, Distance_Matrix_ij, Nat_Case_Count_2025, r_samp_pc_2025, r_samp_outbreak_2025, Max_Outbreak, County_Transmission_X.X,RUCC_j,Import_Gaines);
 end
 XS=XS(~isnan(Lt) & ~isinf(Lt),:);
 opts=optimoptions('surrogateopt','PlotFcn','surrogateoptplot','MaxFunctionEvaluations',5.*10^3,'UseParallel',true,'InitialPoints',XS);
 
 
-[par_0,fval_0]=surrogateopt(@(x)Objective_Estimate_R0(x,County_Data,Imported_Case,Known_Ind_Cases,Unknown_Ind_Cases,Unknown_Ind_Cases_Weight,Population_i,Distance_Matrix_ij,Nat_Case_Count_2025,r_samp_pc_2025,r_samp_outbreak_2025,Max_Outbreak,County_Transmission_X.X,RUCC_j,Import_Gaines),lb,ub,[3],[],[],[],[],opts);
+[par_0,fval_0,exitflag,output,trials]=surrogateopt(@(x)Objective_Estimate_R0(x,County_Data,Imported_Case,Known_Ind_Cases,Unknown_Ind_Cases,Unknown_Ind_Cases_Weight,Population_i,Population_j,Distance_Matrix_ij,Nat_Case_Count_2025,r_samp_pc_2025,r_samp_outbreak_2025,Max_Outbreak,County_Transmission_X.X,RUCC_j,Import_Gaines),lb,ub,[3],[],[],[],[],opts);
 
 % Need to adjust since pattern search does not do integer constraints
 lb(3)=lb(3)-0.499;
 ub(3)=ub(3)+0.499;
 
 opts_ps=optimoptions('patternsearch','UseParallel',true,'FunctionTolerance',10^(-9),'MaxIterations',10^3,'MaxFunctionEvaluations',10^4,'PlotFcn','psplotbestf','UseCompleteSearch',true,'UseCompletePoll',true,'Cache','on');
-[par,fval]=patternsearch(@(x)Objective_Estimate_R0(x,County_Data,Imported_Case,Known_Ind_Cases,Unknown_Ind_Cases,Unknown_Ind_Cases_Weight,Population_i,Distance_Matrix_ij,Nat_Case_Count_2025,r_samp_pc_2025,r_samp_outbreak_2025,Max_Outbreak,County_Transmission_X.X,RUCC_j,Import_Gaines),par_0,[],[],[],[],lb,ub,[],opts_ps);
+[par,fval]=patternsearch(@(x)Objective_Estimate_R0(x,County_Data,Imported_Case,Known_Ind_Cases,Unknown_Ind_Cases,Unknown_Ind_Cases_Weight,Population_i,Population_j,Distance_Matrix_ij,Nat_Case_Count_2025,r_samp_pc_2025,r_samp_outbreak_2025,Max_Outbreak,County_Transmission_X.X,RUCC_j,Import_Gaines),par_0,[],[],[],[],lb,ub,[],opts_ps);
 
 if(fval_0<fval)
     par=par_0;
@@ -125,7 +127,7 @@ R_NHG=round(par(3));
 
 beta_transmission=par(4:32);
 
-lambda_RUCC=par(33:41);
+lambda_RUCC=10.^par(33).*ones(1,9); %par(33:41);
 lambda_RUCC=lambda_RUCC(:);
 
 [beta_j] = County_Transmission(beta_transmission,County_Transmission_X.X);
