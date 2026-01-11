@@ -1,4 +1,4 @@
-function [Importation_Cases_County] = Case_Importation_Sample(Type,NS)
+function [Importation_Cases_County] = Case_Importation_Sample(Type,NS,Import_Gaines)
 
 Vaccine='MMR';
 load([Vaccine '_Immunity.mat'],'County_Data')
@@ -34,11 +34,9 @@ if(strcmp('Baseline',Type))
             end
         end
     end
-    
-    load('Baseline_Estimate_Measles_Incidence.mat','Import_Gaines');
+
     t_f=strcmp(County_Data.County,'Gaines') & strcmp(County_Data.State,'Texas');
     Importation_Cases_County(t_f,:)=Importation_Cases_County(t_f,:)+Import_Gaines; 
-
 
 elseif(strcmp('Scenario',Type(1:8)))
 

@@ -5,7 +5,7 @@ load('Baseline_Estimate_Measles_Incidence.mat',"R_NHG","lambda_d",'k_mealses','l
 
 [Imported_Case] = Case_Importation_Sample(Scenario_Plot,NS);
 
-load('County_Matrix_Gravity_Covariates.mat',"Distance_Matrix_ij",'Population_i')
+load('County_Matrix_Gravity_Covariates.mat',"Distance_Matrix_ij",'Population_i','Population_j')
 
 
 [~,RUCC_j] = Load_Transmission_Covariates(County_Data.GEOID);
@@ -44,13 +44,12 @@ end
 p_outbreak=(1-repmat(q_0,1,NS).^Imported_Case); % At least one of the imported cases triggers an utbreak
 exp_case=repmat(Case_Count,1,NS).*p_outbreak; % Expected outbreak
 
-
 p_RUCC=RUCC_j*lambda_RUCC;
 
-z_ij=-lambda_d.*(Distance_Matrix_ij.^2);
+z_ij=log(Population_i)+log(Population_j)-lambda_d.*log(Distance_Matrix_ij);
 w_ij=exp(z_ij); %1./(1+exp(-z_ij)); % Weight from population i (where the outbreak is) to population j
 w_ij(Distance_Matrix_ij==0)=0; % NO IMPACT ON DIAGONAL
-
+    
 p_zero=zeros(size(Imported_Case));
 
 parfor nn=1:size(p_zero,2)  

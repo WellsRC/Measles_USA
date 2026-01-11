@@ -1,4 +1,4 @@
-function [County_Transmission_X,RUCC_j] = Load_Transmission_Covariates(GEOID)
+function [County_Transmission_X] = Load_Transmission_Covariates(GEOID)
 
 Year=2023.*ones(length(GEOID),1);
 State_FIP=cell(length(GEOID),1);
@@ -34,8 +34,6 @@ for ii=1:length(GEOID)
     State_Name{ii}=T.State{tf};
     County_Name{ii}=T.County{tf};
 end
-
-RUCC_j=X(:,end-8:end);
 
 County_Transmission_X.Year=Year;
 County_Transmission_X.State=State_Name;

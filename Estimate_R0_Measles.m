@@ -8,57 +8,8 @@ Max_Outbreak=County_Data.Total_Population(:).*(1-County_Data.Total_Immunity(:));
 load('County_Matrix_Gravity_Covariates.mat',"Distance_Matrix_ij",'Population_i','Population_j')
 
 load('Prior_log_Regression_Transmission.mat','prior_mean_transmission','transmission_bnds')
-% Data as of December 30
-Measles_Cases=readtable('County_Level_Measles_Cases_Adjusted.csv');
 
-Imported_Case=zeros(length(County_Data.County),1);
-
-Known_Ind_Cases=zeros(length(County_Data.County),1);
-Unknown_Ind_Cases=NaN.*zeros(length(County_Data.County),2);
-Unknown_Ind_Cases_Weight=NaN.*zeros(length(County_Data.County),2);
-
-% Known imported cases
-for cc=1:length(Imported_Case)
-    t_f=str2double(County_Data.GEOID{cc})==Measles_Cases.GEOID & strcmp(Measles_Cases.type,'imported') & ~isnan(Measles_Cases.case_count);
-    if(sum(t_f)>0)
-        Imported_Case(cc)=Measles_Cases.case_count(t_f);
-    end
-
-    t_f=str2double(County_Data.GEOID{cc})==Measles_Cases.GEOID & strcmp(Measles_Cases.type,'local') & ~isnan(Measles_Cases.case_count);
-    if(sum(t_f)>0)
-        Known_Ind_Cases(cc)=Measles_Cases.case_count(t_f);
-    end
-end
-
-Nat_Case_Count_2025=sum(Imported_Case)+sum(Known_Ind_Cases);
-
-for indx=1:max(Measles_Cases.ID_Unknown)
-    t_f=Measles_Cases.ID_Unknown==indx;
-
-    Nat_Case_Count_2025=Nat_Case_Count_2025+unique(Measles_Cases.unkown_case_count(t_f));
-    t_county=ismember(str2double(County_Data.GEOID),Measles_Cases.GEOID(t_f));
-
-    w_pop=County_Data.Total_Population(t_county)-County_Data.Total_Immunity(t_county);
-    w_pop=w_pop./sum(w_pop);
-
-    imp_pop=County_Data.Total_Population(t_county)./sum(County_Data.Total_Population(t_county));
-    if(sum(~isnan(Unknown_Ind_Cases(t_county,1)))>1)
-        sc_unkown=2;
-    else
-        sc_unkown=1;
-    end
-    if(ismember('local',Measles_Cases.type(t_f)))
-        Unknown_Ind_Cases(t_county,sc_unkown)=Measles_Cases.unkown_case_count(t_f);
-        Unknown_Ind_Cases_Weight(t_county,sc_unkown)=w_pop;
-    else
-        Imported_Case(t_county)=Imported_Case(t_county)+imp_pop.*Measles_Cases.unkown_case_count(t_f);
-    end
-end
-
-
-[County_Transmission_X,RUCC_j] = Load_Transmission_Covariates(County_Data.GEOID);
-
-
+[County_Transmission_X] = Load_Transmission_Covariates(County_Data.GEOID);
 
 [beta_j] = County_Transmission(prior_mean_transmission',County_Transmission_X.X);
 
@@ -70,7 +21,45 @@ q_0=integral(@(x)nbinpdf(0,0.23,0.23./(0.23+Reff(t_f).*x)),0,1);
 
 Import_Gaines=round(log(1-0.5)/log(q_0));
 
+% Data as of December 31
+Measles_Cases=readtable('County_Level_Measles_Cases_Adjusted.csv');
 
+NSim=2500;
+[Imported_Case] = Case_Importation_Sample('Baseline',NSim,Import_Gaines);
+
+Known_Ind_Cases=zeros(length(County_Data.County),1);
+Unknown_Ind_Cases=NaN.*zeros(length(County_Data.County),2);
+Unknown_Ind_Cases_Weight=NaN.*zeros(length(County_Data.County),2);
+
+% Known imported cases
+for cc=1:length(Known_Ind_Cases)
+    t_f=str2double(County_Data.GEOID{cc})==Measles_Cases.GEOID & strcmp(Measles_Cases.type,'local') & ~isnan(Measles_Cases.case_count);
+    if(sum(t_f)>0)
+        Known_Ind_Cases(cc)=Measles_Cases.case_count(t_f);
+    end
+end
+
+Nat_Case_Count_2025=unique(sum(Imported_Case,1))+sum(Known_Ind_Cases);
+
+for indx=1:max(Measles_Cases.ID_Unknown)
+    t_f=Measles_Cases.ID_Unknown==indx;
+
+    Nat_Case_Count_2025=Nat_Case_Count_2025+unique(Measles_Cases.unkown_case_count(t_f));
+    t_county=ismember(str2double(County_Data.GEOID),Measles_Cases.GEOID(t_f));
+
+    w_pop=County_Data.Total_Population(t_county)-County_Data.Total_Immunity(t_county);
+    w_pop=w_pop./sum(w_pop);
+
+    if(sum(~isnan(Unknown_Ind_Cases(t_county,1)))>1)
+        sc_unkown=2;
+    else
+        sc_unkown=1;
+    end
+    if(ismember('local',Measles_Cases.type(t_f)))
+        Unknown_Ind_Cases(t_county,sc_unkown)=Measles_Cases.unkown_case_count(t_f);
+        Unknown_Ind_Cases_Weight(t_county,sc_unkown)=w_pop;
+    end
+end
 
 A=[];
 load('Test_X0.mat','XN');
@@ -95,26 +84,26 @@ end
 % Bounds for parameters for Gravity model https://link.springer.com/article/10.1007/s42001-025-00414-7
 
 rng(20251009)
-r_samp_pc_2025=rand(length(Known_Ind_Cases),2500);
-r_samp_outbreak_2025=rand(length(Known_Ind_Cases),2500);
+r_samp_pc_2025=rand(length(Known_Ind_Cases),NSim);
+r_samp_outbreak_2025=rand(length(Known_Ind_Cases),NSim);
 
 Lt=zeros(size(XS,1),1);
 
 parfor ii=1:size(XS,1)
-    Lt(ii) = Objective_Estimate_R0(XS(ii,:), County_Data, Imported_Case, Known_Ind_Cases, Unknown_Ind_Cases, Unknown_Ind_Cases_Weight, Population_i,Population_j, Distance_Matrix_ij, Nat_Case_Count_2025, r_samp_pc_2025, r_samp_outbreak_2025, Max_Outbreak, County_Transmission_X.X,RUCC_j,Import_Gaines);
+    Lt(ii) = Objective_Estimate_R0(XS(ii,:), County_Data, Imported_Case, Known_Ind_Cases, Unknown_Ind_Cases, Unknown_Ind_Cases_Weight, Population_i,Population_j, Distance_Matrix_ij, Nat_Case_Count_2025, r_samp_pc_2025, r_samp_outbreak_2025, Max_Outbreak, County_Transmission_X.X,Import_Gaines);
 end
 XS=XS(~isnan(Lt) & ~isinf(Lt),:);
 opts=optimoptions('surrogateopt','PlotFcn','surrogateoptplot','MaxFunctionEvaluations',5.*10^3,'UseParallel',true,'InitialPoints',XS);
 
 
-[par_0,fval_0,exitflag,output,trials]=surrogateopt(@(x)Objective_Estimate_R0(x,County_Data,Imported_Case,Known_Ind_Cases,Unknown_Ind_Cases,Unknown_Ind_Cases_Weight,Population_i,Population_j,Distance_Matrix_ij,Nat_Case_Count_2025,r_samp_pc_2025,r_samp_outbreak_2025,Max_Outbreak,County_Transmission_X.X,RUCC_j,Import_Gaines),lb,ub,[3],[],[],[],[],opts);
+[par_0,fval_0,exitflag,output,trials]=surrogateopt(@(x)Objective_Estimate_R0(x,County_Data,Imported_Case,Known_Ind_Cases,Unknown_Ind_Cases,Unknown_Ind_Cases_Weight,Population_i,Population_j,Distance_Matrix_ij,Nat_Case_Count_2025,r_samp_pc_2025,r_samp_outbreak_2025,Max_Outbreak,County_Transmission_X.X,Import_Gaines),lb,ub,[3],[],[],[],[],opts);
 
 % Need to adjust since pattern search does not do integer constraints
 lb(3)=lb(3)-0.499;
 ub(3)=ub(3)+0.499;
 
 opts_ps=optimoptions('patternsearch','UseParallel',true,'FunctionTolerance',10^(-9),'MaxIterations',10^3,'MaxFunctionEvaluations',10^4,'PlotFcn','psplotbestf','UseCompleteSearch',true,'UseCompletePoll',true,'Cache','on');
-[par,fval]=patternsearch(@(x)Objective_Estimate_R0(x,County_Data,Imported_Case,Known_Ind_Cases,Unknown_Ind_Cases,Unknown_Ind_Cases_Weight,Population_i,Population_j,Distance_Matrix_ij,Nat_Case_Count_2025,r_samp_pc_2025,r_samp_outbreak_2025,Max_Outbreak,County_Transmission_X.X,RUCC_j,Import_Gaines),par_0,[],[],[],[],lb,ub,[],opts_ps);
+[par,fval]=patternsearch(@(x)Objective_Estimate_R0(x,County_Data,Imported_Case,Known_Ind_Cases,Unknown_Ind_Cases,Unknown_Ind_Cases_Weight,Population_i,Population_j,Distance_Matrix_ij,Nat_Case_Count_2025,r_samp_pc_2025,r_samp_outbreak_2025,Max_Outbreak,County_Transmission_X.X,Import_Gaines),par_0,[],[],[],[],lb,ub,[],opts_ps);
 
 if(fval_0<fval)
     par=par_0;
@@ -127,9 +116,8 @@ R_NHG=round(par(3));
 
 beta_transmission=par(4:32);
 
-lambda_RUCC=10.^par(33).*ones(1,9); %par(33:41);
-lambda_RUCC=lambda_RUCC(:);
+lambda_zero=10.^par(33);
 
 [beta_j] = County_Transmission(beta_transmission,County_Transmission_X.X);
 
-save('Baseline_Estimate_Measles_Incidence.mat',"R_NHG","lambda_d",'k_mealses','Import_Gaines','beta_j','beta_transmission','lambda_RUCC');
+save('Baseline_Estimate_Measles_Incidence.mat',"R_NHG","lambda_d",'k_mealses','Import_Gaines','beta_j','beta_transmission','lambda_zero');
