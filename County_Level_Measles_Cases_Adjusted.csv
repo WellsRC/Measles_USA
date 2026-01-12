@@ -1576,7 +1576,7 @@ GEOID,County,State,type,case_count,Region_Label,ID_Unknown,unkown_case_count
 31141,Platte,Nebraska,imported,1,NaN,NaN,NaN
 31161,Sheridan,Nebraska,imported,1,NaN,NaN,NaN
 32003,Clark,Nevada,local,1,NaN,NaN,NaN
-32031,Washoe,Nevada,local,1,,,
+32031,Washoe,Nevada,local,1,NaN,NaN,NaN
 34003,Bergen,New Jersey,imported,1,NaN,NaN,NaN
 34003,Bergen,New Jersey,local,3,NaN,NaN,NaN
 34017,Hudson,New Jersey,local,2,NaN,NaN,NaN

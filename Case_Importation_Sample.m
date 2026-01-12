@@ -4,6 +4,7 @@ Vaccine='MMR';
 load([Vaccine '_Immunity.mat'],'County_Data')
 
 if(strcmp('Baseline',Type))
+    rng(4378459)
     Importation_Cases_County=zeros(length(County_Data.County),NS);
     Measles_Cases=readtable('County_Level_Measles_Cases_Adjusted.csv');    
     for cc=1:length(Importation_Cases_County)
