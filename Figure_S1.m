@@ -56,8 +56,10 @@ end
     inq_txt_baseline(1)=-1;
     inq_txt_baseline(end)=1;
     
-    Gen_Figure_Single_County(Measure_Baseline,x_baseline,C_Baseline,text_v,inq_txt_baseline,X_Label_Baseline,prct_label,monitary_label,S,jj);
+    f=Gen_Figure_Single_County(Measure_Baseline,x_baseline,C_Baseline,text_v,inq_txt_baseline,X_Label_Baseline,prct_label,monitary_label,S,jj);
 
+
+    theme(f, "light"); 
     print(gcf,['Figure_S1' char(64+jj) '.png'],'-dpng','-r300');
 
  end
