@@ -8,7 +8,14 @@ load(['National_Reduction=' num2str(0) '_Year=' num2str(0) '.mat'],'County_Data_
 
 [Total_Cost,~,~,~]=County_Level_Costs(County_Data_Vaccine_Reduction,Unvaccinated_Cases_County,Vaccinated_Cases_County,Uninsured_Unvaccinated_Cases_County,Uninsured_Vaccinated_Cases_County,Public_Unvaccinated_Cases_County,Public_Vaccinated_Cases_County,Total_Contacts,Unvaccinated_Contacts);
 
-Estimate_Cost_per_Case=median(Total_Cost./Total_Cases_County,2);
+Estimate_Cost_per_Case=zeros(length(Total_Cost),1);
+
+temp_Cost=(Total_Cost./Total_Cases_County);
+
+for jj=1:length(Estimate_Cost_per_Case)
+    p=fitdist(temp_Cost(jj,:)','Kernel','Support','positive');
+    Estimate_Cost_per_Case(jj)=fmincon(@(z)-log(pdf(p,z)),median(temp_Cost(jj,:)),[],[],[],[],min(temp_Cost(jj,:)),max(temp_Cost(jj,:)));
+end
 
 [r,p]=corr(County_Data_Vaccine_Reduction.Total_Immunity(:),Estimate_Cost_per_Case(:),'Type','Spearman')
 

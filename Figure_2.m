@@ -8,10 +8,12 @@ for imprt=25:25:200
     load(['Monte_Carlo_Run_Scenario_' num2str(imprt) '_National_Reduction=0_Year=0.mat']);
 
     Samp_B=sum(Total_Cases_County,1);
-    
+    temp_c=Samp_B;
     CV(imprt./25)=std(Samp_B)./mean(Samp_B);
-    
-    Cases_Baseline=prctile(sum(Total_Cases_County,1),[50 25 75]);
+    temp_c(temp_c==0)=10^(-16);
+    p=fitdist(temp_c(:),'Kernel','Support','positive');
+    [mle,lb_hdi,ub_hdi]=Estimate_HDI(p,0.5);
+    Cases_Baseline=[mle lb_hdi ub_hdi];
     patch(imprt+[-11 -11 11 11],[Cases_Baseline(2) Cases_Baseline(3) Cases_Baseline(3) Cases_Baseline(2)],'k','LineStyle','none','FaceAlpha',0.3); hold on
     plot(imprt+[-11 11],[Cases_Baseline(1) Cases_Baseline(1)],'k','LineWidth',2);
 
@@ -28,10 +30,11 @@ for imprt=25:25:200
     load(['Monte_Carlo_Run_Scenario_' num2str(imprt) '_National_Reduction=1_Year=1.mat']);
     Samp_R4=sum(Total_Cases_County,1);
     
-    M1=median(Samp_R1-Samp_B);
-    M2=median(Samp_R2-Samp_B);
-    M3=median(Samp_R3-Samp_B);
-    M4=median(Samp_R4-Samp_B);
+    M1=median(Samp_R1(:)-Samp_B(:));
+    M2=median(Samp_R2(:)-Samp_B(:));
+    M3=median(Samp_R3(:)-Samp_B(:));
+    M4=median(Samp_R4(:)-Samp_B(:));
+
     subplot('Position',[0.125,0.078,0.85,0.395]);
     xx=linspace(imprt-11,imprt+11,5);
     dx=0.4.*(xx(2)-xx(1));

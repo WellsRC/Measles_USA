@@ -2,21 +2,25 @@ function [Total_Cases_County,Unvaccinated_Cases_County,Vaccinated_Cases_County,U
 Vaccine='MMR';
 load([Vaccine '_Immunity.mat'],'County_Data')
 
+if(strcmp(Scenario_Plot,'Baseline'))
+    load('Prior_log_Regression_Transmission.mat','prior_mean_transmission')
+    [County_Transmission_X] = Load_Transmission_Covariates(County_Data.GEOID);
+    
+    [beta_j] = County_Transmission(prior_mean_transmission',County_Transmission_X.X);
+    
+    [~,Reff]=Determine_Model_County_Case_Count(County_Data,beta_j);
+    
+    t_f=strcmp(County_Data.County,'Gaines') & strcmp(County_Data.State,'Texas');
+    
+    q_0=integral(@(x)nbinpdf(0,0.23,0.23./(0.23+Reff(t_f).*x)),0,1);
+    
+    Import_Gaines=round(log(1-0.5)/log(q_0));    
+    
+else
+    Import_Gaines=0;
+end
 
-load('Prior_log_Regression_Transmission.mat','prior_mean_transmission')
-[County_Transmission_X] = Load_Transmission_Covariates(County_Data.GEOID);
-
-[beta_j] = County_Transmission(prior_mean_transmission',County_Transmission_X.X);
-
-[~,Reff]=Determine_Model_County_Case_Count(County_Data,beta_j);
-
-t_f=strcmp(County_Data.County,'Gaines') & strcmp(County_Data.State,'Texas');
-
-q_0=integral(@(x)nbinpdf(0,0.23,0.23./(0.23+Reff(t_f).*x)),0,1);
-
-Import_Gaines=round(log(1-0.5)/log(q_0));
-
-[Imported_Case] = Case_Importation_Sample('Baseline',NS,Import_Gaines);
+[Imported_Case] = Case_Importation_Sample(Scenario_Plot,NS,Import_Gaines);
 
 load('County_Matrix_Gravity_Covariates.mat',"Distance_Matrix_ij",'Population_i','Population_j')
 

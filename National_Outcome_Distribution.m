@@ -1,7 +1,8 @@
-function [pd_cases,pd_hospital,pd_cost,pd_cost_per_case,pd_pro_loss,pd_med_cost,pd_med_cost_uninsured,pd_med_cost_public,pd_med_cost_private,pd_test_vac_cost,pd_ct_cost,pd_outbreak_response_cost,pd_severe_disease]=National_Outcome_Distribution(National_Annual_Reduction,Scenario_Plot,Year_Reduced)
+function [pd_cases,pd_hospital,pd_cost,pd_cost_per_case,pd_pro_loss,pd_med_cost,pd_med_cost_uninsured,pd_med_cost_public,pd_med_cost_private,pd_test_vac_cost,pd_ct_cost,pd_outbreak_response_cost,pd_severe_disease,pd_death]=National_Outcome_Distribution(National_Annual_Reduction,Scenario_Plot,Year_Reduced)
 
 [p_H_Unvaccinated,p_H_Vaccinated,duration_hospitalization]=Hospitalization_Probability();
 [p_SD_Unvaccinated,p_SD_Vaccinated]=Severe_Disease_Probability();
+[p_Death]=Death_Probability();
 [Productivity_Days_Lost_Under_15_Case,Productivity_Days_Lost_15_plus_Case,Productivity_Days_Lost_Under_15_Contact,Productivity_Days_Lost_15_plus_Contact,Cost_per_Contact,Cost_per_Vaccine_dose_Private,Cost_per_Vaccine_dose_VFC,Cost_per_Non_Hospitalization,Tests_per_Contact,Cost_per_Test]=Measles_Outbreak_Cost();
 
 load(['National_Reduction=' num2str(100*National_Annual_Reduction) '_Year=' num2str(Year_Reduced) '.mat'],'County_Data_Vaccine_Reduction')
@@ -16,6 +17,7 @@ load(['Monte_Carlo_Run_' Scenario_Plot '_National_Reduction=' num2str(100*Nation
 
 Hospitalizations_Baseline=p_H_Unvaccinated*squeeze(sum(Unvaccinated_Cases_County_Baseline,1))+p_H_Vaccinated*squeeze(sum(Vaccinated_Cases_County_Baseline,1));
 Severe_Disease_Baseline=p_SD_Unvaccinated*squeeze(sum(Unvaccinated_Cases_County_Baseline,1))+p_SD_Vaccinated*squeeze(sum(Vaccinated_Cases_County_Baseline,1));
+Death_Baseline=p_Death*squeeze(sum(Unvaccinated_Cases_County_Baseline,1))+p_Death*squeeze(sum(Vaccinated_Cases_County_Baseline,1));
 
 Total_Contacts_Baseline=squeeze(sum(Total_Contacts_Baseline,[1 2]));
 % https://pmc.ncbi.nlm.nih.gov/articles/PMC11309373/#:~:text=In%202023%2C%20approximately%2054%25%20of,)%20born%20during%201994%E2%80%932023.
@@ -36,9 +38,12 @@ Contact_Tracing_Costs=Contact_Tracing_Costs(:);
 
 Cost_Baseline=Contact_Tracing_Costs(:)+Direct_Medical_Costs(:)+Testing_Cost(:)+Cost_Vaccination_Contacts(:)+Total_Productivity_loss_Cases(:)+Total_Productivity_loss_Contacts(:);
 
-temp_c=Contact_Tracing_Costs(:)+Testing_Cost(:)+Cost_Vaccination_Contacts(:);
-pd_outbreak_response_cost=fitdist(temp_c(:),'Kernel','Support','positive');
 
+% Outbreak response
+
+
+temp_c=(Contact_Tracing_Costs(:)+Testing_Cost(:)+Cost_Vaccination_Contacts(:))./10^6;
+pd_outbreak_response_cost=fitdist(temp_c(:),'Kernel','Support','positive');
 
 % Cases    
 temp_c=sum(Total_Cases_County,1);
@@ -52,44 +57,49 @@ pd_hospital=fitdist(temp_c(:),'Kernel','Support','positive');
 temp_c=Severe_Disease_Baseline;
 pd_severe_disease=fitdist(temp_c(:),'Kernel','Support','positive');
 
+
+% Severe disease
+temp_c=Death_Baseline;
+pd_death=fitdist(temp_c(:),'Kernel','Support','positive');
+
 % Cost
 temp_c=Cost_Baseline./10^6;
 pd_cost=fitdist(temp_c(:),'Kernel','Support','positive');
 
 % Cost per case
 Cost_per_Case=Cost_Baseline./(sum(Total_Cases_County,1)');
-temp_c=Cost_per_Case./10^3;
+temp_c=Cost_per_Case;
 pd_cost_per_case=fitdist(temp_c(:),'Kernel','Support','positive');
 
 % Productivity_loss    
-temp_c=Total_Productivity_loss;
+temp_c=Total_Productivity_loss./10^6;
 pd_pro_loss=fitdist(temp_c(:),'Kernel','Support','positive');
 
 % Medical_Costs
-temp_c=Direct_Medical_Costs;
+temp_c=Direct_Medical_Costs./10^6;
 pd_med_cost=fitdist(temp_c(:),'Kernel','Support','positive');
 
 % Medical_Costs
-temp_c=Cost_Case_Medical_Uninsured;
+temp_c=Cost_Case_Medical_Uninsured./10^6;
 temp_c(temp_c==0)=10^(-16);
 pd_med_cost_uninsured=fitdist(temp_c(:),'Kernel','Support','positive');
 
 % Medical_Costs
-temp_c=Cost_Case_Medical_Public;
+temp_c=Cost_Case_Medical_Public./10^6;
 temp_c(temp_c==0)=10^(-16);
 pd_med_cost_public=fitdist(temp_c(:),'Kernel','Support','positive');
 
 % Medical_Costs
-temp_c=Cost_Case_Medical_Private;
+temp_c=Cost_Case_Medical_Private./10^6;
 temp_c(temp_c==0)=10^(-16);
 pd_med_cost_private=fitdist(temp_c(:),'Kernel','Support','positive');
 
 % Testing_Vaccination
-temp_c=Testing_Vaccination_Contacts_Cost;
+temp_c=Testing_Vaccination_Contacts_Cost./10^6;
 pd_test_vac_cost=fitdist(temp_c(:),'Kernel','Support','positive');
 
 % Contact_Tracing_Costs
-temp_c=Contact_Tracing_Costs;
+temp_c=Contact_Tracing_Costs./10^6;
 pd_ct_cost=fitdist(temp_c(:),'Kernel','Support','positive');
 
 
