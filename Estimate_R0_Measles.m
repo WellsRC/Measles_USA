@@ -92,13 +92,13 @@ r_samp_outbreak_2025=rand(length(Known_Ind_Cases),NSim);
 Lt=zeros(size(XS,1),1);
 
 parfor ii=1:size(XS,1)
-    Lt(ii) = Objective_Estimate_R0(XS(ii,:), County_Data, Imported_Case, Known_Ind_Cases, Unknown_Ind_Cases, Unknown_Ind_Cases_Weight, Population_i,Population_j, Distance_Matrix_ij, Nat_Case_Count_2025, r_samp_pc_2025, r_samp_outbreak_2025, Max_Outbreak, County_Transmission_X.X,Import_Gaines);
+    Lt(ii) = Objective_Estimate_R0(XS(ii,:), County_Data, Imported_Case, Known_Ind_Cases, Unknown_Ind_Cases, Unknown_Ind_Cases_Weight, Population_i,Population_j, Distance_Matrix_ij, Nat_Case_Count_2025, r_samp_pc_2025, r_samp_outbreak_2025, Max_Outbreak, County_Transmission_X.X);
 end
 XS=XS(~isnan(Lt) & ~isinf(Lt),:);
 opts=optimoptions('surrogateopt','PlotFcn','surrogateoptplot','MaxFunctionEvaluations',5.*10^3,'UseParallel',true,'InitialPoints',XS);
 
 
-[par_0,fval_0,exitflag,output,trials]=surrogateopt(@(x)Objective_Estimate_R0(x,County_Data,Imported_Case,Known_Ind_Cases,Unknown_Ind_Cases,Unknown_Ind_Cases_Weight,Population_i,Population_j,Distance_Matrix_ij,Nat_Case_Count_2025,r_samp_pc_2025,r_samp_outbreak_2025,Max_Outbreak,County_Transmission_X.X,Import_Gaines),lb,ub,[3],[],[],[],[],opts);
+[par_0,fval_0,exitflag,output,trials]=surrogateopt(@(x)Objective_Estimate_R0(x,County_Data,Imported_Case,Known_Ind_Cases,Unknown_Ind_Cases,Unknown_Ind_Cases_Weight,Population_i,Population_j,Distance_Matrix_ij,Nat_Case_Count_2025,r_samp_pc_2025,r_samp_outbreak_2025,Max_Outbreak,County_Transmission_X.X),lb,ub,[3],[],[],[],[],opts);
 
 
 [tf,SI]=sort(trials.Fval);
@@ -112,7 +112,7 @@ lb(3)=lb(3)-0.499;
 ub(3)=ub(3)+0.499;
 
 opts_ps=optimoptions('patternsearch','UseParallel',true,'FunctionTolerance',10^(-9),'MaxIterations',10^3,'MaxFunctionEvaluations',10^4,'PlotFcn','psplotbestf','UseCompleteSearch',true,'UseCompletePoll',true,'Cache','on');
-[par,fval]=patternsearch(@(x)Objective_Estimate_R0(x,County_Data,Imported_Case,Known_Ind_Cases,Unknown_Ind_Cases,Unknown_Ind_Cases_Weight,Population_i,Population_j,Distance_Matrix_ij,Nat_Case_Count_2025,r_samp_pc_2025,r_samp_outbreak_2025,Max_Outbreak,County_Transmission_X.X,Import_Gaines),par_0,[],[],[],[],lb,ub,[],opts_ps);
+[par,fval]=patternsearch(@(x)Objective_Estimate_R0(x,County_Data,Imported_Case,Known_Ind_Cases,Unknown_Ind_Cases,Unknown_Ind_Cases_Weight,Population_i,Population_j,Distance_Matrix_ij,Nat_Case_Count_2025,r_samp_pc_2025,r_samp_outbreak_2025,Max_Outbreak,County_Transmission_X.X),par_0,[],[],[],[],lb,ub,[],opts_ps);
 
 if(fval_0<fval)
     par=par_0;

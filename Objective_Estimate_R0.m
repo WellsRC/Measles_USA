@@ -1,4 +1,4 @@
-function J = Objective_Estimate_R0(x,County_Data,Imported_Case,Known_Ind_Cases,Unknown_Ind_Cases,Unknown_Ind_Cases_Weight,Population_i,Population_j,Distance_Matrix_ij,Nat_Case_Count_2025,r_samp_pc_2025,r_samp_outbreak_2025,Max_Outbreak,County_Transmission_X,Import_Gaines)
+function J = Objective_Estimate_R0(x,County_Data,Imported_Case,Known_Ind_Cases,Unknown_Ind_Cases,Unknown_Ind_Cases_Weight,Population_i,Population_j,Distance_Matrix_ij,Nat_Case_Count_2025,r_samp_pc_2025,r_samp_outbreak_2025,Max_Outbreak,County_Transmission_X)
 
 lambda_d=10.^x(1);
 k_mealses=10.^x(2); 
@@ -10,12 +10,6 @@ beta_transmission=x(4:32);
 lambda_zero=10.^x(33);
 
 [beta_j] = County_Transmission(beta_transmission,County_Transmission_X);
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Source is unknown
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Assume gains cunty as it was the epi center
-t_f=strcmp(County_Data.County,'Gaines') & strcmp(County_Data.State,'Texas');
-Imported_Case(t_f)=Imported_Case(t_f)+Import_Gaines; 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
 % Priors on Ro and Reeff and Control
@@ -76,8 +70,10 @@ L_Known=zeros(size(avg_p_zero));
     
             NOB_2025=sum(Outbreak_County_2025+Imported_Case,1)';    
     
-            NOB_2025(NOB_2025==0)=10^(-8);
-            pdf_nat=fitdist(NOB_2025(:),'Kernel','Support','positive');
+
+            min_Case=unique(sum(Imported_Case,1));
+            NOB_2025(NOB_2025==min_Case)=min_Case+10^(-8);
+            pdf_nat=fitdist(NOB_2025(:),'Kernel','Support',[min_Case 10^9]);
 
             L_Nat_2025=log(pdf(pdf_nat,Nat_Case_Count_2025)); % Want the mode of the dist to be scaled equal for each distribution as we will use that for the central measure
         catch

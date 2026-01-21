@@ -65,15 +65,16 @@ else
         State_Importaton=State_Importaton(State_Importaton.CurrentMMWRYear==2023,:);
     elseif(strcmp('Sample_2024',Type))
         State_Importaton=State_Importaton(State_Importaton.CurrentMMWRYear==2024,:);
-    elseif(strcmp('Sample_2025',Type))
-        State_Importaton=State_Importaton(State_Importaton.CurrentMMWRYear==2025,:);
+    % elseif(strcmp('Sample_2025',Type))
+    %     State_Importaton=State_Importaton(State_Importaton.CurrentMMWRYear==2025,:);
     end
     U_State=unique(State_Importaton.ReportingArea);
     for ss=1:length(U_State)    
         f_import=strcmp(State_Importaton.ReportingArea,U_State{ss});
         w_import=State_Importaton.Weekly_Importation(f_import);
-        samp_import=w_import(randi(length(w_import),52,NS));
-        samp_import=sum(samp_import,1);
+        % samp_import=w_import(randi(length(w_import),52,NS));
+        % samp_import=sum(samp_import,1);
+        samp_import=sum(w_import,1);
         if(strcmp(U_State{ss},'New York City'))
             f_county=strcmp(County_Data.State,'New York') & (strcmp(County_Data.County,'New York') | strcmp(County_Data.County,'Kings') | strcmp(County_Data.County,'Bronx')  | strcmp(County_Data.County,'Richmond')  | strcmp(County_Data.County,'Queens'));
         elseif(strcmp(U_State{ss},'New York'))
@@ -96,8 +97,8 @@ else
         end
         pd = makedist('Multinomial','Probabilities',w_temp);
         for nn=1:NS
-            if(samp_import(nn)>0)
-                r = random(pd,1,samp_import(nn));
+            if(samp_import>0)
+                r = random(pd,1,samp_import);
                 for cc=1:size(temp_county_import,1)
                     temp_county_import(cc,nn)=sum(r==cc);
                 end

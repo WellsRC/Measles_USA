@@ -9,34 +9,38 @@ clc;
 % % 
 
 Measure={'Cases';'Hospitalizations';'Severe Disease';'Death';'Cost';'Outbreak response';'Direct Medical';'Direct Medical: Uninsured';'Direct Medical: Publicly insured';'Direct Medical: Privately insured';'Productivity loses';'Cost per case'};
-[pd_cases_2025,pd_hospital,pd_cost,pd_cost_per_case,pd_pro_loss,pd_med_cost,pd_med_cost_uninsured,pd_med_cost_public,pd_med_cost_private,~,~,pd_outbreak_response_cost,pd_severe_disease,pd_death]=National_Outcome_Distribution(0,'Baseline',0);
+Measure_Prop={'Outbreak response';'Productivity loses';'Direct Medical';'Direct Medical: Uninsured';'Direct Medical: Publicly insured';'Direct Medical: Privately insured'};
+
+[pd_cases_2025,pd_hospital,pd_cost,pd_cost_per_case,pd_pro_loss,pd_med_cost,pd_med_cost_uninsured,pd_med_cost_public,pd_med_cost_private,~,~,pd_outbreak_response_cost,pd_severe_disease,pd_death,prop_outbreak_response_cost,prop_pro_loss,prop_med_cost,prop_med_cost_uninsured,prop_med_cost_public,prop_med_cost_private]=National_Outcome_Distribution(0,'Baseline',0);
 
 
 
 pd_cases=pd_cases_2025;
 Value_2025=cell(12,1);
 
+Prop_2025=cell(6,1);
+
     [mle,lb_hdi,ub_hdi]=Estimate_HDI(pd_cases,0.5);
     Value_2025{1} = [num2str(mle,'%5.0f') ' (' num2str(lb_hdi,'%5.0f') char(8211) num2str(ub_hdi,'%5.0f') ')'];
-    
+
     [mle,lb_hdi,ub_hdi]=Estimate_HDI(pd_hospital,0.5);
     Value_2025{2} = [num2str(mle,'%5.0f') ' (' num2str(lb_hdi,'%5.0f') char(8211) num2str(ub_hdi,'%5.0f') ')'];
-    
+
     [mle,lb_hdi,ub_hdi]=Estimate_HDI(pd_severe_disease,0.5);
     Value_2025{3}=[num2str(mle,'%5.0f') ' (' num2str(lb_hdi,'%5.0f') char(8211) num2str(ub_hdi,'%5.0f') ')'];
 
     [mle,lb_hdi,ub_hdi]=Estimate_HDI(pd_death,0.5);
     Value_2025{4}=[num2str(mle,'%5.0f') ' (' num2str(lb_hdi,'%5.0f') char(8211) num2str(ub_hdi,'%5.0f') ')'];
-    
+
     [mle,lb_hdi,ub_hdi]=Estimate_HDI(pd_cost,0.5);
     Value_2025{5} = ['$' num2str(mle,'%5.1f') ' million (' '$' num2str(lb_hdi,'%5.1f') char(8211) '$' num2str(ub_hdi,'%5.1f') ' million)'];
-    
+
     [mle,lb_hdi,ub_hdi]=Estimate_HDI(pd_outbreak_response_cost,0.5);
     Value_2025{6} = ['$' num2str(mle,'%5.1f') ' million (' '$' num2str(lb_hdi,'%5.1f') char(8211) '$' num2str(ub_hdi,'%5.1f') ' million)'];
-    
+
     [mle,lb_hdi,ub_hdi]=Estimate_HDI(pd_med_cost,0.5);
     Value_2025{7} = ['$' num2str(mle,'%5.1f') ' million (' '$' num2str(lb_hdi,'%5.1f') char(8211) '$' num2str(ub_hdi,'%5.1f') ' million)'];
-    
+
     [mle,lb_hdi,ub_hdi]=Estimate_HDI(pd_med_cost_uninsured,0.5);
     Value_2025{8} = ['$' num2str(mle,'%5.2f') ' million (' '$' num2str(lb_hdi,'%5.2f') char(8211) '$' num2str(ub_hdi,'%5.2f') ' million)'];
 
@@ -45,38 +49,62 @@ Value_2025=cell(12,1);
 
     [mle,lb_hdi,ub_hdi]=Estimate_HDI(pd_med_cost_private,0.5);
     Value_2025{10} = ['$' num2str(mle,'%5.2f') ' million (' '$' num2str(lb_hdi,'%5.2f') char(8211) '$' num2str(ub_hdi,'%5.2f') ' million)'];
-    
+
     [mle,lb_hdi,ub_hdi]=Estimate_HDI(pd_pro_loss,0.5);
     Value_2025{11} = ['$' num2str(mle,'%5.1f') ' million (' '$' num2str(lb_hdi,'%5.1f') char(8211) '$' num2str(ub_hdi,'%5.1f') ' million)'];
-    
+
     [mle,lb_hdi,ub_hdi]=Estimate_HDI(pd_cost_per_case,0.5);
     Value_2025{12} = ['$' num2str(mle,'%6.0f') ' (' '$' num2str(lb_hdi,'%6.0f') char(8211) '$' num2str(ub_hdi,'%6.0f') ')'];
 
-[pd_cases_2024,pd_hospital,pd_cost,pd_cost_per_case,pd_pro_loss,pd_med_cost,pd_med_cost_uninsured,pd_med_cost_public,pd_med_cost_private,~,~,pd_outbreak_response_cost,pd_severe_disease,pd_death]=National_Outcome_Distribution(0,'Sample_2024',0);
+
+
+    [mle,lb_hdi,ub_hdi]=Estimate_HDI(prop_outbreak_response_cost,0.5);
+    Prop_2025{1} = [num2str(mle,'%4.2f') '% (' num2str(lb_hdi,'%4.2f') '%' char(8211) num2str(ub_hdi,'%4.2f') '%)'];
+
+    [mle,lb_hdi,ub_hdi]=Estimate_HDI(prop_pro_loss,0.5);
+    Prop_2025{2} = [num2str(mle,'%4.2f') '% (' num2str(lb_hdi,'%4.2f') '%' char(8211) num2str(ub_hdi,'%4.2f') '%)'];
+
+    [mle,lb_hdi,ub_hdi]=Estimate_HDI(prop_med_cost,0.5);
+    Prop_2025{3}=[num2str(mle,'%4.2f') '% (' num2str(lb_hdi,'%4.2f') '%' char(8211) num2str(ub_hdi,'%4.2f') '%)'];
+
+    [mle,lb_hdi,ub_hdi]=Estimate_HDI(prop_med_cost_uninsured,0.5);
+    Prop_2025{4}=[num2str(mle,'%4.2f') '% (' num2str(lb_hdi,'%4.2f') '%' char(8211) num2str(ub_hdi,'%4.2f') '%)'];
+
+    [mle,lb_hdi,ub_hdi]=Estimate_HDI(prop_med_cost_public,0.5);
+    Prop_2025{5} = [num2str(mle,'%4.2f') '% (' num2str(lb_hdi,'%4.2f') '%' char(8211) num2str(ub_hdi,'%4.2f') '%)'];
+
+    [mle,lb_hdi,ub_hdi]=Estimate_HDI(prop_med_cost_private,0.5);
+    Prop_2025{6} = [num2str(mle,'%4.2f') '% (' num2str(lb_hdi,'%4.2f') '%' char(8211) num2str(ub_hdi,'%4.2f') '%)'];
+
+[pd_cases_2024,pd_hospital,pd_cost,pd_cost_per_case,pd_pro_loss,pd_med_cost,pd_med_cost_uninsured,pd_med_cost_public,pd_med_cost_private,~,~,pd_outbreak_response_cost,pd_severe_disease,pd_death,prop_outbreak_response_cost,prop_pro_loss,prop_med_cost,prop_med_cost_uninsured,prop_med_cost_public,prop_med_cost_private]=National_Outcome_Distribution(0,'Sample_2024',0);
 
 pd_cases=pd_cases_2024;
 Value_2024=cell(12,1);
+
+
+Prop_2024=cell(6,1);
+
 [mle,lb_hdi,ub_hdi]=Estimate_HDI(pd_cases,0.5);
     Value_2024{1} = [num2str(mle,'%5.0f') ' (' num2str(lb_hdi,'%5.0f') char(8211) num2str(ub_hdi,'%5.0f') ')'];
-    
+
     [mle,lb_hdi,ub_hdi]=Estimate_HDI(pd_hospital,0.5);
     Value_2024{2} = [num2str(mle,'%5.0f') ' (' num2str(lb_hdi,'%5.0f') char(8211) num2str(ub_hdi,'%5.0f') ')'];
-    
+
     [mle,lb_hdi,ub_hdi]=Estimate_HDI(pd_severe_disease,0.5);
     Value_2024{3}=[num2str(mle,'%5.0f') ' (' num2str(lb_hdi,'%5.0f') char(8211) num2str(ub_hdi,'%5.0f') ')'];
 
     [mle,lb_hdi,ub_hdi]=Estimate_HDI(pd_death,0.5);
     Value_2024{4}=[num2str(mle,'%5.0f') ' (' num2str(lb_hdi,'%5.0f') char(8211) num2str(ub_hdi,'%5.0f') ')'];
-    
+
     [mle,lb_hdi,ub_hdi]=Estimate_HDI(pd_cost,0.5);
     Value_2024{5} = ['$' num2str(mle,'%5.1f') ' million (' '$' num2str(lb_hdi,'%5.1f') char(8211) '$' num2str(ub_hdi,'%5.1f') ' million)'];
-    
+
     [mle,lb_hdi,ub_hdi]=Estimate_HDI(pd_outbreak_response_cost,0.5);
     Value_2024{6} = ['$' num2str(mle,'%5.1f') ' million (' '$' num2str(lb_hdi,'%5.1f') char(8211) '$' num2str(ub_hdi,'%5.1f') ' million)'];
-    
+
     [mle,lb_hdi,ub_hdi]=Estimate_HDI(pd_med_cost,0.5);
     Value_2024{7} = ['$' num2str(mle,'%5.2f') ' million (' '$' num2str(lb_hdi,'%5.2f') char(8211) '$' num2str(ub_hdi,'%5.2f') ' million)'];
-    
+
     [mle,lb_hdi,ub_hdi]=Estimate_HDI(pd_med_cost_uninsured,0.5);
     Value_2024{8} = ['$' num2str(mle,'%5.2f') ' million (' '$' num2str(lb_hdi,'%5.2f') char(8211) '$' num2str(ub_hdi,'%5.2f') ' million)'];
 
@@ -85,16 +113,41 @@ Value_2024=cell(12,1);
 
     [mle,lb_hdi,ub_hdi]=Estimate_HDI(pd_med_cost_private,0.5);
     Value_2024{10} = ['$' num2str(mle,'%5.2f') ' million (' '$' num2str(lb_hdi,'%5.2f') char(8211) '$' num2str(ub_hdi,'%5.2f') ' million)'];
-    
+
     [mle,lb_hdi,ub_hdi]=Estimate_HDI(pd_pro_loss,0.5);
     Value_2024{11} = ['$' num2str(mle,'%5.1f') ' million (' '$' num2str(lb_hdi,'%5.1f') char(8211) '$' num2str(ub_hdi,'%5.1f') ' million)'];
-    
+
     [mle,lb_hdi,ub_hdi]=Estimate_HDI(pd_cost_per_case,0.5);
     Value_2024{12} = ['$' num2str(mle,'%6.0f') ' (' '$' num2str(lb_hdi,'%6.0f') char(8211) '$' num2str(ub_hdi,'%6.0f') ')'];
-[pd_cases_2023,pd_hospital,pd_cost,pd_cost_per_case,pd_pro_loss,pd_med_cost,pd_med_cost_uninsured,pd_med_cost_public,pd_med_cost_private,~,~,pd_outbreak_response_cost,pd_severe_disease,pd_death]=National_Outcome_Distribution(0,'Sample_2023',0);
+
+
+
+    [mle,lb_hdi,ub_hdi]=Estimate_HDI(prop_outbreak_response_cost,0.5);
+    Prop_2024{1} = [num2str(mle,'%4.2f') '% (' num2str(lb_hdi,'%4.2f') '%' char(8211) num2str(ub_hdi,'%4.2f') '%)'];
+
+    [mle,lb_hdi,ub_hdi]=Estimate_HDI(prop_pro_loss,0.5);
+    Prop_2024{2} = [num2str(mle,'%4.2f') '% (' num2str(lb_hdi,'%4.2f') '%' char(8211) num2str(ub_hdi,'%4.2f') '%)'];
+
+    [mle,lb_hdi,ub_hdi]=Estimate_HDI(prop_med_cost,0.5);
+    Prop_2024{3}=[num2str(mle,'%4.2f') '% (' num2str(lb_hdi,'%4.2f') '%' char(8211) num2str(ub_hdi,'%4.2f') '%)'];
+
+    [mle,lb_hdi,ub_hdi]=Estimate_HDI(prop_med_cost_uninsured,0.5);
+    Prop_2024{4}=[num2str(mle,'%4.2f') '% (' num2str(lb_hdi,'%4.2f') '%' char(8211) num2str(ub_hdi,'%4.2f') '%)'];
+
+    [mle,lb_hdi,ub_hdi]=Estimate_HDI(prop_med_cost_public,0.5);
+    Prop_2024{5} = [num2str(mle,'%4.2f') '% (' num2str(lb_hdi,'%4.2f') '%' char(8211) num2str(ub_hdi,'%4.2f') '%)'];
+
+    [mle,lb_hdi,ub_hdi]=Estimate_HDI(prop_med_cost_private,0.5);
+    Prop_2024{6} = [num2str(mle,'%4.2f') '% (' num2str(lb_hdi,'%4.2f') '%' char(8211) num2str(ub_hdi,'%4.2f') '%)'];
+
+[pd_cases_2023,pd_hospital,pd_cost,pd_cost_per_case,pd_pro_loss,pd_med_cost,pd_med_cost_uninsured,pd_med_cost_public,pd_med_cost_private,~,~,pd_outbreak_response_cost,pd_severe_disease,pd_death,prop_outbreak_response_cost,prop_pro_loss,prop_med_cost,prop_med_cost_uninsured,prop_med_cost_public,prop_med_cost_private]=National_Outcome_Distribution(0,'Sample_2023',0);
 
 pd_cases=pd_cases_2023;
 Value_2023=cell(12,1);
+
+
+Prop_2023=cell(6,1);
+
 [mle,lb_hdi,ub_hdi]=Estimate_HDI(pd_cases,0.5);
     Value_2023{1} = [num2str(mle,'%5.0f') ' (' num2str(lb_hdi,'%5.0f') char(8211) num2str(ub_hdi,'%5.0f') ')'];
     
@@ -130,9 +183,30 @@ Value_2023=cell(12,1);
     
     [mle,lb_hdi,ub_hdi]=Estimate_HDI(pd_cost_per_case,0.5);
     Value_2023{12} = ['$' num2str(mle,'%6.0f') ' (' '$' num2str(lb_hdi,'%6.0f') char(8211) '$' num2str(ub_hdi,'%6.0f') ')'];
+
+
+    [mle,lb_hdi,ub_hdi]=Estimate_HDI(prop_outbreak_response_cost,0.5);
+    Prop_2023{1} = [num2str(mle,'%4.2f') '% (' num2str(lb_hdi,'%4.2f') '%' char(8211) num2str(ub_hdi,'%4.2f') '%)'];
+    
+    [mle,lb_hdi,ub_hdi]=Estimate_HDI(prop_pro_loss,0.5);
+    Prop_2023{2} = [num2str(mle,'%4.2f') '% (' num2str(lb_hdi,'%4.2f') '%' char(8211) num2str(ub_hdi,'%4.2f') '%)'];
+    
+    [mle,lb_hdi,ub_hdi]=Estimate_HDI(prop_med_cost,0.5);
+    Prop_2023{3}=[num2str(mle,'%4.2f') '% (' num2str(lb_hdi,'%4.2f') '%' char(8211) num2str(ub_hdi,'%4.2f') '%)'];
+
+    [mle,lb_hdi,ub_hdi]=Estimate_HDI(prop_med_cost_uninsured,0.5);
+    Prop_2023{4}=[num2str(mle,'%4.2f') '% (' num2str(lb_hdi,'%4.2f') '%' char(8211) num2str(ub_hdi,'%4.2f') '%)'];
+    
+    [mle,lb_hdi,ub_hdi]=Estimate_HDI(prop_med_cost_public,0.5);
+    Prop_2023{5} = [num2str(mle,'%4.2f') '% (' num2str(lb_hdi,'%4.2f') '%' char(8211) num2str(ub_hdi,'%4.2f') '%)'];
+    
+    [mle,lb_hdi,ub_hdi]=Estimate_HDI(prop_med_cost_private,0.5);
+    Prop_2023{6} = [num2str(mle,'%4.2f') '% (' num2str(lb_hdi,'%4.2f') '%' char(8211) num2str(ub_hdi,'%4.2f') '%)'];
+
  Output_Table=table(Measure,Value_2025,Value_2024,Value_2023);
 
 
+ Proportion_Cost_Output_Table=table(Measure_Prop,Prop_2025,Prop_2024,Prop_2023);
 close all;
 f=figure('units','normalized','outerposition',[0.05 0.05 0.8 1]);
 s1=subplot("Position",[0.075 0.58 0.87 0.39]);
