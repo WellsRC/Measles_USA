@@ -48,7 +48,7 @@ temp_c=(Contact_Tracing_Costs(:)+Testing_Cost(:)+Cost_Vaccination_Contacts(:))./
 pd_outbreak_response_cost=fitdist(temp_c(:),'Kernel','Support','positive');
 
 temp_c=(Contact_Tracing_Costs(:)+Testing_Cost(:)+Cost_Vaccination_Contacts(:))./Cost_Baseline(:);
-prop_outbreak_response_cost=fitdist(100.*temp_c(:),'Kernel','Support','positive');
+prop_outbreak_response_cost=fitdist(100.*temp_c(:),'Kernel','Support',[0 100]);
 
 % Cases    
 temp_c=sum(Total_Cases_County,1);
@@ -82,14 +82,14 @@ temp_c=Total_Productivity_loss./10^6;
 pd_pro_loss=fitdist(temp_c(:),'Kernel','Support','positive');
 
 temp_c=Total_Productivity_loss(:)./Cost_Baseline(:);
-prop_pro_loss=fitdist(100.*temp_c(:),'Kernel','Support','positive');
+prop_pro_loss=fitdist(100.*temp_c(:),'Kernel','Support',[0 100]);
 
 % Medical_Costs
 temp_c=Direct_Medical_Costs./10^6;
 pd_med_cost=fitdist(temp_c(:),'Kernel','Support','positive');
 
 temp_c=Direct_Medical_Costs(:)./Cost_Baseline(:);
-prop_med_cost=fitdist(100.*temp_c(:),'Kernel','Support','positive');
+prop_med_cost=fitdist(100.*temp_c(:),'Kernel','Support',[0 100]);
 
 % Medical_Costs
 temp_c=Cost_Case_Medical_Uninsured./10^6;
@@ -98,7 +98,7 @@ pd_med_cost_uninsured=fitdist(temp_c(:),'Kernel','Support','positive');
 
 temp_c=Cost_Case_Medical_Uninsured(:)./Direct_Medical_Costs(:);
 temp_c(temp_c==0)=10^(-16);
-prop_med_cost_uninsured=fitdist(100.*temp_c(:),'Kernel','Support','positive');
+prop_med_cost_uninsured=fitdist(100.*temp_c(:),'Kernel','Support',[0 100]);
 
 % Medical_Costs
 temp_c=Cost_Case_Medical_Public./10^6;
@@ -107,7 +107,7 @@ pd_med_cost_public=fitdist(temp_c(:),'Kernel','Support','positive');
 
 temp_c=Cost_Case_Medical_Public(:)./Direct_Medical_Costs(:);
 temp_c(temp_c==0)=10^(-16);
-prop_med_cost_public=fitdist(100.*temp_c(:),'Kernel','Support','positive');
+prop_med_cost_public=fitdist(100.*temp_c(:),'Kernel','Support',[0 100]);
 
 % Medical_Costs
 temp_c=Cost_Case_Medical_Private./10^6;
@@ -116,7 +116,7 @@ pd_med_cost_private=fitdist(temp_c(:),'Kernel','Support','positive');
 
 temp_c=Cost_Case_Medical_Private(:)./Direct_Medical_Costs(:);
 temp_c(temp_c==0)=10^(-16);
-prop_med_cost_private=fitdist(100.*temp_c(:),'Kernel','Support','positive');
+prop_med_cost_private=fitdist(100.*temp_c(:),'Kernel','Support',[0 100]);
 
 % Testing_Vaccination
 temp_c=Testing_Vaccination_Contacts_Cost./10^6;

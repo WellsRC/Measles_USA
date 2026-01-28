@@ -10,8 +10,8 @@ for imprt=25:25:200
     Samp_B=sum(Total_Cases_County,1);
     temp_c=Samp_B;
     CV(imprt./25)=std(Samp_B)./mean(Samp_B);
-    temp_c(temp_c==0)=10^(-16);
-    p=fitdist(temp_c(:),'Kernel','Support','positive');
+    temp_c(temp_c==imprt)=imprt+10^(-8);
+    p=fitdist(temp_c(:),'Kernel','Support',[imprt 10^9]);
     [mle,lb_hdi,ub_hdi]=Estimate_HDI(p,0.5);
     Cases_Baseline=[mle lb_hdi ub_hdi];
     patch(imprt+[-11 -11 11 11],[Cases_Baseline(2) Cases_Baseline(3) Cases_Baseline(3) Cases_Baseline(2)],'k','LineStyle','none','FaceAlpha',0.3); hold on
