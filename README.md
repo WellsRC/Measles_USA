@@ -13,7 +13,7 @@ Copyright 2025, Chad Wells et al. All rights reserved. Released under the GNU GE
 
 The MATLAB code provided here will run the fitting and analysis for the modelling portion of the manuscript.
 
-## Vaccination scripts and functions
+## Scripts and functions
 Age_Adjustment_Factor_25_plus - Computes the adjustment factors for the age groups 25 years and older <br /> 
 Age_Adjustment_Factor - Computes the adjustment factors for the age groups 0-24 years of age <br /> 
 Case_Importation_Sample Constructs the sample of imported measles cases into the US <br /> 
