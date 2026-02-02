@@ -16,12 +16,27 @@ The MATLAB code provided here will run the fitting and analysis for the modellin
 ## Vaccination scripts and functions
 Age_Adjustment_Factor_25_plus - Computes the adjustment factors for the age groups 25 years and older <br /> 
 Age_Adjustment_Factor - Computes the adjustment factors for the age groups 0-24 years of age <br /> 
+Case_Importation_Sample Constructs the sample of imported measles cases into the US <br /> 
+Chain_Size_Distribution_CDF - Cumulative distribution function for the stuttering chain <br />
+Chain_Size_Distribution - Probability distribution function for the stuttering chain  <br />
 Compute_Age_Group_Reduction - Computes the level of reduction in the 0-4; 5-9; 10-14 age groups for a specified annual reduction <br /> 
+County_Level_Costs - Computes the total costs at the county level <br />
+Compute_Direct_Medical_Costs_County - Computes the direct medical costs at the county level <br />
+Compute_Direct_Medical_Costs - Computes the direct medical costs at the national level  <br />
+Compute_Productivity_Losses_County - Computes productivty losses at the county level  <br />
+Compute_Productivity_Losses - Computes productivty losses at the national level  <br />
+County_Transmission - Computes the transmission rate for the county <br />
+Death_Probability - Returns the probability of death for specified age groups <br />
 Decline_Adjustment_Factor - computes the adjustment factors required to get the specified level of reduction <br /> 
+Determine_Model_County_Case_Count - Interpolation function used to approximate the final size for a specified transmission rate during the optimization process <br />
+Estimate_HDI - Estimates the mode and the HDI for the provided psoterior kernel distribtuon <br />
 Estimated_NE_Health_District_Vaccine_Uptake - computes the vaccine coverage among the Nebraska Health Districts <br /> 
 Estimated_State_Vaccine_Uptake - computes the vaccine coverage among the states <br /> 
 Fit_Model - Runs the optimization for the specified training dataset for the vaccination model <br /> 
+Hospitalization_Probability - Returns the probability of hospitalization for specified age groups <br />
+Hurdle_Parameters - Returns the parameters for the Hurdle Model <br />
 Load_Data_Adjustment - loads the vaccination data required for computing the necessary adjustments to get the county and state level coverage <br /> 
+Load_Transmission_Covariates - Loads the covariates used in determining the county-level transmission <br /> 
 Load_Data - Loads the data for the vaccination model and the data used in the training of the model <br /> 
 Objective_Adjustment_Coverage_County - the objective function used for paramterizing the adjustments factor at the county level <br /> 
 Objective_Adjustment_Coverage_State - the objective function used for paramterizing the adjustments factor at the state level <br /> 
